@@ -5,6 +5,7 @@ public class Main {
 		//Ilk denemelerimiz
 		//ikinci deneme
 		//Guncelle
+		//Discord
 
 	}
 
