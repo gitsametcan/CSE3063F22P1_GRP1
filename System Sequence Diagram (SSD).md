@@ -1,0 +1,2 @@
+## System Sequence Diagram (SSD)
+---------------------
