@@ -30,7 +30,32 @@
 ----
 
 **Transcript** has a private *student* as **Student**
+
 **Transcript** has a private *listOfSemesters* as **List<-Semester->** 
+
+**Transcript** has a private *gano* as **Double**
+
+**Transcript** has a private *yano* as **Double**
+
+**Transcript** has a private *totalCreditsTaken* as **Integer**
+
+**Transcript** has a private *totalCreditsCompleted* as **Integer**
+
+**Transcript** has a private *points* as **Double**
+
+----
+
+**Semester** has a private *listOfLecturesTaken* as **List<-Lecture,LetterGrade->**
+
+**Semester** has a private *creditsTaken* as **Integer**
+
+**Semester** has a private *creditsCompleted* as **Integer**
+
+**Semester** has a private *points* as **Double**
+
+----
+
+**LetterGrade** is a enum with **Double** values
 
 ----
 
@@ -48,10 +73,6 @@
 
 **Lecture** has a private *lectureType* as **LectureType**
 
-**Lecture** has a private *instructor* as **Instructor**
-
-**Lecture** has a private *listOfAssistants* as **List<-Assistant->**
-
 **Lecture** has a private *credit* as **Integer**
 
 **Lecture** has a private *sessions* as **List<-LectureSession->**
@@ -62,7 +83,13 @@
 
 ----
 
+**LectureSession** has a private *sessionID* as **UniqueID**
+
 **LectureSession** has a private *sessionHour* as **LectureHour[][]**
+
+**LectureSession** has a private *instructor* as **Instructor**
+
+**LectureSession** has a private *listOfAssistants* as **List<-Assistant->**
 
 ----
 
@@ -73,5 +100,13 @@
 **Consultant** inherits from **Instructor**
 
 **Consultant** has a private *ListOfStudents* as **List<-Student->**
+
+----
+
+**LectureRegistirationApplication** has a *listOfLectures* as a **List<-Lecture->**
+
+**LectureRegistirationApplication** has a *consultant* as a **Consultant**
+
+**LectureRegistirationApplication** has a *student* as a **Student**
 
 
