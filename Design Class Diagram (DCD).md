@@ -73,7 +73,7 @@
 
 **Student** inherits from **Person**
 
-**Student** has a private *consultant* as **Consultant**
+**Student** has a private *advisor* as **Advisor**
 
 **Student** has a private *id* as **StudentID**
 
@@ -83,9 +83,13 @@
 
 **Student** has a private *dateOfEntry* as **Calendar**
 
-**Student** has methods named *getConsultant():Consultant*, *getID():String*, *getListOfLectures():List<-Lecture->*, *getTranscript():Transcript*, and *getDateOfEntry():Calendar* which returns their counterparts
+**Student** has a private *debt* as **Debt**
 
-**Student** has method named *setConsultant(Consultant)*
+**Student** has a private *registirationApplication* as **LectureRegistirationApplication**
+
+**Student** has methods named *getAdvisor():Advisor*, *getID():String*, *getListOfLectures():List<-Lecture->*, *getTranscript():Transcript*, *getDebt():Debt*, *getRegistirationApplication():LectureRegistirationApplication*,and *getDateOfEntry():Calendar* which returns their counterparts
+
+**Student** has methods named *setAdvisor(Advisor)*, *setDebt(Double)*, *setRegistirationApplication(LectureRegistirationApplication)*
 
 ----
 
@@ -182,18 +186,54 @@
 
 ----
 
-**Consultant** inherits from **Instructor**
+**Advisor** inherits from **Instructor**
 
-**Consultant** has a private *ListOfStudents* as **List<-Student->**
+**Advisor** has a private *ListOfStudents* as **List<-Student->**
 
-**Consultant** has a private *listOfApplications* as **List<-LectureRegistirationApplication->**
+**Advisor** has a private *listOfApplications* as **List<-LectureRegistirationApplication->**
 
 ----
 
 **LectureRegistirationApplication** has a private *listOfLectures* as a **List<-Lecture->**
 
-**LectureRegistirationApplication** has a private *consultant* as a **Consultant**
+**LectureRegistirationApplication** has a private *advisor* as a **Advisor**
 
 **LectureRegistirationApplication** has a private *student* as a **Student**
 
+----
 
+**Debt** has a private *amount* as **Double**
+
+**Debt** has a private *student* as **Student**
+
+**Debt** has methods named *getStudent():Student*, *getAmound():Double*
+
+**Debt** has methods named *setAmount(Double)*, *setStudent(Student)*
+
+----
+
+**FilterType** is an enum with *Name*, *ID*
+
+----
+
+**DataManager** has a private constructor
+
+**DataManager** has a private static *singleInstance* as **DataManager**
+
+**DataManager** has a public static method named *getInstance()* which returns the *singleInstance*
+
+**DataManager** has a private *listOfLectures* as **List<-Lectures->**
+
+**DataManager** has a private *listOfPeople* as **List<-Person->**
+
+**DataManager** has a private *cacheList* as **Queue<-Person->**
+
+**DataManager** has a method named *findLecture(FilterType, String)* which returns a **List<-Lecture->**
+
+**DataManager** has a method named *findPerson(FilterType, String)* which returns a **List<-Person->**
+
+**DataManager** has a method named *findStudent(FilterType, String)* which returns a **List<-Student->**
+
+**DataManager** has a method named *findInstructor(FilterType, String)* which returns a **List<-Instructor->**
+
+**DataManager** has a method named *findAdvisor(FilterType, String)* which returns a **List<-Advisor->**
