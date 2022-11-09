@@ -77,7 +77,7 @@
 
 **Student** has a private *id* as **StudentID**
 
-**Student** has a private *listOfLectures* as **List<-Lecture->**
+**Student** has a private *listOfLectureSessions* as **List<-LectureSession->**
 
 **Student** has a private *transcript* as **Transcript**
 
@@ -87,7 +87,7 @@
 
 **Student** has a private *registirationApplication* as **LectureRegistirationApplication**
 
-**Student** has methods named *getAdvisor():Advisor*, *getID():String*, *getListOfLectures():List<-Lecture->*, *getTranscript():Transcript*, *getDebt():Debt*, *getRegistirationApplication():LectureRegistirationApplication*,and *getDateOfEntry():Calendar* which returns their counterparts
+**Student** has methods named *getAdvisor():Advisor*, *getID():String*, *getListOfLectureSessions():List<-LectureSession->*, *getTranscript():Transcript*, *getDebt():Debt*, *getRegistirationApplication():LectureRegistirationApplication*,and *getDateOfEntry():Calendar* which returns their counterparts
 
 **Student** has methods named *setAdvisor(Advisor)*, *setDebt(Double)*, *setRegistirationApplication(LectureRegistirationApplication)*
 
@@ -163,6 +163,8 @@
 
 **Lecture** has a private *quota* as **Integer**
 
+**Lecture** has a private *price* as **Double**
+
 **Lecture** has methods named *getID():String*,*getName():String*, *getLectureType():LectureType*, *getCredit():Integer*, *getSessions():List<-LectureSession->*, *getPrerequisities():List<-Lecture->*, and *getQuota():Integer* which returns their counterparts
 
 **Lecture** has methods named *setName(String)*, *setLectureType(LectureType)*, *setCredit(Integer)*, *setQuota(Integer)*, *addLectureSession(LectureSession)*, *removeLectureSession(LectureSession)*, *addPrerequisiteLecture(Lecture)*, *removePrerequisiteLecture(Lecture)*
@@ -172,13 +174,25 @@
 
 **LectureSession** has a private *sessionID* as **UniqueID**
 
-**LectureSession** has a private *sessionHour* as **LectureHour[][]**
+**LectureSession** has a private *lecture* as **Lecture**
+
+**LectureSession** has a private *sessionHours* as **LectureHour[][]**
 
 **LectureSession** has a private *sessionType* as **SessionType**
 
 **LectureSession** has a private *instructor* as **Instructor**
 
 **LectureSession** has a private *listOfAssistants* as **List<-Assistant->**
+
+**LectureSession** has a method named *getSessionID(): String*
+
+**LectureSession** has a method named *getSessionHours():LectureHour[7][10]*
+
+**LectureSession** has a method named *getSessionType():SessionType*
+
+**LectureSession** has a method named *getInstructor(): Instructor*
+
+**LectureSession** has a method named *getListOfAssistants():List<-Assistant->*
 
 ----
 
@@ -188,17 +202,26 @@
 
 **Advisor** inherits from **Instructor**
 
-**Advisor** has a private *ListOfStudents* as **List<-Student->**
+**Advisor** has a private *listOfStudents* as **List<-Student->**
 
 **Advisor** has a private *listOfApplications* as **List<-LectureRegistirationApplication->**
 
+**Advisor** has a method named *getListOfStudents(): List<-Student->*
+
+**Advisor** has a method named *getListOfApplications(): List<-LectureRegistirationApplication->*
+
+**Advisor** has a method named *approveApplication(LectureRegistirationApplication):void*
+
+
 ----
 
-**LectureRegistirationApplication** has a private *listOfLectures* as a **List<-Lecture->**
+**LectureRegistirationApplication** has a private *listOfLectureSessions* as a **List<-LectureSession->**
 
-**LectureRegistirationApplication** has a private *advisor* as a **Advisor**
+**LectureRegistirationApplication** has a private *advisor* as an **Advisor**
 
 **LectureRegistirationApplication** has a private *student* as a **Student**
+
+**LectureRegistirationApplication** has a method named *approveApplication():void* which inserts its session data to the student.
 
 ----
 
