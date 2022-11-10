@@ -21,6 +21,8 @@ TE Lecture : Technical Elective Lecture
 Prerequisite Lecture : Required lecture must be completed prior to take other Lecture
 UE Lecture : University Elective Lecture
 Credits : Is a way of measuring and impression of particular lecture
+Java : Object Oriented Programming Language
+JSON : Standart data interchange and file format
 
 
 _____________________
