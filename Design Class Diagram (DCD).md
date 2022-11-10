@@ -73,7 +73,7 @@
 
 **Student** inherits from **Person**
 
-**Student** has a private *advisor* as **Advisor**
+**Student** has a private transient *advisor* as **Advisor**
 
 **Student** has a private *id* as **StudentID**
 
@@ -133,11 +133,11 @@
 
 **Instructor** inherits from **Person**
 
-**Instructor** has a private *id* as **InstructorID**
+**Instructor** has a protected *id* as **InstructorID**
 
 **Instructor** has a private *ListOfLectures* as **List<-Lecture->**
 
-**Instructor** has a private *dateOfEntry* as **Calendar**
+**Instructor** has a protected *dateOfEntry* as **Calendar**
 
 **Instructor** has methods named *getID():String*, *getListOfLectures():List<-Lecture->*, and *getDateOfEntry():Calendar* which returns their counterparts
 
@@ -174,7 +174,7 @@
 
 **LectureSession** has a private *sessionID* as **UniqueID**
 
-**LectureSession** has a private *lecture* as **Lecture**
+**LectureSession** has a private transient *lecture* as **Lecture**
 
 **LectureSession** has a private *sessionHours* as **LectureHour[][]**
 
@@ -260,3 +260,9 @@
 **DataManager** has a method named *findInstructor(FilterType, String)* which returns a **List<-Instructor->**
 
 **DataManager** has a method named *findAdvisor(FilterType, String)* which returns a **List<-Advisor->**
+
+----
+
+**LectureFactory** has a *listOfLectures* as **List<-Lectures->**
+
+**LectureFactory** has a method named *generateLecture()*
