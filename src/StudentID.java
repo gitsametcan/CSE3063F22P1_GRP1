@@ -1,4 +1,4 @@
-
+//Samet CAN 150120528
 public class StudentID implements UniqueID {
 	
 	private int departmentCode;

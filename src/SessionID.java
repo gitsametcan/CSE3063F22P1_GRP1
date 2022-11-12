@@ -1,4 +1,4 @@
-
+//Samet CAN 150120528
 public class SessionID implements UniqueID {
 
 	private int id;
@@ -13,7 +13,7 @@ public class SessionID implements UniqueID {
 	}
 	
 	public String getID() {
-		return id +"";
+		return id+"";
 	}
 	
 }

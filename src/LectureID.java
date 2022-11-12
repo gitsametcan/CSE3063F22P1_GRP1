@@ -1,4 +1,4 @@
-
+//Samet CAN 150120528
 public class LectureID implements UniqueID {
 	
 	private String departmentCode;
