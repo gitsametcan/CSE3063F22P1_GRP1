@@ -89,7 +89,7 @@
 
 **Student** has methods named *getAdvisor():Advisor*, *getID():String*, *getListOfLectureSessions():List<-LectureSession->*, *getTranscript():Transcript*, *getDebt():Debt*, *getRegistirationApplication():LectureRegistirationApplication*,and *getDateOfEntry():Calendar* which returns their counterparts
 
-**Student** has methods named *setAdvisor(Advisor)*, *setDebt(Double)*, *setRegistirationApplication(LectureRegistirationApplication)*
+**Student** has methods named *setAdvisor(Advisor)*, *setDebt(Double)*, *setRegistirationApplication(LectureRegistirationApplication)*, *sendApprovement()*
 
 ----
 
@@ -249,20 +249,40 @@
 
 **DataManager** has a private *listOfPeople* as **List<-Person->**
 
-**DataManager** has a private *cacheList* as **Queue<-Person->**
+**DataManager** has a private *cacheList* as **LinkedList<-Person->**
 
-**DataManager** has a method named *findLecture(FilterType, String)* which returns a **List<-Lecture->**
+**DataManager** has a method named *findLecture(FilterType, String)* which returns a **Lecture**
 
-**DataManager** has a method named *findPerson(FilterType, String)* which returns a **List<-Person->**
+**DataManager** has a method named *findPerson(FilterType, String)* which returns a **Person**
 
-**DataManager** has a method named *findStudent(FilterType, String)* which returns a **List<-Student->**
+**DataManager** has a method named *findStudent(FilterType, String)* which returns a **Student**
 
-**DataManager** has a method named *findInstructor(FilterType, String)* which returns a **List<-Instructor->**
+**DataManager** has a method named *findInstructor(FilterType, String)* which returns a **Instructor**
 
-**DataManager** has a method named *findAdvisor(FilterType, String)* which returns a **List<-Advisor->**
+**DataManager** has a method named *findAdvisor(FilterType, String)* which returns a **Advisor**
+
+**DataManager** has a private method named *findInCache(FilterType, String, Class): Class*
+
+**DataManager** has a private method named *findInPerson(FilterType, String, Class): Class*
+
+**DataManager** has a private method named *loadLectures()*
+
+**DataManager** has a private method named *loadAdvisors()*
+
+**DataManager** has a private method named *loadInstructors()*
+
+**DataManager** has a private method named *loadStudents()*
+
+**DataManager** has a private method names *listOfFilesInDirectory(String):File[]*
+
+**DataManager** has a private method names *contentsOfFiles(File[]):List<-String->*
 
 ----
 
 **LectureFactory** has a *listOfLectures* as **List<-Lectures->**
 
 **LectureFactory** has a method named *generateLecture()*
+
+----
+
+**RegistirationSystem** has a public method named *run()*
