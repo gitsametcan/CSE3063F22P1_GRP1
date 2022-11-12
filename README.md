@@ -62,7 +62,7 @@ Date:10.11.2022
 
 1. Discussed over completed tasks.
 2. Current progress and shortcomings were discussed.
-3. Libraries were added to member computers and settings were made by Kaan Berk Yağar.
+3. Libraries were added to member computers and settings were made by Kadir Berk Yağar.
 
 ### Decisions taken and task sharing:
 1. Decided to move future issues under branches
