@@ -12,7 +12,7 @@ public class Advisor extends Instructor{
 		return listOfApplications;
 	}
 	public void approveApplication(LectureRegistirationApplication lectureRegistirationApplication){
-		
+		lectureRegistirationApplication.approveApplication();
 	}
 	
 	
