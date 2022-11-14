@@ -1,3 +1,4 @@
+package person;
 //Kaan Camci 150119063
 public class Student extends Person{
 

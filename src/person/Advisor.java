@@ -1,3 +1,4 @@
+package person;
 //Kaan Camci 150119063
 public class Advisor extends Instructor{
 	
