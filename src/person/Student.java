@@ -20,6 +20,22 @@ public class Student extends Person {
 	private Debt debt;
 	private LectureRegistrationApplication registirationApplication;
 
+	public void setId(StudentID id) {
+		this.id = id;
+	}
+
+	public void setListOfLectureSessions(List<LectureSession> listOfLectureSessions) {
+		this.listOfLectureSessions = listOfLectureSessions;
+	}
+
+	public void setTranscript(Transcript transcript) {
+		this.transcript = transcript;
+	}
+
+	public void setDateOfEntry(Calendar dateOfEntry) {
+		this.dateOfEntry = dateOfEntry;
+	}
+
 	public Advisor getAdvisor() {
 		return advisor;
 	}
@@ -60,8 +76,8 @@ public class Student extends Person {
 		return dateOfEntry;
 	}
 
-	public Student(String firstName, String lastName, StudentID id, List<LectureSession> listOfLectureSessions, Transcript transcript,
-			Calendar dateOfEntry) {
+	public Student(String firstName, String lastName, StudentID id, List<LectureSession> listOfLectureSessions,
+			Transcript transcript, Calendar dateOfEntry) {
 		super(firstName, lastName);
 		this.id = id;
 		this.listOfLectureSessions = listOfLectureSessions;

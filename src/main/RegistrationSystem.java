@@ -83,26 +83,26 @@ public class RegistrationSystem {
 				validInput = true;
 				transcriptMenu(currentUser);
 				break;
-			case 2:
-				validInput = true;
-				makeRegistrationMenu(currentUser);
-				break;
-			case 3:
-				validInput = true;
-				scheduleMenu(currentUser);
-				break;
-			case 4:
-				validInput = true;
-				registrationStatusMenu(currentUser);
-				break;
-			case 5:
-				validInput = true;
-				debtMenu(currentUser);
-				break;
-			case 6:
-				validInput = true;
-				signOut(currentUser);
-				break;
+//			case 2:
+//				validInput = true;
+//				makeRegistrationMenu(currentUser);
+//				break;
+//			case 3:
+//				validInput = true;
+//				scheduleMenu(currentUser);
+//				break;
+//			case 4:
+//				validInput = true;
+//				registrationStatusMenu(currentUser);
+//				break;
+//			case 5:
+//				validInput = true;
+//				debtMenu(currentUser);
+//				break;
+//			case 6:
+//				validInput = true;
+//				signOut(currentUser);
+//				break;
 			default:
 				System.out.print("The input is not valid, please provide a valid input.");	
 		}
