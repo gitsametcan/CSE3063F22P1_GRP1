@@ -63,8 +63,6 @@
 
 **Person** has a protected *lastName* as **String**
 
-**Person** has a protected *id* as **UniqueID**
-
 **Person** has methods named *getFirstName():String*, *getLastName():String*, and *getID():String* which returns their counterparts
 
 **Person** has methods named *setFirstName(String)*, *setLastName(String)*
