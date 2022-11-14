@@ -1,3 +1,8 @@
+package lecture;
+import java.util.HashMap;
+
+import Enums.LetterGrade;
+
 //Serdar Alsan	150120034 
 public class Semester{
 	

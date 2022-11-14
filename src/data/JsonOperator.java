@@ -25,7 +25,7 @@ public class JsonOperator {
 		return singleInstance;
 	}
 	
-	public <T> T readJsonFile(File file, Class<T> type) throws FileNotFoundException {S
+	public <T> T readJsonFile(File file, Class<T> type) throws FileNotFoundException {
 		Scanner scanner = new Scanner(file);
 		String contents = "";
 		

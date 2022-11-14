@@ -1,5 +1,12 @@
 package person;
 
+import java.util.Calendar;
+import java.util.List;
+
+import Debt_LRA_Transcript.LectureRegistirationApplication;
+import IDs.InstructorID;
+import lecture.Lecture;
+
 //Kaan Camci 150119063
 public class Advisor extends Instructor {
 

@@ -7,10 +7,13 @@ import java.io.FilenameFilter;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Queue;
-import java.util.Scanner;
 
-import com.google.gson.Gson;
+import Enums.FilterType;
+import lecture.Lecture;
+import person.Advisor;
+import person.Instructor;
+import person.Person;
+import person.Student;
 
 public class DataManager {
 	
@@ -40,7 +43,7 @@ public class DataManager {
 	
 	public Lecture findLecture(FilterType filterType, String searchKey) {
 		for (Lecture lecture: listOfLectures) {
-			if (filterType == FilterType.ID && lecture.getID().contains(searchKey) ||
+			if (filterType == FilterType.ID && lecture.getId().contains(searchKey) ||
 					filterType == FilterType.Name && lecture.getName().contains(searchKey)) {
 				return lecture;
 			}
@@ -51,10 +54,10 @@ public class DataManager {
 	private <T> T searchInCache(FilterType filterType, String searchKey, Class<T> type) {
 		for (Person person : cacheList) {
 			if (person instanceof T) {
-				if (filterType == FilterType.ID && person.getID().contains(searchKey) ||
-						filterType == FilterType.Name && person.getName().contains(searchKey)) {
-					cacheList.offerFirst(person);
-					cacheList.removeLastOccurence(person);
+				if (filterType == FilterType.ID && person.getId().contains(searchKey) ||
+						filterType == FilterType.Name && person.getFullName().contains(searchKey)) {
+						cacheList.offerFirst(person);
+						cacheList.removeLastOccurence(person);
 					return person;
 				}
 			}
@@ -65,8 +68,8 @@ public class DataManager {
 	private <T> T searchInPerson(FilterType filterType, String searchKey, Class<T> type) {
 		for (Person person: listOfPeople) {
 			if (person instanceof T) {
-				if (filterType == FilterType.ID && person.getID().contains(searchKey) ||
-						filterType == FilterType.Name && person.getName().contains(searchKey)) {
+				if (filterType == FilterType.ID && person.getId().contains(searchKey) ||
+						filterType == FilterType.Name && person.getFullName().contains(searchKey)) {
 					cacheList.offerFirst(person);
 					if (cacheList.size() > 50) {
 						cacheList.removeLast();

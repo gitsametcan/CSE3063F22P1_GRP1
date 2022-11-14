@@ -1,3 +1,11 @@
+package lecture;
+import java.util.List;
+
+import Enums.LectureHour;
+import Enums.SessionType;
+import IDs.UniqueID;
+import person.Instructor;
+
 //Serdar Alsan	150120034 
 public class LectureSession{
 

@@ -1,5 +1,14 @@
 package person;
 
+import java.util.Calendar;
+import java.util.List;
+
+import Debt_LRA_Transcript.Debt;
+import Debt_LRA_Transcript.LectureRegistirationApplication;
+import Debt_LRA_Transcript.Transcript;
+import IDs.StudentID;
+import lecture.LectureSession;
+
 //Kaan Camci 150119063
 public class Student extends Person {
 

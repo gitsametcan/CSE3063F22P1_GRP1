@@ -1,6 +1,8 @@
 package Debt_LRA_Transcript;
 // Sena VATANSEVER 150119755
 
+import person.Student;
+
 public class Debt {
 
 	double amount;

@@ -1,5 +1,10 @@
+package lecture;
+import java.util.List;
+
+import IDs.LectureID;
+
 //Serdar Alsan	150120034 
-public class Lecture{
+public class Lecture {
 
 	private LectureID id;
 	private String name;
