@@ -7,16 +7,18 @@ _____________
 Subject: Student
 _____________
 Basic Flow:
-1- Student opens "Enroll to lectures" tab at site.
+1- Student opens "Enroll to lectures" tab at site to view lectures.
 2- Student needs to select their lectures from a lecture list according to their current curriculum, current semester and their current status of lecture progression.
-3- System drafts selected lectures to another tab.
-4- Student sends their selected lecture list to their advisor.
+3- System saves lectures as draft at another tab.
+4- Student sends their lecture draft list to their advisor for approval.
 5- Student's enrolling to a lecture process has done, lectures from list added to their syllabus.
 ______________
 Alternative Flow:
 Step 2:
     if selected lecture has reached their quota capacity system gives warning to student,
     then use case returns to step 2.
+Step 3:
+    if student needs to pay education debt and he/she didn't paid it yet, system sends warning to student and student returns to step 2.
 Step 5:
     if two or more attendance needed lecture hours collides advisor rejects all of the collided lectures, student needs to return step 2 for enrolling rejected lectures and change some settings before advencing to step 3. 
 Step 5:
@@ -36,9 +38,9 @@ ______________
 Subject: Advisor
 _____________
 Basic Flow:
-1- Advisor enters to systems's site and selects coming requests tab from site.
+1- Advisor enters to systems's site and selects coming requests tab from site for approving or rejecting coming requests.
 2- Advisor checks coming lecture requests from student.
-3- Advisor approves the request.
+3- Based on advisor's feedback system sends notification to student.
 _____________
 Alternative Flow:
 Step 2:
