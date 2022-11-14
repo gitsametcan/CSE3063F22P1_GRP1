@@ -24,7 +24,7 @@ public class Semester{
 		return points;
 	}
 	
-	public void setLecture(Lecture lecture, LectureGrade lectureGrade) {
+	public void setLecture(Lecture lecture, LetterGrade lectureGrade) {
 		this.listOfLecturesTaken = listOfLecturesTaken;
 	}
 	public void setCreditsTaken(int creditsTaken) {

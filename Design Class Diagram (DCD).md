@@ -151,8 +151,6 @@
 
 **Lecture** has a private *name* as **String**
 
-**Lecture** has a private *lectureType* as **LectureType**
-
 **Lecture** has a private *credit* as **Integer**
 
 **Lecture** has a private *sessions* as **List<-LectureSession->**
@@ -163,9 +161,9 @@
 
 **Lecture** has a private *price* as **Double**
 
-**Lecture** has methods named *getID():String*,*getName():String*, *getLectureType():LectureType*, *getCredit():Integer*, *getSessions():List<-LectureSession->*, *getPrerequisities():List<-Lecture->*, and *getQuota():Integer* which returns their counterparts
+**Lecture** has methods named *getID():String*,*getName():String*, *getCredit():Integer*, *getSessions():List<-LectureSession->*, *getPrerequisities():List<-Lecture->*, and *getQuota():Integer* which returns their counterparts
 
-**Lecture** has methods named *setName(String)*, *setLectureType(LectureType)*, *setCredit(Integer)*, *setQuota(Integer)*, *addLectureSession(LectureSession)*, *removeLectureSession(LectureSession)*, *addPrerequisiteLecture(Lecture)*, *removePrerequisiteLecture(Lecture)*
+**Lecture** has methods named *setName(String)*, *setCredit(Integer)*, *setQuota(Integer)*, *addLectureSession(LectureSession)*, *removeLectureSession(LectureSession)*, *addPrerequisiteLecture(Lecture)*, *removePrerequisiteLecture(Lecture)*
 
 
 ----
