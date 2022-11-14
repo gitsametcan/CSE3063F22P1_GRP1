@@ -7,6 +7,13 @@ public class LectureID implements UniqueID {
 	private int yearCode;
 	private int lectureCode;
 
+	public LectureID(String departmentCode, int yearCode, int lectureCode) {
+		super();
+		this.departmentCode = departmentCode;
+		this.yearCode = yearCode;
+		this.lectureCode = lectureCode;
+	}
+
 	public void setID(String string) {
 		try {
 			Integer.parseInt(string.substring(3));
@@ -29,9 +36,9 @@ public class LectureID implements UniqueID {
 	public String getID() {
 		return digitFixer(Integer.parseInt(departmentCode)) + digitFixer(yearCode) + digitFixer(lectureCode);
 	}
-	
+
 	public String digitFixer(int integer) {
-		String tempOrder = ""+integer;
+		String tempOrder = "" + integer;
 		if (integer < 10) {
 			tempOrder = "00" + tempOrder;
 		} else if (integer < 100) {

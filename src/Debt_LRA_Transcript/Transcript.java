@@ -16,6 +16,17 @@ public class Transcript {
 	int totalCreditsCompleted;
 	double points;
 
+	public Transcript(Student student, ArrayList<Semester> listOfSemester, double gano, int totalCreditsTaken,
+			int totalCreditsCompleted, double points) {
+		super();
+		this.student = student;
+		this.listOfSemester = listOfSemester;
+		this.gano = gano;
+		this.totalCreditsTaken = totalCreditsTaken;
+		this.totalCreditsCompleted = totalCreditsCompleted;
+		this.points = points;
+	}
+
 	public Student getStudent() {
 		return student;
 	}

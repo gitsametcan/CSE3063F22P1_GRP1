@@ -12,7 +12,17 @@ public class Semester {
 	private int creditsCompleted;
 	private double points;
 	double yano;
-	
+
+	public Semester(HashMap<Lecture, LetterGrade> listOfLecturesTaken, int creditsTaken, int creditsCompleted,
+			double points, double yano) {
+		super();
+		this.listOfLecturesTaken = listOfLecturesTaken;
+		this.creditsTaken = creditsTaken;
+		this.creditsCompleted = creditsCompleted;
+		this.points = points;
+		this.yano = yano;
+	}
+
 	public HashMap<Lecture, LetterGrade> getListOfLecturesTaken() {
 		return listOfLecturesTaken;
 	}
@@ -32,7 +42,7 @@ public class Semester {
 	public double getYano() {
 		return yano;
 	}
-	
+
 	public void setLecture(Lecture lecture, LetterGrade lectureGrade) {
 		this.listOfLecturesTaken = listOfLecturesTaken;
 	}

@@ -5,6 +5,11 @@ public class SessionID implements UniqueID {
 
 	private int id;
 
+	public SessionID(int id) {
+		super();
+		this.id = id;
+	}
+
 	public void setID(String string) {
 		try {
 			Integer.parseInt(string);
@@ -23,9 +28,9 @@ public class SessionID implements UniqueID {
 	public String getID() {
 		return digitFixer(id);
 	}
-	
+
 	public String digitFixer(int integer) {
-		String tempOrder = ""+integer;
+		String tempOrder = "" + integer;
 		if (integer < 10) {
 			tempOrder = "00" + tempOrder;
 		} else if (integer < 100) {

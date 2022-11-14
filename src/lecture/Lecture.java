@@ -16,6 +16,18 @@ public class Lecture {
 	private Lecture prerequisities;
 	private int quota;
 
+	public Lecture(LectureID id, String name, LectureType lectureType, int credit, List<LectureSession> sessions,
+			List<Lecture> prerequisities, int quota) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.lectureType = lectureType;
+		this.credit = credit;
+		this.sessions = sessions;
+		this.prerequisities = prerequisities;
+		this.quota = quota;
+	}
+
 	public LectureID getId() {
 		return id;
 	}

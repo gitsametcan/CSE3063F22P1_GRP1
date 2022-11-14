@@ -8,6 +8,12 @@ public class Debt {
 	double amount;
 	Student student;
 
+	public Debt(double amount, Student student) {
+		super();
+		this.amount = amount;
+		this.student = student;
+	}
+
 	public double getAmount() {
 		return amount;
 	}

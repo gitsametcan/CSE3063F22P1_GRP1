@@ -6,6 +6,12 @@ public class InstructorID implements UniqueID {
 	private int departmentCode;
 	private int orderOfEntry;
 
+	public InstructorID(int departmentCode, int orderOfEntry) {
+		super();
+		this.departmentCode = departmentCode;
+		this.orderOfEntry = orderOfEntry;
+	}
+
 	public void setID(String string) {
 		try {
 			Integer.parseInt(string);
@@ -26,9 +32,9 @@ public class InstructorID implements UniqueID {
 	public String getID() {
 		return digitFixer(departmentCode) + digitFixer(orderOfEntry);
 	}
-	
+
 	public String digitFixer(int integer) {
-		String tempOrder = ""+integer;
+		String tempOrder = "" + integer;
 		if (integer < 10) {
 			tempOrder = "00" + tempOrder;
 		} else if (integer < 100) {
