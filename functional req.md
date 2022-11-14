@@ -21,3 +21,9 @@ g-student may have debt.
 a-selected lectures musn't have confliction.
 b-student must pay education debt.
 c-advisor must apporve if requirements met.
+
+non-functional requirements 
+1-) Student information is taken from JSON file as an input.
+2-) Registration system program has to be implemented with JAVA.
+3-) Every step of program should be performed on Command Line Interface.
+
