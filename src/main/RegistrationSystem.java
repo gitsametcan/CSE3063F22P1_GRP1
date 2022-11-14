@@ -137,8 +137,12 @@ public class RegistrationSystem {
 				System.out.printf("%-15s%n",tempTakenLectures.get(l).toString());
 			}
 			
-			
+			System.out.printf("%-31s","Credits taken in Semester:");
+			System.out.println(currentUser.getTranscript().getListOfSemester().get(i).getCreditsTaken());
+			System.out.printf("%-31s","Credits completed in Semester:");
+			System.out.println(currentUser.getTranscript().getListOfSemester().get(i).getCreditsCompleted());
 		}
+		
 	}
 	
 	private void instructorMenu() {
