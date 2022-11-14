@@ -39,8 +39,8 @@ public class Instructor extends Person {
 		this.listOfLectures.remove(lecture);
 	}
 
-	public Instructor(InstructorID id, List<Lecture> listOfLectures, Calendar dateOfEntry, InstructorType InstructorType) {
-		super();
+	public Instructor(String firstName, String lastName, InstructorID id, List<Lecture> listOfLectures, Calendar dateOfEntry, InstructorType InstructorType) {
+		super(firstName, lastName);
 		this.id = id;
 		this.listOfLectures = listOfLectures;
 		this.dateOfEntry = dateOfEntry;

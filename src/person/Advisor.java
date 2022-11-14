@@ -26,9 +26,9 @@ public class Advisor extends Instructor {
 		lectureRegistirationApplication.approveApplication();
 	}
 
-	public Advisor(InstructorID id, List<Lecture> listOfLectures, Calendar dateOfEntry, List<Student> listOfStudents,
+	public Advisor(String firstName, String lastName, InstructorID id, List<Lecture> listOfLectures, Calendar dateOfEntry, List<Student> listOfStudents,
 			List<LectureRegistrationApplication> listOfApplications, InstructorType instructorType) {
-		super(id, listOfLectures, dateOfEntry, instructorType);
+		super(firstName, lastName, id, listOfLectures, dateOfEntry, instructorType);
 		this.listOfStudents = listOfStudents;
 		this.listOfApplications = listOfApplications;
 	}

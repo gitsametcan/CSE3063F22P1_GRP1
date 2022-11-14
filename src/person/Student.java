@@ -60,9 +60,9 @@ public class Student extends Person {
 		return dateOfEntry;
 	}
 
-	public Student(StudentID id, List<LectureSession> listOfLectureSessions, Transcript transcript,
+	public Student(String firstName, String lastName, StudentID id, List<LectureSession> listOfLectureSessions, Transcript transcript,
 			Calendar dateOfEntry) {
-		super();
+		super(firstName, lastName);
 		this.id = id;
 		this.listOfLectureSessions = listOfLectureSessions;
 		this.transcript = transcript;
