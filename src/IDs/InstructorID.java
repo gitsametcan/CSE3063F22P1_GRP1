@@ -1,6 +1,6 @@
+//Samet CAN 150120528
 package IDs;
 
-//Samet CAN 150120528
 public class InstructorID implements UniqueID {
 
 	private int departmentCode;
@@ -24,6 +24,16 @@ public class InstructorID implements UniqueID {
 	}
 
 	public String getID() {
-		return departmentCode + "" + orderOfEntry;
+		return digitFixer(departmentCode) + digitFixer(orderOfEntry);
+	}
+	
+	public String digitFixer(int integer) {
+		String tempOrder = ""+integer;
+		if (integer < 10) {
+			tempOrder = "00" + tempOrder;
+		} else if (integer < 100) {
+			tempOrder = "0" + tempOrder;
+		}
+		return tempOrder;
 	}
 }

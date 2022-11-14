@@ -13,14 +13,8 @@ public class StudentID implements UniqueID {
 		this.orderOfPlacement = OrderOfPlacement;
 	}
 
-	public String getID() {
-		String tempOrder = ""+orderOfPlacement;
-		if (orderOfPlacement < 10) {
-			tempOrder = "00" + tempOrder;
-		} else if (orderOfPlacement < 100) {
-			tempOrder = "0" + tempOrder;
-		}
-		return departmentCode + "" + yearCode + "" + tempOrder;
+	public String getID() {		
+		return digitFixer(departmentCode) + digitFixer(yearCode) + digitFixer(orderOfPlacement);
 	}
 
 	public void setID(String string) {
@@ -34,6 +28,16 @@ public class StudentID implements UniqueID {
 			this.orderOfPlacement = Integer.parseInt(string.substring(6));
 		}
 
+	}
+	
+	public String digitFixer(int integer) {
+		String tempOrder = ""+integer;
+		if (integer < 10) {
+			tempOrder = "00" + tempOrder;
+		} else if (integer < 100) {
+			tempOrder = "0" + tempOrder;
+		}
+		return tempOrder;
 	}
 
 }

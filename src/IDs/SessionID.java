@@ -21,7 +21,17 @@ public class SessionID implements UniqueID {
 	}
 
 	public String getID() {
-		return "" + id;
+		return digitFixer(id);
+	}
+	
+	public String digitFixer(int integer) {
+		String tempOrder = ""+integer;
+		if (integer < 10) {
+			tempOrder = "00" + tempOrder;
+		} else if (integer < 100) {
+			tempOrder = "0" + tempOrder;
+		}
+		return tempOrder;
 	}
 
 }

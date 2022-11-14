@@ -27,7 +27,17 @@ public class LectureID implements UniqueID {
 	}
 
 	public String getID() {
-		return departmentCode + "" + yearCode + "" + lectureCode;
+		return digitFixer(Integer.parseInt(departmentCode)) + digitFixer(yearCode) + digitFixer(lectureCode);
+	}
+	
+	public String digitFixer(int integer) {
+		String tempOrder = ""+integer;
+		if (integer < 10) {
+			tempOrder = "00" + tempOrder;
+		} else if (integer < 100) {
+			tempOrder = "0" + tempOrder;
+		}
+		return tempOrder;
 	}
 
 }
