@@ -27,8 +27,8 @@ public class Student extends Person{
 	public void setRegistirationApplication(LectureRegistirationApplication registirationApplication) {
 		this.registirationApplication = registirationApplication;
 	}
-	public StudentID getId() {
-		return id;
+	public String getId() {
+		return id.getID();
 	}
 	public List<LectureSession> getListOfLectureSessions() {
 		return listOfLectureSessions;
