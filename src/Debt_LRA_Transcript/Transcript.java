@@ -12,7 +12,6 @@ public class Transcript {
 	Student student;
 	ArrayList<Semester> listOfSemester;
 	double gano;
-	double yano;
 	int totalCreditsTaken;
 	int totalCreditsCompleted;
 	double points;
@@ -27,10 +26,6 @@ public class Transcript {
 
 	public double getGano() {
 		return gano;
-	}
-
-	public double getYano() {
-		return yano;
 	}
 
 	public int getTotalCreditsTaken() {

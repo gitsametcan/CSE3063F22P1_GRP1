@@ -11,7 +11,8 @@ public class Semester {
 	private int creditsTaken;
 	private int creditsCompleted;
 	private double points;
-
+	double yano;
+	
 	public HashMap<Lecture, LetterGrade> getListOfLecturesTaken() {
 		return listOfLecturesTaken;
 	}
@@ -28,6 +29,10 @@ public class Semester {
 		return points;
 	}
 
+	public double getYano() {
+		return yano;
+	}
+	
 	public void setLecture(Lecture lecture, LetterGrade lectureGrade) {
 		this.listOfLecturesTaken = listOfLecturesTaken;
 	}
