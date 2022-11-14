@@ -4,7 +4,7 @@ import java.util.Calendar;
 import java.util.List;
 
 import Debt_LRA_Transcript.Debt;
-import Debt_LRA_Transcript.LectureRegistirationApplication;
+import Debt_LRA_Transcript.LectureRegistrationApplication;
 import Debt_LRA_Transcript.Transcript;
 import IDs.StudentID;
 import lecture.LectureSession;
@@ -18,7 +18,7 @@ public class Student extends Person {
 	private Transcript transcript;
 	private Calendar dateOfEntry;
 	private Debt debt;
-	private LectureRegistirationApplication registirationApplication;
+	private LectureRegistrationApplication registirationApplication;
 
 	public Advisor getAdvisor() {
 		return advisor;
@@ -36,11 +36,11 @@ public class Student extends Person {
 		this.debt = debt;
 	}
 
-	public LectureRegistirationApplication getRegistirationApplication() {
+	public LectureRegistrationApplication getRegistirationApplication() {
 		return registirationApplication;
 	}
 
-	public void setRegistirationApplication(LectureRegistirationApplication registirationApplication) {
+	public void setRegistirationApplication(LectureRegistrationApplication registirationApplication) {
 		this.registirationApplication = registirationApplication;
 	}
 

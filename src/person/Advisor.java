@@ -3,7 +3,8 @@ package person;
 import java.util.Calendar;
 import java.util.List;
 
-import Debt_LRA_Transcript.LectureRegistirationApplication;
+import Debt_LRA_Transcript.LectureRegistrationApplication;
+import Enums.InstructorType;
 import IDs.InstructorID;
 import lecture.Lecture;
 
@@ -11,23 +12,23 @@ import lecture.Lecture;
 public class Advisor extends Instructor {
 
 	private List<Student> listOfStudents;
-	private List<LectureRegistirationApplication> listOfApplications;
+	private List<LectureRegistrationApplication> listOfApplications;
 
 	public List<Student> getListOfStudents() {
 		return listOfStudents;
 	}
 
-	public List<LectureRegistirationApplication> getListOfApplications() {
+	public List<LectureRegistrationApplication> getListOfApplications() {
 		return listOfApplications;
 	}
 
-	public void approveApplication(LectureRegistirationApplication lectureRegistirationApplication) {
+	public void approveApplication(LectureRegistrationApplication lectureRegistirationApplication) {
 		lectureRegistirationApplication.approveApplication();
 	}
 
 	public Advisor(InstructorID id, List<Lecture> listOfLectures, Calendar dateOfEntry, List<Student> listOfStudents,
-			List<LectureRegistirationApplication> listOfApplications) {
-		super(id, listOfLectures, dateOfEntry);
+			List<LectureRegistrationApplication> listOfApplications, InstructorType instructorType) {
+		super(id, listOfLectures, dateOfEntry, instructorType);
 		this.listOfStudents = listOfStudents;
 		this.listOfApplications = listOfApplications;
 	}
