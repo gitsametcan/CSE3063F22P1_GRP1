@@ -14,6 +14,15 @@ public class Advisor extends Instructor{
 	public void approveApplication(LectureRegistirationApplication lectureRegistirationApplication){
 		lectureRegistirationApplication.approveApplication();
 	}
+	public Advisor(InstructorID id, List<Lecture> listOfLectures, Calendar dateOfEntry, List<Student> listOfStudents,
+			List<LectureRegistirationApplication> listOfApplications) {
+		super(id, listOfLectures, dateOfEntry);
+		this.listOfStudents = listOfStudents;
+		this.listOfApplications = listOfApplications;
+	}
+	
+	
+	
 	
 	
 }

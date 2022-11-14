@@ -4,7 +4,6 @@ public class Person {
 
 	protected String firstName;
 	protected String lastName;
-	protected UniqueID id;
 	
 	public String getFirstName() {
 		return firstName;
@@ -21,6 +20,7 @@ public class Person {
 	public String getId() {
 		return id.getID();
 	}
+	
 	
 	
 	

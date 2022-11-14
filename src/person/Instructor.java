@@ -22,5 +22,13 @@ public class Instructor extends Person{
 	public void removeLecture(Lecture lecture) {
 		this.listOfLectures.remove(lecture);
 	}
+	public Instructor(InstructorID id, List<Lecture> listOfLectures, Calendar dateOfEntry) {
+		super();
+		this.id = id;
+		this.listOfLectures = listOfLectures;
+		this.dateOfEntry = dateOfEntry;
+	}
+	
+	
 	
 }

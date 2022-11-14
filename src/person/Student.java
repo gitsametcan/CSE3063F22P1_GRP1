@@ -40,6 +40,15 @@ public class Student extends Person{
 	public Calendar getDateOfEntry() {
 		return dateOfEntry;
 	}
+	public Student(StudentID id, List<LectureSession> listOfLectureSessions, Transcript transcript,
+			Calendar dateOfEntry) {
+		super();
+		this.id = id;
+		this.listOfLectureSessions = listOfLectureSessions;
+		this.transcript = transcript;
+		this.dateOfEntry = dateOfEntry;
+	}
+	
 	
 	
 	
