@@ -3,6 +3,7 @@
 package data;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FilenameFilter;
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -17,7 +18,7 @@ import person.Student;
 
 public class DataManager {
 	
-	private static DataManager singleInstance = null;1
+	private static DataManager singleInstance = null;
 	private List<Lecture> listOfLectures; 
 	private List<Person> listOfPeople;
 	private List<Person> cacheList;
@@ -43,7 +44,7 @@ public class DataManager {
 	
 	public Lecture findLecture(FilterType filterType, String searchKey) {
 		for (Lecture lecture: listOfLectures) {
-			if (filterType == FilterType.ID && lecture.getId().contains(searchKey) ||
+			if (filterType == FilterType.ID && lecture.getId().getID().contains(searchKey) ||
 					filterType == FilterType.Name && lecture.getName().contains(searchKey)) {
 				return lecture;
 			}
@@ -129,7 +130,7 @@ public class DataManager {
 		return matches;
 	}
 	
-	private void loadLectures() {
+	private void loadLectures() throws FileNotFoundException {
 		File[] files = listOfFilesInDirectory("/Lectures/");
 		
 		for (File file : files) {
@@ -138,7 +139,7 @@ public class DataManager {
 		}
 	}
 	
-	private void loadAdvisors() {
+	private void loadAdvisors() throws FileNotFoundException {
 		File[] files = listOfFilesInDirectory("/Advisors/");
 		
 		for (File file : files) {
@@ -147,7 +148,7 @@ public class DataManager {
 		}
 	}
 	
-	private void loadInstructors() {
+	private void loadInstructors() throws FileNotFoundException {
 		File[] files = listOfFilesInDirectory("/Instructors/");
 		
 		for (File file : files) {
@@ -156,7 +157,7 @@ public class DataManager {
 		}
 	}
 	
-	private void loadStudents() {
+	private void loadStudents() throws FileNotFoundException {
 		File[] files = listOfFilesInDirectory("/Students/");
 		
 		for (File file : files) {
