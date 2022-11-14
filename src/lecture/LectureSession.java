@@ -8,39 +8,32 @@ import person.Instructor;
 //Serdar Alsan    150120034 
 public class LectureSession {
 
-    private UniqueID sessionID;
-    private transient Lecture lecture;
-    private LectureHour[][] sessionHour;
-    private SessionType sessionType;
-    private Instructor instructor;
-    private List<Assistant> listOfAssistans;
 
-    public String getSession() {
-        return session;
-    }
+	private UniqueID sessionID;
+	private transient Lecture lecture;
+	private LectureHour[][] sessionHour;
+	private SessionType sessionType;
+	private Instructor instructor;
+	private List<Instructor> listOfAssistans;
 
-    public LectureHour[7][10] getSessionHours() {
-        return sessionHour;
-    }
+	public String getSession() {
+		return sessionID.getID();
+	}
 
-    public SessionType getSessionType() {
-        return sessionType;
-    }
+	public LectureHour[][] getSessionHours() {
+		return sessionHour;
+	}
 
-    public Instructor getInstructor() {
-        return instructor;
-    }
+	public SessionType getSessionType() {
+		return sessionType;
+	}
 
-    public List<Assistant> getListOfAssistans() {
-        return listOfAssistans;
-    }
-    public Lecture getLecture() {
-        return lecture;
-    }
-    
-    public void setLecture(Lecture lecture) {
-        this.lecture = lecture;
-    }
+	public Instructor getInstructor() {
+		return instructor;
+	}
 
+	public List<Instructor> getListOfAssistans() {
+		return listOfAssistans;
+	}
 
 }
