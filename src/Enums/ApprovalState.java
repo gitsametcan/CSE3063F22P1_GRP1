@@ -1,6 +1,6 @@
 package Enums;
 
-public enum ApprovalStates {
+public enum ApprovalState {
 	Approved,
 	Rejected,
 	Pending;

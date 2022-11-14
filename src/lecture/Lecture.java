@@ -2,6 +2,7 @@ package lecture;
 
 import java.util.List;
 
+import Enums.LectureType;
 import IDs.LectureID;
 
 //Serdar Alsan	150120034 

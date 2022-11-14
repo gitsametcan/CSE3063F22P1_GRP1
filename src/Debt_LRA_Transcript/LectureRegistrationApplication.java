@@ -1,16 +1,17 @@
 package Debt_LRA_Transcript;
 
-import java.util.ArrayList;
+import java.util.Map;
 
+import Enums.ApprovalState;
 import lecture.LectureSession;
 import person.Advisor;
 import person.Student;
 
 //Sena VATANSEVER 150119755
 
-public class LectureRegistirationApplication {
-
-	ArrayList<LectureSession> listOfLectureSessions;
+public class LectureRegistrationApplication {
+	
+	Map<LectureSession, ApprovalState> sessionsSentForApproval;
 	Advisor advisor;
 	Student student;
 
