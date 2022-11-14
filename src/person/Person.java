@@ -1,5 +1,7 @@
 package person;
 
+import IDs.UniqueID;
+
 //Kaan Camci 150119063
 public class Person {
 
@@ -22,8 +24,13 @@ public class Person {
 		this.lastName = lastName;
 	}
 
-	public String getFullName(String firstName, String lastName) {
+	public String getFullName() {
 		return this.firstName + " " + this.lastName;
+	}
+
+	public String getId() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

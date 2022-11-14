@@ -52,47 +52,43 @@ public class DataManager {
 		return null;
 	}
 
-	private <T> T searchInCache(FilterType filterType, String searchKey, Class<T> type) {
+	private Person searchInCache(FilterType filterType, String searchKey) {
 		for (Person person : cacheList) {
-			if (person instanceof T) {
-				if (filterType == FilterType.ID && person.getId().contains(searchKey)
-						|| filterType == FilterType.Name && person.getFullName().contains(searchKey)) {
-					cacheList.offerFirst(person);
-					cacheList.removeLastOccurence(person);
-					return person;
-				}
+			if (filterType == FilterType.ID && person.getId().toLowerCase().equals(searchKey)
+					|| filterType == FilterType.Name && person.getFullName().toLowerCase().equals(searchKey)) {
+				((LinkedList<Person>) cacheList).offerFirst(person);
+				((Object) cacheList).removeLastOccurence(person);
+				return person;
 			}
 		}
 		return null;
 	}
 
-	private <T> T searchInPerson(FilterType filterType, String searchKey, Class<T> type) {
+	private Person searchInPerson(FilterType filterType, String searchKey) {
 		for (Person person : listOfPeople) {
-			if (person instanceof T) {
-				if (filterType == FilterType.ID && person.getId().contains(searchKey)
-						|| filterType == FilterType.Name && person.getFullName().contains(searchKey)) {
-					cacheList.offerFirst(person);
-					if (cacheList.size() > 50) {
-						cacheList.removeLast();
-					}
-					return person;
+			if (filterType == FilterType.ID && person.getId().toLowerCase().equals(searchKey)
+					|| filterType == FilterType.Name && person.getFullName().toLowerCase().equals(searchKey)) {
+				((LinkedList<Person>) cacheList).offerFirst(person);
+				if (cacheList.size() > 50) {
+					((LinkedList<Person>) cacheList).removeLast();
 				}
+				return person;
 			}
 		}
 		return null;
 	}
 
 	public Person findPerson(FilterType filterType, String searchKey) {
-		Person value = searchInCache(filterType, searchKey, Person.class);
+		Person value = searchInCache(filterType, searchKey);
 		if (value != null) {
 			return value;
 		}
 
-		return searchInPerson(filterType, searchKey, Person.class);
+		return searchInPerson(filterType, searchKey);
 	}
 
 	public Student findStudent(FilterType filterType, String searchKey) {
-		Student value = searchInCache(filterType, searchKey, Student.class);
+		Student value = searchInCache(filterType, searchKey);
 		if (value != null) {
 			return value;
 		}
