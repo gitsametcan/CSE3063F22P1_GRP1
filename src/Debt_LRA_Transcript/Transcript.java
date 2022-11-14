@@ -1,4 +1,7 @@
+package Debt_LRA_Transcript;
 import java.util.ArrayList;
+
+//Sena VATANSEVER 150119755
 
 public class Transcript {
 
@@ -41,6 +44,8 @@ public class Transcript {
 	
 
 	public void addSemester(Semester semester) {
+		Semester semester = new Semester;
+		listOfSemester.add(semester);
 		
 	}
 }

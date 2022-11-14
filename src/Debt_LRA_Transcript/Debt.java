@@ -1,3 +1,5 @@
+package Debt_LRA_Transcript;
+// Sena VATANSEVER 150119755
 
 public class Debt {
 
