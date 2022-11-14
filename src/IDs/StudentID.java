@@ -14,7 +14,13 @@ public class StudentID implements UniqueID {
 	}
 
 	public String getID() {
-		return departmentCode + "" + yearCode + "" + orderOfPlacement;
+		String tempOrder = ""+orderOfPlacement;
+		if (orderOfPlacement < 10) {
+			tempOrder = "00" + tempOrder;
+		} else if (orderOfPlacement < 100) {
+			tempOrder = "0" + tempOrder;
+		}
+		return departmentCode + "" + yearCode + "" + tempOrder;
 	}
 
 	public void setID(String string) {
