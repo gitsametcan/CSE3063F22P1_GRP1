@@ -14,7 +14,7 @@ import com.google.gson.Gson;
 
 public class DataManager {
 	
-	private static DataManager singleInstance = null;
+	private static DataManager singleInstance = null;1
 	private List<Lecture> listOfLectures; 
 	private List<Person> listOfPeople;
 	private List<Person> cacheList;
@@ -126,58 +126,39 @@ public class DataManager {
 		return matches;
 	}
 	
-	private List<String> contentsOfFiles(File[] fileList) {
-		List<String> contentList = new ArrayList<String>();
-		for (File file : fileList) {
-			Scanner scanner = new Scanner(file);
-			if (scanner.hasNextLine()) {
-				contentList.add(scanner.nextLine());
-			}
-		}
-		return contentList;
-	}
-	
 	private void loadLectures() {
 		File[] files = listOfFilesInDirectory("/Lectures/");
-		List<String> contents = contentsOfFiles(files);
 		
-		Gson jsonReader = new Gson();
-		for (String s : contents) {
-			Lecture lecture = jsonReader.fromJson(s, Lecture.class);
+		for (File file : files) {
+			Lecture lecture = JsonOperator.getInstance().readJsonFile(file, Lecture.class);
 			listOfLectures.add(lecture);
 		}
 	}
 	
 	private void loadAdvisors() {
 		File[] files = listOfFilesInDirectory("/Advisors/");
-		List<String> contents = contentsOfFiles(files);
 		
-		Gson jsonReader = new Gson();
-		for (String s : contents) {
-			Advisor lecture = jsonReader.fromJson(s, Advisor.class);
-			listOfPeople.add(lecture);
+		for (File file : files) {
+			Advisor advisor = JsonOperator.getInstance().readJsonFile(file, Advisor.class);
+			listOfPeople.add(advisor);
 		}
 	}
 	
 	private void loadInstructors() {
 		File[] files = listOfFilesInDirectory("/Instructors/");
-		List<String> contents = contentsOfFiles(files);
 		
-		Gson jsonReader = new Gson();
-		for (String s : contents) {
-			Instructor lecture = jsonReader.fromJson(s, Instructor.class);
-			listOfPeople.add(lecture);
+		for (File file : files) {
+			Instructor instructor = JsonOperator.getInstance().readJsonFile(file, Instructor.class);
+			listOfPeople.add(instructor);
 		}
 	}
 	
 	private void loadStudents() {
 		File[] files = listOfFilesInDirectory("/Students/");
-		List<String> contents = contentsOfFiles(files);
 		
-		Gson jsonReader = new Gson();
-		for (String s : contents) {
-			Student lecture = jsonReader.fromJson(s, Student.class);
-			listOfPeople.add(lecture);
+		for (File file : files) {
+			Student student = JsonOperator.getInstance().readJsonFile(file, Student.class);
+			listOfPeople.add(student);
 		}
 	}
 	
