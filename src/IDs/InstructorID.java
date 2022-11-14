@@ -1,3 +1,5 @@
+package IDs;
+
 //Samet CAN 150120528
 public class InstructorID implements UniqueID {
 
@@ -5,6 +7,16 @@ public class InstructorID implements UniqueID {
 	private int orderOfEntry;
 	
 	public void setID(String string) {
+		try {
+			Integer.parseInt(string);
+		}
+		catch(NumberFormatException e) {
+			
+		}
+		finally {
+			this.departmentCode = Integer.parseInt(string.substring(0,3));
+			this.orderOfEntry = Integer.parseInt(string.substring(3));
+		}
 		
 	}
 	

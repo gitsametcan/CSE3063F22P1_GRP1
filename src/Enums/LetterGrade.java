@@ -1,3 +1,4 @@
+package Enums;
 //Samet CAN 150120528
 public enum LetterGrade {
 	AA(4.00),

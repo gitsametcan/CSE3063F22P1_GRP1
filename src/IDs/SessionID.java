@@ -1,3 +1,5 @@
+package IDs;
+
 //Samet CAN 150120528
 public class SessionID implements UniqueID {
 
@@ -5,6 +7,15 @@ public class SessionID implements UniqueID {
 	
 	
 	public void setID(String string) {
+		try {
+			Integer.parseInt(string);
+		}
+		catch(NumberFormatException e) {
+			
+		}
+		finally {
+			this.id = Integer.parseInt(string);
+		}
 		
 	}
 	
@@ -13,7 +24,7 @@ public class SessionID implements UniqueID {
 	}
 	
 	public String getID() {
-		return id+"";
+		return ""+id;
 	}
 	
 }
