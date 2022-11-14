@@ -17,10 +17,10 @@ Alternative Flow:
 Step 2:
     if selected lecture has reached their quota capacity system gives warning to student,
     then use case returns to step 2.
-Step 3:
-    if student needs to pay education debt and he/she didn't paid it yet, system sends warning to student and student returns to step 2.
-Step 5:
-    if two or more attendance needed lecture hours collides advisor rejects all of the collided lectures, student needs to return step 2 for enrolling rejected lectures and change some settings before advencing to step 3. 
+Step 4:
+    if student needs to pay education debt and he/she didn't paid it yet, system sends warning to student when he/she sends draft to advisor and student returns to step 2.
+Step 4:
+    if there is conflict at lecture draft student can't send lecture draft to advisor, student returns to step 2.
 Step 5:
     if student sent TE lecture to advisor for approval, even though they have taken 2 TE lectures in fall semester,
     advisor rejects that TE lecture.
@@ -43,8 +43,6 @@ Basic Flow:
 3- Based on advisor's feedback system sends notification to student.
 _____________
 Alternative Flow:
-Step 2:
-    if two or more attendance needed lecture hours collides at requested lecture list advisor needs reject all of the collided lectures, after that advisor returns to step 2 for another student.
 Step 2:
     if request has TE lecture even though student took 2 TE lectures in fall semester, advisor needs ro reject that TE lecture, after that advisor returns to step 2 for another student.
 Step 2:
