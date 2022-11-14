@@ -1,4 +1,5 @@
 package Debt_LRA_Transcript;
+
 import java.util.ArrayList;
 
 import lecture.LectureSession;
@@ -9,11 +10,11 @@ import person.Student;
 
 public class LectureRegistirationApplication {
 
-	ArrayList <LectureSession> listOfLectureSessions;
+	ArrayList<LectureSession> listOfLectureSessions;
 	Advisor advisor;
 	Student student;
-	
+
 	public void approveApplication() {
-		
+
 	}
 }

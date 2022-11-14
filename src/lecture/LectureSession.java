@@ -1,4 +1,5 @@
 package lecture;
+
 import java.util.List;
 
 import Enums.LectureHour;
@@ -7,7 +8,7 @@ import IDs.UniqueID;
 import person.Instructor;
 
 //Serdar Alsan	150120034 
-public class LectureSession{
+public class LectureSession {
 
 	private UniqueID sessionID;
 	private transient Lecture lecture;
@@ -19,17 +20,21 @@ public class LectureSession{
 	public String getSession() {
 		return session;
 	}
+
 	public LectureHour[7][10] getSessionHours() {
 		return sessionHour;
 	}
+
 	public SessionType getSessionType() {
 		return sessionType;
 	}
+
 	public Instructor getInstructor() {
 		return instructor;
 	}
+
 	public List<Assistant> getListOfAssistans() {
 		return listOfAssistans;
 	}
-	
+
 }
