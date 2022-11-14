@@ -23,7 +23,7 @@ public class DataManager {
 	private List<Person> listOfPeople;
 	private List<Person> cacheList;
 
-	private DataManager() {
+	private DataManager() throws FileNotFoundException {
 		listOfLectures = new ArrayList<Lecture>();
 		listOfPeople = new ArrayList<Person>();
 		cacheList = new LinkedList<Person>();
@@ -35,7 +35,7 @@ public class DataManager {
 
 	}
 
-	public DataManager getInstance() {
+	public static DataManager getInstance() throws FileNotFoundException {
 		if (singleInstance == null) {
 			singleInstance = new DataManager();
 		}
