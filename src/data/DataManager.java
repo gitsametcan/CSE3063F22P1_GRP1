@@ -51,7 +51,7 @@ public class DataManager {
 		}
 		return null;
 	}
-
+/*
 	private Person searchInCache(FilterType filterType, String searchKey) {
 		for (Person person : cacheList) {
 			if (filterType == FilterType.ID && person.getId().toLowerCase().equals(searchKey)
@@ -63,7 +63,7 @@ public class DataManager {
 		}
 		return null;
 	}
-
+*/
 	private Person searchInPerson(FilterType filterType, String searchKey) {
 		for (Person person : listOfPeople) {
 			if (filterType == FilterType.ID && person.getId().toLowerCase().equals(searchKey)
@@ -79,39 +79,39 @@ public class DataManager {
 	}
 
 	public Person findPerson(FilterType filterType, String searchKey) {
-		Person value = searchInCache(filterType, searchKey);
+		/*Person value = searchInCache(filterType, searchKey);
 		if (value != null) {
 			return value;
-		}
+		}*/
 
 		return searchInPerson(filterType, searchKey);
 	}
 
 	public Student findStudent(FilterType filterType, String searchKey) {
-		Student value = searchInCache(filterType, searchKey);
+		/*Student value = searchInCache(filterType, searchKey);
 		if (value != null) {
 			return value;
-		}
+		}*/
 
-		return searchInPerson(filterType, searchKey, Student.class);
+		return (Student) searchInPerson(filterType, searchKey);
 	}
 
 	public Instructor findInstructor(FilterType filterType, String searchKey) {
-		Instructor value = searchInCache(filterType, searchKey, Instructor.class);
+		/*Instructor value = searchInCache(filterType, searchKey, Instructor.class);
 		if (value != null) {
 			return value;
-		}
+		}*/
 
-		return searchInPerson(filterType, searchKey, Instructor.class);
+		return (Instructor) searchInPerson(filterType, searchKey);
 	}
 
 	public Advisor findAdvisor(FilterType filterType, String searchKey) {
-		Advisor value = searchInCache(filterType, searchKey, Advisor.class);
+		/*Advisor value = searchInCache(filterType, searchKey, Advisor.class);
 		if (value != null) {
 			return value;
-		}
+		}*/
 
-		return searchInPerson(filterType, searchKey, Advisor.class);
+		return (Advisor) searchInPerson(filterType, searchKey);
 	}
 
 	private File[] listOfFilesInDirectory(String directory) {
