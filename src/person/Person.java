@@ -21,9 +21,9 @@ public class Person {
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
-
-	public String getId() {
-		return id.getID();
+	
+	public String getFullName(String firstName, String lastName) {
+		return this.firstName + " " + this.lastName;
 	}
 
 }
