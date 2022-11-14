@@ -13,7 +13,7 @@ public class Lecture {
 	private LectureType lectureType;
 	private int credit;
 	private List<LectureSession> sessions;
-	private List<Lecture> prerequisities;
+	private Lecture prerequisities;
 	private int quota;
 
 	public LectureID getId() {
