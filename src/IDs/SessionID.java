@@ -1,7 +1,7 @@
 package IDs;
 
 //Samet CAN 150120528
-public class SessionID implements UniqueID {
+public class SessionID implements UniqueID, Cloneable{
 
 	private int id;
 
@@ -37,6 +37,10 @@ public class SessionID implements UniqueID {
 			tempOrder = "0" + tempOrder;
 		}
 		return tempOrder;
+	}
+	
+	public Object clone() throws CloneNotSupportedException {
+		return super.clone();
 	}
 
 }
