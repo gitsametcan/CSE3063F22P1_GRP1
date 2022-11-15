@@ -1,7 +1,7 @@
 //Samet CAN 150120528
 package IDs;
 
-public class InstructorID implements UniqueID, Cloneable{
+public class InstructorID implements UniqueID{
 
 	private int departmentCode;
 	private int orderOfEntry;
@@ -41,9 +41,5 @@ public class InstructorID implements UniqueID, Cloneable{
 			tempOrder = "0" + tempOrder;
 		}
 		return tempOrder;
-	}
-	
-	public Object clone() throws CloneNotSupportedException {
-		return super.clone();
 	}
 }
