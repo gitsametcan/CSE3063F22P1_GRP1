@@ -15,12 +15,13 @@ import person.Student;
 public class StudentRegistrationSystem {
 	
 	private Scanner scanner;
-	private RegistrationSystem registrationSystem;
+	private RegistrationSystem registrationSystem1;
 	private ObjectCreator objects1;
 	
-	public StudentRegistrationSystem(ObjectCreator objects) throws FileNotFoundException {
+	public StudentRegistrationSystem(ObjectCreator objects, RegistrationSystem registrationSystem) throws FileNotFoundException {
 		scanner = new Scanner(System.in);
 		objects1 = objects;
+		registrationSystem1=registrationSystem;
 		studentLogin();
 	}
 	
@@ -175,7 +176,7 @@ public class StudentRegistrationSystem {
 	}
 
 	private void signOut() throws FileNotFoundException{
-		registrationSystem.menu();
+		registrationSystem1.menu();
 	}
 
 }
