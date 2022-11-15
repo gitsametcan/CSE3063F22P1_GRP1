@@ -39,8 +39,8 @@ public class Lecture {
 		}
 	}
 	//Creating get and set methods for variables
-	public LectureID getId() {
-		return id;
+	public String getID() {
+		return id.getID();
 	}
 
 	public String getName() {
