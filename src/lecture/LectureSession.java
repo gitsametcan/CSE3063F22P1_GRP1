@@ -17,12 +17,13 @@ public class LectureSession {
 	private Instructor instructor;
 	private List<Instructor> listOfAssistans;
 
-	public LectureSession(SessionID sessionID, Lecture lecture, LectureHour[][] sessionHour, SessionType sessionType,
+	public LectureSession(SessionID sessionID, Lecture lecture, LectureHour[][] sessionHours, SessionType sessionType,
 			Instructor instructor, List<Instructor> listOfAssistans) {
 		super();
 		this.sessionID = sessionID;
 		this.lecture = lecture;
-		this.sessionHours = sessionHour;
+		this.sessionHours = sessionHours;
+		this.sessionHours = sessionHours;
 		this.sessionType = sessionType;
 		this.instructor = instructor;
 		this.listOfAssistans = listOfAssistans;

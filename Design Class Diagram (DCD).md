@@ -127,9 +127,9 @@
 
 **Transcript** has a private *points* as **Double**
 
-**Transcript** has aconstructor *Transcript(Student, ArrayList<-Semester->, Double, Integer, Integer, Double)*
+**Transcript** has a constructor *Transcript(Student, ArrayList<-Semester->, Double, Integer, Integer, Double)*
 
-**Transcript** has methods named *getStudent():Student*, *getListOfSemesters():List<-Semester->*, *getGano():Double*, and *getYano():Double*, *getTotalCreditsTaken():Integer*, *getTotalCreditsCompleted():Integer*, *getPoints():Double* which returns their counterparts
+**Transcript** has methods named *getStudent():Student*, *getListOfSemesters():List<-Semester->*, *getGano():Double*, *getTotalCreditsTaken():Integer*, *getTotalCreditsCompleted():Integer*, *getPoints():Double* which returns their counterparts
 
 **Transcript** has a method named *addSemester(Semester)*
 
@@ -248,6 +248,8 @@
 
 **Advisor** has a private *listOfApplications* as **List<-LectureRegistirationApplication->**
 
+**Advisor** has a constructor *Advisor(String, String, InstructorID, List<-Lecture->, Calendar, List<-Student->, List<-LectureRegistrationApplication->, InstructorType)*
+
 **Advisor** has a method named *getListOfStudents(): List<-Student->*
 
 **Advisor** has a method named *getListOfApplications(): List<-LectureRegistirationApplication->*
@@ -257,19 +259,25 @@
 
 ----
 
-**LectureRegistirationApplication** has a private *listOfLectureSessions* as a **List<-LectureSession->**
+**LectureRegistirationApplication** has a private *sessionsSentForApproval* as a **Map<-LectureSession, ApprovalState->**
 
 **LectureRegistirationApplication** has a private *advisor* as an **Advisor**
 
 **LectureRegistirationApplication** has a private *student* as a **Student**
 
+**LectureRegistirationApplication** has a constructor *LectureRegistirationApplication(Map<-LectureSession, ApprovalState->, Advisor, Student)*
+
 **LectureRegistirationApplication** has a method named *approveApplication():void* which inserts its session data to the student.
+
+**LectureRegistirationApplication** has a method named *getSessionsSentForApproval(): Map<-LectureSession, ApprovalState->*
 
 ----
 
 **Debt** has a private *amount* as **Double**
 
 **Debt** has a private *student* as **Student**
+
+**Debt** has a constructor *Debt(Double, Student)*
 
 **Debt** has methods named *getStudent():Student*, *getAmound():Double*
 
@@ -281,8 +289,6 @@
 
 ----
 
-**DataManager** has a private constructor
-
 **DataManager** has a private static *singleInstance* as **DataManager**
 
 **DataManager** has a public static method named *getInstance()* which returns the *singleInstance*
@@ -291,7 +297,21 @@
 
 **DataManager** has a private *listOfPeople* as **List<-Person->**
 
-**DataManager** has a private *cacheList* as **LinkedList<-Person->**
+**DataManager** has a private *cacheList* as **List<-Person->**
+
+**DataManager** has a private constructor *DataManager()*
+
+**DataManager** has a private method named *searchInPerson():Person*
+
+**DataManager** has a private method named *findListOfFilesInDirectory():File[]*
+
+**DataManager** has a private method named *loadLectures()*
+
+**DataManager** has a private method named *loadAdvisors()*
+
+**DataManager** has a private method named *loadInstructors()*
+
+**DataManager** has a private method named *loadStudents()*
 
 **DataManager** has a method named *findLecture(FilterType, String)* which returns a **Lecture**
 
@@ -302,10 +322,6 @@
 **DataManager** has a method named *findInstructor(FilterType, String)* which returns a **Instructor**
 
 **DataManager** has a method named *findAdvisor(FilterType, String)* which returns a **Advisor**
-
-**DataManager** has a private method named *findInCache(FilterType, String, Class): Class*
-
-**DataManager** has a private method named *findInPerson(FilterType, String, Class): Class*
 
 **DataManager** has a private method named *loadLectures()*
 
@@ -321,10 +337,48 @@
 
 ----
 
-**LectureFactory** has a *listOfLectures* as **List<-Lectures->**
+**JsonOperator** has a private static *singleInstance* as **JsonOperator**
 
-**LectureFactory** has a method named *generateLecture()*
+**JsonOperator** has a private constructor *JsonOperator()*
+
+**JsonOperator** has a method named *readJsonFile(File, Class<-T->):T*
+
+**JsonOperator** has a method named *writeJsonFile(String,<-T->)*
 
 ----
 
-**RegistirationSystem** has a public method named *run()*
+**AdvisorJSON** inherits from InstructorJSON
+
+**AdvisorJSON** has a *listOfStudentIDs* as **List<-String->**
+
+**AdvisorJSON** has a constructor *AdvisorJSON(String, String)*
+
+**AdvisorJSON** has a method named *addStudent(String)*
+
+----
+
+**InstructorJSON** inherits from PersonJSON
+
+**InstructorJSON** has a constructor *InstructorJSON(String, String)*
+
+----
+
+**PersonJSON** has a protected *firstName* as **String**
+
+**PersonJSON** has a protected *lastName* as **String**
+
+**PersonJSON** has a constructor *PersonJSON(String, String)*
+
+----
+
+**StudentJSON** has a *advisorID* as **String**
+
+**StudentJSON** has a *studentID* as **String**
+
+**StudentJSON** has a *sessions* as **Map<-String, String->**
+
+**StudentJSON** has a *transcript* as **Map<-String, String->**
+
+----
+
+**RegistirationSystem** has a public method named *menu()*

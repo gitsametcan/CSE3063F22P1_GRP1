@@ -26,7 +26,7 @@ public class SessionID implements UniqueID{
 	}
 
 	public String getID() {
-		return id;
+		return id+"";
 	}
 	//A method for giving fixed amount of numbers according to input number
 	public String digitFixer(int integer) {
