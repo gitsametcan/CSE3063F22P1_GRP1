@@ -91,7 +91,7 @@ public class Lecture {
 		this.sessions.remove(lectureSession);
 	}
 
-	public void addPrerequisitielLecture(Lecture lecture) {
+	public void addPrerequisiteLecture(Lecture lecture) {
 		prerequisite = lecture;
 	}
 
