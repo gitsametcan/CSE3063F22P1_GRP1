@@ -32,7 +32,7 @@ public class RegistrationSystem {
 			switch (loginType) {
 			case 1:
 				validInput = true;
-				StudentRegistrationSystem studentRegistrationSystem = new StudentRegistrationSystem(objects);
+				StudentRegistrationSystem studentRegistrationSystem = new StudentRegistrationSystem(objects, this);
 				break;
 			case 2:
 				validInput = true;
