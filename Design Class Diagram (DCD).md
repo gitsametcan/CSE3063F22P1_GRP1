@@ -377,7 +377,27 @@
 
 **StudentJSON** has a *sessions* as **Map<-String, String->**
 
-**StudentJSON** has a *transcript* as **Map<-String, String->**
+**StudentJSON** has a *transcript* as **List<-Map<-String, String->->**
+
+**StudentJSON** has a constructor *StudentJSON(String,String)*
+
+**StudentJSON** has a method named *setAdvisorID(String)*
+
+**StudentJSON** has a method named *setStudentID(String)*
+
+**StudentJSON** has a metgod named *addSemester()*
+
+----
+
+**ApprovalState** is an enum with *Approved*, *Rejected*, *Pending*
+
+----
+
+**InstructorType** is an enum with *Assistant*, *Instructor*
+
+----
+
+**LectureType** is an enum with *NTE*, *UE*, *TE*, *FTE*, *MANDATORY*
 
 ----
 
