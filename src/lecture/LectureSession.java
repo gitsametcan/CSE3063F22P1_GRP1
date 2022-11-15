@@ -48,4 +48,9 @@ public class LectureSession {
 		return listOfAssistans;
 	}
 
+	public Lecture getLecture() {
+		return lecture;
+	}
+	
+
 }
