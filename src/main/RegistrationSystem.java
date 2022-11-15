@@ -4,7 +4,6 @@ import java.io.FileNotFoundException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 import java.util.Scanner;
 
 import Enums.ApprovalState;
@@ -13,7 +12,6 @@ import Enums.LetterGrade;
 import data.DataManager;
 import lecture.Lecture;
 import lecture.LectureSession;
-import person.Advisor;
 import person.Student;
 
 public class RegistrationSystem {
@@ -105,10 +103,10 @@ public class RegistrationSystem {
 				validInput = true;
 				registrationStatusMenu(currentUser);
 				break;
-//			case 5:
-//				validInput = true;
-//				debtMenu(currentUser);
-//				break;
+			case 5:
+				validInput = true;
+				debtMenu(currentUser);
+				break;
 //			case 6:
 //				validInput = true;
 //				signOut(currentUser);
@@ -151,7 +149,7 @@ public class RegistrationSystem {
 			System.out.printf("%-31s", "Credits completed in Semester:");
 			System.out.println(currentUser.getTranscript().getListOfSemester().get(i).getCreditsCompleted());
 		}
-
+		
 	}
 
 	private void scheduleMenu(Student currentUser) {
@@ -178,8 +176,27 @@ public class RegistrationSystem {
 				.getSessionsSentForApproval();
 
 		for (LectureSession s : sessions.keySet()) {
-			System.out.printf("%s.%s", s.getLecture(), s.getSession());
+			System.out.printf("%s.%s", s.getLecture(), s.getSessionID());
 			System.out.printf("%-15s%n", sessions.get(s).toString());
+		}
+	}
+	
+	private void debtMenu(Student currentUser) throws FileNotFoundException {
+		if(currentUser.getDebt().getAmount() == 0) {
+			System.out.println("You have no debt.");
+		}
+		else {
+			System.out.println("Your debt is " + currentUser.getDebt().getAmount() + "TL.");
+			System.out.println("1- Pay your debt");
+			System.out.println("2- Go back");
+		}
+		int debtMenuChoice = scanner.nextInt();
+		switch(debtMenuChoice) {
+		case 1:
+			break;
+		case 2:
+			studentMenu();
+			break;
 		}
 	}
 
