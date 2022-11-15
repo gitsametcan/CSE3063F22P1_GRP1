@@ -1,9 +1,12 @@
 package lecture;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import Enums.LectureType;
+import Enums.SessionType;
 import IDs.LectureID;
+import IDs.SessionID;
 
 //Serdar Alsan	150120034 
 public class Lecture {
@@ -19,6 +22,7 @@ public class Lecture {
 	public Lecture(LectureID id, String name, LectureType lectureType, int credit, List<LectureSession> sessions,
 			Lecture prerequisite, int quota) {
 		super();
+		
 		this.id = id;
 		this.name = name;
 		this.lectureType = lectureType;
@@ -26,6 +30,13 @@ public class Lecture {
 		this.sessions = sessions;
 		this.prerequisite = prerequisite;
 		this.quota = quota;
+		
+		if (sessions == null) {
+			SessionID sID = new SessionID(1);
+			LectureSession ls = new LectureSession(sID, this, null, SessionType.Theorytical, null, null);
+			this.sessions = new ArrayList<LectureSession>();
+			this.sessions.add(ls);
+		}
 	}
 
 	public LectureID getId() {
