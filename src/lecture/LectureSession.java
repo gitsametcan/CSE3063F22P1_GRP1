@@ -6,6 +6,7 @@ import Enums.LectureHour;
 import Enums.SessionType;
 import IDs.SessionID;
 import person.Instructor;
+import java.util.Random;
 
 //Serdar Alsan    150120034 
 public class LectureSession {
@@ -52,6 +53,18 @@ public class LectureSession {
 	public Lecture getLecture() {
 		return lecture;
 	}
+	public LectureHour[][] randomizeSessionHours() {
+		for(int i=0;i<7;i++) {
+			for(int j=0;j<10;j++) {
+				Random rand = new Random(); 
+				int randomNumber = rand.nextInt(2); 
+				if (randomNumber == 1) {
+					sessionHours[i][j] = LectureHour.YES;
+				}
+		}}
+		return sessionHours;
+	}
+	
 	
 
 }

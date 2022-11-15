@@ -1,5 +1,6 @@
 package Debt_LRA_Transcript;
 
+import java.util.List;
 import java.util.ArrayList;
 
 import lecture.Semester;
@@ -9,14 +10,14 @@ import person.Student;
 
 public class Transcript {
 
-	Student student;
-	ArrayList<Semester> listOfSemester;
-	double gano;
-	int totalCreditsTaken;
-	int totalCreditsCompleted;
-	double points;
+	private Student student;
+	private List<Semester> listOfSemester;
+	private double gano;
+	private int totalCreditsTaken;
+	private int totalCreditsCompleted;
+	private double points;
 
-	public Transcript(Student student, ArrayList<Semester> listOfSemester, double gano, int totalCreditsTaken,
+	public Transcript(Student student, List<Semester> listOfSemester, double gano, int totalCreditsTaken,
 			int totalCreditsCompleted, double points) {
 		super();
 		this.student = student;
@@ -26,13 +27,16 @@ public class Transcript {
 		this.totalCreditsTaken = totalCreditsTaken;
 		this.totalCreditsCompleted = totalCreditsCompleted;
 		this.points = points;
+		if (this.listOfSemester == null) {
+			this.listOfSemester = new ArrayList<Semester>();
+		}
 	}
 	//Creating get and set methods for variables
 	public Student getStudent() {
 		return student;
 	}
 
-	public ArrayList<Semester> getListOfSemester() {
+	public List<Semester> getListOfSemester() {
 		return listOfSemester;
 	}
 
