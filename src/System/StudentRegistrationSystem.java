@@ -7,9 +7,7 @@ import java.util.Map;
 import java.util.Scanner;
 
 import Enums.ApprovalState;
-import Enums.FilterType;
 import Enums.LetterGrade;
-import data.DataManager;
 import lecture.Lecture;
 import lecture.LectureSession;
 import person.Student;
@@ -36,7 +34,6 @@ public class StudentRegistrationSystem {
 				if(providedID.equals(student.getId())){
 					currentUser=student;
 					System.out.println("Welcome to Marmara BYS " + currentUser.getFullName());
-					System.out.println(currentUser.getTranscript());
 				}
 			}
 			
@@ -173,14 +170,7 @@ public class StudentRegistrationSystem {
 			System.out.println("1- Pay your debt");
 			System.out.println("2- Go back");
 		}
-		int debtMenuChoice = scanner.nextInt();
-		switch(debtMenuChoice) {
-		case 1:
-			break;
-		case 2:
-			studentMenu(currentUser);
-			break;
-		}
+		
 		studentMenu(currentUser);
 	}
 
