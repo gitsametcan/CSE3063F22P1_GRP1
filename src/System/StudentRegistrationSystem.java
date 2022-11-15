@@ -141,7 +141,7 @@ public class StudentRegistrationSystem {
 		System.out.println("Lectures: ");
 
 		for (int i = 0; i < currentStudentAvailableLectures.size(); i++) {
-			System.out.printf("Lecture Code: %-15s", currentStudentAvailableLectures.get(i).getId());
+			System.out.printf("Lecture Code: %-15s", currentStudentAvailableLectures.get(i).getId().getID());
 			System.out.printf("Lecture Name: %-40s", currentStudentAvailableLectures.get(i).getName());
 			System.out.printf("Lecture Type: %-10s",
 					currentStudentAvailableLectures.get(i).getLectureType().toString());

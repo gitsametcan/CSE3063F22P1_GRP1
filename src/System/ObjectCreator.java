@@ -55,7 +55,7 @@ public class ObjectCreator {
 	}
 	// Creating lecture objects by hand
 	private void newLecture(String ID, String lectureName, LectureType lectureType, int credits, Lecture prerequisite, int quota) {
-		LectureID tempID = new LectureID(null, 0,null);
+		LectureID tempID = new LectureID(null);
 		tempID.setID(ID);
 		Lecture lecture = new Lecture(tempID, lectureName, lectureType, credits, null, prerequisite, quota);
 		lectures.add(lecture);
