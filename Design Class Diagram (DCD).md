@@ -199,8 +199,6 @@
 
 **Lecture** has a private *quota* as **Integer**
 
-**Lecture** has a private *price* as **Double**
-
 **Lecture** has a constructor *Lecture(LectureID, String, LectureType, Integer, List<-LectureSesion->, Lecture, Integer)*
 
 **Lecture** has methods named *getID():String*,*getName():String*, *getLectureType():LectureType*, *getCredit():Integer*, *getSessions():List<-LectureSession->*, *getPrerequisite()Lecture*, and *getQuota():Integer* which returns their counterparts
@@ -401,4 +399,70 @@
 
 ----
 
-**RegistirationSystem** has a public method named *menu()*
+**ObjectCreator** has a private *advisors* as **List<-Advisor->**
+
+**ObjectCreator** has a private *advisors* as **List<-Advisor->**
+
+**ObjectCreator** has a private *advisors* as **List<-Advisor->**
+
+**ObjectCreator** has a private *advisors* as **List<-Advisor->**
+
+**ObjectCreator** has a constructor *ObjectCreator()*
+
+**ObjectCreator** has a private method named *newStudent(String, String, String, Integer)*
+
+**ObjectCreator** has a private method named *newLecture(String, String, LectureType, Integer, Lecture, Integer)*
+
+**ObjectCreator** has a private method named *newAdvisor(String, String, String)*
+
+**ObjectCreator** has a public method named *createStudents()*
+
+**ObjectCreator** has a public method named *createLectures()*
+
+**ObjectCreator** has a public method named *createAdvisors()*
+
+**ObjectCreator** has a public method named *getAdvisors(): List<-Advisor->*
+
+**ObjectCreator** has a public method named *getStudents(): List<-Student->*
+
+**ObjectCreator** has a public method named *getLectures(): List<-Lecture->*
+
+
+----
+
+**RegistrationSystem** has a private *objects* as **ObjectCreator**
+
+**RegistrationSystem** has a private *scanner* as **Scanner**
+
+**RegistrationSystem** has a constructor *RegistrationSystem()*
+
+**RegistrationSystem** has a public method named *menu()*
+
+----
+
+**StudentRegistrationSystem** has a private *scanner* as **Scanner**
+
+**StudentRegistrationSystem** has a private *registrationSystem* as **RegistrationSystem**
+
+**StudentRegistrationSystem** has a private *objects1* as **ObjectCreator**
+
+**StudentRegistrationSystem** has a constructor *StudentRegistrationSystem(ObjectCreator)*
+
+**StudentRegistrationSystem** has a private method named *studentLogin()*
+
+**StudentRegistrationSystem** has a private method named *studentMenu(Student)*
+
+**StudentRegistrationSystem** has a private method named *transcriptMenu(Student)*
+
+**StudentRegistrationSystem** has a private method named *scheduleMenu(Student)*
+
+**StudentRegistrationSystem** has a private method named *makeRegistrationMenu(Student)*
+
+**StudentRegistrationSystem** has a private method named *registrationStatusMenu(Student)*
+
+**StudentRegistrationSystem** has a private method named *debtMenu(Student)*
+
+**StudentRegistrationSystem** has a private method named *signOut()*
+
+
+----

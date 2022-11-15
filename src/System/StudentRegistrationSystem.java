@@ -22,8 +22,8 @@ public class StudentRegistrationSystem {
 	
 	public StudentRegistrationSystem(ObjectCreator objects) throws FileNotFoundException {
 		scanner = new Scanner(System.in);
-		studentLogin();
 		objects1 = objects;
+		studentLogin();
 	}
 	
 	private void studentLogin() throws FileNotFoundException {
