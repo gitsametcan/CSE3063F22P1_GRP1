@@ -1,0 +1,8 @@
+{
+    "id": "CSE1200",
+    "name": "Introduction to Computer Engineering" ,
+    "lectureType": "non-precondition",
+    "credit": "4",
+    "prerequisites": "",
+    "quota": "40"
+}

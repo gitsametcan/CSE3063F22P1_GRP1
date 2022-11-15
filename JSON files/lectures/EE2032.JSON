@@ -1,0 +1,8 @@
+{
+    "id": "EE2032 ",
+    "name": "Electronics " ,
+    "lectureType": "precondition",
+    "credit": "5",
+    "prerequisites": "EE2031",
+    "quota": "100"
+}
