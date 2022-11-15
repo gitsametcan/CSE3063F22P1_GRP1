@@ -67,7 +67,7 @@ public class LectureSession {
 					h[i][j] = LectureHour.NO;
 				}
 		}}
-		return sessionHours;
+		return h;
 	}
 	
 	
