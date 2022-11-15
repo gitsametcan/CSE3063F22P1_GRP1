@@ -2,6 +2,7 @@ package main;
 
 import java.io.FileNotFoundException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Objects;
 import java.util.Scanner;
 
@@ -9,25 +10,27 @@ import Enums.FilterType;
 import Enums.LetterGrade;
 import data.DataManager;
 import lecture.Lecture;
+import person.Advisor;
 import person.Student;
 
 public class RegistrationSystem {
 	
+	ObjectCreator objects = null;
 	
 	
 	private Scanner scanner;
 	
+	
 	public RegistrationSystem() {
+		objects = new ObjectCreator();
+		objects.createStudents();
+		objects.createAdvisors();
+		objects.createLectures();
 		scanner = new Scanner(System.in);
 	}
 	
 	public void menu() throws FileNotFoundException {
 		
-		ObjectCreator objects = new ObjectCreator();
-		objects.createStudents();
-		objects.createAdvisors();
-		objects.createLectures();
-		System.out.println(objects.getAdvisors());
 		
 		System.out.println("Log in as...");
 		System.out.println("1-Student");
@@ -95,10 +98,10 @@ public class RegistrationSystem {
 				validInput = true;
 				makeRegistrationMenu(currentUser);
 				break;
-//			case 3:
-//				validInput = true;
-//				scheduleMenu(currentUser);
-//				break;
+			case 3:
+				validInput = true;
+				scheduleMenu(currentUser);
+				break;
 //			case 4:
 //				validInput = true;
 //				registrationStatusMenu(currentUser);
@@ -153,7 +156,24 @@ public class RegistrationSystem {
 		
 	}
 	
+	private void scheduleMenu(Student currentUser) {
+		
+		
+		
+	}
+	
 	private void makeRegistrationMenu(Student currentUser) {
+		
+		
+		List<Lecture> currentStudentAvailableLectures = objects.getLectures();
+		System.out.println("Lectures: ");
+		
+		for(int i = 0; i<currentStudentAvailableLectures.size();i++) {
+			System.out.printf("Lecture Code: %-15s",currentStudentAvailableLectures.get(i).getId());
+			System.out.printf("Lecture Name: %-40s",currentStudentAvailableLectures.get(i).getName());
+			System.out.printf("Lecture Type: %-10s",currentStudentAvailableLectures.get(i).getLectureType().toString());
+			System.out.printf("Lecture Credit: %-4s%n",currentStudentAvailableLectures.get(i).getCredit());
+		}
 		
 	}
 	
