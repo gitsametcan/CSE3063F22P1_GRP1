@@ -27,11 +27,19 @@ public class StudentRegistrationSystem {
 	}
 	
 	private void studentLogin() throws FileNotFoundException {
-		Student currentUser;
+		Student currentUser=null;
 		while (true) {
 			System.out.println("Please provide your ID:");
 			String providedID = scanner.nextLine();
-			currentUser = DataManager.getInstance().findStudent(FilterType.ID, providedID);
+			//currentUser = DataManager.getInstance().findStudent(FilterType.ID, providedID);
+			for(Student student: objects1.getStudents()) {
+				if(providedID.equals(student.getId())){
+					currentUser=student;
+					System.out.println("Welcome to Marmara BYS " + currentUser.getFullName());
+					System.out.println(currentUser.getTranscript());
+				}
+			}
+			
 			if (currentUser == null) {
 				System.out.println("The user not found.");
 				continue;
