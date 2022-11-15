@@ -27,7 +27,7 @@ public class Transcript {
 		this.totalCreditsCompleted = totalCreditsCompleted;
 		this.points = points;
 	}
-
+	//Creating get and set methods for variables
 	public Student getStudent() {
 		return student;
 	}

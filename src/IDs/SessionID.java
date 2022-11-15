@@ -9,7 +9,7 @@ public class SessionID implements UniqueID{
 		super();
 		this.id = id;
 	}
-
+	//Another set method for ID
 	public void setID(String string) {
 		try {
 			Integer.parseInt(string);
@@ -20,7 +20,7 @@ public class SessionID implements UniqueID{
 		}
 
 	}
-
+	//Set and get methods for ID
 	public void setID(int Id) {
 		this.id = Id;
 	}
@@ -28,7 +28,7 @@ public class SessionID implements UniqueID{
 	public String getID() {
 		return id;
 	}
-
+	//A method for giving fixed amount of numbers according to input number
 	public String digitFixer(int integer) {
 		String tempOrder = "" + integer;
 		if (integer < 10) {

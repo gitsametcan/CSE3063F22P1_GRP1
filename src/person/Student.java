@@ -19,7 +19,8 @@ public class Student extends Person {
 	private Calendar dateOfEntry;
 	private Debt debt;
 	private LectureRegistrationApplication registirationApplication;
-
+	
+	//Creating get and set methods for variables
 	public void setId(StudentID id) {
 		this.id = id;
 	}

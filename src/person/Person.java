@@ -12,7 +12,7 @@ public class Person {
 		this.firstName = firstName;
 		this.lastName = lastName;
 	}
-
+	//Creating get and set methods for variables
 	public String getFirstName() {
 		return firstName;
 	}

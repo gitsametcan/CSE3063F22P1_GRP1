@@ -27,8 +27,7 @@ public class ObjectCreator {
 		lectures = new ArrayList<Lecture>();
 	}
 	
-	// at the end of code , getter methods for adivors,students and lectures added
-	// i used primitive types for some objects of particular classes because of sync problem . it's to be changed and imports have to be done.
+	
 	// Creating student objects by hand
 	private void newStudent(String firstName, String lastName, String ID, int debt) {
 		StudentID tempID = new StudentID(0, 0, 0);
@@ -54,7 +53,7 @@ public class ObjectCreator {
 		newStudent("Defne", "KORKUSUZ", "150119692", 12500);
 		
 	}
-	
+	// Creating lecture objects by hand
 	private void newLecture(String ID, String lectureName, LectureType lectureType, int credits, Lecture prerequisite, int quota) {
 		LectureID tempID = new LectureID(null, 0, 0);
 		tempID.setID(ID);
@@ -62,7 +61,7 @@ public class ObjectCreator {
 		lectures.add(lecture);
 	}
 	
-	// Creating lecture objects by hand
+	
 	void createLectures() {
 		
 		newLecture("CSE1241", "Computer Programming I", LectureType.MANDATORY, 6, null, 40);
@@ -77,7 +76,7 @@ public class ObjectCreator {
 		newLecture("ISG121", "Work Safety I", LectureType.MANDATORY, 2, null, 40);
 		
 	}
-	
+	// Creating advisor objects by hand
 	private void newAdvisor(String firstName, String lastName, String ID) {
 		InstructorID tempID = new InstructorID(0, 0);
 		tempID.setID(ID);
@@ -86,7 +85,7 @@ public class ObjectCreator {
 		advisors.add(advisor);
 	}
 	
-// Creating advisor objects by hand
+
 	public void createAdvisors() {
 		
 		newAdvisor("Tayfun", "KURAK", "150410");
@@ -96,7 +95,7 @@ public class ObjectCreator {
 		newAdvisor("Dilara", "BEYRAN", "150219");
 	}
 
-	
+	//Creating get methods for advisors, students and lectures
  	public List<Advisor> getAdvisors() {
 		return advisors;
 	}

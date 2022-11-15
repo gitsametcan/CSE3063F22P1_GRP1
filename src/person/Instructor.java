@@ -18,7 +18,7 @@ public class Instructor extends Person {
 	public String getId() {
 		return id.getID();
 	}
-
+	//Creating get methods for variables
 	public List<Lecture> getListOfLectures() {
 		return listOfLectures;
 	}

@@ -22,18 +22,18 @@ public class LectureSession {
 		super();
 		this.sessionID = sessionID;
 		this.lecture = lecture;
-		this.sessionHour = sessionHour;
+		this.sessionHours = sessionHour;
 		this.sessionType = sessionType;
 		this.instructor = instructor;
 		this.listOfAssistans = listOfAssistans;
 	}
-
+	//Creating get and set methods for variables
 	public String getSessionID() {
 		return sessionID.getID();
 	}
 
 	public LectureHour[][] getSessionHours() {
-		return sessionHour;
+		return sessionHours;
 	}
 
 	public SessionType getSessionType() {

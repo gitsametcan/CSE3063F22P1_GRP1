@@ -18,7 +18,7 @@ public class Lecture {
 	private List<LectureSession> sessions;
 	private Lecture prerequisite;
 	private int quota;
-
+	
 	public Lecture(LectureID id, String name, LectureType lectureType, int credit, List<LectureSession> sessions,
 			Lecture prerequisite, int quota) {
 		super();
@@ -38,7 +38,7 @@ public class Lecture {
 			this.sessions.add(ls);
 		}
 	}
-
+	//Creating get and set methods for variables
 	public LectureID getId() {
 		return id;
 	}
@@ -82,7 +82,7 @@ public class Lecture {
 	public void setQuota(int quota) {
 		this.quota = quota;
 	}
-
+	//Creating add and remove methods for array variables
 	public void addLectureSession(LectureSession lectureSession) {
 		this.sessions.add(lectureSession);
 	}

@@ -22,7 +22,7 @@ public class Semester {
 		this.points = points;
 		this.yano = yano;
 	}
-
+	//Creating get and set methods for variables
 	public HashMap<Lecture, LetterGrade> getListOfLecturesTaken() {
 		return listOfLecturesTaken;
 	}

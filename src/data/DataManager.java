@@ -41,7 +41,7 @@ public class DataManager {
 		}
 		return singleInstance;
 	}
-
+	//A method for finding datas from Lecture Class
 	public Lecture findLecture(FilterType filterType, String searchKey) {
 		for (Lecture lecture : listOfLectures) {
 			if (filterType == FilterType.ID && lecture.getId().getID().contains(searchKey)
@@ -77,7 +77,7 @@ public class DataManager {
 		}
 		return null;
 	}
-
+	//A method for finding datas from Person Class
 	public Person findPerson(FilterType filterType, String searchKey) {
 		/*Person value = searchInCache(filterType, searchKey);
 		if (value != null) {
@@ -86,7 +86,7 @@ public class DataManager {
 
 		return searchInPerson(filterType, searchKey);
 	}
-
+	//A method for finding datas from Student Class
 	public Student findStudent(FilterType filterType, String searchKey) {
 		/*Student value = searchInCache(filterType, searchKey);
 		if (value != null) {
@@ -95,7 +95,7 @@ public class DataManager {
 
 		return (Student) searchInPerson(filterType, searchKey);
 	}
-
+	//A method for finding datas from Instructor Class
 	public Instructor findInstructor(FilterType filterType, String searchKey) {
 		/*Instructor value = searchInCache(filterType, searchKey, Instructor.class);
 		if (value != null) {
@@ -104,7 +104,7 @@ public class DataManager {
 
 		return (Instructor) searchInPerson(filterType, searchKey);
 	}
-
+	//A method for finding datas from Advisor Class
 	public Advisor findAdvisor(FilterType filterType, String searchKey) {
 		/*Advisor value = searchInCache(filterType, searchKey, Advisor.class);
 		if (value != null) {
@@ -124,7 +124,7 @@ public class DataManager {
 		});
 		return matches;
 	}
-
+	//A method for loading datas from Lecture Class
 	private void loadLectures() throws FileNotFoundException {
 		File[] files = listOfFilesInDirectory("/Lectures/");
 
