@@ -5,9 +5,9 @@ public class LectureID implements UniqueID{
 
 	private String departmentCode;
 	private int yearCode;
-	private int lectureCode;
+	private String lectureCode;
 
-	public LectureID(String departmentCode, int yearCode, int lectureCode) {
+	public LectureID(String departmentCode, int yearCode, String lectureCode) {
 		super();
 		this.departmentCode = departmentCode;
 		this.yearCode = yearCode;
@@ -22,19 +22,19 @@ public class LectureID implements UniqueID{
 		} finally {
 			this.departmentCode = string.substring(0, 3);
 			this.yearCode = Integer.parseInt(string.substring(3, 6));
-			this.lectureCode = Integer.parseInt(string.substring(6));
+			this.lectureCode = string.substring(6);
 		}
 
 	}
 	//Set and get methods for ID
-	public void setID(String DepartmentCode, int YearCode, int LectureCode) {
+	public void setID(String DepartmentCode, int YearCode, String LectureCode) {
 		this.departmentCode = DepartmentCode;
 		this.yearCode = YearCode;
 		this.lectureCode = LectureCode;
 	}
 
 	public String getID() {
-		return digitFixer(Integer.parseInt(departmentCode)) + digitFixer(yearCode) + digitFixer(lectureCode);
+		return digitFixer(Integer.parseInt(departmentCode)) + digitFixer(yearCode) + lectureCode;
 	}
 	//A method for giving fixed amount of numbers according to input number
 	public String digitFixer(int integer) {
