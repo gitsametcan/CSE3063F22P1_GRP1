@@ -10,18 +10,18 @@ Java Project
 
 4- 150119519 Fatih OZTURK
 
-5- 150122603 Erman KUNDAKCIOGLU
+5- 150120528 Samet CAN
 
-6- 150120528 Samet CAN
+6- 150120034 Serdar ALSAN
 
-7- 150120034 Serdar ALSAN
+~~7- 150122603 Erman KUNDAKCIOGLU~~
 
 
 -----------------------------
 
 ## 1.Meeting Report
 
-Date: 02.10.2022
+Date: 02.11.2022
 
 ### Participants:
 - Kadir Berk Yagar
@@ -107,3 +107,52 @@ Erman Kundakcioglu
 - The task was not given because the current task was not completed
 
 Tasks were determined by the meeting participants with a joint decision.
+
+-------------------------
+
+## 3.Meeting Report
+
+Date: 14.11.2022
+
+### Participants:
+* Kadir Berk Yagar
+* Kaan Camci
+* Serdar Alsan
+* Sena Vatansever
+* Samet Can
+* Fatih Ozturk
+
+### Topics discussed and things done:
+
+1. Current progress and shortcomings were discussed.
+2. RAD documents rewiewed last time and converted to PDF.
+3. Java Code writed about 9 or 10 hours.
+
+### Decisions taken and task sharing:
+1. Decided to wait Java Code ending for DSD.
+2. Situation of member who cancelled project is discussed and decided to send an e-mail to the instructor.
+3. Decided to leave reading of json files by Java Code to future iterations.
+4. New tasks determined by the meeting participants with a joint decision.
+
+### New Tasks:
+
+Kadir Berk Yagar
+- Eliminating all deficiencies of java code and running
+
+Sena Vatansever
+- Preparing JSON files
+
+Kaan Camci
+- Writing Java Code for welcome menu
+
+Serdar Alsan
+- Writing comment lines
+
+Samet Can
+- DSD
+
+Fatih Ozturk
+- Creating Object for Java Code
+
+Erman Kundakcioglu
+- Cancelled
