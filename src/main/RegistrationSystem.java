@@ -2,6 +2,7 @@ package main;
 
 import java.io.FileNotFoundException;
 import java.util.HashMap;
+import java.util.Objects;
 import java.util.Scanner;
 
 import Enums.FilterType;
@@ -21,6 +22,13 @@ public class RegistrationSystem {
 	}
 	
 	public void menu() throws FileNotFoundException {
+		
+		ObjectCreator objects = new ObjectCreator();
+		objects.createStudents();
+		objects.createAdvisors();
+		objects.createLectures();
+		System.out.println(objects.getAdvisors());
+		
 		System.out.println("Log in as...");
 		System.out.println("1-Student");
 		System.out.println("2-Instructor");
@@ -83,10 +91,10 @@ public class RegistrationSystem {
 				validInput = true;
 				transcriptMenu(currentUser);
 				break;
-//			case 2:
-//				validInput = true;
-//				makeRegistrationMenu(currentUser);
-//				break;
+			case 2:
+				validInput = true;
+				makeRegistrationMenu(currentUser);
+				break;
 //			case 3:
 //				validInput = true;
 //				scheduleMenu(currentUser);
@@ -142,6 +150,10 @@ public class RegistrationSystem {
 			System.out.printf("%-31s","Credits completed in Semester:");
 			System.out.println(currentUser.getTranscript().getListOfSemester().get(i).getCreditsCompleted());
 		}
+		
+	}
+	
+	private void makeRegistrationMenu(Student currentUser) {
 		
 	}
 	
