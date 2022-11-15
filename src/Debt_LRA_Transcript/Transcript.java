@@ -20,6 +20,7 @@ public class Transcript {
 			int totalCreditsCompleted, double points) {
 		super();
 		this.student = student;
+		student.setTranscript(this);
 		this.listOfSemester = listOfSemester;
 		this.gano = gano;
 		this.totalCreditsTaken = totalCreditsTaken;

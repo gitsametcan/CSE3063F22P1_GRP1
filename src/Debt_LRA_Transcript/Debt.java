@@ -12,6 +12,7 @@ public class Debt {
 		super();
 		this.amount = amount;
 		this.student = student;
+		student.setDebt(this);
 	}
 
 	public double getAmount() {

@@ -13,18 +13,18 @@ public class Lecture {
 	private LectureType lectureType;
 	private int credit;
 	private List<LectureSession> sessions;
-	private Lecture prerequisities;
+	private Lecture prerequisite;
 	private int quota;
 
 	public Lecture(LectureID id, String name, LectureType lectureType, int credit, List<LectureSession> sessions,
-			List<Lecture> prerequisities, int quota) {
+			Lecture prerequisite, int quota) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.lectureType = lectureType;
 		this.credit = credit;
 		this.sessions = sessions;
-		this.prerequisities = prerequisities;
+		this.prerequisite = prerequisite;
 		this.quota = quota;
 	}
 
@@ -48,8 +48,8 @@ public class Lecture {
 		return sessions;
 	}
 
-	public List<Lecture> getPrerequisities() {
-		return prerequisities;
+	public Lecture getPrerequisite() {
+		return prerequisite;
 	}
 
 	public int getQuota() {
@@ -81,11 +81,11 @@ public class Lecture {
 	}
 
 	public void addPrerequisitielLecture(Lecture lecture) {
-		this.prerequisities.add(lecture);
+		prerequisite = lecture;
 	}
 
-	public void removePrerequisitielLecture(Lecture lecture) {
-		this.prerequisities.remove(lecture);
+	public void removePrerequisitielLecture() {
+		this.prerequisite = null;
 	}
 
 }
