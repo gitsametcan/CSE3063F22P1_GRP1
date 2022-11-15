@@ -4,20 +4,20 @@ import java.util.List;
 
 import Enums.LectureHour;
 import Enums.SessionType;
-import IDs.UniqueID;
+import IDs.SessionID;
 import person.Instructor;
 
 //Serdar Alsan    150120034 
 public class LectureSession {
 
-	private UniqueID sessionID;
+	private SessionID sessionID;
 	private transient Lecture lecture;
-	private LectureHour[][] sessionHour;
+	private LectureHour[][] sessionHours;
 	private SessionType sessionType;
 	private Instructor instructor;
 	private List<Instructor> listOfAssistans;
 
-	public LectureSession(UniqueID sessionID, Lecture lecture, LectureHour[][] sessionHour, SessionType sessionType,
+	public LectureSession(SessionID sessionID, Lecture lecture, LectureHour[][] sessionHour, SessionType sessionType,
 			Instructor instructor, List<Instructor> listOfAssistans) {
 		super();
 		this.sessionID = sessionID;
@@ -28,7 +28,7 @@ public class LectureSession {
 		this.listOfAssistans = listOfAssistans;
 	}
 
-	public String getSession() {
+	public String getSessionID() {
 		return sessionID.getID();
 	}
 

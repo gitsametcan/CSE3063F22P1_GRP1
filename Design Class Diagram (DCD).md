@@ -189,24 +189,28 @@
 
 **Lecture** has a private *name* as **String**
 
+**Lecture** has a private *lectureType* as **LectureType**
+
 **Lecture** has a private *credit* as **Integer**
 
 **Lecture** has a private *sessions* as **List<-LectureSession->**
 
-**Lecture** has a private *prerequisities* as **List<-Lecture->**
+**Lecture** has a private *prerequisite* as **Lecture**
 
 **Lecture** has a private *quota* as **Integer**
 
 **Lecture** has a private *price* as **Double**
 
-**Lecture** has methods named *getID():String*,*getName():String*, *getCredit():Integer*, *getSessions():List<-LectureSession->*, *getPrerequisities():List<-Lecture->*, and *getQuota():Integer* which returns their counterparts
+**Lecture** has a constructor *Lecture(LectureID, String, LectureType, Integer, List<-LectureSesion->, Lecture, Integer)*
 
-**Lecture** has methods named *setName(String)*, *setCredit(Integer)*, *setQuota(Integer)*, *addLectureSession(LectureSession)*, *removeLectureSession(LectureSession)*, *addPrerequisiteLecture(Lecture)*, *removePrerequisiteLecture(Lecture)*
+**Lecture** has methods named *getID():String*,*getName():String*, *getLectureType():LectureType*, *getCredit():Integer*, *getSessions():List<-LectureSession->*, *getPrerequisite()Lecture*, and *getQuota():Integer* which returns their counterparts
+
+**Lecture** has methods named *setName(String)*, *setLectureType(LectureType)*, *setCredit(Integer)*, *setQuota(Integer)*, *addLectureSession(LectureSession)*, *removeLectureSession(LectureSession)*, *addPrerequisiteLecture(Lecture)*, *removePrerequisiteLecture(Lecture)*
 
 
 ----
 
-**LectureSession** has a private *sessionID* as **UniqueID**
+**LectureSession** has a private *sessionID* as **SessionID**
 
 **LectureSession** has a private transient *lecture* as **Lecture**
 
@@ -216,7 +220,9 @@
 
 **LectureSession** has a private *instructor* as **Instructor**
 
-**LectureSession** has a private *listOfAssistants* as **List<-Assistant->**
+**LectureSession** has a private *listOfAssistants* as **List<-Instructor->**
+
+**LectureSession** has a constructor *LectureSession(SessionID, Lecture, LectureHour[][], SessionType, Instructor, List<-Instructor->)*
 
 **LectureSession** has a method named *getSessionID(): String*
 
@@ -226,7 +232,9 @@
 
 **LectureSession** has a method named *getInstructor(): Instructor*
 
-**LectureSession** has a method named *getListOfAssistants():List<-Assistant->*
+**LectureSession** has a method named *getListOfAssistants():List<-Instructor->*
+
+**LectureSession** has a method named *getLecture(): Lecture*
 
 ----
 
