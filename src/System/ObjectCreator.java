@@ -68,7 +68,7 @@ public class ObjectCreator {
 		newLecture("CSE1242", "Cpmputer Programming II", LectureType.MANDATORY, 6, lectures.get(0), 40);
 		newLecture("CSE3063", "Object-Oriented Software Design", LectureType.MANDATORY, 5, lectures.get(1), 60);
 		newLecture("CSE3033", "Operating Systems", LectureType.MANDATORY, 7, null, 60);
-		newLecture("CSE1200", "Instroduction to Computer Engineering", LectureType.MANDATORY, 4, null, 40);
+		newLecture("CSE1200", "Introduction to Computer Engineering", LectureType.MANDATORY, 4, null, 40);
 		newLecture("EE2031", "Electric Circuits", LectureType.MANDATORY, 5, null, 100);
 		newLecture("EE2032", "Electronics", LectureType.MANDATORY, 5, lectures.get(5), 100);
 		newLecture("CSE2138", "Systems Programming", LectureType.MANDATORY, 7, null, 40);
@@ -77,22 +77,26 @@ public class ObjectCreator {
 		
 	}
 	// Creating advisor objects by hand
-	private void newAdvisor(String firstName, String lastName, String ID) {
+	private void newAdvisor(String firstName, String lastName, String ID, Student student, Student student1) {
 		InstructorID tempID = new InstructorID(0, 0);
 		tempID.setID(ID);
 		Advisor advisor = new Advisor(firstName, lastName, tempID, null, null, null, null, InstructorType.Instructor);
-		
 		advisors.add(advisor);
+		
+		student.setAdvisor(advisor);
+		student1.setAdvisor(advisor);
+		advisor.getListOfStudents().add(student);
+		advisor.getListOfStudents().add(student1);
 	}
 	
 
 	public void createAdvisors() {
 		
-		newAdvisor("Tayfun", "KURAK", "150410");
-		newAdvisor("Mehmet", "SAYAR", "150325");
-		newAdvisor("Ali", "DERMAN", "150533");
-		newAdvisor("Ece", "KESER", "150669");
-		newAdvisor("Dilara", "BEYRAN", "150219");
+		newAdvisor("Tayfun", "KURAK", "150410", this.students.get(0),this.students.get(1));
+		newAdvisor("Mehmet", "SAYAR", "150325", this.students.get(2),this.students.get(3));
+		newAdvisor("Ali", "DERMAN", "150533", this.students.get(4),this.students.get(5));
+		newAdvisor("Ece", "KESER", "150669", this.students.get(6),this.students.get(7));
+		newAdvisor("Dilara", "BEYRAN", "150219", this.students.get(8),this.students.get(9));
 	}
 
 	//Creating get methods for advisors, students and lectures

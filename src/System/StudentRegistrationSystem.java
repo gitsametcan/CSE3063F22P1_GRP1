@@ -116,7 +116,7 @@ public class StudentRegistrationSystem {
 
 			for (Lecture l : tempTakenLectures.keySet()) {
 
-				System.out.printf("%-12s", l.getId());
+				System.out.printf("%-12s", l.getID());
 				System.out.printf("%-40s", l.getName());
 				System.out.printf("%-10s", l.getCredit());
 				System.out.printf("%-15s%n", tempTakenLectures.get(l).toString());
@@ -141,7 +141,7 @@ public class StudentRegistrationSystem {
 		System.out.println("Lectures: ");
 
 		for (int i = 0; i < currentStudentAvailableLectures.size(); i++) {
-			System.out.printf("Lecture Code: %-15s", currentStudentAvailableLectures.get(i).getId().getID());
+			System.out.printf("Lecture Code: %-15s", currentStudentAvailableLectures.get(i).getID());
 			System.out.printf("Lecture Name: %-40s", currentStudentAvailableLectures.get(i).getName());
 			System.out.printf("Lecture Type: %-10s",
 					currentStudentAvailableLectures.get(i).getLectureType().toString());
