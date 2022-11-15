@@ -15,13 +15,13 @@
 
 **LectureID** has a private *departmentCode* as a **String**
 
-**LectureID** has a constructor *LectureID(String, Integer, Integer)*
+**LectureID** has a constructor *LectureID(String, Integer, String)*
 
 **LectureID** has a private *yearCode* as a **Integer**
 
 **LectureID** has a private *lectureCode* as a **Integer**
 
-**LectureID** has a method named *setID(String, Integer, Integer)* which directly sets the *departmentCode*, *yearCode*, and *lectureCode*
+**LectureID** has a method named *setID(String, Integer, String)* which directly sets the *departmentCode*, *yearCode*, and *lectureCode*
 
 **LectureID** has a method named *setID(String)*
 
