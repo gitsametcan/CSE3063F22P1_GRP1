@@ -42,7 +42,7 @@ public class RegistrationSystem {
 			switch (loginType) {
 			case 1:
 				validInput = true;
-				studentMenu();
+				studentLogin();
 				break;
 			case 2:
 				validInput = true;
@@ -58,8 +58,8 @@ public class RegistrationSystem {
 		}
 
 	}
-
-	private void studentMenu() throws FileNotFoundException {
+	
+	private void studentLogin() throws FileNotFoundException {
 		Student currentUser;
 		while (true) {
 			System.out.println("Please provide your ID:");
@@ -72,6 +72,11 @@ public class RegistrationSystem {
 			break;
 		}
 
+		studentMenu(currentUser);
+	}
+
+	private void studentMenu(Student currentUser) throws FileNotFoundException {
+		
 		boolean validInput = false;
 
 		System.out.println("Please choose a menu: ");
@@ -107,10 +112,10 @@ public class RegistrationSystem {
 				validInput = true;
 				debtMenu(currentUser);
 				break;
-//			case 6:
-//				validInput = true;
-//				signOut(currentUser);
-//				break;
+			case 6:
+				validInput = true;
+				signOut();
+				break;
 			default:
 				System.out.print("The input is not valid, please provide a valid input.");
 			}
@@ -118,7 +123,7 @@ public class RegistrationSystem {
 
 	}
 
-	private void transcriptMenu(Student currentUser) {
+	private void transcriptMenu(Student currentUser) throws FileNotFoundException {
 		for (int i = 0; i < currentUser.getTranscript().getListOfSemester().size(); i++) {
 			if (i == 0) {
 				System.out.println("1st Semester");
@@ -150,13 +155,14 @@ public class RegistrationSystem {
 			System.out.println(currentUser.getTranscript().getListOfSemester().get(i).getCreditsCompleted());
 		}
 		
+		studentMenu(currentUser);
 	}
 
 	private void scheduleMenu(Student currentUser) {
 
 	}
 
-	private void makeRegistrationMenu(Student currentUser) {
+	private void makeRegistrationMenu(Student currentUser) throws FileNotFoundException {
 
 		List<Lecture> currentStudentAvailableLectures = objects.getLectures();
 		System.out.println("Lectures: ");
@@ -168,10 +174,11 @@ public class RegistrationSystem {
 					currentStudentAvailableLectures.get(i).getLectureType().toString());
 			System.out.printf("Lecture Credit: %-4s%n", currentStudentAvailableLectures.get(i).getCredit());
 		}
-
+		
+		studentMenu(currentUser);
 	}
 
-	private void registrationStatusMenu(Student currentUser) {
+	private void registrationStatusMenu(Student currentUser) throws FileNotFoundException {
 		Map<LectureSession, ApprovalState> sessions = currentUser.getRegistirationApplication()
 				.getSessionsSentForApproval();
 
@@ -179,6 +186,7 @@ public class RegistrationSystem {
 			System.out.printf("%s.%s", s.getLecture(), s.getSessionID());
 			System.out.printf("%-15s%n", sessions.get(s).toString());
 		}
+		studentMenu(currentUser);
 	}
 	
 	private void debtMenu(Student currentUser) throws FileNotFoundException {
@@ -195,11 +203,15 @@ public class RegistrationSystem {
 		case 1:
 			break;
 		case 2:
-			studentMenu();
+			studentMenu(currentUser);
 			break;
 		}
+		studentMenu(currentUser);
 	}
 
+	private void signOut() throws FileNotFoundException{
+		menu();
+	}
 	private void instructorMenu() {
 
 	}
