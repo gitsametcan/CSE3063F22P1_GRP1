@@ -7,17 +7,25 @@
 
 **UniqueID** has a method named *getID():String* 
 
+**UniqueID** has a method named *digitFixer(Integer):String* 
+
 ----
 
 **LectureID** implements **UniqueID**
 
 **LectureID** has a private *departmentCode* as a **String**
 
+**LectureID** has a constructor *LectureID(String, Integer, Integer)*
+
 **LectureID** has a private *yearCode* as a **Integer**
 
 **LectureID** has a private *lectureCode* as a **Integer**
 
 **LectureID** has a method named *setID(String, Integer, Integer)* which directly sets the *departmentCode*, *yearCode*, and *lectureCode*
+
+**LectureID** has a method named *setID(String)*
+
+**LectureID** has a method named *digitFixer(Integer): String*
 
 **LectureID** has a method named *getID():String* which concatanates the variables and returns them as a **String**
 
@@ -30,6 +38,10 @@
 **StudentID** has a private *yearCode* as a **Integer**
 
 **StudentID** has a private *orderOfPlacement* as a **Integer**
+
+**StudentID** has a method named *setID(String)*
+
+**StudentID** has a method named *digitFixer(Integer): String*
 
 **StudentID** has a method named *setID(Integer, Integer, Integer)* which directly sets the *departmentCode*, *yearCode*, and *orderOfPlacement*
 
@@ -45,6 +57,10 @@
 
 **SessionID** has a method named *getID():String* returns the *id* as a **String**
 
+**SessionID** has a method named *setID(String)*
+
+**SessionID** has a method named *digitFixer(Integer): String*
+
 ----
 
 **InstructorID** implements **UniqueID**
@@ -57,11 +73,17 @@
 
 **InstructorID** has a method named *getID():String* which concatanates the variables and returns them as a **String**
 
+**InstructorID** has a method named *setID(String)*
+
+**InstructorID** has a method named *digitFixer(Integer): String*
+
 ----
 
 **Person** has a protected *firstName* as **String**
 
 **Person** has a protected *lastName* as **String**
+
+**Person** has a constructor *Person(String,String)*
 
 **Person** has methods named *getFirstName():String*, *getLastName():String*, and *getID():String* which returns their counterparts
 
@@ -85,9 +107,11 @@
 
 **Student** has a private *registirationApplication* as **LectureRegistirationApplication**
 
+**Student** has a constructor *Student(String, String, StudentID, List<-LectureSession->, Transcript, Calendar)*
+
 **Student** has methods named *getAdvisor():Advisor*, *getID():String*, *getListOfLectureSessions():List<-LectureSession->*, *getTranscript():Transcript*, *getDebt():Debt*, *getRegistirationApplication():LectureRegistirationApplication*,and *getDateOfEntry():Calendar* which returns their counterparts
 
-**Student** has methods named *setAdvisor(Advisor)*, *setDebt(Double)*, *setRegistirationApplication(LectureRegistirationApplication)*, *sendApprovement()*
+**Student** has methods named *setAdvisor(Advisor)*, *setDebt(Double)*, *setRegistirationApplication(LectureRegistirationApplication)*, *sendApprovement()*, *setId(StudentID)*, *setTranscript(Transcript)*, *setDateOfEntry(Calendar)*
 
 ----
 
@@ -97,13 +121,13 @@
 
 **Transcript** has a private *gano* as **Double**
 
-**Transcript** has a private *yano* as **Double**
-
 **Transcript** has a private *totalCreditsTaken* as **Integer**
 
 **Transcript** has a private *totalCreditsCompleted* as **Integer**
 
 **Transcript** has a private *points* as **Double**
+
+**Transcript** has aconstructor *Transcript(Student, ArrayList<-Semester->, Double, Integer, Integer, Double)*
 
 **Transcript** has methods named *getStudent():Student*, *getListOfSemesters():List<-Semester->*, *getGano():Double*, and *getYano():Double*, *getTotalCreditsTaken():Integer*, *getTotalCreditsCompleted():Integer*, *getPoints():Double* which returns their counterparts
 
@@ -119,13 +143,23 @@
 
 **Semester** has a private *points* as **Double**
 
-**Semester** has methods named *getListOfLecturesTaken():HashMap<-Lecture,LetterGrade->*,*getCreditsTaken():Integer*, *getCreditsCompleted():Integer*, *getPoints():Double* which returns their counterparts
+**Semester** has a private *yano* as **Double**
+
+**Semester** has a constructor *Semester(HashMap<-Lecture, LetterGrade->, Integer, Integer, Double, Double)*
+
+**Semester** has methods named *getListOfLecturesTaken():HashMap<-Lecture,LetterGrade->*,*getCreditsTaken():Integer*, *getCreditsCompleted():Integer*, *getPoints():Double*, *getYano(): Double* which returns their counterparts
 
 **Semester** has methods named *setLecture(Lecture,LetterGrade)*,*setCreditsTaken(Integer)*, *setCreditsCompleted(Integer)*, *setPoints(Double)*
 
 ----
 
 **LetterGrade** is a enum with **Double** values
+
+**LetterGrade** has a private final *grade* as **Double**
+
+**LetterGrade** has a constructor *LetterGrade(Double)*
+
+**LetterGrade** has a method named *getLetterGradeValue(): Double*
 
 ----
 
@@ -137,7 +171,11 @@
 
 **Instructor** has a protected *dateOfEntry* as **Calendar**
 
-**Instructor** has methods named *getID():String*, *getListOfLectures():List<-Lecture->*, and *getDateOfEntry():Calendar* which returns their counterparts
+**Instructor** has a protected *instructorType* as **InstructorType**
+
+**Instructor** has a constructor *Instructor(String, String, InstructorID, List<-Lecture->, Calendar, InstructorType)*
+
+**Instructor** has methods named *getID():String*, *getListOfLectures():List<-Lecture->*, and *getDateOfEntry():Calendar*, *getInstructorType():InstructorType* which returns their counterparts
 
 **Instructor** has methods named *addLecture(Lecture)*, and *removeLecture(Lecture)*
 
