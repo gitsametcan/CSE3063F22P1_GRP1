@@ -134,7 +134,38 @@ public class StudentRegistrationSystem {
 	}
 
 	private void scheduleMenu(Student currentUser) {
-
+		if(currentUser.getListOfLectureSessions().size() == 0) {
+			System.out.println("You dont have any lecture to be shown.");
+		}
+		else {
+			
+			for(int y = 1; y< 42; y++) {
+				for(int x = 1; x<79; x++) {
+					if(y==1 || y == 41) {
+						System.out.print("_");
+						if((x==78 && y==1)) {
+							System.out.println();
+						}
+					}
+					else if(x==1 || x == 78) {
+						System.out.print("|");
+						if(x==78) {
+							System.out.println();
+						}
+					}
+					else if((y-1)%4==0) {
+						System.out.print("_");
+					}
+					else if((x-1)%11==0) {
+						System.out.print("|");
+					}
+					else {
+						System.out.print(" ");
+					}
+				}
+			}
+		}
+		
 	}
 
 	private void makeRegistrationMenu(Student currentUser) throws FileNotFoundException {
@@ -165,7 +196,7 @@ public class StudentRegistrationSystem {
 			if(input.equalsIgnoreCase("send")) {
 				currentUser.sendForApproval(chosenLectures);
 				currentUser.getAdvisor().approveApplication(currentUser.getRegistirationApplication());
-				
+				currentUser.setListOfLectureSessions(chosenLectures);
 				break;
 			}
 			
