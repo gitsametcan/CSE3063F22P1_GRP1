@@ -15,6 +15,7 @@ import IDs.SessionID;
 import IDs.StudentID;
 import lecture.Lecture;
 import lecture.LectureSession;
+import lecture.Semester;
 import person.Advisor;
 import person.Student;
 
@@ -23,12 +24,14 @@ public class ObjectCreator {
 	private List<Advisor> advisors;
 	private List<Student> students;
 	private List<Lecture> lectures;
+	private List<Transcript> transcripts;
 
 	
 	public ObjectCreator() {
 		advisors = new ArrayList<Advisor>();
 		students = new ArrayList<Student>();
 		lectures = new ArrayList<Lecture>();
+		transcripts = new ArrayList<Transcript>();
 	}
 	
 	
@@ -37,6 +40,7 @@ public class ObjectCreator {
 		StudentID tempID = new StudentID(0, 0, 0);
 		Student student = new Student(firstName, lastName, null, null, null, null);
 		tempID.setID(ID);
+		// createTranscripts(); 
 		student.setId(tempID);
 		Transcript st1Transcript = new Transcript(student, null, 0, 0, 0, 0);
 		Debt st1Debt = new Debt(debt, student);
@@ -107,7 +111,34 @@ public class ObjectCreator {
 		newAdvisor("Ece", "KESER", "150669", this.students.get(6),this.students.get(7));
 		newAdvisor("Dilara", "BEYRAN", "150219", this.students.get(8),this.students.get(9));
 	}
+
+	// Creating transcript objects by hand
+	private void newTranscript(Student student, List<Semester> listOfSemester, double gano, int totalCreditsTaken,
+			int totalCreditsCompleted, double points) {
+		
+		if(listOfSemester == null) {
+			listOfSemester = new ArrayList<Semester>();
+		}
+		
+		Transcript transcript = new Transcript(student, listOfSemester, 0, 0, 0, 0);
+		transcripts.add(transcript);
+		
+	}
 	
+	public void createTranscripts() {
+		
+		newTranscript(this.students.get(0), null, 0,0,0,0);
+		newTranscript(this.students.get(1), null, 0,0,0,0);
+		newTranscript(this.students.get(2), null, 0,0,0,0);
+		newTranscript(this.students.get(3), null, 0,0,0,0);
+		newTranscript(this.students.get(4), null, 0,0,0,0);
+		newTranscript(this.students.get(5), null, 0,0,0,0);
+		newTranscript(this.students.get(6), null, 0,0,0,0);
+		newTranscript(this.students.get(7), null, 0,0,0,0);
+		newTranscript(this.students.get(8), null, 0,0,0,0);
+		newTranscript(this.students.get(9), null, 0,0,0,0);
+	}
+
 	private LectureHour[][] randomizeSessionHours() {
 		
 		LectureHour[][] h = new LectureHour[7][10];
@@ -126,7 +157,7 @@ public class ObjectCreator {
 		return h;
 	}
 
-	//Creating get methods for advisors, students and lectures
+	//Creating get methods for advisors, students, lectures and transcripts
  	public List<Advisor> getAdvisors() {
 		return advisors;
 	}
@@ -137,6 +168,9 @@ public class ObjectCreator {
 	
 	public List<Lecture> getLectures() {
 		return lectures;
+	}
+	public List<Transcript> getTranscripts() {
+		return transcripts;
 	}
 	
 }
