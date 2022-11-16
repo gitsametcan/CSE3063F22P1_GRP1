@@ -166,6 +166,9 @@ public class StudentRegistrationSystem {
 			}
 		}
 		
+		currentUser.sendForApproval(chosenLectures);
+		
+		currentUser.getAdvisor().approveApplication(currentUser.getRegistirationApplication());
 		
 		studentMenu(currentUser);
 	}
