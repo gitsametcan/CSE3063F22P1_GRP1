@@ -1,11 +1,13 @@
 package person;
 
 import java.util.Calendar;
+import java.util.HashMap;
 import java.util.List;
 
 import Debt_LRA_Transcript.Debt;
 import Debt_LRA_Transcript.LectureRegistrationApplication;
 import Debt_LRA_Transcript.Transcript;
+import Enums.ApprovalState;
 import IDs.StudentID;
 import lecture.LectureSession;
 
@@ -84,6 +86,15 @@ public class Student extends Person {
 		this.listOfLectureSessions = listOfLectureSessions;
 		this.transcript = transcript;
 		this.dateOfEntry = dateOfEntry;
+	}
+	
+	public void sendForApproval(List <LectureSession> chosenLectureSessions) {
+		HashMap <LectureSession, ApprovalState> approvalList = new HashMap <LectureSession, ApprovalState>();
+		for(LectureSession ls: chosenLectureSessions) {
+			approvalList.put(ls, ApprovalState.Pending);
+		}
+		this.registirationApplication = new LectureRegistrationApplication(approvalList, this.advisor, this);
+		this.advisor.getListOfApplications().add(this.registirationApplication);
 	}
 
 }

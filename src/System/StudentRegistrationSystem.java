@@ -1,7 +1,7 @@
 package System;
 
 import java.io.FileNotFoundException;
-import java.util.HashMap;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
@@ -111,7 +111,7 @@ public class StudentRegistrationSystem {
 			System.out.printf("%-10s", "Credit");
 			System.out.printf("%-15s%n", "Letter Grade");
 
-			HashMap<Lecture, LetterGrade> tempTakenLectures = currentUser.getTranscript().getListOfSemester().get(i)
+			Map<Lecture, LetterGrade> tempTakenLectures = currentUser.getTranscript().getListOfSemester().get(i)
 					.getListOfLecturesTaken();
 
 			for (Lecture l : tempTakenLectures.keySet()) {
@@ -141,14 +141,40 @@ public class StudentRegistrationSystem {
 		System.out.println("Lectures: ");
 
 		for (int i = 0; i < currentStudentAvailableLectures.size(); i++) {
-			System.out.printf("Lecture Code: %-15s", currentStudentAvailableLectures.get(i).getID());
-			System.out.printf("Lecture Name: %-40s", currentStudentAvailableLectures.get(i).getName());
-			System.out.printf("Lecture Type: %-10s",
-					currentStudentAvailableLectures.get(i).getLectureType().toString());
-			System.out.printf("Lecture Credit: %-4s%n", currentStudentAvailableLectures.get(i).getCredit());
+			for(LectureSession s: currentStudentAvailableLectures.get(i).getSessions()) {
+				System.out.printf("Lecture Code: %-15s", currentStudentAvailableLectures.get(i).getID() + "." + s.getSessionID());
+				System.out.printf("Lecture Name: %-40s", currentStudentAvailableLectures.get(i).getName());
+				System.out.printf("Lecture Type: %-10s", currentStudentAvailableLectures.get(i).getLectureType().toString());
+				System.out.printf("Lecture Credit: %-4s%n", currentStudentAvailableLectures.get(i).getCredit());
+			}
 		}
 		
+		System.out.println("Enter a lecture session code that you will send for approval.\n\"add lecture_id\" to add session for approval list.\n\"remove lecture_id\" to remove session from approval list.\nEnter \"Exit\" to exit");
+		ArrayList<LectureSession> chosenLectures = new ArrayList<LectureSession>();
+		while(true) {
+			String a = scanner.nextLine();
+			
+			if(a.equalsIgnoreCase("Exit")) {
+				break;
+			}
+		}
+		
+		
 		studentMenu(currentUser);
+	}
+	
+	private void showChosenLectureSessions(List<LectureSession> chosenLectureSessions) {
+		System.out.println("Chosen Lectures:");
+		for(LectureSession ls: chosenLectureSessions) {
+			System.out.printf("Lecture Code: %-15s", ls.getLecture().getID() + "." + ls.getSessionID());
+			System.out.printf("Lecture Name: %-40s",  ls.getLecture().getName());
+			System.out.printf("Lecture Type: %-10s", ls.getLecture().getLectureType().toString());
+			System.out.printf("Lecture Credit: %-4s%n",  ls.getLecture().getCredit());
+		}
+		System.out.println("Enter a lecture session code that you will send for approval.\n"
+				+ "\"add lecture_id\" to add session for approval list.\n"
+				+ "\"remove lecture_id\" to remove session from approval list.\n"
+				+ "Enter \"Exit\" to exit");
 	}
 
 	private void registrationStatusMenu(Student currentUser) throws FileNotFoundException {

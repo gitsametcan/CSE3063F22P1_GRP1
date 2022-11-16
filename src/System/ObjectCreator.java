@@ -45,7 +45,7 @@ public class ObjectCreator {
 	
 	public void createStudents() {
 		
-		newStudent("Zeynep", "ARSLAN", "150119205", 17800);
+		newStudent("Zeynep", "ARSLAN", "150119063", 17800);
 		newStudent("Aylin", "CANBERK", "150117018", 0);
 		newStudent("Tuana", "SOLAK", "150121112", 0);
 		newStudent("Olivia", "ADAM", "150120097", 0);

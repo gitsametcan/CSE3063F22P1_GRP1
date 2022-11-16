@@ -1,5 +1,6 @@
 package person;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
@@ -31,6 +32,9 @@ public class Advisor extends Instructor {
 		super(firstName, lastName, id, listOfLectures, dateOfEntry, instructorType);
 		this.listOfStudents = listOfStudents;
 		this.listOfApplications = listOfApplications;
+		if(this.listOfStudents == null) {
+			this.listOfStudents = new ArrayList<Student>();
+		}
 	}
 
 }

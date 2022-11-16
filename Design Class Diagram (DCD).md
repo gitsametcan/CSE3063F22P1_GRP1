@@ -259,8 +259,6 @@
 
 **LectureRegistirationApplication** has a constructor *LectureRegistirationApplication(Map<-LectureSession, ApprovalState->, Advisor, Student)*
 
-**LectureRegistirationApplication** has a method named *approveApplication():void* which inserts its session data to the student.
-
 **LectureRegistirationApplication** has a method named *getSessionsSentForApproval(): Map<-LectureSession, ApprovalState->*
 
 ----

@@ -28,10 +28,6 @@ public class LectureRegistrationApplication {
 			this.sessionsSentForApproval = new HashMap<LectureSession, ApprovalState>();
 		}
 	}
-
-	public void approveApplication() {
-
-	}
 	
 	public Map<LectureSession, ApprovalState> getSessionsSentForApproval() {
 		return this.sessionsSentForApproval;

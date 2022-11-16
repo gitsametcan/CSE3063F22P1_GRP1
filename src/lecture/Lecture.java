@@ -32,10 +32,7 @@ public class Lecture {
 		this.quota = quota;
 		
 		if (sessions == null) {
-			SessionID sID = new SessionID(1);
-			LectureSession ls = new LectureSession(sID, this, null, SessionType.Theorytical, null, null);
 			this.sessions = new ArrayList<LectureSession>();
-			this.sessions.add(ls);
 		}
 	}
 	//Creating get and set methods for variables

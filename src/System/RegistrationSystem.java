@@ -24,6 +24,7 @@ public class RegistrationSystem {
 		System.out.println("1-Student");
 		System.out.println("2-Instructor");
 		System.out.println("3-Advisor");
+		System.out.println("4-Exit");
 
 		boolean validInput = false;
 
@@ -42,6 +43,8 @@ public class RegistrationSystem {
 				validInput = true;
 				advisorMenu();
 				break;
+			case 4:
+				System.exit(0);
 			default:
 				System.out.print("The input is not valid, please provide a valid input.");
 			}
