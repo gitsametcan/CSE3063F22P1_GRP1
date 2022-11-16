@@ -7,6 +7,7 @@ import java.util.Map;
 import java.util.Scanner;
 
 import Enums.ApprovalState;
+import Enums.LectureHour;
 import Enums.LetterGrade;
 import lecture.Lecture;
 import lecture.LectureSession;
@@ -133,12 +134,13 @@ public class StudentRegistrationSystem {
 		studentMenu(currentUser);
 	}
 
-	private void scheduleMenu(Student currentUser) {
+	private void scheduleMenu(Student currentUser) throws FileNotFoundException {
 		if(currentUser.getListOfLectureSessions().size() == 0) {
 			System.out.println("You dont have any lecture to be shown.");
 		}
 		else {
-			
+			int lecturePlaceX = 0;
+			int lecturePlaceY=1;
 			for(int y = 1; y< 42; y++) {
 				for(int x = 1; x<79; x++) {
 					if(y==1 || y == 41) {
@@ -146,6 +148,34 @@ public class StudentRegistrationSystem {
 						if((x==78 && y==1)) {
 							System.out.println();
 						}
+					}
+					else if( (((x-2)%11)==0) && (((y-3)%4)==0) ) {
+						
+						if(lecturePlaceX==7) {
+							lecturePlaceX=1;
+							lecturePlaceY++;
+						}
+						else {
+							lecturePlaceX++;
+						}
+						
+						List<LectureSession> lectureSessions = currentUser.getListOfLectureSessions();
+						
+						boolean thereIsLecture = false;
+						for(LectureSession ls: lectureSessions) {
+							if(ls.getSessionHours()[lecturePlaceX-1][lecturePlaceY-1] == LectureHour.YES) {
+								String lectureSessionName =ls.getLecture().getID()+"." + ls.getSessionID();
+								System.out.print(lectureSessionName);
+								x = x + (lectureSessionName.length()) -1;
+								thereIsLecture = true;
+								break;
+							}
+						}
+						
+						if(thereIsLecture==false) {
+							System.out.print(" ");
+						}
+						
 					}
 					else if(x==1 || x == 78) {
 						System.out.print("|");
@@ -165,7 +195,8 @@ public class StudentRegistrationSystem {
 				}
 			}
 		}
-		
+		System.out.println();
+		studentMenu(currentUser);
 	}
 
 	private void makeRegistrationMenu(Student currentUser) throws FileNotFoundException {
