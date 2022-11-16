@@ -24,7 +24,7 @@ public class Advisor extends Instructor {
 	}
 
 	public void approveApplication(LectureRegistrationApplication lectureRegistirationApplication) {
-		lectureRegistirationApplication.approveApplication();
+		
 	}
 
 	public Advisor(String firstName, String lastName, InstructorID id, List<Lecture> listOfLectures, Calendar dateOfEntry, List<Student> listOfStudents,
