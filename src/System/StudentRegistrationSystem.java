@@ -47,7 +47,9 @@ public class StudentRegistrationSystem {
 
 		studentMenu(currentUser);
 	}
-
+	
+	
+	
 	private void studentMenu(Student currentUser) throws FileNotFoundException {
 		
 		boolean validInput = false;
@@ -149,18 +151,56 @@ public class StudentRegistrationSystem {
 			}
 		}
 		
-		System.out.println("Enter a lecture session code that you will send for approval.\n\"add lecture_id\" to add session for approval list.\n\"remove lecture_id\" to remove session from approval list.\nEnter \"Exit\" to exit");
+		System.out.println("Enter a lecture session code that you will send for approval.\n"
+				+ "\"add lecture_id\" to add session for approval list.\n"
+				+ "\"remove lecture_id\" to remove session from approval list.\n"
+				+ "Enter \"Exit\" to exit");
 		ArrayList<LectureSession> chosenLectures = new ArrayList<LectureSession>();
 		while(true) {
-			String a = scanner.nextLine();
+			String input = scanner.nextLine();
 			
-			if(a.equalsIgnoreCase("Exit")) {
+			parseSelectionCommand(input, chosenLectures);
+			
+			if(input.equalsIgnoreCase("Exit")) {
 				break;
 			}
 		}
 		
 		
 		studentMenu(currentUser);
+	}
+	
+	private void parseSelectionCommand(String input,List<LectureSession> chosenLectures) {
+		String[] partedInput = input.split(" ");
+		String[] partedLectureID = partedInput[1].split(".");
+		if (partedInput[0].equalsIgnoreCase("add")) {
+			for (Lecture l : objects1.getLectures()) {
+				if (l.getID().equalsIgnoreCase(partedLectureID[0])) {
+					for (LectureSession ls : l.getSessions()) {
+						if (ls.getSessionID().equalsIgnoreCase(partedLectureID[1])) {
+							chosenLectures.add(ls);
+							showChosenLectureSessions(chosenLectures);
+							return;
+						}
+					}
+				}
+			}
+			System.out.printf("Couldn't find %s", partedInput[1]);
+		}
+		if (partedInput[0].equalsIgnoreCase("remove")) {
+			for (Lecture l : objects1.getLectures()) {
+				if (l.getID().equalsIgnoreCase(partedLectureID[0])) {
+					for (LectureSession ls : l.getSessions()) {
+						if (ls.getSessionID().equalsIgnoreCase(partedLectureID[1])) {
+							chosenLectures.remove(ls);
+							showChosenLectureSessions(chosenLectures);
+							return;
+						}
+					}
+				}
+			}
+			System.out.printf("Couldn't find %s", partedInput[1]);
+		}
 	}
 	
 	private void showChosenLectureSessions(List<LectureSession> chosenLectureSessions) {
