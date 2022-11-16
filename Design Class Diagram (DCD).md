@@ -450,5 +450,12 @@
 
 **StudentRegistirationSystem** has a private method named *signOut()*
 
+----
+
+**InstructorRegistirationSystem**
+
+----
+
+**AdvisorRegistirationSystem**
 
 ----
