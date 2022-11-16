@@ -43,6 +43,9 @@ public class Advisor extends Instructor {
 		if(this.listOfStudents == null) {
 			this.listOfStudents = new ArrayList<Student>();
 		}
+		if (this.listOfApplications == null) {
+			this.listOfApplications = new ArrayList<LectureRegistrationApplication>();
+		}
 	}
 
 }

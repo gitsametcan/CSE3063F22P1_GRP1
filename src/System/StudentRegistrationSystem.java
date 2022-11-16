@@ -154,28 +154,46 @@ public class StudentRegistrationSystem {
 		System.out.println("Enter a lecture session code that you will send for approval.\n"
 				+ "\"add lecture_id\" to add session for approval list.\n"
 				+ "\"remove lecture_id\" to remove session from approval list.\n"
-				+ "Enter \"Exit\" to exit");
+				+ "Enter \"send\" to send\n"
+				+ "Enter \"exit\" to exit");
 		ArrayList<LectureSession> chosenLectures = new ArrayList<LectureSession>();
 		while(true) {
 			String input = scanner.nextLine();
 			
 			parseSelectionCommand(input, chosenLectures);
 			
-			if(input.equalsIgnoreCase("Exit")) {
+			if(input.equalsIgnoreCase("send")) {
+				currentUser.sendForApproval(chosenLectures);
+				currentUser.getAdvisor().approveApplication(currentUser.getRegistirationApplication());
+				
+				break;
+			}
+			
+			if(input.equalsIgnoreCase("exit")) {
 				break;
 			}
 		}
-		
-		currentUser.sendForApproval(chosenLectures);
-		
-		currentUser.getAdvisor().approveApplication(currentUser.getRegistirationApplication());
 		
 		studentMenu(currentUser);
 	}
 	
 	private void parseSelectionCommand(String input,List<LectureSession> chosenLectures) {
-		String[] partedInput = input.split(" ");
-		String[] partedLectureID = partedInput[1].split(".");
+		String[] partedInput;
+		String[] partedLectureID;
+		
+		if (input.contains(" ")) {
+			partedInput = input.split(" ");
+		} else {
+			return;
+		}
+		
+		if (partedInput[1].contains(".")) {
+			partedLectureID = partedInput[1].split("[.]");
+		} else {
+			System.out.println("Please enter a valid input.");
+			return;
+		}
+		
 		if (partedInput[0].equalsIgnoreCase("add")) {
 			for (Lecture l : objects1.getLectures()) {
 				if (l.getID().equalsIgnoreCase(partedLectureID[0])) {
@@ -207,14 +225,14 @@ public class StudentRegistrationSystem {
 	}
 	
 	private void showChosenLectureSessions(List<LectureSession> chosenLectureSessions) {
-		System.out.println("Chosen Lectures:");
+		System.out.println("Chosen Lectures:\n");
 		for(LectureSession ls: chosenLectureSessions) {
 			System.out.printf("Lecture Code: %-15s", ls.getLecture().getID() + "." + ls.getSessionID());
 			System.out.printf("Lecture Name: %-40s",  ls.getLecture().getName());
 			System.out.printf("Lecture Type: %-10s", ls.getLecture().getLectureType().toString());
 			System.out.printf("Lecture Credit: %-4s%n",  ls.getLecture().getCredit());
 		}
-		System.out.println("Enter a lecture session code that you will send for approval.\n"
+		System.out.println("\n\n\nEnter a lecture session code that you will send for approval.\n"
 				+ "\"add lecture_id\" to add session for approval list.\n"
 				+ "\"remove lecture_id\" to remove session from approval list.\n"
 				+ "Enter \"Exit\" to exit");
@@ -223,11 +241,12 @@ public class StudentRegistrationSystem {
 	private void registrationStatusMenu(Student currentUser) throws FileNotFoundException {
 		Map<LectureSession, ApprovalState> sessions = currentUser.getRegistirationApplication()
 				.getSessionsSentForApproval();
-
+		System.out.println();
 		for (LectureSession s : sessions.keySet()) {
-			System.out.printf("%s.%s", s.getLecture(), s.getSessionID());
-			System.out.printf("%-15s%n", sessions.get(s).toString());
+			System.out.printf("%s.%s", s.getLecture().getID(), s.getSessionID());
+			System.out.printf(" %-15s%n", sessions.get(s).toString());
 		}
+		System.out.println();
 		studentMenu(currentUser);
 	}
 	
