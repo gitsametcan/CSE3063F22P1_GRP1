@@ -324,8 +324,8 @@ public class StudentRegistrationSystem {
 		}
 		else {
 			System.out.println("Your debt is " + currentUser.getDebt().getAmount() + "TL.");
-			System.out.println("1- Pay your debt");
-			System.out.println("2- Go back");
+//			System.out.println("1- Pay your debt");
+//			System.out.println("2- Go back");
 		}
 		
 		studentMenu(currentUser);

@@ -22,8 +22,8 @@ public class RegistrationSystem {
 
 		System.out.println("Log in as...");
 		System.out.println("1-Student");
-		System.out.println("2-Instructor");
-		System.out.println("3-Advisor");
+		System.out.println("2-Instructor \"Not Finished!!!\"");
+		System.out.println("3-Advisor \"Not Finished!!!\"");
 		System.out.println("4-Exit");
 
 		boolean validInput = false;
