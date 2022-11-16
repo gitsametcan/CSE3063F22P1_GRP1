@@ -105,7 +105,7 @@
 
 **Student** has methods named *getAdvisor():Advisor*, *getID():String*, *getListOfLectureSessions():List<-LectureSession->*, *getTranscript():Transcript*, *getDebt():Debt*, *getRegistirationApplication():LectureRegistirationApplication*,and *getDateOfEntry():Calendar* which returns their counterparts
 
-**Student** has methods named *setAdvisor(Advisor)*, *setDebt(Double)*, *setRegistirationApplication(LectureRegistirationApplication)*, *sendApprovement()*, *setId(StudentID)*, *setTranscript(Transcript)*, *setDateOfEntry(Calendar)*
+**Student** has methods named *setAdvisor(Advisor)*, *setDebt(Double)*, *setRegistirationApplication(LectureRegistirationApplication)*, *sendForApproval(List<-LectureSession->)*, *setId(StudentID)*, *setTranscript(Transcript)*, *setDateOfEntry(Calendar)*
 
 ----
 
@@ -391,7 +391,11 @@
 
 **ObjectCreator** has a private *lectures* as **List<-Lecture->**
 
+**ObjectCreator** has a private *transcripts* as **List<-Transcript->**
+
 **ObjectCreator** has a constructor *ObjectCreator()*
+
+**ObjectCreator** has a private method named *newTranscript(Student, List<-Semester->, Double, Integer, Integer, Double)*
 
 **ObjectCreator** has a private method named *newStudent(String, String, String, Integer)*
 
@@ -400,6 +404,8 @@
 **ObjectCreator** has a private method named *newAdvisor(String, String, String)*
 
 **ObjectCreator** has a private method named *randomizeSessionHours():LectureHour[][]*
+
+**ObjectCreator** has a public method named *createTranscripts()*
 
 **ObjectCreator** has a public method named *createStudents()*
 
@@ -413,6 +419,7 @@
 
 **ObjectCreator** has a public method named *getLectures(): List<-Lecture->*
 
+**ObjectCreator** has a public method named *getTranscripts(): List<-Transcript->*
 
 ----
 
@@ -426,29 +433,33 @@
 
 ----
 
-**StudentRegistirationSystem** has a private *scanner* as **Scanner**
+**StudentRegistrationSystem** has a private *scanner* as **Scanner**
 
-**StudentRegistirationSystem** has a private *registrationSystem* as **RegistrationSystem**
+**StudentRegistrationSystem** has a private *registrationSystem* as **RegistrationSystem**
 
-**StudentRegistirationSystem** has a private *objects1* as **ObjectCreator**
+**StudentRegistrationSystem** has a private *objects1* as **ObjectCreator**
 
-**StudentRegistirationSystem** has a constructor *StudentRegistrationSystem(ObjectCreator)*
+**StudentRegistrationSystem** has a constructor *StudentRegistrationSystem(ObjectCreator)*
 
-**StudentRegistirationSystem** has a private method named *studentLogin()*
+**StudentRegistrationSystem** has a private method named *studentLogin()*
 
-**StudentRegistirationSystem** has a private method named *studentMenu(Student)*
+**StudentRegistrationSystem** has a private method named *studentMenu(Student)*
 
-**StudentRegistirationSystem** has a private method named *transcriptMenu(Student)*
+**StudentRegistrationSystem** has a private method named *transcriptMenu(Student)*
 
-**StudentRegistirationSystem** has a private method named *scheduleMenu(Student)*
+**StudentRegistrationSystem** has a private method named *scheduleMenu(Student)*
 
-**StudentRegistirationSystem** has a private method named *makeRegistirationMenu(Student)*
+**StudentRegistrationSystem** has a private method named *makeRegistirationMenu(Student)*
 
-**StudentRegistirationSystem** has a private method named *registirationStatusMenu(Student)*
+**StudentRegistrationSystem** has a private method named *registirationStatusMenu(Student)*
 
-**StudentRegistirationSystem** has a private method named *debtMenu(Student)*
+**StudentRegistrationSystem** has a private method named *debtMenu(Student)*
 
-**StudentRegistirationSystem** has a private method named *signOut()*
+**StudentRegistrationSystem** has a private method named *signOut()*
+
+**StudentRegistrationSystem** has a private method named *showChosenLectureSessions(List<-LectureSession->)*
+
+**StudentRegistrationSystem** has a private method named *parseSelectionCommand(String, List<-LectureSession->) *
 
 ----
 
