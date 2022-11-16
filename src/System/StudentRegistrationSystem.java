@@ -240,6 +240,11 @@ public class StudentRegistrationSystem {
 	}
 
 	private void registrationStatusMenu(Student currentUser) throws FileNotFoundException {
+		if (currentUser.getRegistirationApplication() == null) {
+			System.out.println("You did not apply for registration.\n");
+			studentMenu(currentUser);
+			return;
+		}
 		Map<LectureSession, ApprovalState> sessions = currentUser.getRegistirationApplication()
 				.getSessionsSentForApproval();
 		System.out.println();
