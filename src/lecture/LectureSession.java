@@ -6,7 +6,6 @@ import Enums.LectureHour;
 import Enums.SessionType;
 import IDs.SessionID;
 import person.Instructor;
-import java.util.Random;
 
 //Serdar Alsan    150120034 
 public class LectureSession {

@@ -4,9 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import Enums.LectureType;
-import Enums.SessionType;
 import IDs.LectureID;
-import IDs.SessionID;
 
 //Serdar Alsan	150120034 
 public class Lecture {

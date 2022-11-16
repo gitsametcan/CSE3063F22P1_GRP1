@@ -2,20 +2,6 @@
 
 package data;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FilenameFilter;
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-
-import Enums.FilterType;
-import lecture.Lecture;
-import person.Advisor;
-import person.Instructor;
-import person.Person;
-import person.Student;
-
 public class DataManager {
 
 //	private static DataManager singleInstance = null;

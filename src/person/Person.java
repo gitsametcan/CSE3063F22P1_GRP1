@@ -1,7 +1,5 @@
 package person;
 
-import IDs.UniqueID;
-
 //Kaan Camci 150119063
 public class Person {
 

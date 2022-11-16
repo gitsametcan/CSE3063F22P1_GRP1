@@ -3,9 +3,6 @@ package data.json;
 import java.util.ArrayList;
 import java.util.List;
 
-import Debt_LRA_Transcript.LectureRegistrationApplication;
-import person.Student;
-
 public class AdvisorJSON extends InstructorJSON {
 	
 	
