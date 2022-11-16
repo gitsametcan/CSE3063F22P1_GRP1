@@ -1,5 +1,6 @@
 package person;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
@@ -83,7 +84,7 @@ public class Student extends Person {
 			Transcript transcript, Calendar dateOfEntry) {
 		super(firstName, lastName);
 		this.id = id;
-		this.listOfLectureSessions = listOfLectureSessions;
+		this.listOfLectureSessions = new ArrayList<LectureSession>();
 		this.transcript = transcript;
 		this.dateOfEntry = dateOfEntry;
 	}
