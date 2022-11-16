@@ -315,14 +315,6 @@
 
 **DataManager** has a method named *findAdvisor(FilterType, String)* which returns a **Advisor**
 
-**DataManager** has a private method named *loadLectures()*
-
-**DataManager** has a private method named *loadAdvisors()*
-
-**DataManager** has a private method named *loadInstructors()*
-
-**DataManager** has a private method named *loadStudents()*
-
 **DataManager** has a private method names *listOfFilesInDirectory(String):File[]*
 
 **DataManager** has a private method names *contentsOfFiles(File[]):List<-String->*
@@ -341,7 +333,7 @@
 
 **AdvisorJSON** inherits from InstructorJSON
 
-**AdvisorJSON** has a *listOfStudentIDs* as **List<-String->**
+**AdvisorJSON** has a private *listOfStudentIDs* as **List<-String->**
 
 **AdvisorJSON** has a constructor *AdvisorJSON(String, String)*
 
@@ -363,13 +355,15 @@
 
 ----
 
-**StudentJSON** has a *advisorID* as **String**
+**StudentJSON** inherits from PersonJSON
 
-**StudentJSON** has a *studentID* as **String**
+**StudentJSON** has a private *advisorID* as **String**
 
-**StudentJSON** has a *sessions* as **Map<-String, String->**
+**StudentJSON** has a private *studentID* as **String**
 
-**StudentJSON** has a *transcript* as **List<-Map<-String, String->->**
+**StudentJSON** has a private *sessions* as **Map<-String, String->**
+
+**StudentJSON** has a private *transcript* as **List<-Map<-String, String->->**
 
 **StudentJSON** has a constructor *StudentJSON(String,String)*
 
@@ -395,11 +389,9 @@
 
 **ObjectCreator** has a private *advisors* as **List<-Advisor->**
 
-**ObjectCreator** has a private *advisors* as **List<-Advisor->**
+**ObjectCreator** has a private *students* as **List<-Srydent->**
 
-**ObjectCreator** has a private *advisors* as **List<-Advisor->**
-
-**ObjectCreator** has a private *advisors* as **List<-Advisor->**
+**ObjectCreator** has a private *lectures* as **List<-Lecture->**
 
 **ObjectCreator** has a constructor *ObjectCreator()*
 
@@ -424,39 +416,39 @@
 
 ----
 
-**RegistrationSystem** has a private *objects* as **ObjectCreator**
+**RegistirationSystem** has a private *objects* as **ObjectCreator**
 
-**RegistrationSystem** has a private *scanner* as **Scanner**
+**RegistirationSystem** has a private *scanner* as **Scanner**
 
-**RegistrationSystem** has a constructor *RegistrationSystem()*
+**RegistirationSystem** has a constructor *RegistrationSystem()*
 
-**RegistrationSystem** has a public method named *menu()*
+**RegistirationSystem** has a public method named *menu()*
 
 ----
 
-**StudentRegistrationSystem** has a private *scanner* as **Scanner**
+**StudentRegistirationSystem** has a private *scanner* as **Scanner**
 
-**StudentRegistrationSystem** has a private *registrationSystem* as **RegistrationSystem**
+**StudentRegistirationSystem** has a private *registrationSystem* as **RegistrationSystem**
 
-**StudentRegistrationSystem** has a private *objects1* as **ObjectCreator**
+**StudentRegistirationSystem** has a private *objects1* as **ObjectCreator**
 
-**StudentRegistrationSystem** has a constructor *StudentRegistrationSystem(ObjectCreator)*
+**StudentRegistirationSystem** has a constructor *StudentRegistrationSystem(ObjectCreator)*
 
-**StudentRegistrationSystem** has a private method named *studentLogin()*
+**StudentRegistirationSystem** has a private method named *studentLogin()*
 
-**StudentRegistrationSystem** has a private method named *studentMenu(Student)*
+**StudentRegistirationSystem** has a private method named *studentMenu(Student)*
 
-**StudentRegistrationSystem** has a private method named *transcriptMenu(Student)*
+**StudentRegistirationSystem** has a private method named *transcriptMenu(Student)*
 
-**StudentRegistrationSystem** has a private method named *scheduleMenu(Student)*
+**StudentRegistirationSystem** has a private method named *scheduleMenu(Student)*
 
-**StudentRegistrationSystem** has a private method named *makeRegistrationMenu(Student)*
+**StudentRegistirationSystem** has a private method named *makeRegistirationMenu(Student)*
 
-**StudentRegistrationSystem** has a private method named *registrationStatusMenu(Student)*
+**StudentRegistirationSystem** has a private method named *registirationStatusMenu(Student)*
 
-**StudentRegistrationSystem** has a private method named *debtMenu(Student)*
+**StudentRegistirationSystem** has a private method named *debtMenu(Student)*
 
-**StudentRegistrationSystem** has a private method named *signOut()*
+**StudentRegistirationSystem** has a private method named *signOut()*
 
 
 ----
