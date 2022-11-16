@@ -235,7 +235,8 @@ public class StudentRegistrationSystem {
 		System.out.println("\n\n\nEnter a lecture session code that you will send for approval.\n"
 				+ "\"add lecture_id\" to add session for approval list.\n"
 				+ "\"remove lecture_id\" to remove session from approval list.\n"
-				+ "Enter \"Exit\" to exit");
+				+ "Enter \"send\" to send\n"
+				+ "Enter \"exit\" to exit");
 	}
 
 	private void registrationStatusMenu(Student currentUser) throws FileNotFoundException {
