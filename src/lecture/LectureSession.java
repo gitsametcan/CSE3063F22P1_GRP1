@@ -53,23 +53,5 @@ public class LectureSession {
 	public Lecture getLecture() {
 		return lecture;
 	}
-	public LectureHour[][] randomizeSessionHours() {
-		
-		LectureHour[][] h = new LectureHour[7][10];
-		
-		for(int i=0;i<7;i++) {
-			for(int j=0;j<10;j++) {
-				Random rand = new Random(); 
-				int randomNumber = rand.nextInt(2); 
-				if (randomNumber == 1) {
-					h[i][j] = LectureHour.YES;
-				}else {
-					h[i][j] = LectureHour.NO;
-				}
-		}}
-		return h;
-	}
-	
-	
 
 }

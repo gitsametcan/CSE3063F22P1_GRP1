@@ -2,15 +2,19 @@ package System;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import Debt_LRA_Transcript.Debt;
 import Debt_LRA_Transcript.Transcript;
 import Enums.InstructorType;
+import Enums.LectureHour;
 import Enums.LectureType;
 import IDs.InstructorID;
 import IDs.LectureID;
+import IDs.SessionID;
 import IDs.StudentID;
 import lecture.Lecture;
+import lecture.LectureSession;
 import person.Advisor;
 import person.Student;
 
@@ -58,6 +62,11 @@ public class ObjectCreator {
 		LectureID tempID = new LectureID(null);
 		tempID.setID(ID);
 		Lecture lecture = new Lecture(tempID, lectureName, lectureType, credits, null, prerequisite, quota);
+		
+		SessionID tempSessionID = new SessionID(1);
+		LectureSession lectureSession = new LectureSession(tempSessionID, lecture, randomizeSessionHours(), null, null, null);
+		lecture.addLectureSession(lectureSession);
+		
 		lectures.add(lecture);
 	}
 	
@@ -97,6 +106,24 @@ public class ObjectCreator {
 		newAdvisor("Ali", "DERMAN", "150533", this.students.get(4),this.students.get(5));
 		newAdvisor("Ece", "KESER", "150669", this.students.get(6),this.students.get(7));
 		newAdvisor("Dilara", "BEYRAN", "150219", this.students.get(8),this.students.get(9));
+	}
+	
+	private LectureHour[][] randomizeSessionHours() {
+		
+		LectureHour[][] h = new LectureHour[7][10];
+		
+		for(int i = 0; i < 7; i++) {
+			for(int j = 0; j < 10; j++) {
+				Random rand = new Random(); 
+				int randomNumber = rand.nextInt(20); 
+				if (randomNumber == 1) {
+					h[i][j] = LectureHour.YES;
+				}else {
+					h[i][j] = LectureHour.NO;
+				}
+			}
+		}
+		return h;
 	}
 
 	//Creating get methods for advisors, students and lectures

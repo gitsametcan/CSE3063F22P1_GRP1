@@ -129,7 +129,7 @@
 
 ----
 
-**Semester** has a private *listOfLecturesTaken* as **HashMap<-Lecture,LetterGrade->**
+**Semester** has a private *listOfLecturesTaken* as **Map<-Lecture,LetterGrade->**
 
 **Semester** has a private *creditsTaken* as **Integer**
 
@@ -139,11 +139,11 @@
 
 **Semester** has a private *yano* as **Double**
 
-**Semester** has a constructor *Semester(HashMap<-Lecture, LetterGrade->, Integer, Integer, Double, Double)*
+**Semester** has a constructor *Semester(Map<-Lecture, LetterGrade->, Integer, Integer, Double, Double)*
 
-**Semester** has methods named *getListOfLecturesTaken():HashMap<-Lecture,LetterGrade->*,*getCreditsTaken():Integer*, *getCreditsCompleted():Integer*, *getPoints():Double*, *getYano(): Double* which returns their counterparts
+**Semester** has methods named *getListOfLecturesTaken():Map<-Lecture,LetterGrade->*,*getCreditsTaken():Integer*, *getCreditsCompleted():Integer*, *getPoints():Double*, *getYano(): Double* which returns their counterparts
 
-**Semester** has methods named *setLecture(Lecture,LetterGrade)*,*setCreditsTaken(Integer)*, *setCreditsCompleted(Integer)*, *setPoints(Double)*
+**Semester** has methods named *addLecture(Lecture,LetterGrade)*, *removeLecture(Lecture, LetterGrade)*,*setCreditsTaken(Integer)*, *setCreditsCompleted(Integer)*, *setPoints(Double)*
 
 ----
 
@@ -400,6 +400,8 @@
 **ObjectCreator** has a private method named *newLecture(String, String, LectureType, Integer, Lecture, Integer)*
 
 **ObjectCreator** has a private method named *newAdvisor(String, String, String)*
+
+**ObjectCreator** has a private method named *randomizeSessionHours():LectureHour[][]*
 
 **ObjectCreator** has a public method named *createStudents()*
 

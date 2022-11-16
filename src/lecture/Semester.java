@@ -1,13 +1,14 @@
 package lecture;
 
 import java.util.HashMap;
+import java.util.Map;
 
 import Enums.LetterGrade;
 
 //Serdar Alsan	150120034 
 public class Semester {
 
-	private HashMap<Lecture, LetterGrade> listOfLecturesTaken;
+	private Map<Lecture, LetterGrade> listOfLecturesTaken;
 	private int creditsTaken;
 	private int creditsCompleted;
 	private double points;
@@ -21,9 +22,12 @@ public class Semester {
 		this.creditsCompleted = creditsCompleted;
 		this.points = points;
 		this.yano = yano;
+		if (this.listOfLecturesTaken == null) {
+			this.listOfLecturesTaken = new HashMap<Lecture, LetterGrade>();
+		}
 	}
 	//Creating get and set methods for variables
-	public HashMap<Lecture, LetterGrade> getListOfLecturesTaken() {
+	public Map<Lecture, LetterGrade> getListOfLecturesTaken() {
 		return listOfLecturesTaken;
 	}
 
@@ -43,10 +47,15 @@ public class Semester {
 		return yano;
 	}
 
-	public void setLecture(Lecture lecture, LetterGrade lectureGrade) {
-		this.listOfLecturesTaken = listOfLecturesTaken;
+	public void addLecture(Lecture lecture, LetterGrade lectureGrade) {
+		this.listOfLecturesTaken.put(lecture, lectureGrade);
 	}
 
+
+	public void removeLecture(Lecture lecture, LetterGrade lectureGrade) {
+		this.listOfLecturesTaken.remove(lecture, lectureGrade);
+	}
+	
 	public void setCreditsTaken(int creditsTaken) {
 		this.creditsTaken = creditsTaken;
 	}
