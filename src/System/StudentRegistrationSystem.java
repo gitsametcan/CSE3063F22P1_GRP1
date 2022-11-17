@@ -30,6 +30,7 @@ public class StudentRegistrationSystem {
 		Student currentUser=null;
 		while (true) {
 			System.out.println("Please provide your ID:");
+			System.out.println("----\nSuggestion: Enter \"150119063\"");
 			String providedID = scanner.nextLine();
 			//currentUser = DataManager.getInstance().findStudent(FilterType.ID, providedID);
 			for(Student student: objects1.getStudents()) {
@@ -62,6 +63,7 @@ public class StudentRegistrationSystem {
 		System.out.println("4-Registration Status");
 		System.out.println("5-Debt");
 		System.out.println("6-Sign Out");
+		System.out.println("----\nSuggestion: Enter \"2\" to go to he registartion menu, then check by entering \"4\" to go to the status menu");
 
 		while (!validInput) {
 

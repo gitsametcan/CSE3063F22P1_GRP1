@@ -25,6 +25,7 @@ public class RegistrationSystem {
 		System.out.println("2-Instructor \"Not Finished!!!\"");
 		System.out.println("3-Advisor \"Not Finished!!!\"");
 		System.out.println("4-Exit");
+		System.out.println("----\nSuggestion: Enter \"1\"");
 
 		boolean validInput = false;
 
