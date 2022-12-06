@@ -2,17 +2,17 @@
 Java Project
 
 ## Members:
-1- 150119063 Kaan CAMCI
+1- 150120528 Samet CAN
 
-2- 150120016 Kadir Berk YAGAR
+2- 150119063 Kaan CAMCI
 
-3- 150119755 Sena VATANSEVER
+3- 150120016 Kadir Berk YAGAR
 
-4- 150119519 Fatih OZTURK
+4- 150119755 Sena VATANSEVER
 
-5- 150120528 Samet CAN
+5- 150120034 Serdar ALSAN
 
-6- 150120034 Serdar ALSAN
+*6- 150119519 Fatih OZTURK*
 
 ~~7- 150122603 Erman KUNDAKCIOGLU~~
 
@@ -24,13 +24,13 @@ Java Project
 Date: 02.11.2022
 
 ### Participants:
-- Kadir Berk Yagar
-- Kaan Camci
-- Serdar Alsan
-- Sena Vatansever
-- Samet Can
-- Erman Kundakcioglu
-- Fatih Ozturk
+* Samet Can
+* Kadir Berk Yagar
+* Kaan Camci
+* Serdar Alsan
+* Sena Vatansever
+* Erman Kundakcioglu
+* Fatih Ozturk
 
 
 ### Topics discussed and things done:
@@ -38,7 +38,7 @@ Date: 02.11.2022
 1. The members met.
 2. The project content was read together.
 3. Github repository created and members added
-4. Github settings were made by Kaan Berk Yagar.
+4. Github settings were made by Kadir Berk Yagar.
 5. There has been a long discussion on RAD.
 6. DCD was scheduled to be finished as a priority.
 7. Samet CAN was appointed as the leader.
@@ -51,18 +51,18 @@ Date: 02.11.2022
 Date:10.11.2022
 
 ### Participants:
+* Samet Can
 * Kadir Berk Yagar
 * Kaan Camci
 * Serdar Alsan
 * Sena Vatansever
-* Samet Can
 
 
 ### Topics discussed and things done:
 
 1. Discussed over completed tasks.
 2. Current progress and shortcomings were discussed.
-3. Libraries were added to member computers and settings were made by Kadir Berk Yağar.
+3. Libraries were added to member computers and settings were made by Kadir Berk Yagar.
 
 ### Decisions taken and task sharing:
 1. Decided to move future issues under branches
@@ -115,11 +115,11 @@ Tasks were determined by the meeting participants with a joint decision.
 Date: 14.11.2022
 
 ### Participants:
+* Samet Can
 * Kadir Berk Yagar
 * Kaan Camci
 * Serdar Alsan
 * Sena Vatansever
-* Samet Can
 * Fatih Ozturk
 
 ### Topics discussed and things done:
@@ -153,6 +153,63 @@ Samet Can
 
 Fatih Ozturk
 - Creating Object for Java Code
+
+Erman Kundakcioglu
+- Cancelled
+
+-------------------------
+
+## 4.Meeting Report
+
+Date: 05.12.2022
+This date was determined by the survey made by the group members when the Iteration 2 folder was created.
+
+### Participants:
+* Samet Can
+* Kadir Berk Yagar
+* Kaan Camci
+* Serdar Alsan
+* Sena Vatansever
+
+### Topics discussed and things done:
+
+1. What was done in the previous iteration was reviewed and deficiencies were identified.
+2. The Iteration 2 file was examined and the things to be done were determined.
+
+### Decisions taken and task sharing:
+1. Decided to wait for DCD to start working on Simulation.
+2. Decided to fix all Java Code after coding is done
+3. New tasks determined by the meeting participants with a joint decision.
+
+### New Tasks:
+
+Kadir Berk Yagar
+- DCD
+- Coding for JSON reading and writing
+- Writing Unit Test Code
+
+Sena Vatansever
+- RAD
+- Writing static JSON files
+- Writing Unit Test Code
+
+Kaan Camci
+- DCD
+- Coding for menu
+- Writing Unit Test Code
+
+Serdar Alsan
+- DSD
+- Coding Menu
+- Writing Unit Test Code
+
+Samet Can
+- DSD
+- DCD
+- Writing Unit Test Code
+
+Fatih Ozturk
+- He was not given a task because he did not attend the meeting (He stated that he would attend, but could not be reached at the time of the meeting).
 
 Erman Kundakcioglu
 - Cancelled
