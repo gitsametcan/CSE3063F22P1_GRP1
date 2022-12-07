@@ -1,7 +1,7 @@
 package person;
 
 //Kaan Camci 150119063
-public class Person {
+public abstract class Person {
 
 	protected String firstName;
 	protected String lastName;
@@ -30,11 +30,7 @@ public class Person {
 	public String getFullName() {
 		return this.firstName + " " + this.lastName;
 	}
-
-	public String getId() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
+	
+	abstract public String getID();
 	
 }
