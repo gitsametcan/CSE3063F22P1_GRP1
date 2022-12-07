@@ -10,7 +10,8 @@ public abstract class Person {
 		this.firstName = firstName;
 		this.lastName = lastName;
 	}
-	//Creating get and set methods for variables
+
+	// Creating get and set methods for variables
 	public String getFirstName() {
 		return firstName;
 	}
@@ -30,7 +31,7 @@ public abstract class Person {
 	public String getFullName() {
 		return this.firstName + " " + this.lastName;
 	}
-	
+
 	abstract public String getID();
-	
+
 }

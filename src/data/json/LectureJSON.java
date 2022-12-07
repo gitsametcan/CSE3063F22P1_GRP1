@@ -3,7 +3,7 @@ package data.json;
 import java.util.List;
 
 public class LectureJSON {
-	
+
 	private String ID;
 	private String Name;
 	private String prerequisiteID;
@@ -11,9 +11,9 @@ public class LectureJSON {
 	private int quota;
 	private int credit;
 	private List<LectureSessionJSON> lectureSessions;
-	
-	public LectureJSON(String ID, String Name, String prerequisiteID, String lectureType, int quota, int credit ) {
-		
+
+	public LectureJSON(String ID, String Name, String prerequisiteID, String lectureType, int quota, int credit) {
+
 	}
 
 	public String getID() {

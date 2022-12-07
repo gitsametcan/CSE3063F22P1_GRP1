@@ -26,7 +26,8 @@ public class JsonOperator {
 
 		return singleInstance;
 	}
-	//A method for reading json files
+
+	// A method for reading json files
 	public <T> T readJsonFile(File file, Class<T> type) throws FileNotFoundException {
 		Scanner scanner = new Scanner(file);
 		String contents = "";
@@ -42,7 +43,8 @@ public class JsonOperator {
 
 		return t;
 	}
-	//A method for writing json files
+
+	// A method for writing json files
 	public <T> void writeJsonFile(String path, T element) throws IOException {
 		FileOutputStream fStream = new FileOutputStream(path);
 		Gson gson = new GsonBuilder().setPrettyPrinting().create();

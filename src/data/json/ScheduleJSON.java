@@ -6,8 +6,8 @@ import java.util.Map;
 public class ScheduleJSON {
 	// LectureID / SessionID
 	private Map<String, String> sessions;
-		
-	public ScheduleJSON( ) {
+
+	public ScheduleJSON() {
 		sessions = new HashMap<String, String>();
 	}
 }

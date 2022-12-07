@@ -2,8 +2,8 @@ package data.json;
 
 import java.util.List;
 
-public class InstructorJSON extends PersonJSON{
-	
+public class InstructorJSON extends PersonJSON {
+
 	private List<String> listOfLectureIDs;
 	private String instructorType;
 	private String instructorID;
@@ -14,7 +14,7 @@ public class InstructorJSON extends PersonJSON{
 		this.firstName = firstName;
 		this.lastName = lastName;
 	}
-	
+
 	public String getDateOfEntry() {
 		return dateOfEntry;
 	}
@@ -22,7 +22,7 @@ public class InstructorJSON extends PersonJSON{
 	public void setDateOfEntry(String dateOfEntry) {
 		this.dateOfEntry = dateOfEntry;
 	}
-	
+
 	public List<String> getListOfLectureIDs() {
 		return listOfLectureIDs;
 	}
@@ -46,7 +46,5 @@ public class InstructorJSON extends PersonJSON{
 	public void setInstructorID(String instructorID) {
 		this.instructorID = instructorID;
 	}
-
-	
 
 }

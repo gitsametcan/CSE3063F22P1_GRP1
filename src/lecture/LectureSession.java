@@ -28,7 +28,8 @@ public class LectureSession {
 		this.instructor = instructor;
 		this.listOfAssistans = listOfAssistans;
 	}
-	//Creating get and set methods for variables
+
+	// Creating get and set methods for variables
 	public String getSessionID() {
 		return sessionID.getID();
 	}

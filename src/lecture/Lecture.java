@@ -16,11 +16,11 @@ public class Lecture {
 	private List<LectureSession> sessions;
 	private Lecture prerequisite;
 	private int quota;
-	
+
 	public Lecture(LectureID id, String name, LectureType lectureType, int credit, List<LectureSession> sessions,
 			Lecture prerequisite, int quota) {
 		super();
-		
+
 		this.id = id;
 		this.name = name;
 		this.lectureType = lectureType;
@@ -28,12 +28,13 @@ public class Lecture {
 		this.sessions = sessions;
 		this.prerequisite = prerequisite;
 		this.quota = quota;
-		
+
 		if (sessions == null) {
 			this.sessions = new ArrayList<LectureSession>();
 		}
 	}
-	//Creating get and set methods for variables
+
+	// Creating get and set methods for variables
 	public String getID() {
 		return id.getID();
 	}
@@ -77,7 +78,8 @@ public class Lecture {
 	public void setQuota(int quota) {
 		this.quota = quota;
 	}
-	//Creating add and remove methods for array variables
+
+	// Creating add and remove methods for array variables
 	public void addLectureSession(LectureSession lectureSession) {
 		this.sessions.add(lectureSession);
 	}

@@ -6,14 +6,14 @@ import Enums.LectureHour;
 import person.Student;
 
 public class Schedule {
-	
+
 	private Student student;
 	private List<LectureSession> listOfLectureSessions;
-	
+
 	public Schedule(Student student) {
 		this.student = student;
 	}
-	
+
 	public void showSchedule() {
 		List<LectureSession> lectureSessions = student.getListOfLectureSessions();
 		if (lectureSessions.size() == 0) {
@@ -67,10 +67,10 @@ public class Schedule {
 				}
 			}
 		}
-		
+
 		System.out.println();
 	}
-	
+
 	public Student getStudent() {
 		return student;
 	}
@@ -87,5 +87,4 @@ public class Schedule {
 		this.listOfLectureSessions = listOfLectureSessions;
 	}
 
-	
 }

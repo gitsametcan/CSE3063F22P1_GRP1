@@ -15,7 +15,6 @@ public class LectureRegistrationApplication {
 	private Map<LectureSession, ApprovalState> sessionsSentForApproval;
 	private Advisor advisor;
 	private Student student;
-	
 
 	public LectureRegistrationApplication(Map<LectureSession, ApprovalState> sessionsSentForApproval, Advisor advisor,
 			Student student) {
@@ -23,12 +22,12 @@ public class LectureRegistrationApplication {
 		this.sessionsSentForApproval = sessionsSentForApproval;
 		this.advisor = advisor;
 		this.student = student;
-		
+
 		if (this.sessionsSentForApproval == null) {
 			this.sessionsSentForApproval = new HashMap<LectureSession, ApprovalState>();
 		}
 	}
-	
+
 	public Map<LectureSession, ApprovalState> getSessionsSentForApproval() {
 		return this.sessionsSentForApproval;
 	}

@@ -37,7 +37,7 @@ public class StudentRegistrationSystem {
 			// currentUser = DataManager.getInstance().findStudent(FilterType.ID,
 			// providedID);
 			for (Student student : objects1.getStudents()) {
-				if (providedID.equals(student.getID())) {
+				if (providedID.equals(student.getId())) {
 					currentUser = student;
 					System.out.println("Welcome to Marmara BYS " + currentUser.getFullName());
 				}
@@ -139,7 +139,7 @@ public class StudentRegistrationSystem {
 	}
 
 	private void scheduleMenu(Student currentUser) throws FileNotFoundException {
-		
+
 		Schedule schedule = new Schedule(currentUser);
 		schedule.showSchedule();
 		studentMenu(currentUser);

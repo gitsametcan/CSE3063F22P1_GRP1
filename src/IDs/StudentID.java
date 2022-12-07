@@ -1,7 +1,7 @@
 package IDs;
 
 //Samet CAN 150120528
-public class StudentID implements UniqueID{
+public class StudentID implements UniqueID {
 
 	private int departmentCode;
 	private int yearCode;
@@ -13,7 +13,8 @@ public class StudentID implements UniqueID{
 		this.yearCode = yearCode;
 		this.orderOfPlacement = orderOfPlacement;
 	}
-	//Set and get methods for ID
+
+	// Set and get methods for ID
 	public void setID(int DepartmentCode, int YearCode, int OrderOfPlacement) {
 		this.departmentCode = DepartmentCode;
 		this.yearCode = YearCode;
@@ -23,7 +24,8 @@ public class StudentID implements UniqueID{
 	public String getID() {
 		return digitFixer(departmentCode) + digitFixer(yearCode) + digitFixer(orderOfPlacement);
 	}
-	//Another set method for ID
+
+	// Another set method for ID
 	public void setID(String string) {
 		try {
 			Integer.parseInt(string);
@@ -36,7 +38,8 @@ public class StudentID implements UniqueID{
 		}
 
 	}
-	//A method for giving fixed amount of numbers according to input number
+
+	// A method for giving fixed amount of numbers according to input number
 	public String digitFixer(int integer) {
 		String tempOrder = "" + integer;
 		if (integer < 10) {
@@ -46,5 +49,5 @@ public class StudentID implements UniqueID{
 		}
 		return tempOrder;
 	}
-	
+
 }

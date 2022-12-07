@@ -27,20 +27,21 @@ public class Advisor extends Instructor {
 	}
 
 	public void approveApplication(LectureRegistrationApplication lectureRegistirationApplication) {
-		for(LectureRegistrationApplication lra: listOfApplications) {
+		for (LectureRegistrationApplication lra : listOfApplications) {
 			Map<LectureSession, ApprovalState> lsa = lra.getSessionsSentForApproval();
-			for(LectureSession ls: lsa.keySet()) {
+			for (LectureSession ls : lsa.keySet()) {
 				lsa.put(ls, ApprovalState.Approved);
 			}
 		}
 	}
 
-	public Advisor(String firstName, String lastName, InstructorID id, List<Lecture> listOfLectures, Calendar dateOfEntry, List<Student> listOfStudents,
-			List<LectureRegistrationApplication> listOfApplications, InstructorType instructorType) {
+	public Advisor(String firstName, String lastName, InstructorID id, List<Lecture> listOfLectures,
+			Calendar dateOfEntry, List<Student> listOfStudents, List<LectureRegistrationApplication> listOfApplications,
+			InstructorType instructorType) {
 		super(firstName, lastName, id, listOfLectures, dateOfEntry, instructorType);
 		this.listOfStudents = listOfStudents;
 		this.listOfApplications = listOfApplications;
-		if(this.listOfStudents == null) {
+		if (this.listOfStudents == null) {
 			this.listOfStudents = new ArrayList<Student>();
 		}
 		if (this.listOfApplications == null) {
