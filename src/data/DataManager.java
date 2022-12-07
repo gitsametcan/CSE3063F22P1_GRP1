@@ -2,149 +2,179 @@
 
 package data;
 
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Optional;
+
+import Enums.FilterType;
+import lecture.Lecture;
+import person.Advisor;
+import person.Instructor;
+import person.Person;
+import person.Student;
+
 public class DataManager {
 
-//	private static DataManager singleInstance = null;
-//	private List<Lecture> listOfLectures;
-//	private List<Person> listOfPeople;
-//	private List<Person> cacheList;
-//
-//	private DataManager() throws FileNotFoundException {
-//		listOfLectures = new ArrayList<Lecture>();
-//		listOfPeople = new ArrayList<Person>();
-//		cacheList = new LinkedList<Person>();
-//
-//		loadLectures();
-//		loadAdvisors();
-//		loadInstructors();
-//		loadStudents();
-//
-//	}
-//
-//	public static DataManager getInstance() throws FileNotFoundException {
-//		if (singleInstance == null) {
-//			singleInstance = new DataManager();
-//		}
-//		return singleInstance;
-//	}
-//	//A method for finding datas from Lecture Class
-//	public Lecture findLecture(FilterType filterType, String searchKey) {
-//		for (Lecture lecture : listOfLectures) {
-//			if (filterType == FilterType.ID && lecture.getId().getID().contains(searchKey)
-//					|| filterType == FilterType.Name && lecture.getName().contains(searchKey)) {
-//				return lecture;
-//			}
-//		}
-//		return null;
-//	}
-///*
-//	private Person searchInCache(FilterType filterType, String searchKey) {
-//		for (Person person : cacheList) {
-//			if (filterType == FilterType.ID && person.getId().toLowerCase().equals(searchKey)
-//					|| filterType == FilterType.Name && person.getFullName().toLowerCase().equals(searchKey)) {
-//				((LinkedList<Person>) cacheList).offerFirst(person);
-//				((Object) cacheList).removeLastOccurence(person);
-//				return person;
-//			}
-//		}
-//		return null;
-//	}
-//*/
-//	private Person searchInPerson(FilterType filterType, String searchKey) {
-//		for (Person person : listOfPeople) {
-//			if (filterType == FilterType.ID && person.getId().toLowerCase().equals(searchKey)
-//					|| filterType == FilterType.Name && person.getFullName().toLowerCase().equals(searchKey)) {
-//				((LinkedList<Person>) cacheList).offerFirst(person);
-//				if (cacheList.size() > 50) {
-//					((LinkedList<Person>) cacheList).removeLast();
-//				}
-//				return person;
-//			}
-//		}
-//		return null;
-//	}
-//	//A method for finding datas from Person Class
-//	public Person findPerson(FilterType filterType, String searchKey) {
-//		/*Person value = searchInCache(filterType, searchKey);
-//		if (value != null) {
-//			return value;
-//		}*/
-//
-//		return searchInPerson(filterType, searchKey);
-//	}
-//	//A method for finding datas from Student Class
-//	public Student findStudent(FilterType filterType, String searchKey) {
-//		/*Student value = searchInCache(filterType, searchKey);
-//		if (value != null) {
-//			return value;
-//		}*/
-//
-//		return (Student) searchInPerson(filterType, searchKey);
-//	}
-//	//A method for finding datas from Instructor Class
-//	public Instructor findInstructor(FilterType filterType, String searchKey) {
-//		/*Instructor value = searchInCache(filterType, searchKey, Instructor.class);
-//		if (value != null) {
-//			return value;
-//		}*/
-//
-//		return (Instructor) searchInPerson(filterType, searchKey);
-//	}
-//	//A method for finding datas from Advisor Class
-//	public Advisor findAdvisor(FilterType filterType, String searchKey) {
-//		/*Advisor value = searchInCache(filterType, searchKey, Advisor.class);
-//		if (value != null) {
-//			return value;
-//		}*/
-//
-//		return (Advisor) searchInPerson(filterType, searchKey);
-//	}
-//
-//	private File[] listOfFilesInDirectory(String directory) {
-//		File dir = new File(directory);
-//
-//		File[] matches = dir.listFiles(new FilenameFilter() {
-//			public boolean accept(File dir, String name) {
-//				return name.endsWith(".json");
-//			}
-//		});
-//		return matches;
-//	}
-//	//A method for loading datas from Lecture Class
-//	private void loadLectures() throws FileNotFoundException {
-//		File[] files = listOfFilesInDirectory("/Lectures/");
-//
-//		for (File file : files) {
-//			Lecture lecture = JsonOperator.getInstance().readJsonFile(file, Lecture.class);
-//			listOfLectures.add(lecture);
-//		}
-//	}
-//
-//	private void loadAdvisors() throws FileNotFoundException {
-//		File[] files = listOfFilesInDirectory("/Advisors/");
-//
-//		for (File file : files) {
-//			Advisor advisor = JsonOperator.getInstance().readJsonFile(file, Advisor.class);
-//			listOfPeople.add(advisor);
-//		}
-//	}
-//
-//	private void loadInstructors() throws FileNotFoundException {
-//		File[] files = listOfFilesInDirectory("/Instructors/");
-//
-//		for (File file : files) {
-//			Instructor instructor = JsonOperator.getInstance().readJsonFile(file, Instructor.class);
-//			listOfPeople.add(instructor);
-//		}
-//	}
-//
-//	private void loadStudents() throws FileNotFoundException {
-//		File[] files = listOfFilesInDirectory("/Students/");
-//
-//		for (File file : files) {
-//			Student student = JsonOperator.getInstance().readJsonFile(file, Student.class);
-//			listOfPeople.add(student);
-//		}
-//	}
+	private static DataManager singleInstance = null;
+	private List<Lecture> listOfLectures;
+	private List<Person> listOfPeople;
+	private List<Person> cacheList;
 
+	private DataManager() {
+		listOfLectures = new ArrayList<Lecture>();
+		listOfPeople = new ArrayList<Person>();
+		cacheList = new LinkedList<Person>();
+
+	}
+
+	public static DataManager getInstance() {
+		if (singleInstance == null) {
+			singleInstance = new DataManager();
+		}
+		return singleInstance;
+	}
+	
+	public Optional<Lecture> findLecture(String key, FilterType filterType) {
+		for (Lecture l : listOfLectures) {
+			if ((filterType == FilterType.ID && l.getID().equalsIgnoreCase(key)) ||
+					(filterType == FilterType.Name && l.getName().equalsIgnoreCase(key))) {
+				return Optional.of(l);
+			}
+		}
+		return Optional.empty();
+	}
+	
+	public Optional<Student> findStudent(String key, FilterType filterType) {
+		for (Person p : cacheList) {
+			if (!(p instanceof Student)) {
+				continue;
+			}
+			Student s = (Student) p;
+			if ((filterType == FilterType.ID && s.getID().equalsIgnoreCase(key)) ||
+					(filterType == FilterType.Name && s.getFullName().equalsIgnoreCase(key))) {
+				return Optional.of(s);
+			}
+		}
+		
+		for (Person p : listOfPeople) {
+			if (!(p instanceof Student)) {
+				continue;
+			}
+			Student s = (Student) p;
+			if ((filterType == FilterType.ID && s.getID().equalsIgnoreCase(key)) ||
+					filterType == FilterType.Name && s.getFullName().equalsIgnoreCase(key)) {
+				return Optional.of(s);
+			}
+		}
+		return Optional.empty();
+	}
+	
+	public Optional<Instructor> findInstructor(String key, FilterType filterType) {
+		for (Person p : cacheList) {
+			if (!(p instanceof Instructor)) {
+				continue;
+			}
+			Instructor i = (Instructor) p;
+			if ((filterType == FilterType.ID && i.getID().equalsIgnoreCase(key)) ||
+					(filterType == FilterType.Name && i.getFullName().equalsIgnoreCase(key))) {
+				return Optional.of(i);
+			}
+		}
+		
+		for (Person p : listOfPeople) {
+			if (!(p instanceof Instructor)) {
+				continue;
+			}
+			Instructor i = (Instructor) p;
+			if ((filterType == FilterType.ID && i.getID().equalsIgnoreCase(key)) ||
+					filterType == FilterType.Name && i.getFullName().equalsIgnoreCase(key)) {
+				return Optional.of(i);
+			}
+		}
+		return Optional.empty();
+	}
+	
+	public Optional<Advisor> findAdvisor(String key, FilterType filterType) {
+		for (Person p : cacheList) {
+			if (!(p instanceof Advisor)) {
+				continue;
+			}
+			Advisor a = (Advisor) p;
+			if ((filterType == FilterType.ID && a.getID().equalsIgnoreCase(key)) ||
+					(filterType == FilterType.Name && a.getFullName().equalsIgnoreCase(key))) {
+				return Optional.of(a);
+			}
+		}
+		
+		for (Person p : listOfPeople) {
+			if (!(p instanceof Advisor)) {
+				continue;
+			}
+			Advisor a = (Advisor) p;
+			if ((filterType == FilterType.ID && a.getID().equalsIgnoreCase(key)) ||
+					filterType == FilterType.Name && a.getFullName().equalsIgnoreCase(key)) {
+				return Optional.of(a);
+			}
+		}
+		return Optional.empty();
+	}
+
+	public List<Lecture> searchLecture(String key, FilterType filterType) {
+		List<Lecture> result = new ArrayList<Lecture>();
+		for (Lecture l : listOfLectures) {
+
+			if ((filterType == FilterType.ID && l.getID().toLowerCase().contains(key.toLowerCase())) ||
+					(filterType == FilterType.Name && l.getName().toLowerCase().contains(key.toLowerCase()))) {
+				result.add(l);
+			}
+		}
+		return result;
+	}
+	
+	public List<Student> searchStudent(String key, FilterType filterType) {
+		List<Student> result = new ArrayList<Student>();
+		for (Person p : listOfPeople) {
+			if (!(p instanceof Student)) {
+				continue;
+			}
+			Student s = (Student) p;
+			if ((filterType == FilterType.ID && s.getID().toLowerCase().contains(key.toLowerCase())) ||
+					(filterType == FilterType.Name && s.getFullName().toLowerCase().contains(key.toLowerCase()))) {
+				result.add(s);
+			}
+		}
+		return result;
+	}
+	
+	public List<Instructor> searchInstructor(String key, FilterType filterType) {
+		List<Instructor> result = new ArrayList<Instructor>();
+		for (Person p : listOfPeople) {
+			if (!(p instanceof Instructor)) {
+				continue;
+			}
+			Instructor i = (Instructor) p;
+			if ((filterType == FilterType.ID && i.getID().toLowerCase().contains(key.toLowerCase())) ||
+					(filterType == FilterType.Name && i.getFullName().toLowerCase().contains(key.toLowerCase()))) {
+				result.add(i);
+			}
+		}
+		return result;
+	}
+	
+	public List<Advisor> searchAdvisor(String key, FilterType filterType) {
+		List<Advisor> result = new ArrayList<Advisor>();
+		for (Person p : listOfPeople) {
+			if (!(p instanceof Advisor)) {
+				continue;
+			}
+			Advisor a = (Advisor) p;
+			if ((filterType == FilterType.ID && a.getID().toLowerCase().contains(key.toLowerCase())) ||
+					(filterType == FilterType.Name && a.getFullName().toLowerCase().contains(key.toLowerCase()))) {
+				result.add(a);
+			}
+		}
+		return result;
+	}
+	
 }

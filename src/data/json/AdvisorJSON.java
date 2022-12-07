@@ -5,8 +5,6 @@ import java.util.List;
 
 public class AdvisorJSON extends InstructorJSON {
 	
-	
-	
 	private List<String> listOfStudentIDs;
 	
 	public AdvisorJSON(String firstName, String lastName) {
