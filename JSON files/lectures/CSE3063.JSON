@@ -1,8 +1,8 @@
 {
     "id": "CSE3063",
     "name": "Object-Oriented Software Design" ,
-    "lectureType": "precondition",
+    "lectureType": "MANDATORY",
     "credit": "5",
     "prerequisites": "CSE1242",
-    "quota": "60"
+    "quota": "40"
 }

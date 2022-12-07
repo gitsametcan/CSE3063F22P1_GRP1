@@ -1,8 +1,8 @@
 {
-    "id": "CSE2138",
-    "name": "Systems Programming" ,
+    "id": "MATH1002",
+    "name": "Calculus II" ,
     "lectureType": "MANDATORY",
-    "credit": "7",
+    "credit": "6",
     "prerequisites": "",
     "quota": "40"
 }

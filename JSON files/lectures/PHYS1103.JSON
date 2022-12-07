@@ -1,8 +1,8 @@
 {
-    "id": "CSE2138",
-    "name": "Systems Programming" ,
+    "id": "PHYS1103",
+    "name": "Physics Lab I" ,
     "lectureType": "MANDATORY",
-    "credit": "7",
+    "credit": "2",
     "prerequisites": "",
     "quota": "40"
 }
