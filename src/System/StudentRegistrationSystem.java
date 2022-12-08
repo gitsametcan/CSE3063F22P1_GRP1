@@ -228,8 +228,8 @@ public class StudentRegistrationSystem {
 
 			if (input.equalsIgnoreCase("send")) {
 				currentUser.sendForApproval(chosenLectures);
-				currentUser.getAdvisor().approveApplication(currentUser.getRegistirationApplication());
-				currentUser.setListOfLectureSessions(chosenLectures);
+				// currentUser.getAdvisor().approveApplication(currentUser.getRegistirationApplication());
+				// currentUser.setListOfLectureSessions(chosenLectures);
 				break;
 			}
 
@@ -321,8 +321,30 @@ public class StudentRegistrationSystem {
 			System.out.println("You have no debt.");
 		} else {
 			System.out.println("Your debt is " + currentUser.getDebt().getAmount() + "TL.");
-//			System.out.println("1- Pay your debt");
-//			System.out.println("2- Go back");
+			System.out.println("1- Pay your debt");
+			System.out.println("2- Go back");
+
+			int payDebtChoice = 0;
+
+			boolean validInput = false;
+
+			while (!validInput) {
+
+				payDebtChoice = scanner.nextInt();
+
+				switch (payDebtChoice) {
+				case 1:
+					currentUser.getDebt().setAmount(0);
+					validInput = true;
+					break;
+				case 2:
+					validInput = true;
+					break;
+				default:
+					System.out.println("Please enter a valid input(1,2)");
+				}
+			}
+
 		}
 
 	}
