@@ -14,8 +14,8 @@ public class Instructor extends Person {
 	private List<Lecture> listOfLectures;
 	protected Calendar dateOfEntry;
 	protected InstructorType instructorType;
-
-	public String getId() {
+	
+	public String getID() {
 		return id.getID();
 	}
 

@@ -11,25 +11,36 @@ import Debt_LRA_Transcript.Transcript;
 import Enums.ApprovalState;
 import IDs.StudentID;
 import lecture.LectureSession;
+import lecture.Schedule;
 
 //Kaan Camci 150119063
 public class Student extends Person {
 
 	private transient Advisor advisor;
 	private StudentID id;
-	private List<LectureSession> listOfLectureSessions;
+	private Schedule schedule;
 	private Transcript transcript;
 	private Calendar dateOfEntry;
 	private Debt debt;
 	private LectureRegistrationApplication registirationApplication;
 
-	// Creating get and set methods for variables
-	public void setId(StudentID id) {
+	public Student(String firstName, String lastName, StudentID id, Schedule schedule, Transcript transcript,
+			Calendar dateOfEntry) {
+		super(firstName, lastName);
 		this.id = id;
+		this.schedule = schedule;
+		this.transcript = transcript;
+		this.dateOfEntry = dateOfEntry;
+	}
+
+	// Creating get and set methods for variables
+	public void setID(String nID) {
+		this.id.setID(nID);
+		;
 	}
 
 	public void setListOfLectureSessions(List<LectureSession> listOfLectureSessions) {
-		this.listOfLectureSessions = listOfLectureSessions;
+		this.schedule.setListOfLectureSessions(listOfLectureSessions);
 	}
 
 	public void setTranscript(Transcript transcript) {
@@ -64,12 +75,12 @@ public class Student extends Person {
 		this.registirationApplication = registirationApplication;
 	}
 
-	public String getId() {
+	public String getID() {
 		return id.getID();
 	}
 
 	public List<LectureSession> getListOfLectureSessions() {
-		return listOfLectureSessions;
+		return this.schedule.getListOfLectureSessions();
 	}
 
 	public Transcript getTranscript() {
@@ -78,15 +89,6 @@ public class Student extends Person {
 
 	public Calendar getDateOfEntry() {
 		return dateOfEntry;
-	}
-
-	public Student(String firstName, String lastName, StudentID id, List<LectureSession> listOfLectureSessions,
-			Transcript transcript, Calendar dateOfEntry) {
-		super(firstName, lastName);
-		this.id = id;
-		this.listOfLectureSessions = new ArrayList<LectureSession>();
-		this.transcript = transcript;
-		this.dateOfEntry = dateOfEntry;
 	}
 
 	public void sendForApproval(List<LectureSession> chosenLectureSessions) {

@@ -6,51 +6,55 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import data.json.AdvisorJSON;
+import data.json.LectureJSON;
+import data.json.StudentJSON;
+import data.json.TranscriptJSON;
+
 public class JsonOperator {
-
-	private static JsonOperator singleInstance = null;
-
-	private JsonOperator() {
-
+	
+	private List<LectureJSON> lectureList;
+	private List<StudentJSON> studentList;
+	private List<TranscriptJSON> transcriptList;
+	private List<AdvisorJSON> advisorList;
+	
+	public JsonOperator() {
+		lectureList = new ArrayList<LectureJSON>();
+		studentList = new ArrayList<StudentJSON>();
+		transcriptList = new ArrayList<TranscriptJSON>();
+		advisorList = new ArrayList<AdvisorJSON>();
 	}
-
-	public static JsonOperator getInstance() {
-		if (singleInstance == null) {
-			singleInstance = new JsonOperator();
-		}
-
-		return singleInstance;
+	
+	public void readLectureJSON(String path){
+		JsonReader json = new JsonReader(path);
+		LectureJSON tempLecture = json.readJsonFile(LectureJSON.class);
+		lectureList.add(tempLecture);
 	}
-
-	// A method for reading json files
-	public <T> T readJsonFile(File file, Class<T> type) throws FileNotFoundException {
-		Scanner scanner = new Scanner(file);
-		String contents = "";
-
-		while (scanner.hasNextLine()) {
-			contents += scanner.nextLine() + "\n";
-		}
-
-		scanner.close();
-
-		Gson gson = new Gson();
-		T t = gson.fromJson(contents, type);
-
-		return t;
+	
+	public void readStudentJSON(String path) {
+		JsonReader json = new JsonReader(path);
+		StudentJSON tempStudent = json.readJsonFile(StudentJSON.class);
+		studentList.add(tempStudent);
 	}
-
-	// A method for writing json files
-	public <T> void writeJsonFile(String path, T element) throws IOException {
-		FileOutputStream fStream = new FileOutputStream(path);
-		Gson gson = new GsonBuilder().setPrettyPrinting().create();
-		String contents = gson.toJson(element);
-
-		fStream.write(contents.getBytes());
-		fStream.close();
+	
+	public void readTranscriptJSON(String path) {
+		JsonReader json = new JsonReader(path);
+		TranscriptJSON tempStudent = json.readJsonFile(TranscriptJSON.class);
+		transcriptList.add(tempStudent);
 	}
+	
+	public void readAdvisorJSON(String path) {
+		JsonReader json = new JsonReader(path);
+		AdvisorJSON tempStudent = json.readJsonFile(AdvisorJSON.class);
+		advisorList.add(tempStudent);
+	}
+	
+	
 }

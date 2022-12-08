@@ -12,7 +12,7 @@ public class Semester {
 	private int creditsTaken;
 	private int creditsCompleted;
 	private double points;
-	double yano;
+	private double yano;
 
 	public Semester(HashMap<Lecture, LetterGrade> listOfLecturesTaken, int creditsTaken, int creditsCompleted,
 			double points, double yano) {
