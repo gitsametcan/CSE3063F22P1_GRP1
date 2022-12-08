@@ -26,6 +26,11 @@ public class Lecture {
 		this.lectureType = lectureType;
 		this.credit = credit;
 		this.sessions = sessions;
+		
+		for (LectureSession ls : this.sessions) {
+			ls.setLecture(this);
+		}
+		
 		this.prerequisite = prerequisite;
 		this.quota = quota;
 
@@ -94,6 +99,10 @@ public class Lecture {
 
 	public void removePrerequisitielLecture() {
 		this.prerequisite = null;
+	}
+	
+	public void setSessions(List<LectureSession> sessions) {
+		this.sessions = sessions;
 	}
 
 }
