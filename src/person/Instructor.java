@@ -44,7 +44,6 @@ public class Instructor extends Person {
 		this.listOfLectures.remove(lecture);
 	}
 
-	
 	public void addLecture(LectureSession lecture) {
 		this.listOfLectureSessions.add(lecture);
 	}
