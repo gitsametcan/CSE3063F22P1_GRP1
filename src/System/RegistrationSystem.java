@@ -38,11 +38,8 @@ public class RegistrationSystem {
 				break;
 			case 2:
 				validInput = true;
-<<<<<<< Updated upstream
 				instructorMenu();
-=======
 				InstructorRegistrationSystem instructorRegistrationSystem = new InstructorRegistrationSystem(objects, this);
->>>>>>> Stashed changes
 				break;
 			case 3:
 				validInput = true;
