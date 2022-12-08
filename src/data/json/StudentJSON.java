@@ -13,10 +13,32 @@ public class StudentJSON extends PersonJSON {
 	private ScheduleJSON schedule;
 	private String dateOfEntry;
 
+	public ScheduleJSON getSchedule() {
+		return schedule;
+	}
+
+	public void setSchedule(ScheduleJSON schedule) {
+		this.schedule = schedule;
+	}
+
+	public String getDateOfEntry() {
+		return dateOfEntry;
+	}
+
+	public void setDateOfEntry(String dateOfEntry) {
+		this.dateOfEntry = dateOfEntry;
+	}
+
+	public String getAdvisorID() {
+		return advisorID;
+	}
+
+	public String getStudentID() {
+		return studentID;
+	}
+
 	public StudentJSON(String firstName, String lastName) {
 		super(firstName, lastName);
-		// Left side of sessions is the lecture id,
-		// right side of the sessions is the session id
 
 	}
 
