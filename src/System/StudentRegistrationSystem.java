@@ -13,6 +13,10 @@ import lecture.Lecture;
 import lecture.LectureSession;
 import person.Student;
 
+<<<<<<< Updated upstream
+=======
+//Kaan Camci 150119063
+>>>>>>> Stashed changes
 public class StudentRegistrationSystem {
 
 	private Scanner scanner;
