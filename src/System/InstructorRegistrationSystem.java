@@ -1,9 +1,5 @@
 package System;
 
-<<<<<<< Updated upstream
-public class InstructorRegistrationSystem {
-
-=======
 import java.io.FileNotFoundException;
 import java.util.List;
 import java.util.Scanner;
@@ -103,7 +99,7 @@ public class InstructorRegistrationSystem {
 			System.out.println(lectureSession.getLecture().getName() + "." + lectureSession.getSessionID());
 			System.out.println("------------");
 			System.out.println("Quota: " + lectureSession.getLecture().getQuota());
-			
+
 		}
 	}
 
@@ -119,5 +115,4 @@ public class InstructorRegistrationSystem {
 		registrationSystem1.menu();
 	}
 
->>>>>>> Stashed changes
 }
