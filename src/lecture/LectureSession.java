@@ -52,5 +52,13 @@ public class LectureSession {
 	public Lecture getLecture() {
 		return lecture;
 	}
+	
+	public void setLecture(Lecture lecture) {
+		this.lecture=lecture;
+	}
+	
+	public void setlistOfAssistants(List<Instructor> listOfAssistans) {
+		this.listOfAssistans = listOfAssistans;
+	}
 
 }
