@@ -2,21 +2,17 @@
 
 package data;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-
+import Debt_LRA_Transcript.Transcript;
 import data.json.AdvisorJSON;
 import data.json.LectureJSON;
 import data.json.StudentJSON;
 import data.json.TranscriptJSON;
+import lecture.Lecture;
+import person.Advisor;
+import person.Student;
 
 public class JsonOperator {
 	
@@ -24,6 +20,13 @@ public class JsonOperator {
 	private List<StudentJSON> studentList;
 	private List<TranscriptJSON> transcriptList;
 	private List<AdvisorJSON> advisorList;
+	
+	private List<Lecture> lectureObjectList;
+	private List<Student> studentObjectList;
+	private List<Transcript> transcriptObjectList;
+	private List<Advisor> advisorObjectList;
+	
+	private ObjectGenerator objectGenerator;
 	
 	public JsonOperator() {
 		lectureList = new ArrayList<LectureJSON>();
@@ -56,5 +59,11 @@ public class JsonOperator {
 		advisorList.add(tempStudent);
 	}
 	
+	public void generateObjects() {
+		
+		 objectGenerator = new ObjectGenerator(lectureList, studentList, transcriptList, advisorList);
+		 objectGenerator.generateObjects();
+		
+	}
 	
 }

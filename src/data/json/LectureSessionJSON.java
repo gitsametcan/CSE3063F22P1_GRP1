@@ -1,5 +1,6 @@
 package data.json;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class LectureSessionJSON {
@@ -8,11 +9,25 @@ public class LectureSessionJSON {
 	private String lectureID;
 	private String instructorID;
 	private String sessionType;
-	private List<String> listOfSessionHours;
+	private int[][] sessionHours;
 	private List<String> listOfAssistantIDs;
 
-	public LectureSessionJSON(String iD, String lectureID, String instructorID, String sessionType) {
+	public LectureSessionJSON(String iD, String lectureID, String instructorID, String sessionType, 
+			int[][] sessionHours, List<String> listOfAssistantIDs) {
 		super();
+		
+		if (sessionHours == null) {
+			this.sessionHours = new int[7][10];
+		} else {
+			this.sessionHours = sessionHours;
+		}
+		
+		if (listOfAssistantIDs == null) {
+			listOfAssistantIDs = new ArrayList<String>();
+		} else {
+			this.listOfAssistantIDs = listOfAssistantIDs;
+		}
+		
 		ID = iD;
 		this.lectureID = lectureID;
 		this.instructorID = instructorID;
@@ -51,12 +66,12 @@ public class LectureSessionJSON {
 		this.sessionType = sessionType;
 	}
 
-	public List<String> getListOfSessionHours() {
-		return listOfSessionHours;
+	public int[][] getListOfSessionHours() {
+		return sessionHours;
 	}
 
-	public void setListOfSessionHours(List<String> listOfSessionHours) {
-		this.listOfSessionHours = listOfSessionHours;
+	public void setListOfSessionHours(int[][] sessionHours) {
+		this.sessionHours = sessionHours;
 	}
 
 	public List<String> getListOfAssistantIDs() {

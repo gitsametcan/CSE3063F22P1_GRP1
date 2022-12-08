@@ -14,15 +14,11 @@ public class JsonReader {
 	private File file;
 
 	public JsonReader(String path) {
-
+		this.file = new File(path);
 	}
 
 	public JsonReader(File file) {
-
-	}
-
-	public JsonReader() {
-
+		this.file = file;
 	}
 
 	// A method for reading json files
