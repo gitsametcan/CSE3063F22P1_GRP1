@@ -9,6 +9,7 @@ import org.junit.Test;
 import IDs.SessionID;
 import lecture.LectureSession;
 import Enums.SessionType;
+import test.unit.LectureTest;
 
 public class LectureSessionTest {
 	
@@ -17,7 +18,7 @@ public class LectureSessionTest {
 	
 		SessionID testID = new SessionID(000);
 		
-		LectureSession testLectureSession = new LectureSession(testID, null, null,
+		LectureSession testLectureSession = new LectureSession(testID, testLecture, null,
 				SessionType.Application,null,null);
 		
 		assertEquals(000, testLectureSession.getSessionID());
