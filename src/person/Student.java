@@ -36,11 +36,6 @@ public class Student extends Person {
 	// Creating get and set methods for variables
 	public void setID(String nID) {
 		this.id.setID(nID);
-		;
-	}
-
-	public void setListOfLectureSessions(List<LectureSession> listOfLectureSessions) {
-		this.schedule.setListOfLectureSessions(listOfLectureSessions);
 	}
 
 	public void setTranscript(Transcript transcript) {
@@ -78,9 +73,13 @@ public class Student extends Person {
 	public String getID() {
 		return id.getID();
 	}
-
-	public List<LectureSession> getListOfLectureSessions() {
-		return this.schedule.getListOfLectureSessions();
+	
+	public Schedule getSchedule() {
+		return this.schedule;
+	}
+	
+	public void setSchedule(Schedule schedule) {
+		this.schedule = schedule;
 	}
 
 	public Transcript getTranscript() {
