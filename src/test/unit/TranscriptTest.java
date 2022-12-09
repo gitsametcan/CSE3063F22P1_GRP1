@@ -23,7 +23,13 @@ public class TranscriptTest {
 		List<Semester> testListOfSemester = new ArrayList<>();
 		testListOfSemester.add(testSemester);
 		testListOfSemester.add(testSemester2);
-
+		
+		Semester testSemester3 = new Semester(null, 2, 3, 1.3 , 2.3);
+		List<Semester> testListOfSemester2 = new ArrayList<>();
+		testListOfSemester2.add(testSemester3);
+		testListOfSemester2.add(testSemester2);
+		
+		
 		Transcript testTranscript = new Transcript(null, testListOfSemester, 
 				3.4, 23, 13, 2.3);
 		Student testStudent = new Student("testFName", "testLName",
@@ -36,7 +42,26 @@ public class TranscriptTest {
 		Debt testDebt = new Debt(23.23 , testStudent);
 		
 		testTranscript.setStudent(testStudent2);;
-		assertEquals(12.3 , testDebt.getAmount());
+		assertEquals(testStudent2, testTranscript.getStudent());
+		
+		testTranscript.setListOfSemester(testListOfSemester2);
+		assertEquals(testListOfSemester2 , testTranscript.getListOfSemester());
+		
+		testTranscript.setTotalCreditsCompleted(6);
+		assertEquals(6 , testTranscript.getTotalCreditsCompleted());
+		
+		testTranscript.setGano(3.2);
+		assertEquals(3.2 , testTranscript.getGano());
+		
+		testTranscript.setPoints(5.1);
+		assertEquals(5.1 , testTranscript.getPoints());
+		
+		testTranscript.setTotalCreditsTaken(8);
+		assertEquals(8, testTranscript.getTotalCreditsTaken());
+
+		
+		
+		
 		
 	}
 

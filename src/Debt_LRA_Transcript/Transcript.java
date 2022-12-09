@@ -62,4 +62,19 @@ public class Transcript {
 	public void addSemester(Semester semester) {
 		listOfSemester.add(semester);
 	}
+	public void setListOfSemester(List<Semester> listOfSemester) {
+		this.listOfSemester = listOfSemester;
+	}
+	public void setGano(double gano) {
+		this.gano = gano;
+	}
+	public void setTotalCreditsTaken(int totalCreditsTaken) {
+		this.totalCreditsTaken = totalCreditsTaken;
+	}
+	public void setTotalCreditsCompleted(int totalCreditsCompleted) {
+		this.totalCreditsCompleted = totalCreditsCompleted;
+	}
+	public void setPoints(double points) {
+		this.points = points;
+	}
 }
