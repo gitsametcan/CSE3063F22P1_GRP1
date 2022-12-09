@@ -9,6 +9,7 @@ public class StudentJSON extends PersonJSON {
 
 	private String advisorID;
 	private String studentID;
+	
 	// LectureID / SessionID
 	private ScheduleJSON schedule;
 	private String dateOfEntry;

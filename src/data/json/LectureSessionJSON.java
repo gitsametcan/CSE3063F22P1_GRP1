@@ -11,6 +11,7 @@ public class LectureSessionJSON {
 	private String sessionType;
 	private int[][] sessionHours;
 	private List<String> listOfAssistantIDs;
+	private List<String> listOfStudentIDs;
 
 	public LectureSessionJSON(String iD, String lectureID, String instructorID, String sessionType, 
 			int[][] sessionHours, List<String> listOfAssistantIDs) {
@@ -82,4 +83,12 @@ public class LectureSessionJSON {
 		this.listOfAssistantIDs = listOfAssistantIDs;
 	}
 
+	public List<String> getListOfStudentIDs() {
+		return listOfStudentIDs;
+	}
+
+	public void setListOfStudentIDs(List<String> listOfStudentIDs) {
+		this.listOfStudentIDs = listOfStudentIDs;
+	}
+	
 }

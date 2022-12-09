@@ -10,4 +10,12 @@ public class ScheduleJSON {
 	public ScheduleJSON() {
 		sessions = new HashMap<String, String>();
 	}
+
+	public Map<String, String> getSessions() {
+		return sessions;
+	}
+
+	public void setSessions(Map<String, String> sessions) {
+		this.sessions = sessions;
+	}
 }

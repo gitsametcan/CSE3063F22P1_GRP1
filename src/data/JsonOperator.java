@@ -60,10 +60,15 @@ public class JsonOperator {
 	}
 	
 	public void generateObjects() {
-		
 		 objectGenerator = new ObjectGenerator(lectureList, studentList, transcriptList, advisorList);
 		 objectGenerator.generateObjects();
-		
+		 objectGenerator.pairObjects();
+		 
+		 this.lectureObjectList = objectGenerator.getLectureObjects();
+		 this.studentObjectList = objectGenerator.getStudentObjects();
+		 this.transcriptObjectList = objectGenerator.getTranscriptObjects();
+		 this.advisorObjectList = objectGenerator.getAdvisorObjects();
+	
 	}
 	
 }

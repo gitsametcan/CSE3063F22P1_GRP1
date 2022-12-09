@@ -43,14 +43,4 @@ public class JsonReader {
 		return t;
 	}
 
-	// A method for writing json files
-	public <T> void writeJsonFile(String path, T element) throws IOException {
-		FileOutputStream fStream = new FileOutputStream(file.getAbsolutePath());
-		Gson gson = new GsonBuilder().setPrettyPrinting().create();
-		String contents = gson.toJson(element);
-
-		fStream.write(contents.getBytes());
-		fStream.close();
-	}
-
 }
