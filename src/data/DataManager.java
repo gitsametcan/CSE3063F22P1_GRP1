@@ -19,7 +19,7 @@ public class DataManager {
 	private static DataManager singleInstance = null;
 	private List<Lecture> listOfLectures;
 	private List<Person> listOfPeople;
-	private List<Person> cacheList;
+	private LinkedList<Person> cacheList;
 
 	private DataManager() {
 		listOfLectures = new ArrayList<Lecture>();
@@ -53,6 +53,8 @@ public class DataManager {
 			Student s = (Student) p;
 			if ((filterType == FilterType.ID && s.getID().equalsIgnoreCase(key))
 					|| (filterType == FilterType.Name && s.getFullName().equalsIgnoreCase(key))) {
+				cacheList.remove(p);
+				cacheList.addFirst(p);
 				return Optional.of(s);
 			}
 		}
@@ -64,6 +66,8 @@ public class DataManager {
 			Student s = (Student) p;
 			if ((filterType == FilterType.ID && s.getID().equalsIgnoreCase(key))
 					|| filterType == FilterType.Name && s.getFullName().equalsIgnoreCase(key)) {
+				cacheList.addFirst(p);
+				fixCache();
 				return Optional.of(s);
 			}
 		}
@@ -78,6 +82,8 @@ public class DataManager {
 			Instructor i = (Instructor) p;
 			if ((filterType == FilterType.ID && i.getID().equalsIgnoreCase(key))
 					|| (filterType == FilterType.Name && i.getFullName().equalsIgnoreCase(key))) {
+				cacheList.remove(p);
+				cacheList.addFirst(p);
 				return Optional.of(i);
 			}
 		}
@@ -89,6 +95,8 @@ public class DataManager {
 			Instructor i = (Instructor) p;
 			if ((filterType == FilterType.ID && i.getID().equalsIgnoreCase(key))
 					|| filterType == FilterType.Name && i.getFullName().equalsIgnoreCase(key)) {
+				cacheList.addFirst(p);
+				fixCache();
 				return Optional.of(i);
 			}
 		}
@@ -103,6 +111,8 @@ public class DataManager {
 			Advisor a = (Advisor) p;
 			if ((filterType == FilterType.ID && a.getID().equalsIgnoreCase(key))
 					|| (filterType == FilterType.Name && a.getFullName().equalsIgnoreCase(key))) {
+				cacheList.remove(p);
+				cacheList.addFirst(p);
 				return Optional.of(a);
 			}
 		}
@@ -114,6 +124,8 @@ public class DataManager {
 			Advisor a = (Advisor) p;
 			if ((filterType == FilterType.ID && a.getID().equalsIgnoreCase(key))
 					|| filterType == FilterType.Name && a.getFullName().equalsIgnoreCase(key)) {
+				cacheList.addFirst(p);
+				fixCache();
 				return Optional.of(a);
 			}
 		}
@@ -175,6 +187,12 @@ public class DataManager {
 			}
 		}
 		return result;
+	}
+	
+	private void fixCache() {
+		while (cacheList.size() > 50) {
+			cacheList.removeLast();
+		}
 	}
 
 }
