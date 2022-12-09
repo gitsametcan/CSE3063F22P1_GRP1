@@ -40,7 +40,6 @@ public class ObjectCreator {
 		StudentID tempID = new StudentID(0, 0, 0);
 		Student student = new Student(firstName, lastName, null, null, null, null);
 		tempID.setID(ID);
-		// createTranscripts(); 
 		student.setId(tempID);
 		Transcript st1Transcript = new Transcript(student, null, 0, 0, 0, 0);
 		Debt st1Debt = new Debt(debt, student);

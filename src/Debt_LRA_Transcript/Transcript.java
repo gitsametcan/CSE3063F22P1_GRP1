@@ -35,6 +35,9 @@ public class Transcript {
 	public Student getStudent() {
 		return student;
 	}
+	public void setStudent(Student student) {
+		this.student = student;
+	}
 
 	public List<Semester> getListOfSemester() {
 		return listOfSemester;
