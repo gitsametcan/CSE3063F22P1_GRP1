@@ -37,10 +37,7 @@ public class TranscriptTest {
 		
 		Student testStudent2 = new Student("testFName2", "testLName2",
 				testId, null, testTranscript, null);
-		
-		testTranscript.setStudent(testStudent);
-		Debt testDebt = new Debt(23.23 , testStudent);
-		
+				
 		testTranscript.setStudent(testStudent2);;
 		assertEquals(testStudent2, testTranscript.getStudent());
 		
