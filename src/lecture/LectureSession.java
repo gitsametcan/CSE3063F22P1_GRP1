@@ -6,6 +6,7 @@ import Enums.LectureHour;
 import Enums.SessionType;
 import IDs.SessionID;
 import person.Instructor;
+import person.Student;
 
 //Serdar Alsan    150120034 
 public class LectureSession {
@@ -16,6 +17,7 @@ public class LectureSession {
 	private SessionType sessionType;
 	private Instructor instructor;
 	private List<Instructor> listOfAssistans;
+	private List<Student> listOfStudents;//Method will add about this property
 
 	public LectureSession(SessionID sessionID, Lecture lecture, LectureHour[][] sessionHours, SessionType sessionType,
 			Instructor instructor, List<Instructor> listOfAssistans) {
