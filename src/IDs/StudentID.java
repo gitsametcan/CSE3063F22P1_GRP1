@@ -50,4 +50,29 @@ public class StudentID implements UniqueID {
 		return tempOrder;
 	}
 
+	public int getDepartmentCode() {
+		return departmentCode;
+	}
+
+	public void setDepartmentCode(int departmentCode) {
+		this.departmentCode = departmentCode;
+	}
+
+	public int getYearCode() {
+		return yearCode;
+	}
+
+	public void setYearCode(int yearCode) {
+		this.yearCode = yearCode;
+	}
+
+	public int getOrderOfPlacement() {
+		return orderOfPlacement;
+	}
+
+	public void setOrderOfPlacement(int orderOfPlacement) {
+		this.orderOfPlacement = orderOfPlacement;
+	}
+	
+
 }
