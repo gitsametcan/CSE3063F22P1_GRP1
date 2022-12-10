@@ -106,8 +106,8 @@ public class AdvisorRegistrationSystem {
 
 	private void applicationOperations(int choice, Advisor currentUser) {
 		LectureRegistrationApplication lectureRegistrationApplication = currentUser.getListOfApplications().get(choice);
-		int lectureChoice = -1;
-		while (lectureChoice != 0) {
+		String lectureChoice = "";
+		while (!lectureChoice.equals("0")) {
 			System.out.println("Name Of Student: " + lectureRegistrationApplication.getStudent().getFullName());
 			int count = 0;
 
@@ -120,7 +120,8 @@ public class AdvisorRegistrationSystem {
 				System.out.printf("%d. %-30s%s", count, sessionName, me.getValue());
 			}
 			System.out.println("0. Exit");
-			lectureChoice = scanner.nextInt();
+			System.out.print("Please Enter The Session Name(0 for exit): ");
+			lectureChoice = scanner.nextLine();
 
 			System.out.println("1. Approve");
 			System.out.println("2. Reject");
