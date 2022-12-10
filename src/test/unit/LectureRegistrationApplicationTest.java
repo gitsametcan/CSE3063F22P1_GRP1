@@ -26,10 +26,16 @@ public class LectureRegistrationApplicationTest {
 	@Test
 	public void test_LRA_default_constructor() {
 		
-		Map<LectureSession, ApprovalState> testSessionsSentForApproval = new HashMap<LectureSession, ApprovalState>();
+		Map<LectureSession, ApprovalState> testSessionsSentForApproval = new HashMap<LectureSession, ApprovalState>();		
+		Map<LectureSession, ApprovalState> testSessionsSentForApproval2 = new HashMap<LectureSession, ApprovalState>();		
+
 		SessionID testID = new SessionID(123);
 		
 		LectureSession testLectureSession = new LectureSession(testID , null , null, null, null, null);
+		
+		testSessionsSentForApproval.put(testLectureSession,ApprovalState.Approved);
+		testSessionsSentForApproval2.put(testLectureSession,ApprovalState.Rejected);
+
 		
 		Semester testSemester = new Semester(null, 1, 2, 2.1 , 1.2);
 		Semester testSemester2 = new Semester(null, 2, 3, 3.1, 1.3);
@@ -57,8 +63,8 @@ public class LectureRegistrationApplicationTest {
 		testLRA.setStudent(testStudent);
 		assertEquals(testStudent, testLRA.getStudent());
 		
-		testLRA.setSessionsSentForApproval(testSessionsSentForApproval);
-		assertEquals(testSessionsSentForApproval, testLRA.getSessionsSentForApproval());
+		testLRA.setSessionsSentForApproval(testSessionsSentForApproval2);
+		assertEquals(testSessionsSentForApproval2, testLRA.getSessionsSentForApproval());
 		
 		
 	}
