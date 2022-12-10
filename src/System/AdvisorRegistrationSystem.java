@@ -1,9 +1,13 @@
 package System;
 
 import java.io.FileNotFoundException;
+import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Scanner;
 
 import Debt_LRA_Transcript.LectureRegistrationApplication;
+import Enums.ApprovalState;
+import lecture.LectureSession;
 import person.Advisor;
 
 //Kaan Camci 150119063
@@ -93,8 +97,48 @@ public class AdvisorRegistrationSystem {
 
 			System.out.print("Choose A Lecture Registration Application: ");
 			choice = scanner.nextInt();
-			
-			
+			if (choice != 0) {
+				applicationOperations(choice - 1, currentUser);
+			}
+		}
+
+	}
+
+	private void applicationOperations(int choice, Advisor currentUser) {
+		LectureRegistrationApplication lectureRegistrationApplication = currentUser.getListOfApplications().get(choice);
+		int lectureChoice = -1;
+		while (lectureChoice != 0) {
+			System.out.println("Name Of Student: " + lectureRegistrationApplication.getStudent().getFullName());
+			int count = 0;
+
+			System.out.println("Session Name                 Approval State");
+			for (Entry<LectureSession, ApprovalState> me : lectureRegistrationApplication.getSessionsSentForApproval()
+					.entrySet()) {
+				count++;
+				String sessionName = me.getKey().getLecture().getName() + "." + me.getKey().getLecture().getID() + "."
+						+ me.getKey().getSessionID();
+				System.out.printf("%d. %-30s%s", count, sessionName, me.getValue());
+			}
+			System.out.println("0. Exit");
+			lectureChoice = scanner.nextInt();
+
+			System.out.println("1. Approve");
+			System.out.println("2. Reject");
+			System.out.println("3. Go Back");
+
+			int approveChoice = scanner.nextInt();
+
+			switch (approveChoice) {
+			case 1:
+				currentUser.approveApplication(lectureRegistrationApplication, lectureChoice);
+				break;
+			case 2:
+				currentUser.rejectApplication(lectureRegistrationApplication, lectureChoice);
+				break;
+			default:
+				break;
+			}
+
 		}
 
 	}
