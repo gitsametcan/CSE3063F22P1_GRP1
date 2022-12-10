@@ -47,7 +47,7 @@ public class Semester {
 		return yano;
 	}
 
-	public void addLecture(Lecture lecture, LetterGrade lectureGrade) {
+/*	public void addLecture(Lecture lecture, LetterGrade lectureGrade) {
 		this.listOfLecturesTaken.put(lecture, lectureGrade);
 	}
 
@@ -55,11 +55,17 @@ public class Semester {
 	public void removeLecture(Lecture lecture, LetterGrade lectureGrade) {
 		this.listOfLecturesTaken.remove(lecture, lectureGrade);
 	}
-	
+	*/
 	public void setCreditsTaken(int creditsTaken) {
 		this.creditsTaken = creditsTaken;
 	}
 
+	public void setListOfLecturesTaken(Map<Lecture, LetterGrade> listOfLecturesTaken) {
+		this.listOfLecturesTaken = listOfLecturesTaken;
+	}
+	public void setYano(double yano) {
+		this.yano = yano;
+	}
 	public void setCreditsCompleted(int creditsCompleted) {
 		this.creditsCompleted = creditsCompleted;
 	}
