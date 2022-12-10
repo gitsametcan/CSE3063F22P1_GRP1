@@ -11,14 +11,14 @@ import Debt_LRA_Transcript.Transcript;
 import Enums.ApprovalState;
 import IDs.StudentID;
 import lecture.LectureSession;
-import lecture.Schedule;
+//import lecture.Schedule;
 
 //Kaan Camci 150119063
 public class Student extends Person {
 
 	private transient Advisor advisor;
 	private StudentID id;
-	private Schedule schedule;
+	//private Schedule schedule;
 	private Transcript transcript;
 	private Calendar dateOfEntry;
 	private Debt debt;
