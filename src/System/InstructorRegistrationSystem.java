@@ -21,6 +21,7 @@ public class InstructorRegistrationSystem {
 		scanner = new Scanner(System.in);
 		objects1 = objects;
 		registrationSystem1 = registrationSystem;
+		instructorLogin();
 	}
 
 	private void instructorLogin() throws FileNotFoundException {
@@ -154,17 +155,19 @@ public class InstructorRegistrationSystem {
 
 	private void showStudents(Instructor currentUser) {
 		int count = 0;
-		for(LectureSession lectureSession: currentUser.getListOfLectureSessions()) {
+		for (LectureSession lectureSession : currentUser.getListOfLectureSessions()) {
 			count++;
-			System.out.println(count + ". " + lectureSession.getLecture().getName() + "." + lectureSession.getSessionID());
+			System.out.println(
+					count + ". " + lectureSession.getLecture().getName() + "." + lectureSession.getSessionID());
 		}
 		System.out.print("Choose A Session: ");
 		int sessionChoice = scanner.nextInt();
-		LectureSession lectureSession = currentUser.getListOfLectureSessions().get(sessionChoice-1);
-		for(Student student: lectureSession.getListOfStudents()) {
+		LectureSession lectureSession = currentUser.getListOfLectureSessions().get(sessionChoice - 1);
+		for (Student student : lectureSession.getListOfStudents()) {
 			System.out.println("ID: " + student.getId() + "Name: " + student.getFullName());
 		}
 	}
+
 	private void signOut() throws FileNotFoundException {
 		registrationSystem1.menu();
 	}

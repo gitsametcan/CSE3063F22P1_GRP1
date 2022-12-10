@@ -311,6 +311,7 @@ public class StudentRegistrationSystem {
 				.getSessionsSentForApproval();
 		System.out.println();
 		for (LectureSession s : sessions.keySet()) {
+			
 			System.out.printf("%s.%s", s.getLecture().getID(), s.getSessionID());
 			System.out.printf(" %-15s%n", sessions.get(s).toString());
 		}

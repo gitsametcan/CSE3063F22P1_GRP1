@@ -33,4 +33,9 @@ public class LectureRegistrationApplication {
 		return this.sessionsSentForApproval;
 	}
 
+	public Student getStudent() {
+		return student;
+	}
+	
+	
 }

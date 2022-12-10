@@ -16,14 +16,16 @@ public class Instructor extends Person {
 	private List<LectureSession> listOfLectureSessions;
 	protected Calendar dateOfEntry;
 	protected InstructorType instructorType;
-	
+
 	public String getId() {
 		return id.getID();
 	}
-	//Creating get methods for variables
+
+	// Creating get methods for variables
 	public List<Lecture> getListOfLectures() {
 		return listOfLectures;
 	}
+
 	public List<LectureSession> getListOfLectureSessions() {
 		return listOfLectureSessions;
 	}
@@ -31,7 +33,7 @@ public class Instructor extends Person {
 	public Calendar getDateOfEntry() {
 		return dateOfEntry;
 	}
-	
+
 	public InstructorType getInstructorType() {
 		return instructorType;
 	}
@@ -52,13 +54,13 @@ public class Instructor extends Person {
 		this.listOfLectureSessions.remove(lecture);
 	}
 
-	public Instructor(String firstName, String lastName, InstructorID id, List<LectureSession> listOfLectureSessions, Calendar dateOfEntry, InstructorType InstructorType) {
+	public Instructor(String firstName, String lastName, InstructorID id, List<LectureSession> listOfLectureSessions,
+			Calendar dateOfEntry, InstructorType InstructorType) {
 		super(firstName, lastName);
 		this.id = id;
 		this.listOfLectureSessions = listOfLectureSessions;
 		this.dateOfEntry = dateOfEntry;
 		this.instructorType = InstructorType;
 	}
-	
 
 }
