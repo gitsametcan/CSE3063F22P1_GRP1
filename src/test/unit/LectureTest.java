@@ -66,8 +66,8 @@ public class LectureTest {
 		testSession1.setLecture(testLecture1);
 		testSession2.setLecture(testLecture);
 		
-		testSession1.setlistOfAssistants(testListAssistants);
-		testSession2.setlistOfAssistants(testListAssistants);
+		testSession1.setListOfAssistans(testListAssistants);
+		testSession2.setListOfAssistans(testListAssistants);
 		
 		testLecture.setId(testLecID1);
 		assertEquals(testLecID1, testLecture.getId());
