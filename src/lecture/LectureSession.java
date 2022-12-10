@@ -23,7 +23,6 @@ public class LectureSession {
 		this.sessionID = sessionID;
 		this.lecture = lecture;
 		this.sessionHours = sessionHours;
-		this.sessionHours = sessionHours;
 		this.sessionType = sessionType;
 		this.instructor = instructor;
 		this.listOfAssistans = listOfAssistans;
@@ -49,6 +48,21 @@ public class LectureSession {
 		return listOfAssistans;
 	}
 
+	public void setSessionID(SessionID sessionID) {
+		this.sessionID = sessionID;
+	}
+	public void setSessionHours(LectureHour[][] sessionHours) {
+		this.sessionHours = sessionHours;
+	}
+	public void setSessionType(SessionType sessionType) {
+		this.sessionType = sessionType;
+	}
+	public void setInstructor(Instructor instructor) {
+		this.instructor = instructor;
+	}
+	public void setListOfAssistans(List<Instructor> listOfAssistans) {
+		this.listOfAssistans = listOfAssistans;
+	}
 	public Lecture getLecture() {
 		return lecture;
 	}
@@ -57,8 +71,5 @@ public class LectureSession {
 		this.lecture=lecture;
 	}
 	
-	public void setlistOfAssistants(List<Instructor> listOfAssistans) {
-		this.listOfAssistans = listOfAssistans;
-	}
 
 }
