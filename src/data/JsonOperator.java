@@ -2,53 +2,97 @@
 
 package data;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.util.Scanner;
+import java.util.ArrayList;
+import java.util.List;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
+import Debt_LRA_Transcript.Transcript;
+import data.json.AdvisorJSON;
+import data.json.LectureJSON;
+import data.json.MetaData;
+import data.json.NamePool;
+import data.json.StudentJSON;
+import data.json.TranscriptJSON;
+import lecture.Lecture;
+import person.Advisor;
+import person.Student;
 
 public class JsonOperator {
-
-	private static JsonOperator singleInstance = null;
-
-	private JsonOperator() {
-
+	
+	private List<LectureJSON> lectureList;
+	private List<StudentJSON> studentList;
+	private List<TranscriptJSON> transcriptList;
+	private List<AdvisorJSON> advisorList;
+	
+	private List<Lecture> lectureObjectList;
+	private List<Student> studentObjectList;
+	private List<Transcript> transcriptObjectList;
+	private List<Advisor> advisorObjectList;
+	
+	private ObjectGenerator objectGenerator;
+	private MetaData metaData;
+	private NamePool namePool;
+	
+	public JsonOperator() {
+		lectureList = new ArrayList<LectureJSON>();
+		studentList = new ArrayList<StudentJSON>();
+		transcriptList = new ArrayList<TranscriptJSON>();
+		advisorList = new ArrayList<AdvisorJSON>();
+		
+		JsonReader json = new JsonReader("metadata.json");
+		MetaData metaData = json.readJsonFile(MetaData.class);
+		this.metaData = metaData;
+	}
+	
+	public void readNamePool() {
+		JsonReader json = new JsonReader(metaData.getNamePoolPath());
+		NamePool namePool = json.readJsonFile(NamePool.class);
+		this.namePool = namePool;
 	}
 
-	public static JsonOperator getInstance() {
-		if (singleInstance == null) {
-			singleInstance = new JsonOperator();
-		}
-
-		return singleInstance;
+	public void readLectureJSON(String path){
+		JsonReader json = new JsonReader(path);
+		LectureJSON tempLecture = json.readJsonFile(LectureJSON.class);
+		lectureList.add(tempLecture);
 	}
-	//A method for reading json files
-	public <T> T readJsonFile(File file, Class<T> type) throws FileNotFoundException {
-		Scanner scanner = new Scanner(file);
-		String contents = "";
-
-		while (scanner.hasNextLine()) {
-			contents += scanner.nextLine() + "\n";
-		}
-
-		scanner.close();
-
-		Gson gson = new Gson();
-		T t = gson.fromJson(contents, type);
-
-		return t;
+	
+	public void readStudentJSON(String path) {
+		JsonReader json = new JsonReader(path);
+		StudentJSON tempStudent = json.readJsonFile(StudentJSON.class);
+		studentList.add(tempStudent);
 	}
-	//A method for writing json files
-	public <T> void writeJsonFile(String path, T element) throws IOException {
-		FileOutputStream fStream = new FileOutputStream(path);
-		Gson gson = new GsonBuilder().setPrettyPrinting().create();
-		String contents = gson.toJson(element);
-
-		fStream.write(contents.getBytes());
-		fStream.close();
+	
+	public void readTranscriptJSON(String path) {
+		JsonReader json = new JsonReader(path);
+		TranscriptJSON tempStudent = json.readJsonFile(TranscriptJSON.class);
+		transcriptList.add(tempStudent);
 	}
+	
+	public void readAdvisorJSON(String path) {
+		JsonReader json = new JsonReader(path);
+		AdvisorJSON tempStudent = json.readJsonFile(AdvisorJSON.class);
+		advisorList.add(tempStudent);
+	}
+	
+	public MetaData getMetaData() {
+		return metaData;
+	}
+	
+	public NamePool getNamePool() {
+		return namePool;
+	}
+	
+	public void generateObjects() {
+		 objectGenerator = new ObjectGenerator(lectureList, studentList, transcriptList, advisorList);
+		 objectGenerator.generateObjects();
+		 objectGenerator.pairObjects();
+		 
+		 this.lectureObjectList = objectGenerator.getLectureObjects();
+		 this.studentObjectList = objectGenerator.getStudentObjects();
+		 this.transcriptObjectList = objectGenerator.getTranscriptObjects();
+		 this.advisorObjectList = objectGenerator.getAdvisorObjects();
+	
+	}
+
+	
+	
 }

@@ -1,0 +1,8 @@
+{
+    "id": "CSE4288",
+    "name": "Introduction to Machine Learning" ,
+    "lectureType": "MANDATORY",
+    "credit": "5",
+    "prerequisites": ["STAT2253" , "MATH2256" ],
+    "quota": "40"
+}

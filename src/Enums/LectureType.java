@@ -1,9 +1,5 @@
 package Enums;
 
 public enum LectureType {
-	NTE,
-	UE,
-	TE,
-	FTE,
-	MANDATORY;
+	NTE, UE, TE, FTE, MANDATORY;
 }

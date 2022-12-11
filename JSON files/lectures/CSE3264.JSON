@@ -1,0 +1,8 @@
+{
+    "id": "CSE3264",
+    "name": "Formal Languages and Automata Theory" ,
+    "lectureType": "MANDATORY",
+    "credit": "5",
+    "prerequisites": "CSE2023",
+    "quota": "40"
+}
