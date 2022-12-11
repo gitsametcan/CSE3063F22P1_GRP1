@@ -64,6 +64,18 @@ public class Lecture {
 		return prerequisite;
 	}
 
+	public LectureID getId() {
+		return id;
+	}
+	public void setId(LectureID id) {
+		this.id = id;
+	}
+	public void setSessions(List<LectureSession> sessions) {
+		this.sessions = sessions;
+	}
+	public void setPrerequisite(Lecture prerequisite) {
+		this.prerequisite = prerequisite;
+	}
 	public int getQuota() {
 		return quota;
 	}
@@ -84,11 +96,6 @@ public class Lecture {
 		this.quota = quota;
 	}
 
-	// Creating add and remove methods for array variables
-	public void addLectureSession(LectureSession lectureSession) {
-		this.sessions.add(lectureSession);
-	}
-
 	public void removeLectureSession(LectureSession lectureSession) {
 		this.sessions.remove(lectureSession);
 	}
@@ -100,9 +107,10 @@ public class Lecture {
 	public void removePrerequisitielLecture() {
 		this.prerequisite = null;
 	}
-	
+
 	public void setSessions(List<LectureSession> sessions) {
 		this.sessions = sessions;
 	}
+
 
 }

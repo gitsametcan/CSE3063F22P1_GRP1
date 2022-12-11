@@ -60,6 +60,12 @@ public class Semester {
 		this.creditsTaken = creditsTaken;
 	}
 
+	public void setListOfLecturesTaken(Map<Lecture, LetterGrade> listOfLecturesTaken) {
+		this.listOfLecturesTaken = listOfLecturesTaken;
+	}
+	public void setYano(double yano) {
+		this.yano = yano;
+	}
 	public void setCreditsCompleted(int creditsCompleted) {
 		this.creditsCompleted = creditsCompleted;
 	}
