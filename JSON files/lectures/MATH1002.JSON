@@ -1,0 +1,8 @@
+{
+    "id": "MATH1002",
+    "name": "Calculus II" ,
+    "lectureType": "MANDATORY",
+    "credit": "6",
+    "prerequisites": "",
+    "quota": "40"
+}

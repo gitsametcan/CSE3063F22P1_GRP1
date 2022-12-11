@@ -1,8 +1,8 @@
 {
     "id": "CSE3033",
     "name": "Operating Systems" ,
-    "lectureType": "non-precondition",
+    "lectureType": "MANDATORY",
     "credit": "7",
-    "prerequisites": "",
-    "quota": "60"
+    "prerequisites": "CSE2225",
+    "quota": "40"
 }

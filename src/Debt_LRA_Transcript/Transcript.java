@@ -31,7 +31,8 @@ public class Transcript {
 			this.listOfSemester = new ArrayList<Semester>();
 		}
 	}
-	//Creating get and set methods for variables
+
+	// Creating get and set methods for variables
 	public Student getStudent() {
 		return student;
 	}
