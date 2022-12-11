@@ -79,8 +79,7 @@ public class ObjectGenerator {
 				prerequisiteLecture = optPrerequisiteLecture.get();
 				currentLecture.addPrerequisiteLecture(prerequisiteLecture);
 			}
-			
-			
+
 			// Collecting the Instructor and assigning it
 			sessionloop: for (LectureSession ls : currentLecture.getSessions()) {
 				for (LectureSessionJSON lsjs : ljs.getLectureSessions()) {
@@ -109,7 +108,7 @@ public class ObjectGenerator {
 			} else {
 				continue;
 			}
-			
+
 			for (StudentJSON sjs : studentList) {
 				if (sjs.getAdvisorID().equalsIgnoreCase(currentAdvisor.getID())) {
 					Optional<Student> optStudent = findStudent(sjs.getStudentID());
@@ -125,21 +124,21 @@ public class ObjectGenerator {
 			}
 
 		}
-		
+
 		for (StudentJSON sjs : studentList) {
 			Optional<Student> optStudent = findStudent(sjs.getStudentID());
 			Student currentStudent = null;
-			
+
 			if (optStudent.isPresent()) {
 				currentStudent = optStudent.get();
 			} else {
 				continue;
 			}
-			
+
 			currentStudent.getSchedule().setStudent(currentStudent);
-			
+
 			ScheduleJSON schedule = sjs.getSchedule();
-			
+
 			for (LectureJSON ljs : lectureList) {
 				Optional<Lecture> optLecture = findLecture(ljs.getID());
 				Lecture currentLecture = null;
@@ -165,19 +164,19 @@ public class ObjectGenerator {
 	public List<Lecture> getLectureObjects() {
 		return lectureObjectList;
 	}
-	
+
 	public List<Student> getStudentObjects() {
 		return studentObjectList;
 	}
-	
+
 	public List<Transcript> getTranscriptObjects() {
 		return transcriptObjectList;
 	}
-	
+
 	public List<Advisor> getAdvisorObjects() {
 		return advisorObjectList;
 	}
-	
+
 	private void generateLectures() {
 		for (LectureJSON ljs : lectureList) {
 			String ID = ljs.getID();

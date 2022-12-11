@@ -8,6 +8,8 @@ import java.util.List;
 import Debt_LRA_Transcript.Transcript;
 import data.json.AdvisorJSON;
 import data.json.LectureJSON;
+import data.json.MetaData;
+import data.json.NamePool;
 import data.json.StudentJSON;
 import data.json.TranscriptJSON;
 import lecture.Lecture;
@@ -27,14 +29,26 @@ public class JsonOperator {
 	private List<Advisor> advisorObjectList;
 	
 	private ObjectGenerator objectGenerator;
+	private MetaData metaData;
+	private NamePool namePool;
 	
 	public JsonOperator() {
 		lectureList = new ArrayList<LectureJSON>();
 		studentList = new ArrayList<StudentJSON>();
 		transcriptList = new ArrayList<TranscriptJSON>();
 		advisorList = new ArrayList<AdvisorJSON>();
+		
+		JsonReader json = new JsonReader("metadata.json");
+		MetaData metaData = json.readJsonFile(MetaData.class);
+		this.metaData = metaData;
 	}
 	
+	public void readNamePool() {
+		JsonReader json = new JsonReader(metaData.getNamePoolPath());
+		NamePool namePool = json.readJsonFile(NamePool.class);
+		this.namePool = namePool;
+	}
+
 	public void readLectureJSON(String path){
 		JsonReader json = new JsonReader(path);
 		LectureJSON tempLecture = json.readJsonFile(LectureJSON.class);
@@ -59,6 +73,14 @@ public class JsonOperator {
 		advisorList.add(tempStudent);
 	}
 	
+	public MetaData getMetaData() {
+		return metaData;
+	}
+	
+	public NamePool getNamePool() {
+		return namePool;
+	}
+	
 	public void generateObjects() {
 		 objectGenerator = new ObjectGenerator(lectureList, studentList, transcriptList, advisorList);
 		 objectGenerator.generateObjects();
@@ -70,5 +92,7 @@ public class JsonOperator {
 		 this.advisorObjectList = objectGenerator.getAdvisorObjects();
 	
 	}
+
+	
 	
 }

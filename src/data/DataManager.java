@@ -20,11 +20,13 @@ public class DataManager {
 	private List<Lecture> listOfLectures;
 	private List<Person> listOfPeople;
 	private LinkedList<Person> cacheList;
+	private JsonOperator jsonOperator;
 
 	private DataManager() {
 		listOfLectures = new ArrayList<Lecture>();
 		listOfPeople = new ArrayList<Person>();
 		cacheList = new LinkedList<Person>();
+		jsonOperator = new JsonOperator();
 
 	}
 
@@ -44,7 +46,7 @@ public class DataManager {
 		}
 		return Optional.empty();
 	}
-
+ 
 	public Optional<Student> findStudent(String key, FilterType filterType) {
 		for (Person p : cacheList) {
 			if (!(p instanceof Student)) {
