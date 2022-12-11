@@ -16,12 +16,6 @@ public class LectureIDTest {
 		testLectureID.setID("test");
 		assertEquals("test", testLectureID.getID());
 		
-		// ???????????????
-		testLectureID.digitFixer(0);
-		assertEquals(0, testLectureID.getID());
-
-
-
 	}
 
 }

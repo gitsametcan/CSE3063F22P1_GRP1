@@ -15,7 +15,7 @@ public class InstructorIDTest {
 		InstructorID testInstructorID = new InstructorID(1, 2);
 		
 		testInstructorID.SetId(1, 2);
-		
+		assertEquals("001002" , testInstructorID.getID());
 		
 	}
 }
