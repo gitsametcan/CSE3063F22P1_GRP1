@@ -47,4 +47,18 @@ public class Advisor extends Instructor {
 		}
 	}
 
+
+	public Advisor(String firstName, String lastName, InstructorID id, List<LectureSession> listOfLectureSessions, Calendar dateOfEntry, List<Student> listOfStudents,
+			List<LectureRegistrationApplication> listOfApplications, InstructorType instructorType) {
+		super(firstName, lastName, id, listOfLectureSessions, dateOfEntry, instructorType);
+		this.listOfStudents = listOfStudents;
+		this.listOfApplications = listOfApplications;
+		if(this.listOfStudents == null) {
+			this.listOfStudents = new ArrayList<Student>();
+		}
+		if (this.listOfApplications == null) {
+			this.listOfApplications = new ArrayList<LectureRegistrationApplication>();
+		}
+	}
+
 }

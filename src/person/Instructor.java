@@ -12,26 +12,26 @@ import lecture.LectureSession;
 public class Instructor extends Person {
 
 	protected InstructorID id;
-	private List<LectureSession> listOfLectures;
+
+	private List<Lecture> listOfLectures;
+	private List<LectureSession> listOfLectureSessions;
 	protected Calendar dateOfEntry;
 	protected InstructorType instructorType;
-	
-	public Instructor(String firstName, String lastName, InstructorID id, List<LectureSession> listOfLectures,
-			Calendar dateOfEntry, InstructorType InstructorType) {
-		super(firstName, lastName);
-		this.id = id;
-		this.listOfLectures = listOfLectures;
-		this.dateOfEntry = dateOfEntry;
-		this.instructorType = InstructorType;
-	}
-	
-	public String getID() {
+
+	public String getId() {
+
 		return id.getID();
 	}
 
 	// Creating get methods for variables
-	public List<LectureSession> getListOfLectures() {
+
+	public List<Lecture> getListOfLectures() {
+
 		return listOfLectures;
+	}
+
+	public List<LectureSession> getListOfLectureSessions() {
+		return listOfLectureSessions;
 	}
 
 	public Calendar getDateOfEntry() {
@@ -48,6 +48,24 @@ public class Instructor extends Person {
 
 	public void removeLecture(LectureSession lecture) {
 		this.listOfLectures.remove(lecture);
+	}
+
+
+	public void addLecture(LectureSession lecture) {
+		this.listOfLectureSessions.add(lecture);
+	}
+
+	public void removeLecture(LectureSession lecture) {
+		this.listOfLectureSessions.remove(lecture);
+	}
+
+	public Instructor(String firstName, String lastName, InstructorID id, List<LectureSession> listOfLectureSessions,
+			Calendar dateOfEntry, InstructorType InstructorType) {
+		super(firstName, lastName);
+		this.id = id;
+		this.listOfLectureSessions = listOfLectureSessions;
+		this.dateOfEntry = dateOfEntry;
+		this.instructorType = InstructorType;
 	}
 
 }
