@@ -32,4 +32,24 @@ public class LectureRegistrationApplication {
 		return this.sessionsSentForApproval;
 	}
 
+	public Advisor getAdvisor() {
+		return advisor;
+	}
+
+	public Student getStudent() {
+		return student;
+	}
+
+	public void setSessionsSentForApproval(Map<LectureSession, ApprovalState> sessionsSentForApproval) {
+		this.sessionsSentForApproval = sessionsSentForApproval;
+	}
+
+	public void setAdvisor(Advisor advisor) {
+		this.advisor = advisor;
+	}
+
+	public void setStudent(Student student) {
+		this.student = student;
+	}
+
 }
