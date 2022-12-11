@@ -1,0 +1,8 @@
+{
+    "id": "CSE3038",
+    "name": "Introduction to Signals and Systems" ,
+    "lectureType": "MANDATORY",
+    "credit": "5",
+    "prerequisites": "MATH2055",
+    "quota": "40"
+}

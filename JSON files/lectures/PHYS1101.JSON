@@ -1,0 +1,8 @@
+{
+    "id": "PHYS1101",
+    "name": "Physics I" ,
+    "lectureType": "MANDATORY",
+    "credit": "4",
+    "prerequisites": "",
+    "quota": "40"
+}
