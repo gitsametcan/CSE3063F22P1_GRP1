@@ -14,15 +14,11 @@ public class JsonReader {
 	private File file;
 
 	public JsonReader(String path) {
-
+		this.file = new File(path);
 	}
 
 	public JsonReader(File file) {
-
-	}
-
-	public JsonReader() {
-
+		this.file = file;
 	}
 
 	// A method for reading json files
@@ -45,16 +41,6 @@ public class JsonReader {
 		T t = gson.fromJson(contents, type);
 
 		return t;
-	}
-
-	// A method for writing json files
-	public <T> void writeJsonFile(String path, T element) throws IOException {
-		FileOutputStream fStream = new FileOutputStream(file.getAbsolutePath());
-		Gson gson = new GsonBuilder().setPrettyPrinting().create();
-		String contents = gson.toJson(element);
-
-		fStream.write(contents.getBytes());
-		fStream.close();
 	}
 
 }

@@ -6,6 +6,7 @@ import Enums.LectureHour;
 import Enums.SessionType;
 import IDs.SessionID;
 import person.Instructor;
+import person.Student;
 
 //Serdar Alsan    150120034 
 public class LectureSession {
@@ -16,9 +17,10 @@ public class LectureSession {
 	private SessionType sessionType;
 	private Instructor instructor;
 	private List<Instructor> listOfAssistans;
+	private List<Student> listOfStudents;
 
 	public LectureSession(SessionID sessionID, Lecture lecture, LectureHour[][] sessionHours, SessionType sessionType,
-			Instructor instructor, List<Instructor> listOfAssistans) {
+			Instructor instructor, List<Instructor> listOfAssistans, List<Student> listOfStudents) {
 		super();
 		this.sessionID = sessionID;
 		this.lecture = lecture;
@@ -27,9 +29,35 @@ public class LectureSession {
 		this.sessionType = sessionType;
 		this.instructor = instructor;
 		this.listOfAssistans = listOfAssistans;
+		this.setListOfStudents(listOfStudents);
 	}
 
 	// Creating get and set methods for variables
+	
+	public void setSessionID(SessionID sessionID) {
+		this.sessionID = sessionID;
+	}
+
+	public void setLecture(Lecture lecture) {
+		this.lecture = lecture;
+	}
+
+	public void setSessionHours(LectureHour[][] sessionHours) {
+		this.sessionHours = sessionHours;
+	}
+
+	public void setSessionType(SessionType sessionType) {
+		this.sessionType = sessionType;
+	}
+
+	public void setInstructor(Instructor instructor) {
+		this.instructor = instructor;
+	}
+
+	public void setListOfAssistans(List<Instructor> listOfAssistans) {
+		this.listOfAssistans = listOfAssistans;
+	}
+	
 	public String getSessionID() {
 		return sessionID.getID();
 	}
@@ -52,6 +80,14 @@ public class LectureSession {
 
 	public Lecture getLecture() {
 		return lecture;
+	}
+
+	public List<Student> getListOfStudents() {
+		return listOfStudents;
+	}
+
+	public void setListOfStudents(List<Student> listOfStudents) {
+		this.listOfStudents = listOfStudents;
 	}
 
 }

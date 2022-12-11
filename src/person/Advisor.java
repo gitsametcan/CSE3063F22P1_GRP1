@@ -9,7 +9,6 @@ import Debt_LRA_Transcript.LectureRegistrationApplication;
 import Enums.ApprovalState;
 import Enums.InstructorType;
 import IDs.InstructorID;
-import lecture.Lecture;
 import lecture.LectureSession;
 
 //Kaan Camci 150119063
@@ -18,7 +17,7 @@ public class Advisor extends Instructor {
 	private List<Student> listOfStudents;
 	private List<LectureRegistrationApplication> listOfApplications;
 
-	public Advisor(String firstName, String lastName, InstructorID id, List<Lecture> listOfLectures, Calendar dateOfEntry, List<Student> listOfStudents,
+	public Advisor(String firstName, String lastName, InstructorID id, List<LectureSession> listOfLectures, Calendar dateOfEntry, List<Student> listOfStudents,
 			List<LectureRegistrationApplication> listOfApplications, InstructorType instructorType) {
 		super(firstName, lastName, id, listOfLectures, dateOfEntry, instructorType);
 		this.listOfStudents = listOfStudents;

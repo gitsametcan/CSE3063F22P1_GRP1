@@ -12,6 +12,10 @@ public class InstructorID implements UniqueID {
 		this.orderOfEntry = orderOfEntry;
 	}
 
+	public InstructorID(String ID) {
+		this.setID(ID);
+	}
+
 	// Another set method for ID
 	public void setID(String string) {
 		try {
