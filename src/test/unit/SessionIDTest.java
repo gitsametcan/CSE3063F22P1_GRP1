@@ -15,9 +15,8 @@ public class SessionIDTest {
 		testSessionID.setID("test");
 		assertEquals("test", testSessionID.getID());
 		
-		testSessionID.setID(1);
-	//	assertEquals(1, testSessionID.digitFixer());
-		
+		testSessionID.setID(0);
+		assertEquals(0, testSessionID.getID());
 		
 	}
 		
