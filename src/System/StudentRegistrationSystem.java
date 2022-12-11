@@ -11,6 +11,7 @@ import Enums.LectureHour;
 import Enums.LetterGrade;
 import lecture.Lecture;
 import lecture.LectureSession;
+import lecture.Schedule;
 import person.Student;
 
 //Kaan Camci 150119063
@@ -56,8 +57,6 @@ public class StudentRegistrationSystem {
 	private void studentMenu(Student currentUser) throws FileNotFoundException {
 
 		boolean validInput = false;
-
-		int menuChoice = 0;
 
 		while (menuChoice != 6) {
 
@@ -143,6 +142,7 @@ public class StudentRegistrationSystem {
 			System.out.println(currentUser.getTranscript().getListOfSemester().get(i).getCreditsCompleted());
 		}
 
+
 	}
 
 	private void scheduleMenu(Student currentUser) throws FileNotFoundException {
@@ -199,6 +199,16 @@ public class StudentRegistrationSystem {
 			}
 		}
 		System.out.println();
+
+		studentMenu(currentUser);
+	}
+
+	private void scheduleMenu(Student currentUser) throws FileNotFoundException {
+
+		Schedule schedule = new Schedule(currentUser);
+		schedule.showSchedule();
+		studentMenu(currentUser);
+
 	}
 
 	private void makeRegistrationMenu(Student currentUser) throws FileNotFoundException {
@@ -238,7 +248,6 @@ public class StudentRegistrationSystem {
 				break;
 			}
 		}
-
 	}
 
 	private void parseSelectionCommand(String input, List<LectureSession> chosenLectures) {
@@ -348,7 +357,6 @@ public class StudentRegistrationSystem {
 			}
 
 		}
-
 	}
 
 	private void signOut() throws FileNotFoundException {

@@ -12,17 +12,21 @@ import lecture.LectureSession;
 public class Instructor extends Person {
 
 	protected InstructorID id;
+
 	private List<Lecture> listOfLectures;
 	private List<LectureSession> listOfLectureSessions;
 	protected Calendar dateOfEntry;
 	protected InstructorType instructorType;
 
 	public String getId() {
+
 		return id.getID();
 	}
 
 	// Creating get methods for variables
+
 	public List<Lecture> getListOfLectures() {
+
 		return listOfLectures;
 	}
 
@@ -38,13 +42,14 @@ public class Instructor extends Person {
 		return instructorType;
 	}
 
-	public void addLecture(Lecture lecture) {
+	public void addLecture(LectureSession lecture) {
 		this.listOfLectures.add(lecture);
 	}
 
-	public void removeLecture(Lecture lecture) {
+	public void removeLecture(LectureSession lecture) {
 		this.listOfLectures.remove(lecture);
 	}
+
 
 	public void addLecture(LectureSession lecture) {
 		this.listOfLectureSessions.add(lecture);

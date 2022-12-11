@@ -1,0 +1,8 @@
+{
+    "id": "CSE2246",
+    "name": "Analysis of Algorithms" ,
+    "lectureType": "MANDATORY",
+    "credit": "6",
+    "prerequisites": "CSE2225" ,
+    "quota": "40"
+}

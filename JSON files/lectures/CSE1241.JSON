@@ -1,7 +1,7 @@
 {
     "id": "CSE1241",
     "name": "Computer Programming I " ,
-    "lectureType": "non-precondition",
+    "lectureType": "MANDATORY",
     "credit": "6",
     "prerequisites": "",
     "quota": "40"

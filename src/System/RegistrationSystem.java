@@ -53,8 +53,7 @@ public class RegistrationSystem {
 		}
 
 	}
-	
-	
+
 	private void instructorMenu() {
 
 	}

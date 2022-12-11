@@ -1,0 +1,8 @@
+{
+    "id": "IE3235",
+    "name": "Operations Research" ,
+    "lectureType": "MANDATORY",
+    "credit": "4",
+    "prerequisites": "MATH2256",
+    "quota": "40"
+}
