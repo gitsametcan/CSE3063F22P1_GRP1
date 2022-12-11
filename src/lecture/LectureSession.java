@@ -18,8 +18,7 @@ public class LectureSession {
 	private Instructor instructor;
 	private List<Instructor> listOfAssistans;
 
-	private List<Student> listOfStudents;//Method will add about this property
-
+	private List<Student> listOfStudents;// Method will add about this property
 
 	public LectureSession(SessionID sessionID, Lecture lecture, LectureHour[][] sessionHours, SessionType sessionType,
 			Instructor instructor, List<Instructor> listOfAssistans, List<Student> listOfStudents) {
@@ -34,7 +33,7 @@ public class LectureSession {
 	}
 
 	// Creating get and set methods for variables
-	
+
 	public void setSessionID(SessionID sessionID) {
 		this.sessionID = sessionID;
 	}
@@ -58,7 +57,7 @@ public class LectureSession {
 	public void setListOfAssistans(List<Instructor> listOfAssistans) {
 		this.listOfAssistans = listOfAssistans;
 	}
-	
+
 	public String getSessionID() {
 		return sessionID.getID();
 	}
@@ -79,29 +78,9 @@ public class LectureSession {
 		return listOfAssistans;
 	}
 
-	public void setSessionID(SessionID sessionID) {
-		this.sessionID = sessionID;
-	}
-	public void setSessionHours(LectureHour[][] sessionHours) {
-		this.sessionHours = sessionHours;
-	}
-	public void setSessionType(SessionType sessionType) {
-		this.sessionType = sessionType;
-	}
-	public void setInstructor(Instructor instructor) {
-		this.instructor = instructor;
-	}
-	public void setListOfAssistans(List<Instructor> listOfAssistans) {
-		this.listOfAssistans = listOfAssistans;
-	}
 	public Lecture getLecture() {
 		return lecture;
 	}
-	
-	public void setLecture(Lecture lecture) {
-		this.lecture=lecture;
-	}
-	
 
 	public List<Student> getListOfStudents() {
 		return listOfStudents;

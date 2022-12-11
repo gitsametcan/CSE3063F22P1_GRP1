@@ -3,19 +3,19 @@ package lecture;
 import java.util.List;
 
 import Enums.LectureHour;
-import person.Student;
+import person.Person;
 
 public class Schedule {
 
-	private Student student;
+	private Person person;
 	private List<LectureSession> listOfLectureSessions;
 
-	public Schedule(Student student) {
-		this.student = student;
+	public Schedule(Person person) {
+		this.person = person;
 	}
 
 	public void showSchedule() {
-		List<LectureSession> lectureSessions = student.getListOfLectureSessions();
+		List<LectureSession> lectureSessions = this.getListOfLectureSessions();
 		if (lectureSessions.size() == 0) {
 			System.out.println("You dont have any lecture to be shown.");
 			return;
@@ -71,12 +71,12 @@ public class Schedule {
 		System.out.println();
 	}
 
-	public Student getStudent() {
-		return student;
+	public Person getPerson() {
+		return person;
 	}
 
-	public void setStudent(Student student) {
-		this.student = student;
+	public void setPerson(Person person) {
+		this.person = person;
 	}
 
 	public List<LectureSession> getListOfLectureSessions() {
