@@ -34,7 +34,7 @@ public class AdvisorRegistrationSystem {
 			// currentUser = DataManager.getInstance().findStudent(FilterType.ID,
 			// providedID);
 			for (Advisor advisor : objects1.getAdvisors()) {
-				if (providedID.equals(advisor.getId())) {
+				if (providedID.equals(advisor.getID())) {
 					currentUser = advisor;
 					System.out.println("Welcome to Marmara BYS " + currentUser.getFullName());
 				}

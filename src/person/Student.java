@@ -1,6 +1,5 @@
 package person;
 
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
@@ -73,11 +72,11 @@ public class Student extends Person {
 	public String getID() {
 		return id.getID();
 	}
-	
+
 	public Schedule getSchedule() {
 		return this.schedule;
 	}
-	
+
 	public void setSchedule(Schedule schedule) {
 		this.schedule = schedule;
 	}

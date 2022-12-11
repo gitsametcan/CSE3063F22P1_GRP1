@@ -7,7 +7,6 @@ import java.util.Map;
 import java.util.Scanner;
 
 import Enums.ApprovalState;
-import Enums.LectureHour;
 import Enums.LetterGrade;
 import lecture.Lecture;
 import lecture.LectureSession;
@@ -38,7 +37,7 @@ public class StudentRegistrationSystem {
 			// currentUser = DataManager.getInstance().findStudent(FilterType.ID,
 			// providedID);
 			for (Student student : objects1.getStudents()) {
-				if (providedID.equals(student.getId())) {
+				if (providedID.equals(student.getID())) {
 					currentUser = student;
 					System.out.println("Welcome to Marmara BYS " + currentUser.getFullName());
 				}
@@ -58,6 +57,7 @@ public class StudentRegistrationSystem {
 
 		boolean validInput = false;
 
+		int menuChoice = 0;
 		while (menuChoice != 6) {
 
 			System.out.println("Please choose a menu: ");
@@ -142,73 +142,10 @@ public class StudentRegistrationSystem {
 			System.out.println(currentUser.getTranscript().getListOfSemester().get(i).getCreditsCompleted());
 		}
 
-
 	}
 
 	private void scheduleMenu(Student currentUser) throws FileNotFoundException {
-		if (currentUser.getListOfLectureSessions().size() == 0) {
-			System.out.println("You dont have any lecture to be shown.");
-		} else {
-			List<LectureSession> lectureSessions = currentUser.getListOfLectureSessions();
-			int lecturePlaceX = 0;
-			int lecturePlaceY = 1;
-			for (int y = 1; y < 42; y++) {
-				for (int x = 1; x < 79; x++) {
-					if (y == 1 || y == 41) {
-						System.out.print("_");
-						if ((x == 78 && y == 1)) {
-							System.out.println();
-						}
-					} else if ((((x - 2) % 11) == 0) && (((y - 3) % 4) == 0)) {
-
-						if (lecturePlaceX == 7) {
-							lecturePlaceX = 1;
-							lecturePlaceY++;
-						} else {
-							lecturePlaceX++;
-						}
-
-						boolean thereIsLecture = false;
-						for (LectureSession ls : lectureSessions) {
-							if (ls.getSessionHours()[lecturePlaceX - 1][lecturePlaceY - 1] == LectureHour.YES) {
-								String lectureSessionName = ls.getLecture().getID() + "." + ls.getSessionID();
-								System.out.print(lectureSessionName);
-								x = x + (lectureSessionName.length()) - 1;
-								thereIsLecture = true;
-								break;
-							}
-						}
-
-						if (thereIsLecture == false) {
-							System.out.print(" ");
-						}
-
-					} else if (x == 1 || x == 78) {
-						System.out.print("|");
-						if (x == 78) {
-							System.out.println();
-						}
-					} else if ((y - 1) % 4 == 0) {
-						System.out.print("_");
-					} else if ((x - 1) % 11 == 0) {
-						System.out.print("|");
-					} else {
-						System.out.print(" ");
-					}
-				}
-			}
-		}
-		System.out.println();
-
-		studentMenu(currentUser);
-	}
-
-	private void scheduleMenu(Student currentUser) throws FileNotFoundException {
-
-		Schedule schedule = new Schedule(currentUser);
-		schedule.showSchedule();
-		studentMenu(currentUser);
-
+		currentUser.getSchedule().showSchedule();
 	}
 
 	private void makeRegistrationMenu(Student currentUser) throws FileNotFoundException {
@@ -320,7 +257,7 @@ public class StudentRegistrationSystem {
 				.getSessionsSentForApproval();
 		System.out.println();
 		for (LectureSession s : sessions.keySet()) {
-			
+
 			System.out.printf("%s.%s", s.getLecture().getID(), s.getSessionID());
 			System.out.printf(" %-15s%n", sessions.get(s).toString());
 		}
