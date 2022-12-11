@@ -14,7 +14,8 @@ public class Debt {
 		this.student = student;
 		student.setDebt(this);
 	}
-	//Creating get and set methods for variables
+
+	// Creating get and set methods for variables
 	public double getAmount() {
 		return amount;
 	}

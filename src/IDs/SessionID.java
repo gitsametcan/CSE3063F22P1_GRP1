@@ -1,7 +1,7 @@
 package IDs;
 
 //Samet CAN 150120528
-public class SessionID implements UniqueID{
+public class SessionID implements UniqueID {
 
 	private int id;
 
@@ -9,7 +9,8 @@ public class SessionID implements UniqueID{
 		super();
 		this.id = id;
 	}
-	//Another set method for ID
+
+	// Another set method for ID
 	public void setID(String string) {
 		try {
 			Integer.parseInt(string);
@@ -20,15 +21,17 @@ public class SessionID implements UniqueID{
 		}
 
 	}
-	//Set and get methods for ID
+
+	// Set and get methods for ID
 	public void setID(int Id) {
 		this.id = Id;
 	}
 
 	public String getID() {
-		return id+"";
+		return id + "";
 	}
-	//A method for giving fixed amount of numbers according to input number
+
+	// A method for giving fixed amount of numbers according to input number
 	public String digitFixer(int integer) {
 		String tempOrder = "" + integer;
 		if (integer < 10) {

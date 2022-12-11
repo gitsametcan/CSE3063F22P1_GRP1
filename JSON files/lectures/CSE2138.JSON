@@ -1,7 +1,7 @@
 {
     "id": "CSE2138",
     "name": "Systems Programming" ,
-    "lectureType": "non-precondition",
+    "lectureType": "MANDATORY",
     "credit": "7",
     "prerequisites": "",
     "quota": "40"

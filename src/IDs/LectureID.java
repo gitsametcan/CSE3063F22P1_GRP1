@@ -1,7 +1,7 @@
 package IDs;
 
 //Samet CAN 150120528
-public class LectureID implements UniqueID{
+public class LectureID implements UniqueID {
 
 	private String lectureCode;
 
@@ -9,7 +9,8 @@ public class LectureID implements UniqueID{
 		super();
 		this.lectureCode = lectureCode;
 	}
-	//Another set method for ID
+
+	// Another set method for ID
 	public void setID(String string) {
 		this.lectureCode = string;
 
@@ -19,8 +20,10 @@ public class LectureID implements UniqueID{
 		return lectureCode;
 	}
 
-	//A method for giving fixed amount of numbers according to input number
-	    public String digitFixer(int integer) {
+
+	// A method for giving fixed amount of numbers according to input number
+	public String digitFixer(int integer) {
+
 		String tempOrder = "" + integer;
 		if (integer < 10) {
 			tempOrder = "00" + tempOrder;
@@ -29,6 +32,6 @@ public class LectureID implements UniqueID{
 		}
 		return tempOrder; 
 	}
+
 }
-	
 
