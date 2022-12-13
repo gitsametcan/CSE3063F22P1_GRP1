@@ -1,7 +1,6 @@
 package System;
 
 import java.io.FileNotFoundException;
-import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Scanner;
 
@@ -86,6 +85,7 @@ public class AdvisorRegistrationSystem {
 	}
 
 	private void showApplications(Advisor currentUser) {
+
 		int choice = -1;
 		while (choice != 0) {
 			int count = 0;
@@ -115,13 +115,22 @@ public class AdvisorRegistrationSystem {
 			for (Entry<LectureSession, ApprovalState> me : lectureRegistrationApplication.getSessionsSentForApproval()
 					.entrySet()) {
 				count++;
-				String sessionName = me.getKey().getLecture().getName() + "." + me.getKey().getLecture().getID() + "."
-						+ me.getKey().getSessionID();
+				String sessionName = me.getKey().getLecture().getID() + "." + me.getKey().getSessionID();
 				System.out.printf("%d. %-30s%s", count, sessionName, me.getValue());
 			}
 			System.out.println("0. Exit");
 			System.out.print("Please Enter The Session Name(0 for exit): ");
 			lectureChoice = scanner.nextLine();
+
+			LectureSession lectureSession = null;
+
+			for (Entry<LectureSession, ApprovalState> me : lectureRegistrationApplication.getSessionsSentForApproval()
+					.entrySet()) {
+				String sessionName = me.getKey().getLecture().getID() + "." + me.getKey().getSessionID();
+				if (sessionName.equalsIgnoreCase(lectureChoice)) {
+					lectureSession = me.getKey();
+				}
+			}
 
 			System.out.println("1. Approve");
 			System.out.println("2. Reject");
@@ -131,10 +140,10 @@ public class AdvisorRegistrationSystem {
 
 			switch (approveChoice) {
 			case 1:
-				currentUser.approveApplication(lectureRegistrationApplication, lectureChoice);
+				currentUser.approveApplication(lectureRegistrationApplication, lectureSession);
 				break;
 			case 2:
-				currentUser.rejectApplication(lectureRegistrationApplication, lectureChoice);
+				currentUser.rejectApplication(lectureRegistrationApplication, lectureSession);
 				break;
 			default:
 				break;

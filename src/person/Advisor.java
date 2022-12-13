@@ -3,7 +3,6 @@ package person;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
-import java.util.Map;
 
 import Debt_LRA_Transcript.LectureRegistrationApplication;
 import Enums.ApprovalState;
@@ -26,13 +25,14 @@ public class Advisor extends Instructor {
 		return listOfApplications;
 	}
 
-	public void approveApplication(LectureRegistrationApplication lectureRegistirationApplication) {
-		for (LectureRegistrationApplication lra : listOfApplications) {
-			Map<LectureSession, ApprovalState> lsa = lra.getSessionsSentForApproval();
-			for (LectureSession ls : lsa.keySet()) {
-				lsa.put(ls, ApprovalState.Approved);
-			}
-		}
+	public void approveApplication(LectureRegistrationApplication lectureRegistirationApplication,
+			LectureSession lectureSession) {
+		lectureRegistirationApplication.getSessionsSentForApproval().put(lectureSession, ApprovalState.Approved);
+	}
+
+	public void rejectApplication(LectureRegistrationApplication lectureRegistirationApplication,
+			LectureSession lectureSession) {
+		lectureRegistirationApplication.getSessionsSentForApproval().put(lectureSession, ApprovalState.Rejected);
 	}
 
 	public Advisor(String firstName, String lastName, InstructorID id, List<LectureSession> listOfLectureSessions,
