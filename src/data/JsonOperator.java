@@ -50,25 +50,25 @@ public class JsonOperator {
 	}
 
 	public void readLectureJSON(String path){
-		JsonReader json = new JsonReader(path);
+		JsonReader json = new JsonReader(metaData.getLecturesPath() + path);
 		LectureJSON tempLecture = json.readJsonFile(LectureJSON.class);
 		lectureList.add(tempLecture);
 	}
 	
 	public void readStudentJSON(String path) {
-		JsonReader json = new JsonReader(path);
+		JsonReader json = new JsonReader(metaData.getStudentsPath() + path);
 		StudentJSON tempStudent = json.readJsonFile(StudentJSON.class);
 		studentList.add(tempStudent);
 	}
 	
 	public void readTranscriptJSON(String path) {
-		JsonReader json = new JsonReader(path);
+		JsonReader json = new JsonReader(metaData.getTranscriptsPath() + path);
 		TranscriptJSON tempStudent = json.readJsonFile(TranscriptJSON.class);
 		transcriptList.add(tempStudent);
 	}
 	
 	public void readAdvisorJSON(String path) {
-		JsonReader json = new JsonReader(path);
+		JsonReader json = new JsonReader(metaData.getAdvisorsPath() + path);
 		AdvisorJSON tempStudent = json.readJsonFile(AdvisorJSON.class);
 		advisorList.add(tempStudent);
 	}

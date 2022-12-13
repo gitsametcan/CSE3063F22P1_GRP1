@@ -1,10 +1,14 @@
 package data;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 import java.util.Optional;
 
 import Debt_LRA_Transcript.Transcript;
+import Enums.InstructorType;
 import Enums.LectureHour;
 import Enums.LectureType;
 import Enums.SessionType;
@@ -53,6 +57,7 @@ public class ObjectGenerator {
 
 		generateLectures();
 		generateStudents();
+		//generateTranscripts();
 		generateAdvisors();
 
 	}
@@ -89,7 +94,7 @@ public class ObjectGenerator {
 						if (optAdvisor.isPresent()) {
 							currentAdvisor = optAdvisor.get();
 							ls.setInstructor(currentAdvisor);
-							currentAdvisor.addLecture(ls);
+							currentAdvisor.getSchedule().getListOfLectureSessions().add(ls);
 						}
 						break sessionloop;
 					}
@@ -108,6 +113,8 @@ public class ObjectGenerator {
 			} else {
 				continue;
 			}
+			
+			currentAdvisor.getSchedule().setPerson(currentAdvisor);
 
 			for (StudentJSON sjs : studentList) {
 				if (sjs.getAdvisorID().equalsIgnoreCase(currentAdvisor.getID())) {
@@ -135,7 +142,7 @@ public class ObjectGenerator {
 				continue;
 			}
 
-			currentStudent.getSchedule().setStudent(currentStudent);
+			currentStudent.getSchedule().setPerson(currentStudent);
 
 			ScheduleJSON schedule = sjs.getSchedule();
 
@@ -201,8 +208,14 @@ public class ObjectGenerator {
 			StudentID tempStudentID = new StudentID(ID);
 			String firstName = sjs.getFirstName();
 			String lastName = sjs.getLastName();
+			String dateOfEntryString = sjs.getDateOfEntry();
+			Optional<Calendar> optDateOfEntry = StringToCalendar(dateOfEntryString);
+			Calendar dateOfEntry = null;
+			if (optDateOfEntry.isPresent()) {
+				dateOfEntry = optDateOfEntry.get();
+			}
 
-			Student tempStudent = new Student(firstName, lastName, tempStudentID, new Schedule(null), null, null);
+			Student tempStudent = new Student(firstName, lastName, tempStudentID, new Schedule(null), null, dateOfEntry);
 
 			studentObjectList.add(tempStudent);
 		}
@@ -214,9 +227,17 @@ public class ObjectGenerator {
 			InstructorID tempInstructorID = new InstructorID(ID);
 			String firstName = ajs.getFirstName();
 			String lastName = ajs.getLastName();
+			InstructorType instructorType = stringToInstructorType(ajs.getInstructorType());
+			String dateOfEntryString = ajs.getDateOfEntry();
+			Optional<Calendar> optDateOfEntry = StringToCalendar(dateOfEntryString);
+			Calendar dateOfEntry = null;
+			if (optDateOfEntry.isPresent()) {
+				dateOfEntry = optDateOfEntry.get();
+			}
+			
 
-			Advisor tempAdvisor = new Advisor(firstName, lastName, tempInstructorID, null, null, studentObjectList,
-					null, null);
+			Advisor tempAdvisor = new Advisor(firstName, lastName, tempInstructorID, dateOfEntry, null, null,
+					instructorType, new Schedule(null));
 			advisorObjectList.add(tempAdvisor);
 		}
 	}
@@ -262,6 +283,23 @@ public class ObjectGenerator {
 		}
 		return result;
 	}
+	
+	private Optional<Calendar> StringToCalendar(String string) {
+		
+		Calendar calendar = Calendar.getInstance();
+		SimpleDateFormat formOfDate = new SimpleDateFormat("yyyy-MM-dd");
+		
+		try {
+			calendar.setTime(formOfDate.parse(string));
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			System.err.println("String format is not suitable");
+			return Optional.empty();
+		}
+		
+		return Optional.of(calendar);
+		
+	}
 
 	private LectureType stringToLectureType(String key) {
 		if (key.equalsIgnoreCase("NTE")) {
@@ -295,6 +333,13 @@ public class ObjectGenerator {
 			return SessionType.Theorytical;
 		}
 		return SessionType.Theorytical;
+	}
+
+	private InstructorType stringToInstructorType(String key) {
+		if (key.equalsIgnoreCase("Instructor")) {
+			return InstructorType.Instructor;
+		}
+		return InstructorType.Assistant;
 	}
 
 	private LectureHour[][] intToLectureHours(int[][] array) {

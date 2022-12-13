@@ -5,6 +5,7 @@ import java.util.List;
 public class InstructorJSON extends PersonJSON {
 
 	private List<String> listOfLectureIDs;
+	private ScheduleJSON schedule;
 	private String instructorType;
 	private String instructorID;
 	private String dateOfEntry;
@@ -23,14 +24,6 @@ public class InstructorJSON extends PersonJSON {
 		this.dateOfEntry = dateOfEntry;
 	}
 
-	public List<String> getListOfLectureIDs() {
-		return listOfLectureIDs;
-	}
-
-	public void setListOfLectureIDs(List<String> listOfLectureIDs) {
-		this.listOfLectureIDs = listOfLectureIDs;
-	}
-
 	public String getInstructorType() {
 		return instructorType;
 	}
@@ -45,6 +38,14 @@ public class InstructorJSON extends PersonJSON {
 
 	public void setInstructorID(String instructorID) {
 		this.instructorID = instructorID;
+	}
+
+	public ScheduleJSON getSchedule() {
+		return schedule;
+	}
+
+	public void setSchedule(ScheduleJSON schedule) {
+		this.schedule = schedule;
 	}
 
 }
