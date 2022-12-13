@@ -14,32 +14,34 @@ import lecture.LectureSession;
 import person.Student;
 
 public class StudentRegistrationSystem {
-	
+
 	private Scanner scanner;
 	private RegistrationSystem registrationSystem1;
 	private ObjectCreator objects1;
-	
-	public StudentRegistrationSystem(ObjectCreator objects, RegistrationSystem registrationSystem) throws FileNotFoundException {
+
+	public StudentRegistrationSystem(ObjectCreator objects, RegistrationSystem registrationSystem)
+			throws FileNotFoundException {
 		scanner = new Scanner(System.in);
 		objects1 = objects;
-		registrationSystem1=registrationSystem;
+		registrationSystem1 = registrationSystem;
 		studentLogin();
 	}
-	
+
 	private void studentLogin() throws FileNotFoundException {
-		Student currentUser=null;
+		Student currentUser = null;
 		while (true) {
 			System.out.println("Please provide your ID:");
 			System.out.println("----\nSuggestion: Enter \"150119063\"");
 			String providedID = scanner.nextLine();
-			//currentUser = DataManager.getInstance().findStudent(FilterType.ID, providedID);
-			for(Student student: objects1.getStudents()) {
-				if(providedID.equals(student.getId())){
-					currentUser=student;
+			// currentUser = DataManager.getInstance().findStudent(FilterType.ID,
+			// providedID);
+			for (Student student : objects1.getStudents()) {
+				if (providedID.equals(student.getId())) {
+					currentUser = student;
 					System.out.println("Welcome to Marmara BYS " + currentUser.getFullName());
 				}
 			}
-			
+
 			if (currentUser == null) {
 				System.out.println("The user not found.");
 				continue;
@@ -49,11 +51,9 @@ public class StudentRegistrationSystem {
 
 		studentMenu(currentUser);
 	}
-	
-	
-	
+
 	private void studentMenu(Student currentUser) throws FileNotFoundException {
-		
+
 		boolean validInput = false;
 
 		System.out.println("Please choose a menu: ");
@@ -63,39 +63,44 @@ public class StudentRegistrationSystem {
 		System.out.println("4-Registration Status");
 		System.out.println("5-Debt");
 		System.out.println("6-Sign Out");
-		System.out.println("----\nSuggestion: Enter \"2\" to go to he registartion menu, then check by entering \"4\" to go to the status menu");
+		System.out.println(
+				"----\nSuggestion: Enter \"2\" to go to he registartion menu, then check by entering \"4\" to go to the status menu");
 
-		while (!validInput) {
+		int menuChoice = 0;
 
-			int menuChoice = scanner.nextInt();
+		while (menuChoice != 6) {
+			while (!validInput) {
 
-			switch (menuChoice) {
-			case 1:
-				validInput = true;
-				transcriptMenu(currentUser);
-				break;
-			case 2:
-				validInput = true;
-				makeRegistrationMenu(currentUser);
-				break;
-			case 3:
-				validInput = true;
-				scheduleMenu(currentUser);
-				break;
-			case 4:
-				validInput = true;
-				registrationStatusMenu(currentUser);
-				break;
-			case 5:
-				validInput = true;
-				debtMenu(currentUser);
-				break;
-			case 6:
-				validInput = true;
-				signOut();
-				break;
-			default:
-				System.out.print("The input is not valid, please provide a valid input.");
+				int menuChoice = scanner.nextInt();
+
+				switch (menuChoice) {
+				case 1:
+					validInput = true;
+					transcriptMenu(currentUser);
+					break;
+				case 2:
+					validInput = true;
+					makeRegistrationMenu(currentUser);
+					break;
+				case 3:
+					validInput = true;
+					scheduleMenu(currentUser);
+					break;
+				case 4:
+					validInput = true;
+					registrationStatusMenu(currentUser);
+					break;
+				case 5:
+					validInput = true;
+					debtMenu(currentUser);
+					break;
+				case 6:
+					validInput = true;
+					signOut();
+					break;
+				default:
+					System.out.print("The input is not valid, please provide a valid input.");
+				}
 			}
 		}
 
@@ -132,73 +137,64 @@ public class StudentRegistrationSystem {
 			System.out.printf("%-31s", "Credits completed in Semester:");
 			System.out.println(currentUser.getTranscript().getListOfSemester().get(i).getCreditsCompleted());
 		}
-		
-		studentMenu(currentUser);
+
 	}
 
 	private void scheduleMenu(Student currentUser) throws FileNotFoundException {
-		if(currentUser.getListOfLectureSessions().size() == 0) {
+		if (currentUser.getListOfLectureSessions().size() == 0) {
 			System.out.println("You dont have any lecture to be shown.");
-		}
-		else {
+		} else {
 			int lecturePlaceX = 0;
-			int lecturePlaceY=1;
-			for(int y = 1; y< 42; y++) {
-				for(int x = 1; x<79; x++) {
-					if(y==1 || y == 41) {
+			int lecturePlaceY = 1;
+			for (int y = 1; y < 42; y++) {
+				for (int x = 1; x < 79; x++) {
+					if (y == 1 || y == 41) {
 						System.out.print("_");
-						if((x==78 && y==1)) {
+						if ((x == 78 && y == 1)) {
 							System.out.println();
 						}
-					}
-					else if( (((x-2)%11)==0) && (((y-3)%4)==0) ) {
-						
-						if(lecturePlaceX==7) {
-							lecturePlaceX=1;
+					} else if ((((x - 2) % 11) == 0) && (((y - 3) % 4) == 0)) {
+
+						if (lecturePlaceX == 7) {
+							lecturePlaceX = 1;
 							lecturePlaceY++;
-						}
-						else {
+						} else {
 							lecturePlaceX++;
 						}
-						
+
 						List<LectureSession> lectureSessions = currentUser.getListOfLectureSessions();
-						
+
 						boolean thereIsLecture = false;
-						for(LectureSession ls: lectureSessions) {
-							if(ls.getSessionHours()[lecturePlaceX-1][lecturePlaceY-1] == LectureHour.YES) {
-								String lectureSessionName =ls.getLecture().getID()+"." + ls.getSessionID();
+						for (LectureSession ls : lectureSessions) {
+							if (ls.getSessionHours()[lecturePlaceX - 1][lecturePlaceY - 1] == LectureHour.YES) {
+								String lectureSessionName = ls.getLecture().getID() + "." + ls.getSessionID();
 								System.out.print(lectureSessionName);
-								x = x + (lectureSessionName.length()) -1;
+								x = x + (lectureSessionName.length()) - 1;
 								thereIsLecture = true;
 								break;
 							}
 						}
-						
-						if(thereIsLecture==false) {
+
+						if (thereIsLecture == false) {
 							System.out.print(" ");
 						}
-						
-					}
-					else if(x==1 || x == 78) {
+
+					} else if (x == 1 || x == 78) {
 						System.out.print("|");
-						if(x==78) {
+						if (x == 78) {
 							System.out.println();
 						}
-					}
-					else if((y-1)%4==0) {
+					} else if ((y - 1) % 4 == 0) {
 						System.out.print("_");
-					}
-					else if((x-1)%11==0) {
+					} else if ((x - 1) % 11 == 0) {
 						System.out.print("|");
-					}
-					else {
+					} else {
 						System.out.print(" ");
 					}
 				}
 			}
 		}
 		System.out.println();
-		studentMenu(currentUser);
 	}
 
 	private void makeRegistrationMenu(Student currentUser) throws FileNotFoundException {
@@ -207,57 +203,57 @@ public class StudentRegistrationSystem {
 		System.out.println("Lectures: ");
 
 		for (int i = 0; i < currentStudentAvailableLectures.size(); i++) {
-			for(LectureSession s: currentStudentAvailableLectures.get(i).getSessions()) {
-				System.out.printf("Lecture Code: %-15s", currentStudentAvailableLectures.get(i).getID() + "." + s.getSessionID());
+			for (LectureSession s : currentStudentAvailableLectures.get(i).getSessions()) {
+				System.out.printf("Lecture Code: %-15s",
+						currentStudentAvailableLectures.get(i).getID() + "." + s.getSessionID());
 				System.out.printf("Lecture Name: %-40s", currentStudentAvailableLectures.get(i).getName());
-				System.out.printf("Lecture Type: %-10s", currentStudentAvailableLectures.get(i).getLectureType().toString());
+				System.out.printf("Lecture Type: %-10s",
+						currentStudentAvailableLectures.get(i).getLectureType().toString());
 				System.out.printf("Lecture Credit: %-4s%n", currentStudentAvailableLectures.get(i).getCredit());
 			}
 		}
-		
+
 		System.out.println("Enter a lecture session code that you will send for approval.\n"
 				+ "\"add lecture_id\" to add session for approval list.\n"
-				+ "\"remove lecture_id\" to remove session from approval list.\n"
-				+ "Enter \"send\" to send\n"
+				+ "\"remove lecture_id\" to remove session from approval list.\n" + "Enter \"send\" to send\n"
 				+ "Enter \"exit\" to exit");
 		ArrayList<LectureSession> chosenLectures = new ArrayList<LectureSession>();
-		while(true) {
+		while (true) {
 			String input = scanner.nextLine();
-			
+
 			parseSelectionCommand(input, chosenLectures);
-			
-			if(input.equalsIgnoreCase("send")) {
+
+			if (input.equalsIgnoreCase("send")) {
 				currentUser.sendForApproval(chosenLectures);
 				currentUser.getAdvisor().approveApplication(currentUser.getRegistirationApplication());
 				currentUser.setListOfLectureSessions(chosenLectures);
 				break;
 			}
-			
-			if(input.equalsIgnoreCase("exit")) {
+
+			if (input.equalsIgnoreCase("exit")) {
 				break;
 			}
 		}
-		
-		studentMenu(currentUser);
+
 	}
-	
-	private void parseSelectionCommand(String input,List<LectureSession> chosenLectures) {
+
+	private void parseSelectionCommand(String input, List<LectureSession> chosenLectures) {
 		String[] partedInput;
 		String[] partedLectureID;
-		
+
 		if (input.contains(" ")) {
 			partedInput = input.split(" ");
 		} else {
 			return;
 		}
-		
+
 		if (partedInput[1].contains(".")) {
 			partedLectureID = partedInput[1].split("[.]");
 		} else {
 			System.out.println("Please enter a valid input.");
 			return;
 		}
-		
+
 		if (partedInput[0].equalsIgnoreCase("add")) {
 			for (Lecture l : objects1.getLectures()) {
 				if (l.getID().equalsIgnoreCase(partedLectureID[0])) {
@@ -287,19 +283,18 @@ public class StudentRegistrationSystem {
 			System.out.printf("Couldn't find %s", partedInput[1]);
 		}
 	}
-	
+
 	private void showChosenLectureSessions(List<LectureSession> chosenLectureSessions) {
 		System.out.println("Chosen Lectures:\n");
-		for(LectureSession ls: chosenLectureSessions) {
+		for (LectureSession ls : chosenLectureSessions) {
 			System.out.printf("Lecture Code: %-15s", ls.getLecture().getID() + "." + ls.getSessionID());
-			System.out.printf("Lecture Name: %-40s",  ls.getLecture().getName());
+			System.out.printf("Lecture Name: %-40s", ls.getLecture().getName());
 			System.out.printf("Lecture Type: %-10s", ls.getLecture().getLectureType().toString());
-			System.out.printf("Lecture Credit: %-4s%n",  ls.getLecture().getCredit());
+			System.out.printf("Lecture Credit: %-4s%n", ls.getLecture().getCredit());
 		}
 		System.out.println("\n\n\nEnter a lecture session code that you will send for approval.\n"
 				+ "\"add lecture_id\" to add session for approval list.\n"
-				+ "\"remove lecture_id\" to remove session from approval list.\n"
-				+ "Enter \"send\" to send\n"
+				+ "\"remove lecture_id\" to remove session from approval list.\n" + "Enter \"send\" to send\n"
 				+ "Enter \"exit\" to exit");
 	}
 
@@ -317,23 +312,20 @@ public class StudentRegistrationSystem {
 			System.out.printf(" %-15s%n", sessions.get(s).toString());
 		}
 		System.out.println();
-		studentMenu(currentUser);
 	}
-	
+
 	private void debtMenu(Student currentUser) throws FileNotFoundException {
-		if(currentUser.getDebt().getAmount() == 0) {
+		if (currentUser.getDebt().getAmount() == 0) {
 			System.out.println("You have no debt.");
-		}
-		else {
+		} else {
 			System.out.println("Your debt is " + currentUser.getDebt().getAmount() + "TL.");
 //			System.out.println("1- Pay your debt");
 //			System.out.println("2- Go back");
 		}
-		
-		studentMenu(currentUser);
+
 	}
 
-	private void signOut() throws FileNotFoundException{
+	private void signOut() throws FileNotFoundException {
 		registrationSystem1.menu();
 	}
 
