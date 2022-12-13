@@ -1,10 +1,12 @@
 package simulation;
 
 import java.util.Calendar;
+import java.util.Optional;
 
 import Debt_LRA_Transcript.Debt;
 import Debt_LRA_Transcript.Transcript;
 import IDs.StudentID;
+import data.DataManager;
 import data.json.NamePool;
 import lecture.Schedule;
 import person.Student;
@@ -29,10 +31,14 @@ public class StudentGenerator {
 			debt = new Debt(0, student);
 		}
 
-		NamePool namePool = new NamePool();
+		Optional<NamePool> namePool = DataManager.getInstance().getNamePool();
+		NamePool namePool1 = null;
+		if (namePool.isPresent()) {
+			namePool1 = namePool.get();
+		}
+		firstName = namePool1.getRandomName();
+		lastName = namePool1.getRandomLastName();
 
-		firstName = namePool.getRandomFirstName();
-		lastName = namePool.getRandomLastName();
 		id = new StudentID(150, 100 + year, orderOfPlacement);
 
 		student = new Student(firstName, lastName, id, schedule, transcript, dateOfEntry);

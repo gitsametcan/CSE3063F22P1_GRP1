@@ -27,4 +27,18 @@ public class NamePool {
 	public void setLastNames(List<String> lastNames) {
 		this.lastNames = lastNames;
 	}
+	public String getRandomName() {
+		int min = 1;
+		int max = 40;
+		int a = (int)(Math.random() * (max - min + 1) + min);
+		
+		return this.getNames().get(a);
+	}
+	public String getRandomLastName() {
+		int min = 1;
+		int max = 40;
+		int a = (int)(Math.random() * (max - min + 1) + min);
+		
+		return this.getLastNames().get(a);
+	}
 }

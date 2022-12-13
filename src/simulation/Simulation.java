@@ -19,7 +19,9 @@ public class Simulation {
 	}
 
 	private void newSemester() {
-		StudentGenerator studentGenerator = new StudentGenerator();
-		TranscriptGenerator transcriptGenerator = new TranscriptGenerator();
+		for (int i = 0; i < 50; i++) {
+			StudentGenerator studentGenerator = new StudentGenerator();
+			TranscriptGenerator transcriptGenerator = new TranscriptGenerator();
+		}
 	}
 }
