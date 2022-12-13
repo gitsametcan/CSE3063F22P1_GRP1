@@ -35,10 +35,10 @@ public class Advisor extends Instructor {
 		}
 	}
 
-	public Advisor(String firstName, String lastName, InstructorID id, List<LectureSession> listOfLectureSessions,
+	public Advisor(String firstName, String lastName, InstructorID id,
 			Calendar dateOfEntry, List<Student> listOfStudents, List<LectureRegistrationApplication> listOfApplications,
 			InstructorType instructorType, Schedule schedule) {
-		super(firstName, lastName, id, listOfLectureSessions, dateOfEntry, instructorType, schedule);
+		super(firstName, lastName, id, dateOfEntry, instructorType, schedule);
 		this.listOfStudents = listOfStudents;
 		this.listOfApplications = listOfApplications;
 		if (this.listOfStudents == null) {

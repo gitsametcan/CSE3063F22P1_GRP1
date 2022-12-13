@@ -2,12 +2,17 @@
 
 package data;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import Enums.FilterType;
+import data.json.MetaData;
 import lecture.Lecture;
 import person.Advisor;
 import person.Instructor;
@@ -27,7 +32,28 @@ public class DataManager {
 		listOfPeople = new ArrayList<Person>();
 		cacheList = new LinkedList<Person>();
 		jsonOperator = new JsonOperator();
-
+		
+		MetaData metaData = jsonOperator.getMetaData();
+		
+		Set<String> studentFiles = listFiles(metaData.getStudentsPath());
+		Set<String> advisorFiles = listFiles(metaData.getAdvisorsPath());
+		Set<String> lectureFiles = listFiles(metaData.getLecturesPath());
+		
+		
+		for (String name : studentFiles) {
+			jsonOperator.readStudentJSON(name);
+		}
+		
+		for (String name : advisorFiles) {
+			jsonOperator.readAdvisorJSON(name);
+		}
+		
+		for (String name : lectureFiles) {
+			jsonOperator.readLectureJSON(name);
+		}
+		
+		jsonOperator.generateObjects();
+		
 	}
 
 	public static DataManager getInstance() {
@@ -191,10 +217,21 @@ public class DataManager {
 		return result;
 	}
 	
+	public void addStudents(List<Student> studentList) {
+		listOfPeople.addAll(studentList);
+	}
+	
 	private void fixCache() {
 		while (cacheList.size() > 50) {
 			cacheList.removeLast();
 		}
+	}
+	
+	private Set<String> listFiles(String dir) {
+	    return Stream.of(new File(dir).listFiles())
+	      .filter(file -> !file.isDirectory())
+	      .map(File::getName)
+	      .collect(Collectors.toSet());
 	}
 
 }

@@ -31,7 +31,7 @@ public class Instructor extends Person {
 		return instructorType;
 	}
 
-	public Instructor(String firstName, String lastName, InstructorID id, List<LectureSession> listOfLectureSessions,
+	public Instructor(String firstName, String lastName, InstructorID id,
 			Calendar dateOfEntry, InstructorType InstructorType, Schedule schedule) {
 		super(firstName, lastName);
 		this.id = id;

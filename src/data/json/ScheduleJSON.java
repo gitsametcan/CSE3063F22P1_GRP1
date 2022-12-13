@@ -6,6 +6,7 @@ import java.util.Map;
 public class ScheduleJSON {
 	// LectureID / SessionID
 	private Map<String, String> sessions;
+	private String ID;
 
 	public ScheduleJSON() {
 		sessions = new HashMap<String, String>();
@@ -18,4 +19,13 @@ public class ScheduleJSON {
 	public void setSessions(Map<String, String> sessions) {
 		this.sessions = sessions;
 	}
+	
+	public String getID() {
+		return ID;
+	}
+
+	public void setID(String iD) {
+		ID = iD;
+	}
+	
 }
