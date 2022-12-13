@@ -14,7 +14,7 @@ public class LectureSessionJSON {
 	private List<String> listOfStudentIDs;
 
 	public LectureSessionJSON(String iD, String lectureID, String instructorID, String sessionType, 
-			int[][] sessionHours, List<String> listOfAssistantIDs) {
+			int[][] sessionHours, List<String> listOfStudentIDs) {
 		super();
 		
 		if (sessionHours == null) {
