@@ -157,20 +157,12 @@ public class ObjectGenerator {
 						LetterGrade tempGrade = stringToLetterGrade(listOfLecturesTaken.get(lectureID));
 						semesterLectures.put(tempLecture, tempGrade);
 					}
-					int creditsTaken = semesterJson.getCreditsTaken();
-					int creditsCompleted = semesterJson.getCreditsCompleted();
-					double points = semesterJson.getPoints();
-					double yano = semesterJson.getYano();
 
-					Semester tempSemester = new Semester(semesterLectures, creditsTaken, creditsCompleted, points, yano);
+					Semester tempSemester = new Semester(semesterLectures);
 					listOfSemesters.add(tempSemester);
 				}
-				double gano = tjs.getGano();
-				int totalCreditsTaken = tjs.getTotalCreditsTaken();
-				int totalCreditsCompleted = tjs.getTotalCreditsCompleted();
-				double points = tjs.getPoints();
 
-				Transcript tempTranscript = new Transcript(currentStudent, listOfSemesters, gano,totalCreditsTaken, totalCreditsCompleted, points);
+				Transcript tempTranscript = new Transcript(currentStudent, listOfSemesters);
 				
 				transcriptObjectList.add(tempTranscript);
 			}
