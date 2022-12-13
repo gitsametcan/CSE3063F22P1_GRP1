@@ -13,6 +13,7 @@ import java.util.stream.Stream;
 
 import Enums.FilterType;
 import data.json.MetaData;
+import data.json.NamePool;
 import lecture.Lecture;
 import person.Advisor;
 import person.Instructor;
@@ -217,6 +218,10 @@ public class DataManager {
 		return result;
 	}
 	
+	public Optional<NamePool> getNamePool() {
+		return jsonOperator.getNamePool();
+	}
+
 	public void addStudents(List<Student> studentList) {
 		listOfPeople.addAll(studentList);
 	}

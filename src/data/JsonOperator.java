@@ -4,6 +4,7 @@ package data;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import Debt_LRA_Transcript.Transcript;
 import data.json.AdvisorJSON;
@@ -77,8 +78,8 @@ public class JsonOperator {
 		return metaData;
 	}
 	
-	public NamePool getNamePool() {
-		return namePool;
+	public Optional<NamePool> getNamePool() {
+		return Optional.ofNullable(namePool);
 	}
 	
 	public void generateObjects() {
