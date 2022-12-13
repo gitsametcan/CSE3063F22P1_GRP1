@@ -4,13 +4,16 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import Debt_LRA_Transcript.Transcript;
 import Enums.InstructorType;
 import Enums.LectureHour;
 import Enums.LectureType;
+import Enums.LetterGrade;
 import Enums.SessionType;
 import IDs.InstructorID;
 import IDs.LectureID;
@@ -20,11 +23,13 @@ import data.json.AdvisorJSON;
 import data.json.LectureJSON;
 import data.json.LectureSessionJSON;
 import data.json.ScheduleJSON;
+import data.json.SemesterJSON;
 import data.json.StudentJSON;
 import data.json.TranscriptJSON;
 import lecture.Lecture;
 import lecture.LectureSession;
 import lecture.Schedule;
+import lecture.Semester;
 import person.Advisor;
 import person.Student;
 
@@ -57,7 +62,6 @@ public class ObjectGenerator {
 
 		generateLectures();
 		generateStudents();
-		//generateTranscripts();
 		generateAdvisors();
 
 	}
@@ -103,6 +107,76 @@ public class ObjectGenerator {
 
 		}
 
+		for (StudentJSON sjs : studentList) {
+			Optional<Student> optStudent = findStudent(sjs.getStudentID());
+			Student currentStudent = null;
+
+			if (!optStudent.isPresent()) {
+				continue;
+			}
+			currentStudent = optStudent.get();
+
+			currentStudent.getSchedule().setPerson(currentStudent);
+
+			ScheduleJSON schedule = sjs.getSchedule();
+
+			for (LectureJSON ljs : lectureList) {
+				Optional<Lecture> optLecture = findLecture(ljs.getID());
+				Lecture currentLecture = null;
+				if (!optLecture.isPresent()) {
+					continue;
+				}
+				currentLecture = optLecture.get();
+
+				if (schedule.getSessions().containsKey(ljs.getID())) {
+					String sessionID = schedule.getSessions().get(ljs.getID());
+					for (LectureSession ls : currentLecture.getSessions()) {
+						if (ls.getSessionID().equalsIgnoreCase(sessionID)) {
+							currentStudent.getSchedule().getListOfLectureSessions().add(ls);
+							ls.getListOfStudents().add(currentStudent);
+						}
+					}
+				}
+			}
+
+			for (TranscriptJSON tjs : transcriptList) {
+				if (!tjs.getStudentID().equalsIgnoreCase(currentStudent.getID())) {
+					continue;
+				}
+				
+				List<Semester> listOfSemesters = new ArrayList<Semester>();
+				for (SemesterJSON semesterJson : tjs.getListOfSemesters()) {
+					Map<String, String> listOfLecturesTaken = semesterJson.getListOfLecturesTaken();
+					HashMap<Lecture, LetterGrade> semesterLectures = new HashMap<Lecture, LetterGrade>(); 
+					for (String lectureID : listOfLecturesTaken.keySet()) {
+						Optional<Lecture> optLecture = findLecture(lectureID);
+						if (!optLecture.isPresent()) {
+							continue;
+						}
+						Lecture tempLecture = optLecture.get();
+						LetterGrade tempGrade = stringToLetterGrade(listOfLecturesTaken.get(lectureID));
+						semesterLectures.put(tempLecture, tempGrade);
+					}
+					int creditsTaken = semesterJson.getCreditsTaken();
+					int creditsCompleted = semesterJson.getCreditsCompleted();
+					double points = semesterJson.getPoints();
+					double yano = semesterJson.getYano();
+
+					Semester tempSemester = new Semester(semesterLectures, creditsTaken, creditsCompleted, points, yano);
+					listOfSemesters.add(tempSemester);
+				}
+				double gano = tjs.getGano();
+				int totalCreditsTaken = tjs.getTotalCreditsTaken();
+				int totalCreditsCompleted = tjs.getTotalCreditsCompleted();
+				double points = tjs.getPoints();
+
+				Transcript tempTranscript = new Transcript(currentStudent, listOfSemesters, gano,totalCreditsTaken, totalCreditsCompleted, points);
+				
+				transcriptObjectList.add(tempTranscript);
+			}
+
+		}
+
 		for (AdvisorJSON ajs : advisorList) {
 
 			Optional<Advisor> optAdvisor = findAdvisor(ajs.getInstructorID());
@@ -130,40 +204,6 @@ public class ObjectGenerator {
 				}
 			}
 
-		}
-
-		for (StudentJSON sjs : studentList) {
-			Optional<Student> optStudent = findStudent(sjs.getStudentID());
-			Student currentStudent = null;
-
-			if (optStudent.isPresent()) {
-				currentStudent = optStudent.get();
-			} else {
-				continue;
-			}
-
-			currentStudent.getSchedule().setPerson(currentStudent);
-
-			ScheduleJSON schedule = sjs.getSchedule();
-
-			for (LectureJSON ljs : lectureList) {
-				Optional<Lecture> optLecture = findLecture(ljs.getID());
-				Lecture currentLecture = null;
-				if (optLecture.isPresent()) {
-					currentLecture = optLecture.get();
-				} else {
-					continue;
-				}
-				if (schedule.getSessions().containsKey(ljs.getID())) {
-					String sessionID = schedule.getSessions().get(ljs.getID());
-					for (LectureSession ls : currentLecture.getSessions()) {
-						if (ls.getSessionID().equalsIgnoreCase(sessionID)) {
-							currentStudent.getSchedule().getListOfLectureSessions().add(ls);
-							ls.getListOfStudents().add(currentStudent);
-						}
-					}
-				}
-			}
 		}
 
 	}
@@ -340,6 +380,34 @@ public class ObjectGenerator {
 			return InstructorType.Instructor;
 		}
 		return InstructorType.Assistant;
+	}
+
+	private LetterGrade stringToLetterGrade(String key) {
+		if (key.equalsIgnoreCase("AA")) {
+			return LetterGrade.AA;
+		}
+		if (key.equalsIgnoreCase("BA")) {
+			return LetterGrade.BA;
+		}
+		if (key.equalsIgnoreCase("BB")) {
+			return LetterGrade.BB;
+		}
+		if (key.equalsIgnoreCase("CB")) {
+			return LetterGrade.CB;
+		}
+		if (key.equalsIgnoreCase("CC")) {
+			return LetterGrade.CC;
+		}
+		if (key.equalsIgnoreCase("DC")) {
+			return LetterGrade.DC;
+		}
+		if (key.equalsIgnoreCase("DD")) {
+			return LetterGrade.DD;
+		}
+		if (key.equalsIgnoreCase("FD")) {
+			return LetterGrade.FD;
+		}
+		return LetterGrade.FF;
 	}
 
 	private LectureHour[][] intToLectureHours(int[][] array) {
