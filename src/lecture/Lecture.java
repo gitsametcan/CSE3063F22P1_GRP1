@@ -26,6 +26,11 @@ public class Lecture {
 		this.lectureType = lectureType;
 		this.credit = credit;
 		this.sessions = sessions;
+
+		for (LectureSession ls : this.sessions) {
+			ls.setLecture(this);
+		}
+
 		this.prerequisite = prerequisite;
 		this.quota = quota;
 
@@ -59,6 +64,22 @@ public class Lecture {
 		return prerequisite;
 	}
 
+	public LectureID getId() {
+		return id;
+	}
+
+	public void setId(LectureID id) {
+		this.id = id;
+	}
+
+	public void setSessions(List<LectureSession> sessions) {
+		this.sessions = sessions;
+	}
+
+	public void setPrerequisite(Lecture prerequisite) {
+		this.prerequisite = prerequisite;
+	}
+
 	public int getQuota() {
 		return quota;
 	}
@@ -77,11 +98,6 @@ public class Lecture {
 
 	public void setQuota(int quota) {
 		this.quota = quota;
-	}
-
-	// Creating add and remove methods for array variables
-	public void addLectureSession(LectureSession lectureSession) {
-		this.sessions.add(lectureSession);
 	}
 
 	public void removeLectureSession(LectureSession lectureSession) {

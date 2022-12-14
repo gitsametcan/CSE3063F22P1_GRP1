@@ -13,6 +13,10 @@ public class StudentID implements UniqueID {
 		this.yearCode = yearCode;
 		this.orderOfPlacement = orderOfPlacement;
 	}
+	
+	public StudentID(String ID) {
+		this.setID(ID);
+	}
 
 	// Set and get methods for ID
 	public void setID(int DepartmentCode, int YearCode, int OrderOfPlacement) {

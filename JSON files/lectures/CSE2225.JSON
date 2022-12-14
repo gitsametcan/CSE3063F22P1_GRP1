@@ -1,0 +1,8 @@
+{
+    "id": "CSE2225",
+    "name": "Data Structures" ,
+    "lectureType": "MANDATORY",
+    "credit": "7",
+    "prerequisites": "CSE1242" ,
+    "quota": "40"
+}

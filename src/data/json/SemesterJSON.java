@@ -1,60 +1,26 @@
 package data.json;
 
+import java.util.HashMap;
 import java.util.Map;
 
 public class SemesterJSON {
 
-	private Map<LectureJSON, String> listOfLecturesTaken;
-	private int creditsTaken;
-	private int creditsCompleted;
-	private double points;
-	private double yano;
+	// LectureID, LetterGrade
+	private Map<String, String> listOfLecturesTaken;
 
-	public SemesterJSON(int creditsTaken, int creditsCompleted, double points, double yano) {
+	public SemesterJSON(Map<String, String> listOfLecturesTaken) {
 		super();
-		this.creditsTaken = creditsTaken;
-		this.creditsCompleted = creditsCompleted;
-		this.points = points;
-		this.yano = yano;
+		
+		if (listOfLecturesTaken == null) {
+			this.listOfLecturesTaken = new HashMap<String, String>();
+		}
 	}
 
-	public Map<LectureJSON, String> getListOfLecturesTaken() {
+	public Map<String, String> getListOfLecturesTaken() {
 		return listOfLecturesTaken;
 	}
 
-	public void setListOfLecturesTaken(Map<LectureJSON, String> listOfLecturesTaken) {
+	public void setListOfLecturesTaken(Map<String, String> listOfLecturesTaken) {
 		this.listOfLecturesTaken = listOfLecturesTaken;
-	}
-
-	public int getCreditsTaken() {
-		return creditsTaken;
-	}
-
-	public void setCreditsTaken(int creditsTaken) {
-		this.creditsTaken = creditsTaken;
-	}
-
-	public int getCreditsCompleted() {
-		return creditsCompleted;
-	}
-
-	public void setCreditsCompleted(int creditsCompleted) {
-		this.creditsCompleted = creditsCompleted;
-	}
-
-	public double getPoints() {
-		return points;
-	}
-
-	public void setPoints(double points) {
-		this.points = points;
-	}
-
-	public double getYano() {
-		return yano;
-	}
-
-	public void setYano(double yano) {
-		this.yano = yano;
 	}
 }

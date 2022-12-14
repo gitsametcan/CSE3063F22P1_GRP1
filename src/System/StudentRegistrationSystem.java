@@ -7,13 +7,13 @@ import java.util.Map;
 import java.util.Scanner;
 
 import Enums.ApprovalState;
-import Enums.LectureHour;
 import Enums.LetterGrade;
 import lecture.Lecture;
 import lecture.LectureSession;
 import lecture.Schedule;
 import person.Student;
 
+//Kaan Camci 150119063
 public class StudentRegistrationSystem {
 
 	private Scanner scanner;
@@ -37,7 +37,7 @@ public class StudentRegistrationSystem {
 			// currentUser = DataManager.getInstance().findStudent(FilterType.ID,
 			// providedID);
 			for (Student student : objects1.getStudents()) {
-				if (providedID.equals(student.getId())) {
+				if (providedID.equals(student.getID())) {
 					currentUser = student;
 					System.out.println("Welcome to Marmara BYS " + currentUser.getFullName());
 				}
@@ -57,54 +57,61 @@ public class StudentRegistrationSystem {
 
 		boolean validInput = false;
 
-		System.out.println("Please choose a menu: ");
-		System.out.println("1-Transcript");
-		System.out.println("2-Make Lecture Registration");
-		System.out.println("3-Schedule");
-		System.out.println("4-Registration Status");
-		System.out.println("5-Debt");
-		System.out.println("6-Sign Out");
-		System.out.println(
-				"----\nSuggestion: Enter \"2\" to go to he registartion menu, then check by entering \"4\" to go to the status menu");
+		int menuChoice = 0;
+		while (menuChoice != 6) {
 
-		while (!validInput) {
+			System.out.println("Please choose a menu: ");
+			System.out.println("1-Transcript");
+			System.out.println("2-Make Lecture Registration");
+			System.out.println("3-Schedule");
+			System.out.println("4-Registration Status");
+			System.out.println("5-Debt");
+			System.out.println("6-Sign Out");
+			System.out.println(
+					"----\nSuggestion: Enter \"2\" to go to he registartion menu, then check by entering \"4\" to go to the status menu");
 
-			int menuChoice = scanner.nextInt();
+			validInput = false;
 
-			switch (menuChoice) {
-			case 1:
-				validInput = true;
-				transcriptMenu(currentUser);
-				break;
-			case 2:
-				validInput = true;
-				makeRegistrationMenu(currentUser);
-				break;
-			case 3:
-				validInput = true;
-				scheduleMenu(currentUser);
-				break;
-			case 4:
-				validInput = true;
-				registrationStatusMenu(currentUser);
-				break;
-			case 5:
-				validInput = true;
-				debtMenu(currentUser);
-				break;
-			case 6:
-				validInput = true;
-				signOut();
-				break;
-			default:
-				System.out.print("The input is not valid, please provide a valid input.");
+			while (!validInput) {
+
+				menuChoice = scanner.nextInt();
+
+				switch (menuChoice) {
+				case 1:
+					validInput = true;
+					transcriptMenu(currentUser);
+					break;
+				case 2:
+					validInput = true;
+					makeRegistrationMenu(currentUser);
+					break;
+				case 3:
+					validInput = true;
+					scheduleMenu(currentUser);
+					break;
+				case 4:
+					validInput = true;
+					registrationStatusMenu(currentUser);
+					break;
+				case 5:
+					validInput = true;
+					debtMenu(currentUser);
+					break;
+				case 6:
+					validInput = true;
+					signOut();
+					break;
+				default:
+					System.out.print("The input is not valid, please provide a valid input.");
+				}
 			}
 		}
 
 	}
 
 	private void transcriptMenu(Student currentUser) throws FileNotFoundException {
-		for (int i = 0; i < currentUser.getTranscript().getListOfSemester().size(); i++) {
+		int semesterSize = currentUser.getTranscript().getListOfSemester().size();
+		for (int i = 0; i < semesterSize; i++) {
 			if (i == 0) {
 				System.out.println("1st Semester");
 			} else if (i == 1) {
@@ -135,14 +142,10 @@ public class StudentRegistrationSystem {
 			System.out.println(currentUser.getTranscript().getListOfSemester().get(i).getCreditsCompleted());
 		}
 
-		studentMenu(currentUser);
 	}
 
 	private void scheduleMenu(Student currentUser) throws FileNotFoundException {
-
-		Schedule schedule = new Schedule(currentUser);
-		schedule.showSchedule();
-		studentMenu(currentUser);
+		currentUser.getSchedule().showSchedule();
 	}
 
 	private void makeRegistrationMenu(Student currentUser) throws FileNotFoundException {
@@ -173,8 +176,8 @@ public class StudentRegistrationSystem {
 
 			if (input.equalsIgnoreCase("send")) {
 				currentUser.sendForApproval(chosenLectures);
-				currentUser.getAdvisor().approveApplication(currentUser.getRegistirationApplication());
-				currentUser.setListOfLectureSessions(chosenLectures);
+				// currentUser.getAdvisor().approveApplication(currentUser.getRegistirationApplication());
+				// currentUser.setListOfLectureSessions(chosenLectures);
 				break;
 			}
 
@@ -182,8 +185,6 @@ public class StudentRegistrationSystem {
 				break;
 			}
 		}
-
-		studentMenu(currentUser);
 	}
 
 	private void parseSelectionCommand(String input, List<LectureSession> chosenLectures) {
@@ -250,18 +251,17 @@ public class StudentRegistrationSystem {
 	private void registrationStatusMenu(Student currentUser) throws FileNotFoundException {
 		if (currentUser.getRegistirationApplication() == null) {
 			System.out.println("You did not apply for registration.\n");
-			studentMenu(currentUser);
 			return;
 		}
 		Map<LectureSession, ApprovalState> sessions = currentUser.getRegistirationApplication()
 				.getSessionsSentForApproval();
 		System.out.println();
 		for (LectureSession s : sessions.keySet()) {
+
 			System.out.printf("%s.%s", s.getLecture().getID(), s.getSessionID());
 			System.out.printf(" %-15s%n", sessions.get(s).toString());
 		}
 		System.out.println();
-		studentMenu(currentUser);
 	}
 
 	private void debtMenu(Student currentUser) throws FileNotFoundException {
@@ -269,11 +269,31 @@ public class StudentRegistrationSystem {
 			System.out.println("You have no debt.");
 		} else {
 			System.out.println("Your debt is " + currentUser.getDebt().getAmount() + "TL.");
-//			System.out.println("1- Pay your debt");
-//			System.out.println("2- Go back");
-		}
+			System.out.println("1- Pay your debt");
+			System.out.println("2- Go back");
 
-		studentMenu(currentUser);
+			int payDebtChoice = 0;
+
+			boolean validInput = false;
+
+			while (!validInput) {
+
+				payDebtChoice = scanner.nextInt();
+
+				switch (payDebtChoice) {
+				case 1:
+					currentUser.getDebt().setAmount(0);
+					validInput = true;
+					break;
+				case 2:
+					validInput = true;
+					break;
+				default:
+					System.out.println("Please enter a valid input(1,2)");
+				}
+			}
+
+		}
 	}
 
 	private void signOut() throws FileNotFoundException {

@@ -39,10 +39,11 @@ public class RegistrationSystem {
 			case 2:
 				validInput = true;
 				instructorMenu();
+				InstructorRegistrationSystem instructorRegistrationSystem = new InstructorRegistrationSystem(objects, this);
 				break;
 			case 3:
 				validInput = true;
-				advisorMenu();
+				AdvisorRegistrationSystem advisorRegistrationSystem = new AdvisorRegistrationSystem(objects, this);
 				break;
 			case 4:
 				System.exit(0);

@@ -2,12 +2,18 @@
 
 package data;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import Enums.FilterType;
+import data.json.MetaData;
+import data.json.NamePool;
 import lecture.Lecture;
 import person.Advisor;
 import person.Instructor;
@@ -19,13 +25,36 @@ public class DataManager {
 	private static DataManager singleInstance = null;
 	private List<Lecture> listOfLectures;
 	private List<Person> listOfPeople;
-	private List<Person> cacheList;
+	private LinkedList<Person> cacheList;
+	private JsonOperator jsonOperator;
 
 	private DataManager() {
 		listOfLectures = new ArrayList<Lecture>();
 		listOfPeople = new ArrayList<Person>();
 		cacheList = new LinkedList<Person>();
-
+		jsonOperator = new JsonOperator();
+		
+		MetaData metaData = jsonOperator.getMetaData();
+		
+		Set<String> studentFiles = listFiles(metaData.getStudentsPath());
+		Set<String> advisorFiles = listFiles(metaData.getAdvisorsPath());
+		Set<String> lectureFiles = listFiles(metaData.getLecturesPath());
+		
+		
+		for (String name : studentFiles) {
+			jsonOperator.readStudentJSON(name);
+		}
+		
+		for (String name : advisorFiles) {
+			jsonOperator.readAdvisorJSON(name);
+		}
+		
+		for (String name : lectureFiles) {
+			jsonOperator.readLectureJSON(name);
+		}
+		
+		jsonOperator.generateObjects();
+		
 	}
 
 	public static DataManager getInstance() {
@@ -44,7 +73,7 @@ public class DataManager {
 		}
 		return Optional.empty();
 	}
-
+ 
 	public Optional<Student> findStudent(String key, FilterType filterType) {
 		for (Person p : cacheList) {
 			if (!(p instanceof Student)) {
@@ -53,6 +82,8 @@ public class DataManager {
 			Student s = (Student) p;
 			if ((filterType == FilterType.ID && s.getID().equalsIgnoreCase(key))
 					|| (filterType == FilterType.Name && s.getFullName().equalsIgnoreCase(key))) {
+				cacheList.remove(p);
+				cacheList.addFirst(p);
 				return Optional.of(s);
 			}
 		}
@@ -64,6 +95,8 @@ public class DataManager {
 			Student s = (Student) p;
 			if ((filterType == FilterType.ID && s.getID().equalsIgnoreCase(key))
 					|| filterType == FilterType.Name && s.getFullName().equalsIgnoreCase(key)) {
+				cacheList.addFirst(p);
+				fixCache();
 				return Optional.of(s);
 			}
 		}
@@ -78,6 +111,8 @@ public class DataManager {
 			Instructor i = (Instructor) p;
 			if ((filterType == FilterType.ID && i.getID().equalsIgnoreCase(key))
 					|| (filterType == FilterType.Name && i.getFullName().equalsIgnoreCase(key))) {
+				cacheList.remove(p);
+				cacheList.addFirst(p);
 				return Optional.of(i);
 			}
 		}
@@ -89,6 +124,8 @@ public class DataManager {
 			Instructor i = (Instructor) p;
 			if ((filterType == FilterType.ID && i.getID().equalsIgnoreCase(key))
 					|| filterType == FilterType.Name && i.getFullName().equalsIgnoreCase(key)) {
+				cacheList.addFirst(p);
+				fixCache();
 				return Optional.of(i);
 			}
 		}
@@ -103,6 +140,8 @@ public class DataManager {
 			Advisor a = (Advisor) p;
 			if ((filterType == FilterType.ID && a.getID().equalsIgnoreCase(key))
 					|| (filterType == FilterType.Name && a.getFullName().equalsIgnoreCase(key))) {
+				cacheList.remove(p);
+				cacheList.addFirst(p);
 				return Optional.of(a);
 			}
 		}
@@ -114,6 +153,8 @@ public class DataManager {
 			Advisor a = (Advisor) p;
 			if ((filterType == FilterType.ID && a.getID().equalsIgnoreCase(key))
 					|| filterType == FilterType.Name && a.getFullName().equalsIgnoreCase(key)) {
+				cacheList.addFirst(p);
+				fixCache();
 				return Optional.of(a);
 			}
 		}
@@ -175,6 +216,27 @@ public class DataManager {
 			}
 		}
 		return result;
+	}
+	
+	public Optional<NamePool> getNamePool() {
+		return jsonOperator.getNamePool();
+	}
+
+	public void addStudents(List<Student> studentList) {
+		listOfPeople.addAll(studentList);
+	}
+	
+	private void fixCache() {
+		while (cacheList.size() > 50) {
+			cacheList.removeLast();
+		}
+	}
+	
+	private Set<String> listFiles(String dir) {
+	    return Stream.of(new File(dir).listFiles())
+	      .filter(file -> !file.isDirectory())
+	      .map(File::getName)
+	      .collect(Collectors.toSet());
 	}
 
 }

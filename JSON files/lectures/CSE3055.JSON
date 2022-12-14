@@ -1,0 +1,8 @@
+{
+    "id": "CSE3055",
+    "name": "Database Systems" ,
+    "lectureType": "MANDATORY",
+    "credit": "7",
+    "prerequisites": "CSE2225",
+    "quota": "40"
+}

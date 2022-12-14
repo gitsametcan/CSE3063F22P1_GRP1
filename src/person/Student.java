@@ -1,6 +1,5 @@
 package person;
 
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
@@ -36,11 +35,6 @@ public class Student extends Person {
 	// Creating get and set methods for variables
 	public void setID(String nID) {
 		this.id.setID(nID);
-		;
-	}
-
-	public void setListOfLectureSessions(List<LectureSession> listOfLectureSessions) {
-		this.schedule.setListOfLectureSessions(listOfLectureSessions);
 	}
 
 	public void setTranscript(Transcript transcript) {
@@ -79,8 +73,12 @@ public class Student extends Person {
 		return id.getID();
 	}
 
-	public List<LectureSession> getListOfLectureSessions() {
-		return this.schedule.getListOfLectureSessions();
+	public Schedule getSchedule() {
+		return this.schedule;
+	}
+
+	public void setSchedule(Schedule schedule) {
+		this.schedule = schedule;
 	}
 
 	public Transcript getTranscript() {

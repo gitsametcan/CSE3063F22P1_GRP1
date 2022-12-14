@@ -1,0 +1,8 @@
+{
+    "id": "PHYS1102",
+    "name": "Physics II" ,
+    "lectureType": "MANDATORY",
+    "credit": "4",
+    "prerequisites": "",
+    "quota": "40"
+}

@@ -17,16 +17,15 @@ public class Transcript {
 	private int totalCreditsCompleted;
 	private double points;
 
-	public Transcript(Student student, List<Semester> listOfSemester, double gano, int totalCreditsTaken,
-			int totalCreditsCompleted, double points) {
+	public Transcript(Student student, List<Semester> listOfSemester) {
 		super();
 		this.student = student;
 		student.setTranscript(this);
 		this.listOfSemester = listOfSemester;
-		this.gano = gano;
-		this.totalCreditsTaken = totalCreditsTaken;
-		this.totalCreditsCompleted = totalCreditsCompleted;
-		this.points = points;
+		this.totalCreditsTaken = totalCreditsTakenCalculator(listOfSemester);
+		this.totalCreditsCompleted = totalCreditsCompletedCalculator(listOfSemester);
+		this.points = pointsCalculator(listOfSemester);
+		this.gano = points / totalCreditsTaken;
 		if (this.listOfSemester == null) {
 			this.listOfSemester = new ArrayList<Semester>();
 		}
@@ -35,6 +34,9 @@ public class Transcript {
 	// Creating get and set methods for variables
 	public Student getStudent() {
 		return student;
+	}
+	public void setStudent(Student student) {
+		this.student = student;
 	}
 
 	public List<Semester> getListOfSemester() {
@@ -59,5 +61,44 @@ public class Transcript {
 
 	public void addSemester(Semester semester) {
 		listOfSemester.add(semester);
+	}
+	public void setListOfSemester(List<Semester> listOfSemester) {
+		this.listOfSemester = listOfSemester;
+	}
+	public void setGano(double gano) {
+		this.gano = gano;
+	}
+	public void setTotalCreditsTaken(int totalCreditsTaken) {
+		this.totalCreditsTaken = totalCreditsTaken;
+	}
+	public void setTotalCreditsCompleted(int totalCreditsCompleted) {
+		this.totalCreditsCompleted = totalCreditsCompleted;
+	}
+	public void setPoints(double points) {
+		this.points = points;
+	}
+	
+	private int totalCreditsTakenCalculator(List<Semester> listOfSemester) {
+		int totalCreditsTaken = 0;
+		for(Semester semester : listOfSemester) {
+			totalCreditsTaken = totalCreditsTaken + semester.getCreditsTaken();
+		}
+		return totalCreditsTaken;
+	}
+	
+	private int totalCreditsCompletedCalculator(List<Semester> listOfSemester) {
+		int totalCreditsCompleted = 0;
+		for(Semester semester : listOfSemester) {
+			totalCreditsCompleted = totalCreditsCompleted + semester.getCreditsCompleted();
+		}
+		return totalCreditsCompleted;
+	}
+	
+	private double pointsCalculator(List<Semester> listOfSemester) {
+		double points = 0;
+		for(Semester semester : listOfSemester) {
+			points = points + semester.getPoints();
+		}
+		return points;
 	}
 }
