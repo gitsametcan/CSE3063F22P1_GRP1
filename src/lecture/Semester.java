@@ -1,8 +1,11 @@
 package lecture;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
+import Debt_LRA_Transcript.Transcript;
 import Enums.LetterGrade;
 
 //Serdar Alsan	150120034 
@@ -47,12 +50,45 @@ public class Semester {
 		return yano;
 	}
 
-	public void addLecture(Lecture lecture, LetterGrade lectureGrade) {
-		this.listOfLecturesTaken.put(lecture, lectureGrade);
+	private boolean hasPreqLectureTaken(Lecture preqLecture, List<Lecture> listOfLecture) {
+		for(Lecture lecture : listOfLecture) {
+			if(lecture.getName() == preqLecture.getName())
+				return true;
+		}
+		return false;
 	}
-
-	public void removeLecture(Lecture lecture, LetterGrade lectureGrade) {
-		this.listOfLecturesTaken.remove(lecture, lectureGrade);
+	
+	private boolean takenPoint(Lecture lecture, Map<Lecture, LetterGrade> listOfLecturesTaken) {
+		boolean point = true;
+		if(listOfLecturesTaken.get(lecture).getLetterGradeValue() > 1.99)
+			point = false;
+		return point;
+	}
+	
+	private boolean canTakeLecture(Lecture lecture, Transcript transcript) {
+		boolean canTake;
+		
+		List<Lecture> listOfTaken = new ArrayList<>();
+		
+		int a = 0;
+		boolean in = false;
+		
+		for (int i = 0 ; i< transcript.getListOfSemester().size(); i++) {
+			Semester semester = transcript.getListOfSemester().get(i);
+			for (Lecture lectureTaken : semester.getListOfLecturesTaken().keySet()) {
+				listOfTaken.add(lectureTaken);
+				if (lectureTaken.getName() == lecture.getName()) {
+					a = i;
+					in = true;
+				}
+			}
+		}
+		if(canTake = hasPreqLectureTaken(lecture.getPrerequisite(),listOfTaken)) {
+			if(in) {
+				canTake = takenPoint(lecture, transcript.getListOfSemester().get(a).getListOfLecturesTaken());
+			}
+		}
+		return canTake;
 	}
 
 	public void setListOfLecturesTaken(Map<Lecture, LetterGrade> listOfLecturesTaken) {

@@ -36,6 +36,10 @@ public class Student extends Person {
 	public void setID(String nID) {
 		this.id.setID(nID);
 	}
+	
+	public void setID(int DepartmentCode, int YearCode, int OrderOfPlacement) {
+		this.setID(DepartmentCode, YearCode, OrderOfPlacement);
+	}
 
 	public void setTranscript(Transcript transcript) {
 		this.transcript = transcript;
