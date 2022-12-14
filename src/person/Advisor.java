@@ -28,6 +28,7 @@ public class Advisor extends Instructor {
 	public void approveApplication(LectureRegistrationApplication lectureRegistirationApplication,
 			LectureSession lectureSession) {
 		lectureRegistirationApplication.getSessionsSentForApproval().put(lectureSession, ApprovalState.Approved);
+		lectureRegistirationApplication.getStudent().getSchedule().getListOfLectureSessions().add(lectureSession);
 	}
 
 	public void rejectApplication(LectureRegistrationApplication lectureRegistirationApplication,
