@@ -2,9 +2,11 @@ package System;
 
 import java.io.FileNotFoundException;
 import java.util.List;
+import java.util.Optional;
 import java.util.Scanner;
 
-import Enums.LectureHour;
+import Enums.FilterType;
+import data.DataManager;
 import lecture.LectureSession;
 import lecture.Schedule;
 import person.Instructor;
@@ -15,39 +17,30 @@ public class InstructorRegistrationSystem {
 
 	private Scanner scanner;
 	private RegistrationSystem registrationSystem1;
-	private ObjectCreator objects1;
 
-	public InstructorRegistrationSystem(ObjectCreator objects, RegistrationSystem registrationSystem)
-			throws FileNotFoundException {
+	public InstructorRegistrationSystem(RegistrationSystem registrationSystem) throws FileNotFoundException {
 		scanner = new Scanner(System.in);
-		objects1 = objects;
 		registrationSystem1 = registrationSystem;
 		instructorLogin();
 	}
 
 	private void instructorLogin() throws FileNotFoundException {
 		Instructor currentUser = null;
+
+		System.out.println("Please provide your ID:");
+		System.out.println("----\nSuggestion: Enter \"????\"");
 		while (true) {
-			System.out.println("Please provide your ID:");
-			System.out.println("----\nSuggestion: Enter \"????\"");
 			String providedID = scanner.nextLine();
-			// currentUser = DataManager.getInstance().findStudent(FilterType.ID,
-			// providedID);
-			for (Instructor instructor : objects1.getInstructors()) {
-				if (providedID.equals(instructor.getID())) {
-					currentUser = instructor;
-					System.out.println("Welcome to Marmara BYS " + currentUser.getFullName());
-				}
+			Optional<Instructor> currentOptionalAdvisor = DataManager.getInstance().findInstructor(providedID,
+					FilterType.ID);
+			if (currentOptionalAdvisor.isPresent()) {
+				currentUser = currentOptionalAdvisor.get();
+				instructorMenu(currentUser);
+				break;
+			} else {
+				System.out.print("Instructor not found, please try again: ");
 			}
-
-			if (currentUser == null) {
-				System.out.println("The user not found.");
-				continue;
-			}
-			break;
 		}
-
-		instructorMenu(currentUser);
 	}
 
 	private void instructorMenu(Instructor currentUser) throws FileNotFoundException {

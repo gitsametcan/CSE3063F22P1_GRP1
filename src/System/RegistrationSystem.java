@@ -5,15 +5,9 @@ import java.util.Scanner;
 
 public class RegistrationSystem {
 
-	ObjectCreator objects = null;
-
 	private Scanner scanner;
 
 	public RegistrationSystem() throws FileNotFoundException {
-		objects = new ObjectCreator();
-		objects.createStudents();
-		objects.createAdvisors();
-		objects.createLectures();
 		scanner = new Scanner(System.in);
 		menu();
 	}
@@ -34,16 +28,15 @@ public class RegistrationSystem {
 			switch (loginType) {
 			case 1:
 				validInput = true;
-				StudentRegistrationSystem studentRegistrationSystem = new StudentRegistrationSystem(objects, this);
+				StudentRegistrationSystem studentRegistrationSystem = new StudentRegistrationSystem(this);
 				break;
 			case 2:
 				validInput = true;
-				instructorMenu();
-				InstructorRegistrationSystem instructorRegistrationSystem = new InstructorRegistrationSystem(objects, this);
+				InstructorRegistrationSystem instructorRegistrationSystem = new InstructorRegistrationSystem(this);
 				break;
 			case 3:
 				validInput = true;
-				AdvisorRegistrationSystem advisorRegistrationSystem = new AdvisorRegistrationSystem(objects, this);
+				AdvisorRegistrationSystem advisorRegistrationSystem = new AdvisorRegistrationSystem(this);
 				break;
 			case 4:
 				System.exit(0);
@@ -51,14 +44,6 @@ public class RegistrationSystem {
 				System.out.print("The input is not valid, please provide a valid input.");
 			}
 		}
-
-	}
-
-	private void instructorMenu() {
-
-	}
-
-	private void advisorMenu() {
 
 	}
 }

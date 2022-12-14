@@ -4,13 +4,15 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.Scanner;
 
 import Enums.ApprovalState;
+import Enums.FilterType;
 import Enums.LetterGrade;
+import data.DataManager;
 import lecture.Lecture;
 import lecture.LectureSession;
-import lecture.Schedule;
 import person.Student;
 
 //Kaan Camci 150119063
@@ -18,39 +20,29 @@ public class StudentRegistrationSystem {
 
 	private Scanner scanner;
 	private RegistrationSystem registrationSystem1;
-	private ObjectCreator objects1;
 
-	public StudentRegistrationSystem(ObjectCreator objects, RegistrationSystem registrationSystem)
-			throws FileNotFoundException {
+	public StudentRegistrationSystem(RegistrationSystem registrationSystem) throws FileNotFoundException {
 		scanner = new Scanner(System.in);
-		objects1 = objects;
 		registrationSystem1 = registrationSystem;
 		studentLogin();
 	}
 
 	private void studentLogin() throws FileNotFoundException {
 		Student currentUser = null;
+		System.out.println("Please provide your ID:");
+		System.out.println("----\nSuggestion: Enter \"150119063\"");
 		while (true) {
-			System.out.println("Please provide your ID:");
-			System.out.println("----\nSuggestion: Enter \"150119063\"");
 			String providedID = scanner.nextLine();
-			// currentUser = DataManager.getInstance().findStudent(FilterType.ID,
-			// providedID);
-			for (Student student : objects1.getStudents()) {
-				if (providedID.equals(student.getID())) {
-					currentUser = student;
-					System.out.println("Welcome to Marmara BYS " + currentUser.getFullName());
-				}
+			Optional<Student> currentOptionalStudent = DataManager.getInstance().findStudent(providedID, FilterType.ID);
+			if (currentOptionalStudent.isPresent()) {
+				currentUser = currentOptionalStudent.get();
+				studentMenu(currentUser);
+				break;
+			} else {
+				System.out.print("Advisor not found, please try again: ");
 			}
-
-			if (currentUser == null) {
-				System.out.println("The user not found.");
-				continue;
-			}
-			break;
 		}
 
-		studentMenu(currentUser);
 	}
 
 	private void studentMenu(Student currentUser) throws FileNotFoundException {
@@ -150,7 +142,7 @@ public class StudentRegistrationSystem {
 
 	private void makeRegistrationMenu(Student currentUser) throws FileNotFoundException {
 
-		List<Lecture> currentStudentAvailableLectures = objects1.getLectures();
+		List<Lecture> currentStudentAvailableLectures = DataManager.getInstance().searchLecture("", FilterType.Name);
 		System.out.println("Lectures: ");
 
 		for (int i = 0; i < currentStudentAvailableLectures.size(); i++) {
@@ -190,6 +182,7 @@ public class StudentRegistrationSystem {
 	private void parseSelectionCommand(String input, List<LectureSession> chosenLectures) {
 		String[] partedInput;
 		String[] partedLectureID;
+		List<Lecture> lectures = DataManager.getInstance().searchLecture("", FilterType.Name);
 
 		if (input.contains(" ")) {
 			partedInput = input.split(" ");
@@ -205,7 +198,7 @@ public class StudentRegistrationSystem {
 		}
 
 		if (partedInput[0].equalsIgnoreCase("add")) {
-			for (Lecture l : objects1.getLectures()) {
+			for (Lecture l : lectures) {
 				if (l.getID().equalsIgnoreCase(partedLectureID[0])) {
 					for (LectureSession ls : l.getSessions()) {
 						if (ls.getSessionID().equalsIgnoreCase(partedLectureID[1])) {
@@ -219,7 +212,7 @@ public class StudentRegistrationSystem {
 			System.out.printf("Couldn't find %s", partedInput[1]);
 		}
 		if (partedInput[0].equalsIgnoreCase("remove")) {
-			for (Lecture l : objects1.getLectures()) {
+			for (Lecture l : lectures) {
 				if (l.getID().equalsIgnoreCase(partedLectureID[0])) {
 					for (LectureSession ls : l.getSessions()) {
 						if (ls.getSessionID().equalsIgnoreCase(partedLectureID[1])) {
