@@ -2,10 +2,13 @@ package System;
 
 import java.io.FileNotFoundException;
 import java.util.Map.Entry;
+import java.util.Optional;
 import java.util.Scanner;
 
 import Debt_LRA_Transcript.LectureRegistrationApplication;
 import Enums.ApprovalState;
+import Enums.FilterType;
+import data.DataManager;
 import lecture.LectureSession;
 import person.Advisor;
 
@@ -14,39 +17,30 @@ public class AdvisorRegistrationSystem {
 
 	private Scanner scanner;
 	private RegistrationSystem registrationSystem1;
-	private ObjectCreator objects1;
 
-	public AdvisorRegistrationSystem(ObjectCreator objects, RegistrationSystem registrationSystem)
-			throws FileNotFoundException {
+	public AdvisorRegistrationSystem(RegistrationSystem registrationSystem) throws FileNotFoundException {
 		scanner = new Scanner(System.in);
-		objects1 = objects;
 		registrationSystem1 = registrationSystem;
 		AdvisorLogin();
 	}
 
 	private void AdvisorLogin() throws FileNotFoundException {
 		Advisor currentUser = null;
-		while (true) {
-			System.out.println("Please provide your ID:");
-			System.out.println("----\nSuggestion: Enter \"????\"");
-			String providedID = scanner.nextLine();
-			// currentUser = DataManager.getInstance().findStudent(FilterType.ID,
-			// providedID);
-			for (Advisor advisor : objects1.getAdvisors()) {
-				if (providedID.equals(advisor.getID())) {
-					currentUser = advisor;
-					System.out.println("Welcome to Marmara BYS " + currentUser.getFullName());
-				}
-			}
 
-			if (currentUser == null) {
-				System.out.println("The user not found.");
-				continue;
+		System.out.println("Please provide your ID:");
+		System.out.println("----\nSuggestion: Enter \"????\"");
+		while (true) {
+			String providedID = scanner.nextLine();
+			Optional<Advisor> currentOptionalAdvisor = DataManager.getInstance().findAdvisor(providedID, FilterType.ID);
+			if (currentOptionalAdvisor.isPresent()) {
+				currentUser = currentOptionalAdvisor.get();
+				advisorMenu(currentUser);
+				break;
+			} else {
+				System.out.print("Advisor not found, please try again: ");
 			}
-			break;
 		}
 
-		advisorMenu(currentUser);
 	}
 
 	private void advisorMenu(Advisor currentUser) throws FileNotFoundException {
@@ -72,7 +66,7 @@ public class AdvisorRegistrationSystem {
 					validInput = true;
 					showApplications(currentUser);
 					break;
-				case 3:
+				case 2:
 					validInput = true;
 					signOut();
 					break;
