@@ -26,10 +26,10 @@ public class JsonOperator {
 	
 	private List<Lecture> lectureObjectList;
 	private List<Student> studentObjectList;
-	private List<Transcript> transcriptObjectList;
 	private List<Advisor> advisorObjectList;
 	
 	private ObjectGenerator objectGenerator;
+	private JsonGenerator jsonGenerator;
 	private MetaData metaData;
 	private NamePool namePool;
 	
@@ -42,6 +42,9 @@ public class JsonOperator {
 		JsonReader json = new JsonReader("metadata.json");
 		MetaData metaData = json.readJsonFile(MetaData.class);
 		this.metaData = metaData;
+
+		jsonGenerator = new JsonGenerator(this);
+
 	}
 	
 	public void readNamePool() {
@@ -82,6 +85,23 @@ public class JsonOperator {
 		return Optional.ofNullable(namePool);
 	}
 	
+	public JsonGenerator getJsonGenerator() {
+		return this.jsonGenerator;
+	}
+
+	public List<Lecture> getReadLectures() {
+		return lectureObjectList;
+	}
+	
+	public List<Student> getReadStudents() {
+		return studentObjectList;
+	}
+
+	public List<Advisor> getReadAdvisors() {
+		return advisorObjectList;
+	}
+
+
 	public void generateObjects() {
 		 objectGenerator = new ObjectGenerator(lectureList, studentList, transcriptList, advisorList);
 		 objectGenerator.generateObjects();
@@ -89,7 +109,6 @@ public class JsonOperator {
 		 
 		 this.lectureObjectList = objectGenerator.getLectureObjects();
 		 this.studentObjectList = objectGenerator.getStudentObjects();
-		 this.transcriptObjectList = objectGenerator.getTranscriptObjects();
 		 this.advisorObjectList = objectGenerator.getAdvisorObjects();
 	
 	}

@@ -68,6 +68,31 @@ public class ObjectGenerator {
 
 	public void pairObjects() {
 
+		pairForLecture();
+
+		pairForStudent();
+
+		pairForAdvisor();
+
+	}
+
+	public List<Lecture> getLectureObjects() {
+		return lectureObjectList;
+	}
+
+	public List<Student> getStudentObjects() {
+		return studentObjectList;
+	}
+
+	public List<Transcript> getTranscriptObjects() {
+		return transcriptObjectList;
+	}
+
+	public List<Advisor> getAdvisorObjects() {
+		return advisorObjectList;
+	}
+
+	private void pairForLecture() {
 		for (LectureJSON ljs : lectureList) {
 
 			// Collecting the Lecture reference
@@ -106,7 +131,9 @@ public class ObjectGenerator {
 			}
 
 		}
+	}
 
+	private void pairForStudent() {
 		for (StudentJSON sjs : studentList) {
 			Optional<Student> optStudent = findStudent(sjs.getStudentID());
 			Student currentStudent = null;
@@ -139,36 +166,41 @@ public class ObjectGenerator {
 				}
 			}
 
-			for (TranscriptJSON tjs : transcriptList) {
-				if (!tjs.getStudentID().equalsIgnoreCase(currentStudent.getID())) {
-					continue;
-				}
-				
-				List<Semester> listOfSemesters = new ArrayList<Semester>();
-				for (SemesterJSON semesterJson : tjs.getListOfSemesters()) {
-					Map<String, String> listOfLecturesTaken = semesterJson.getListOfLecturesTaken();
-					HashMap<Lecture, LetterGrade> semesterLectures = new HashMap<Lecture, LetterGrade>(); 
-					for (String lectureID : listOfLecturesTaken.keySet()) {
-						Optional<Lecture> optLecture = findLecture(lectureID);
-						if (!optLecture.isPresent()) {
-							continue;
-						}
-						Lecture tempLecture = optLecture.get();
-						LetterGrade tempGrade = stringToLetterGrade(listOfLecturesTaken.get(lectureID));
-						semesterLectures.put(tempLecture, tempGrade);
+			pairForTranscript(currentStudent);
+		}
+	}
+
+	private void pairForTranscript(Student currentStudent) {
+		for (TranscriptJSON tjs : transcriptList) {
+			if (!tjs.getStudentID().equalsIgnoreCase(currentStudent.getID())) {
+				continue;
+			}
+			
+			List<Semester> listOfSemesters = new ArrayList<Semester>();
+			for (SemesterJSON semesterJson : tjs.getListOfSemesters()) {
+				Map<String, String> listOfLecturesTaken = semesterJson.getListOfLecturesTaken();
+				HashMap<Lecture, LetterGrade> semesterLectures = new HashMap<Lecture, LetterGrade>(); 
+				for (String lectureID : listOfLecturesTaken.keySet()) {
+					Optional<Lecture> optLecture = findLecture(lectureID);
+					if (!optLecture.isPresent()) {
+						continue;
 					}
-
-					Semester tempSemester = new Semester(semesterLectures);
-					listOfSemesters.add(tempSemester);
+					Lecture tempLecture = optLecture.get();
+					LetterGrade tempGrade = stringToLetterGrade(listOfLecturesTaken.get(lectureID));
+					semesterLectures.put(tempLecture, tempGrade);
 				}
 
-				Transcript tempTranscript = new Transcript(currentStudent, listOfSemesters);
-				
-				transcriptObjectList.add(tempTranscript);
+				Semester tempSemester = new Semester(semesterLectures);
+				listOfSemesters.add(tempSemester);
 			}
 
+			Transcript tempTranscript = new Transcript(currentStudent, listOfSemesters);
+			
+			transcriptObjectList.add(tempTranscript);
 		}
+	}
 
+	private void pairForAdvisor() {
 		for (AdvisorJSON ajs : advisorList) {
 
 			Optional<Advisor> optAdvisor = findAdvisor(ajs.getInstructorID());
@@ -197,23 +229,6 @@ public class ObjectGenerator {
 			}
 
 		}
-
-	}
-
-	public List<Lecture> getLectureObjects() {
-		return lectureObjectList;
-	}
-
-	public List<Student> getStudentObjects() {
-		return studentObjectList;
-	}
-
-	public List<Transcript> getTranscriptObjects() {
-		return transcriptObjectList;
-	}
-
-	public List<Advisor> getAdvisorObjects() {
-		return advisorObjectList;
 	}
 
 	private void generateLectures() {

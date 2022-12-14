@@ -55,6 +55,10 @@ public class DataManager {
 		
 		jsonOperator.generateObjects();
 		
+		listOfLectures.addAll(jsonOperator.getReadLectures());
+		listOfPeople.addAll(jsonOperator.getReadAdvisors());
+		listOfPeople.addAll(jsonOperator.getReadStudents());
+		
 	}
 
 	public static DataManager getInstance() {
@@ -62,6 +66,29 @@ public class DataManager {
 			singleInstance = new DataManager();
 		}
 		return singleInstance;
+	}
+
+	public void saveObjectAsJson() {
+		JsonGenerator jsonGenerator = jsonOperator.getJsonGenerator();
+
+		for (Lecture l : listOfLectures) {
+			jsonGenerator.generateLecture(l);
+		}
+
+		for (int i = 0; i < listOfPeople.size(); i++) {
+			Person p = listOfPeople.get(i);
+			if (p instanceof Student) {
+				Student s = (Student) p;
+				jsonGenerator.generateStudent(s);
+				jsonGenerator.generateTranscript(s.getTranscript());
+			}
+			if (p instanceof Advisor) {
+				Advisor a = (Advisor) p;
+				jsonGenerator.generateAdvisor(a);
+			}
+		}
+
+		jsonGenerator.writeJsons();
 	}
 
 	public Optional<Lecture> findLecture(String key, FilterType filterType) {
