@@ -7,6 +7,8 @@ import java.util.Map;
 
 import Debt_LRA_Transcript.Transcript;
 import Enums.LetterGrade;
+import Enums.Term;
+import Enums.TermYear;
 
 //Serdar Alsan	150120034 
 public class Semester {
@@ -16,6 +18,8 @@ public class Semester {
 	private int creditsCompleted;
 	private double points;
 	private double yano;
+	private Term term;
+	private TermYear termYear;
 
 	public Semester(HashMap<Lecture, LetterGrade> listOfLecturesTaken) {
 		super();

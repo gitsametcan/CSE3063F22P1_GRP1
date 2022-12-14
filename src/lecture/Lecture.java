@@ -5,6 +5,7 @@ import java.util.List;
 
 import Enums.LectureType;
 import Enums.Term;
+import Enums.TermYear;
 import IDs.LectureID;
 
 //Serdar Alsan	150120034 
@@ -18,10 +19,11 @@ public class Lecture {
 	private Lecture prerequisite;
 	private int quota;
 	private Term term;
+	private TermYear termYear;
 
 
 	public Lecture(LectureID id, String name, LectureType lectureType, int credit, List<LectureSession> sessions,
-			Lecture prerequisite, int quota, Term term) {
+			Lecture prerequisite, int quota, Term term, TermYear termYear) {
 		super();
 
 		this.id = id;
@@ -37,6 +39,7 @@ public class Lecture {
 		this.prerequisite = prerequisite;
 		this.quota = quota;
 		this.term = term;
+		this.termYear = termYear;
 
 		if (sessions == null) {
 			this.sessions = new ArrayList<LectureSession>();
@@ -122,6 +125,14 @@ public class Lecture {
 	
 	public void setTerm(Term term) {
 		this.term = term;
+	}
+	
+	public TermYear getTermYear() {
+		return termYear;
+	}
+	
+	public void setTermYear(TermYear termYear) {
+		this.termYear = termYear;
 	}
 	
 

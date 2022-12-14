@@ -4,6 +4,7 @@ import java.util.List;
 
 import Enums.LectureHour;
 import Enums.Term;
+import Enums.TermYear;
 import person.Person;
 
 public class Schedule {
@@ -11,11 +12,12 @@ public class Schedule {
 	private Person person;
 	private List<LectureSession> listOfLectureSessions;
 	private Term term;
-	
-	
-	public Schedule(Person person, Term term) {
+	private TermYear termYear;
+
+	public Schedule(Person person, Term term, TermYear termYear) {
 		this.person = person;
 		this.term = term;
+		this.termYear = termYear;
 	}
 
 	public void showSchedule() {
@@ -94,7 +96,7 @@ public class Schedule {
 	public Term getTerm() {
 		return term;
 	}
-	
+
 	public void setTerm(Term term) {
 		this.term = term;
 	}
