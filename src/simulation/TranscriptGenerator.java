@@ -10,10 +10,6 @@ public class TranscriptGenerator {
 
 	private Student student;
 	private List<Semester> listOfSemester;
-	private double gano;
-	private int totalCreditsTaken;
-	private int totalCreditsCompleted;
-	private double points;
 
 	private void setGano(List<Semester> listOfSemester) {
 		double tempGano = 0;
@@ -24,8 +20,7 @@ public class TranscriptGenerator {
 			numberOfSemester++;
 		}
 
-		this.gano = tempGano / numberOfSemester;
 	}
 
-	Transcript transcript = new Transcript(student, listOfSemester, gano, totalCreditsTaken, totalCreditsCompleted, points);
+	Transcript transcript = new Transcript(student, listOfSemester);
 }
