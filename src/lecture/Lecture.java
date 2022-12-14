@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import Enums.LectureType;
+import Enums.Term;
 import IDs.LectureID;
 
 //Serdar Alsan	150120034 
@@ -16,9 +17,11 @@ public class Lecture {
 	private List<LectureSession> sessions;
 	private Lecture prerequisite;
 	private int quota;
+	private Term term;
+
 
 	public Lecture(LectureID id, String name, LectureType lectureType, int credit, List<LectureSession> sessions,
-			Lecture prerequisite, int quota) {
+			Lecture prerequisite, int quota, Term term) {
 		super();
 
 		this.id = id;
@@ -33,6 +36,7 @@ public class Lecture {
 
 		this.prerequisite = prerequisite;
 		this.quota = quota;
+		this.term = term;
 
 		if (sessions == null) {
 			this.sessions = new ArrayList<LectureSession>();
@@ -111,5 +115,15 @@ public class Lecture {
 	public void removePrerequisitielLecture() {
 		this.prerequisite = null;
 	}
+	
+	public Term getTerm() {
+		return term;
+	}
+	
+	public void setTerm(Term term) {
+		this.term = term;
+	}
+	
+
 
 }

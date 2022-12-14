@@ -3,15 +3,19 @@ package lecture;
 import java.util.List;
 
 import Enums.LectureHour;
+import Enums.Term;
 import person.Person;
 
 public class Schedule {
 
 	private Person person;
 	private List<LectureSession> listOfLectureSessions;
-
-	public Schedule(Person person) {
+	private Term term;
+	
+	
+	public Schedule(Person person, Term term) {
 		this.person = person;
+		this.term = term;
 	}
 
 	public void showSchedule() {
@@ -87,4 +91,11 @@ public class Schedule {
 		this.listOfLectureSessions = listOfLectureSessions;
 	}
 
+	public Term getTerm() {
+		return term;
+	}
+	
+	public void setTerm(Term term) {
+		this.term = term;
+	}
 }
