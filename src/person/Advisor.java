@@ -11,6 +11,7 @@ import Debt_LRA_Transcript.LectureRegistrationApplication;
 import Enums.ApprovalState;
 import Enums.InstructorType;
 import IDs.InstructorID;
+import lecture.Lecture;
 import lecture.LectureSession;
 import lecture.Schedule;
 
@@ -23,8 +24,9 @@ public class Advisor extends Instructor {
 
 	public Advisor(String firstName, String lastName, InstructorID id, List<Lecture> listOfLectures,
 			Calendar dateOfEntry, List<Student> listOfStudents, List<LectureRegistrationApplication> listOfApplications,
-			InstructorType instructorType) {
-		super(firstName, lastName, id, listOfLectures, dateOfEntry, instructorType);
+			InstructorType instructorType, Schedule schedule) {
+		super(firstName, lastName, id, dateOfEntry, instructorType, schedule);
+		
 		this.listOfStudents = listOfStudents;
 		this.listOfApplications = listOfApplications;
 		if (this.listOfStudents == null) {
