@@ -31,13 +31,15 @@ public class JsonGenerator {
     private List<LectureJSON> lecturesList;
     private List<AdvisorJSON> advisorsList;
     private List<TranscriptJSON> transcriptsList;
+    private JsonOperator jsonOperator;
 
-    public JsonGenerator() {
+    public JsonGenerator(JsonOperator jsonOperator) {
         this.studentsList = new ArrayList<StudentJSON>();
         this.lecturesList = new ArrayList<LectureJSON>();
         this.advisorsList = new ArrayList<AdvisorJSON>();
         this.transcriptsList = new ArrayList<TranscriptJSON>();
         
+        this.jsonOperator = jsonOperator;
     }
 
     public void generateTranscript(Transcript transcript) {
@@ -150,6 +152,43 @@ public class JsonGenerator {
         tempLecture.setLectureSessions(lectureSessionsList);
         lecturesList.add(tempLecture);
     }
+
+    public void writeJsons() {
+        writeStudents();
+        writeLectures();
+        writeAdvisors();
+        writeTranscripts();
+    }
+
+    private void writeStudents() {
+        for (StudentJSON s : studentsList) {
+            JsonWriter json = new JsonWriter(jsonOperator.getMetaData().getStudentsPath() + s.getStudentID() + ".json");
+            json.writeJsonFile(s);
+        }
+    }
+
+    private void writeLectures() {
+        for (LectureJSON l : lecturesList) {
+            JsonWriter json = new JsonWriter(jsonOperator.getMetaData().getLecturesPath() + l.getID() + ".json");
+            json.writeJsonFile(l);
+        }
+    }
+
+    private void writeAdvisors() {
+        for (AdvisorJSON a : advisorsList) {
+            JsonWriter json = new JsonWriter(jsonOperator.getMetaData().getAdvisorsPath() + a.getInstructorID() + ".json");
+            json.writeJsonFile(a);
+        }
+    }
+
+    private void writeTranscripts() {
+        for (TranscriptJSON t : transcriptsList) {
+            JsonWriter json = new JsonWriter(jsonOperator.getMetaData().getTranscriptsPath() + t.getStudentID() + ".json");
+            json.writeJsonFile(t);
+        }
+    }
+
+    
 
     //Silinecek
     public void  generateNamePool() {
