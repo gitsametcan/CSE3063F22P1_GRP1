@@ -44,7 +44,7 @@ public class StudentID implements UniqueID {
 	}
 
 	// A method for giving fixed amount of numbers according to input number
-	public String digitFixer(int integer) {
+	private String digitFixer(int integer) {
 		String tempOrder = "" + integer;
 		if (integer < 10) {
 			tempOrder = "00" + tempOrder;

@@ -31,15 +31,4 @@ public class SessionID implements UniqueID {
 		return id + "";
 	}
 
-	// A method for giving fixed amount of numbers according to input number
-	public String digitFixer(int integer) {
-		String tempOrder = "" + integer;
-		if (integer < 10) {
-			tempOrder = "00" + tempOrder;
-		} else if (integer < 100) {
-			tempOrder = "0" + tempOrder;
-		}
-		return tempOrder;
-	}
-
 }

@@ -7,6 +7,4 @@ public interface UniqueID {
 
 	public String getID();
 
-	public String digitFixer(int integer);
-
 }
