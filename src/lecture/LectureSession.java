@@ -1,5 +1,6 @@
 package lecture;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import Enums.LectureHour;
@@ -29,7 +30,10 @@ public class LectureSession {
 		this.sessionType = sessionType;
 		this.instructor = instructor;
 		this.listOfAssistans = listOfAssistans;
-		this.setListOfStudents(listOfStudents);
+		this.listOfStudents = listOfStudents;
+		if (listOfStudents == null) {
+			this.listOfStudents = new ArrayList<Student>();
+		}
 	}
 
 	// Creating get and set methods for variables

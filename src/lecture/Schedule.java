@@ -1,5 +1,6 @@
 package lecture;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import Enums.LectureHour;
@@ -15,6 +16,7 @@ public class Schedule {
 	private TermYear termYear;
 
 	public Schedule(Person person, Term term, TermYear termYear) {
+		listOfLectureSessions = new ArrayList<LectureSession>();
 		this.person = person;
 		this.term = term;
 		this.termYear = termYear;

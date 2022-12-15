@@ -79,6 +79,11 @@ public class JsonGenerator {
 
         scheduleJson.setSessions(lectureSessions);
 
+        List<Student> studentList = advisor.getListOfStudents();
+        for (Student s : studentList) {
+            advisorJson.addStudent(s.getID());
+        }
+
         advisorJson.setInstructorID(ID);
         advisorJson.setDateOfEntry(dateOfEntry);
         advisorJson.setInstructorType(instructorType);
@@ -99,7 +104,6 @@ public class JsonGenerator {
         String term = student.getSchedule().getTerm().toString();
         String termYear = student.getSchedule().getTermYear().toString();
 
-
         // Creating schedule
         ScheduleJSON tempSchedule = new ScheduleJSON(student.getID(), term, termYear);
         tempSchedule.setID(student.getID());
@@ -114,7 +118,7 @@ public class JsonGenerator {
         }
         tempSchedule.setSessions(sessionsList);
 
-        tempStudent.setSchedule(null);
+        tempStudent.setSchedule(tempSchedule);
         tempStudent.setStudentID(student.getID());
 
         studentsList.add(tempStudent);
@@ -123,7 +127,11 @@ public class JsonGenerator {
     public void generateLecture(Lecture lecture) {
         String ID = lecture.getID();
         String name = lecture.getName();
-        String prerequisiteID = lecture.getPrerequisite().getID();
+        String prerequisiteID = "";
+        if (lecture.getPrerequisite() != null) {
+            prerequisiteID = lecture.getPrerequisite().getID();    
+        }
+        
         String lectureType = lecture.getLectureType().toString();
         int credits = lecture.getCredit();
         int quota = lecture.getQuota();
@@ -172,28 +180,28 @@ public class JsonGenerator {
 
     private void writeStudents() {
         for (StudentJSON s : studentsList) {
-            JsonWriter json = new JsonWriter(jsonOperator.getMetaData().getStudentsPath() + s.getStudentID() + ".json");
+            JsonWriter json = new JsonWriter(jsonOperator.getMetaData().getStudentsPath() + s.getStudentID() + ".JSON");
             json.writeJsonFile(s);
         }
     }
 
     private void writeLectures() {
         for (LectureJSON l : lecturesList) {
-            JsonWriter json = new JsonWriter(jsonOperator.getMetaData().getLecturesPath() + l.getID() + ".json");
+            JsonWriter json = new JsonWriter(jsonOperator.getMetaData().getLecturesPath() + l.getID() + ".JSON");
             json.writeJsonFile(l);
         }
     }
 
     private void writeAdvisors() {
         for (AdvisorJSON a : advisorsList) {
-            JsonWriter json = new JsonWriter(jsonOperator.getMetaData().getAdvisorsPath() + a.getInstructorID() + ".json");
+            JsonWriter json = new JsonWriter(jsonOperator.getMetaData().getAdvisorsPath() + a.getInstructorID() + ".JSON");
             json.writeJsonFile(a);
         }
     }
 
     private void writeTranscripts() {
         for (TranscriptJSON t : transcriptsList) {
-            JsonWriter json = new JsonWriter(jsonOperator.getMetaData().getTranscriptsPath() + t.getStudentID() + ".json");
+            JsonWriter json = new JsonWriter(jsonOperator.getMetaData().getTranscriptsPath() + t.getStudentID() + ".JSON");
             json.writeJsonFile(t);
         }
     }
@@ -220,9 +228,9 @@ public class JsonGenerator {
     
     //Silinecek
     public void generateMetaData() {
-    	JsonWriter json = new JsonWriter("NamePool.json");
+    	JsonWriter json = new JsonWriter("MetaData.JSON");
         MetaData metaData = new MetaData("Students/", "Advisors/", 
-            "Transcripts/", "Lectures/", "NamePool.json");
+            "Transcripts/", "Lectures/", "NamePool.JSON");
         json.writeJsonFile(metaData);
     }
 

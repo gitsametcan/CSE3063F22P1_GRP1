@@ -3,6 +3,7 @@
 package data;
 
 import java.io.File;
+import java.io.FilenameFilter;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
@@ -10,12 +11,6 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
-import java.util.Set;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-
-import Debt_LRA_Transcript.Debt;
-import Debt_LRA_Transcript.LectureRegistrationApplication;
 import Debt_LRA_Transcript.Transcript;
 import Enums.FilterType;
 import Enums.InstructorType;
@@ -54,12 +49,15 @@ public class DataManager {
 		cacheList = new LinkedList<Person>();
 		jsonOperator = new JsonOperator();
 		
+		jsonOperator.readMetaData();
+		
 		MetaData metaData = jsonOperator.getMetaData();
 		
-		Set<String> studentFiles = listFiles(metaData.getStudentsPath());
-		Set<String> advisorFiles = listFiles(metaData.getAdvisorsPath());
-		Set<String> lectureFiles = listFiles(metaData.getLecturesPath());
+		List<String> studentFiles = listFiles(metaData.getStudentsPath());
+		List<String> advisorFiles = listFiles(metaData.getAdvisorsPath());
+		List<String> lectureFiles = listFiles(metaData.getLecturesPath());
 		
+		this.writeExamples();
 		
 		for (String name : studentFiles) {
 			jsonOperator.readStudentJSON(name);
@@ -72,6 +70,8 @@ public class DataManager {
 		for (String name : lectureFiles) {
 			jsonOperator.readLectureJSON(name);
 		}
+		
+		
 		
 		jsonOperator.generateObjects();
 
@@ -305,7 +305,8 @@ public class DataManager {
 		Advisor tempAdvisor = new Advisor("Örnek İsim", "Örnek Soyisim", tempInstructorID, dateOfEntrys, null, null,
 					instructorType, new Schedule(null, Term.Fall, TermYear.Senior));
 		tempAdvisor.getSchedule().setPerson(tempAdvisor);
-
+		
+		tempLectureSession.setInstructor(tempAdvisor);
 		HashMap<Lecture, LetterGrade> listOfLecturesTaken = new HashMap<Lecture, LetterGrade>();
 		listOfLecturesTaken.put(tempLecture, LetterGrade.AA);
 		Semester semester = new Semester(listOfLecturesTaken);
@@ -313,14 +314,18 @@ public class DataManager {
 		listOfSemesters.add(semester);
 		Transcript tempTranscript = new Transcript(tempStudent, listOfSemesters);
 		tempStudent.setTranscript(tempTranscript);
+		tempStudent.setAdvisor(tempAdvisor);
 
+		tempStudent.getSchedule().setPerson(tempStudent);
+		tempStudent.getSchedule().setListOfLectureSessions(lectureSessions);
 
-		jsonGenerator.generateMetaData();
-		jsonGenerator.generateNamePool();
+		tempAdvisor.getListOfStudents().add(tempStudent);
+		
 		jsonGenerator.generateAdvisor(tempAdvisor);
 		jsonGenerator.generateLecture(tempLecture);
 		jsonGenerator.generateStudent(tempStudent);
 		jsonGenerator.generateTranscript(tempTranscript);
+		jsonGenerator.writeJsons();
 	}
 
 	public void addStudents(List<Student> studentList) {
@@ -333,11 +338,24 @@ public class DataManager {
 		}
 	}
 	
-	private Set<String> listFiles(String dir) {
-	    return Stream.of(new File(dir).listFiles())
-	      .filter(file -> !file.isDirectory())
-	      .map(File::getName)
-	      .collect(Collectors.toSet());
+	private List<String> listFiles(String dir) {
+	    File directory = new File(dir);
+		File[] matchingFiles = directory.listFiles(new FilenameFilter() {
+				@Override
+    			public boolean accept(File dir, String name) {
+        			return name.endsWith(".JSON");
+    			}
+			}
+		);
+		
+		List<String> result = new ArrayList<String>();
+
+		for (File f : matchingFiles) {
+			result.add(f.getName());
+		}
+
+		return result;
+
 	}
 
 }

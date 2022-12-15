@@ -25,6 +25,7 @@ public class JsonReader {
 			scanner = new Scanner(file);
 		} catch (FileNotFoundException e) {
 			System.err.println("ERROR File is not found: " + file.getAbsolutePath());
+			return null;
 		}
 		String contents = "";
 

@@ -52,6 +52,12 @@ public class JsonOperator {
 		NamePool namePool = json.readJsonFile(NamePool.class);
 		this.namePool = namePool;
 	}
+	
+	public void readMetaData() {
+		JsonReader json = new JsonReader("JSON Files/MetaData.JSON");
+		MetaData metaData = json.readJsonFile(MetaData.class);
+		this.metaData = metaData;
+	}
 
 	public void readLectureJSON(String path){
 		JsonReader json = new JsonReader(metaData.getLecturesPath() + path);
