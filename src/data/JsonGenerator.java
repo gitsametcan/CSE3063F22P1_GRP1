@@ -10,6 +10,8 @@ import java.util.Map;
 import Debt_LRA_Transcript.Transcript;
 import Enums.LectureHour;
 import Enums.LetterGrade;
+import Enums.Term;
+import Enums.TermYear;
 import data.json.AdvisorJSON;
 import data.json.LectureJSON;
 import data.json.LectureSessionJSON;
@@ -65,8 +67,10 @@ public class JsonGenerator {
         String ID = advisor.getID();
         String dateOfEntry = CalendarToString(advisor.getDateOfEntry());
         String instructorType = advisor.getInstructorType().toString();
-        
-        ScheduleJSON scheduleJson = new ScheduleJSON();
+        Term term = advisor.getSchedule().getTerm();
+        TermYear termYear = advisor.getSchedule().getTermYear();
+
+        ScheduleJSON scheduleJson = new ScheduleJSON(ID, term.toString(), termYear.toString());
         scheduleJson.setID(ID);
         HashMap<String, String> lectureSessions =  new HashMap<String, String>();
         for (LectureSession ls : advisor.getSchedule().getListOfLectureSessions()) {
@@ -92,8 +96,12 @@ public class JsonGenerator {
         String stringFormOfDate = CalendarToString(student.getDateOfEntry());
         tempStudent.setDateOfEntry(stringFormOfDate);
         
+        String term = student.getSchedule().getTerm().toString();
+        String termYear = student.getSchedule().getTermYear().toString();
+
+
         // Creating schedule
-        ScheduleJSON tempSchedule = new ScheduleJSON();
+        ScheduleJSON tempSchedule = new ScheduleJSON(student.getID(), term, termYear);
         tempSchedule.setID(student.getID());
         HashMap<String, String> sessionsList = new HashMap<String, String>();
         List<LectureSession> lectureSessions = student.getSchedule().getListOfLectureSessions(); 
@@ -147,8 +155,10 @@ public class JsonGenerator {
             LectureSessionJSON tempSession = new LectureSessionJSON(sessionID, lectureID, instructorID, sessionType, sessionHours, studentIDList);
             lectureSessionsList.add(tempSession);
         }
+        String term = lecture.getTerm().toString();
+        String termYear = lecture.getTermYear().toString();
 
-        LectureJSON tempLecture = new LectureJSON(ID, name, prerequisiteID, lectureType, quota, credits);
+        LectureJSON tempLecture = new LectureJSON(ID, name, prerequisiteID, lectureType, quota, credits, term, termYear);
         tempLecture.setLectureSessions(lectureSessionsList);
         lecturesList.add(tempLecture);
     }

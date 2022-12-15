@@ -4,7 +4,6 @@ import java.util.List;
 
 public class InstructorJSON extends PersonJSON {
 
-	private List<String> listOfLectureIDs;
 	private ScheduleJSON schedule;
 	private String instructorType;
 	private String instructorID;

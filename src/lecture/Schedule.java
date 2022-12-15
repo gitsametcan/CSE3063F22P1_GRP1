@@ -100,4 +100,12 @@ public class Schedule {
 	public void setTerm(Term term) {
 		this.term = term;
 	}
+
+	public TermYear getTermYear() {
+		return termYear;
+	}
+
+	public void setTermYear(TermYear termYear) {
+		this.termYear = termYear;
+	}
 }
