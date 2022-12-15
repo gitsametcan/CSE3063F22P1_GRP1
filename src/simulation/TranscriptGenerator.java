@@ -5,12 +5,15 @@ import java.util.List;
 import Debt_LRA_Transcript.Transcript;
 import lecture.Semester;
 import person.Student;
+import lecture.Schedule;
 
 public class TranscriptGenerator {
-
-	private Student student;
-	private List<Semester> listOfSemester;
+	
+	public TranscriptGenerator(StudentGenerator student, Schedule schedule) {
+		
+	}
+	
+}
+	
 	
 
-	Transcript transcript = new Transcript(student, listOfSemester);
-}

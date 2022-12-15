@@ -8,6 +8,8 @@ import java.util.Optional;
 import Debt_LRA_Transcript.Debt;
 import Debt_LRA_Transcript.Transcript;
 import Enums.FilterType;
+import Enums.Term;
+import Enums.TermYear;
 import IDs.StudentID;
 import data.DataManager;
 import data.json.NamePool;
@@ -19,12 +21,13 @@ public class StudentGenerator {
 
 	private Transcript transcript = null;
 
-	public StudentGenerator(Simulation simulation, int year, int orderOfPlacement) {
+	public StudentGenerator(Simulation simulation, int year, int orderOfPlacement, int semesterCount) {
 		StudentID id = new StudentID(150, 100 + year, orderOfPlacement);
 		Student student = new Student(null, null, id, null, null, null);
 		String firstName = null;
 		String lastName = null;
-		Schedule schedule = new Schedule(student);
+		
+		Schedule schedule = new Schedule(student, Term.values()[semesterCount % 2], TermYear.values()[semesterCount / 2]);
 		Calendar dateOfEntry = null;
 		Debt debt = null;
 		int min = 1;
@@ -54,7 +57,7 @@ public class StudentGenerator {
 		// send lectureSession registration of "first semester lecture sessions" to the
 		// advisor of this object
 
-		TranscriptGenerator transcriptGenerator = new TranscriptGenerator(student, this);
+		TranscriptGenerator transcriptGenerator = new TranscriptGenerator(this, schedule);
 
 		student = new Student(firstName, lastName, id, schedule, this.transcript, dateOfEntry);
 		student.setFirstName(firstName);

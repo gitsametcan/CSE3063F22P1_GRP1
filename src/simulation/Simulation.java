@@ -2,6 +2,7 @@ package simulation;
 
 import java.util.List;
 
+import Enums.Term;
 import person.Advisor;
 import person.Instructor;
 import person.Student;
@@ -20,8 +21,7 @@ public class Simulation {
 
 	private void newSemester(int semesterCount) {
 		for (int studentCount = 0; studentCount < 50; studentCount++) {
-			int year = (semesterCount / 2) + 18;
-			StudentGenerator studentGenerator = new StudentGenerator(this, year, studentCount);
+			StudentGenerator studentGenerator = new StudentGenerator(this, (semesterCount / 2) + 18, studentCount, semesterCount);
 		}
 
 	}
