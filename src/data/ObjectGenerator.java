@@ -15,6 +15,8 @@ import Enums.LectureHour;
 import Enums.LectureType;
 import Enums.LetterGrade;
 import Enums.SessionType;
+import Enums.Term;
+import Enums.TermYear;
 import IDs.InstructorID;
 import IDs.LectureID;
 import IDs.SessionID;
@@ -240,10 +242,12 @@ public class ObjectGenerator {
 			LectureType lectureType = stringToLectureType(tempLectureType);
 			int credits = ljs.getCredit();
 			int quota = ljs.getQuota();
+			Term term = stringToTerm(ljs.getTerm());
+			TermYear termYear = stringToTermYear(ljs.getTermYear());
 
 			List<LectureSession> lectureSessions = generateLectureSessions(ljs.getLectureSessions());
 
-			Lecture tempLecture = new Lecture(lectureID, name, lectureType, credits, lectureSessions, null, quota);
+			Lecture tempLecture = new Lecture(lectureID, name, lectureType, credits, lectureSessions, null, quota, term, termYear);
 
 			lectureObjectList.add(tempLecture);
 		}
@@ -258,11 +262,13 @@ public class ObjectGenerator {
 			String dateOfEntryString = sjs.getDateOfEntry();
 			Optional<Calendar> optDateOfEntry = StringToCalendar(dateOfEntryString);
 			Calendar dateOfEntry = null;
+			Term term = stringToTerm(sjs.getSchedule().getTerm());
+			TermYear termYear = stringToTermYear(sjs.getSchedule().getTermYear());
 			if (optDateOfEntry.isPresent()) {
 				dateOfEntry = optDateOfEntry.get();
 			}
 
-			Student tempStudent = new Student(firstName, lastName, tempStudentID, new Schedule(null), null, dateOfEntry);
+			Student tempStudent = new Student(firstName, lastName, tempStudentID, new Schedule(null, term, termYear), null, dateOfEntry);
 
 			studentObjectList.add(tempStudent);
 		}
@@ -281,10 +287,11 @@ public class ObjectGenerator {
 			if (optDateOfEntry.isPresent()) {
 				dateOfEntry = optDateOfEntry.get();
 			}
-			
+			Term term = stringToTerm(ajs.getSchedule().getTerm());
+			TermYear termYear = stringToTermYear(ajs.getSchedule().getTermYear());
 
 			Advisor tempAdvisor = new Advisor(firstName, lastName, tempInstructorID, dateOfEntry, null, null,
-					instructorType, new Schedule(null));
+					instructorType, new Schedule(null, term, termYear));
 			advisorObjectList.add(tempAdvisor);
 		}
 	}
@@ -415,6 +422,26 @@ public class ObjectGenerator {
 			return LetterGrade.FD;
 		}
 		return LetterGrade.FF;
+	}
+
+	private Term stringToTerm(String key) {
+		if (key.equalsIgnoreCase("Fall")) {
+			return Term.Fall;
+		}
+		return Term.Spring;
+	}
+
+	private TermYear stringToTermYear(String key) {
+		if (key.equalsIgnoreCase("Freshman")) {
+			return TermYear.Freshman;
+		}
+		if (key.equalsIgnoreCase("Sophomore")) {
+			return TermYear.Sophomore;
+		}
+		if (key.equalsIgnoreCase("Junior")) {
+			return TermYear.Junior;
+		}
+		return TermYear.Senior;
 	}
 
 	private LectureHour[][] intToLectureHours(int[][] array) {

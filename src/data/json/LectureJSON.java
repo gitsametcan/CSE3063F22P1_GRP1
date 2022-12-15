@@ -10,10 +10,19 @@ public class LectureJSON {
 	private String lectureType;
 	private int quota;
 	private int credit;
+	private String term;
+	private String termYear;
 	private List<LectureSessionJSON> lectureSessions;
 
-	public LectureJSON(String ID, String Name, String prerequisiteID, String lectureType, int quota, int credit) {
-
+	public LectureJSON(String ID, String Name, String prerequisiteID, String lectureType, int quota, int credit, String term, String termYear) {
+		this.ID = ID;
+		this.Name = Name;
+		this.prerequisiteID = prerequisiteID;
+		this.lectureType = lectureType;
+		this.quota = quota;
+		this.credit = credit;
+		this.term = term;
+		this.termYear = termYear;
 	}
 
 	public String getID() {
@@ -70,5 +79,21 @@ public class LectureJSON {
 
 	public void setLectureSessions(List<LectureSessionJSON> lectureSessions) {
 		this.lectureSessions = lectureSessions;
+	}
+
+	public void setTerm(String term) {
+		this.term = term;
+	}
+
+	public String getTerm() {
+		return this.term;
+	}
+
+	public void setTermYear(String termYear) {
+		this.termYear = termYear;
+	}
+
+	public String getTermYear() {
+		return termYear;
 	}
 }

@@ -23,6 +23,8 @@ import Enums.LectureHour;
 import Enums.LectureType;
 import Enums.LetterGrade;
 import Enums.SessionType;
+import Enums.Term;
+import Enums.TermYear;
 import IDs.InstructorID;
 import IDs.LectureID;
 import IDs.SessionID;
@@ -288,12 +290,12 @@ public class DataManager {
 			null, null);
 		lectureSessions.add(tempLectureSession);
 
-		Lecture tempLecture = new Lecture(lectureID, name, lectureType, credits, lectureSessions, null, quota);
-
+		Lecture tempLecture = new Lecture(lectureID, name, lectureType, credits, lectureSessions, null, quota, Term.Fall, TermYear.Senior);
+		tempLectureSession.setLecture(tempLecture);
 
 		StudentID studentID = new StudentID("150156156");
 		Calendar dateOfEntry = new GregorianCalendar(2015, 10, 3);
-		Student tempStudent = new Student("İsim Örnek", "Soyisim Örnek", studentID, new Schedule(null), null, dateOfEntry);
+		Student tempStudent = new Student("İsim Örnek", "Soyisim Örnek", studentID, new Schedule(null, Term.Fall, TermYear.Senior), null, dateOfEntry);
 		tempStudent.getSchedule().setPerson(tempStudent);
 
 		InstructorID tempInstructorID = new InstructorID("165164");
@@ -301,7 +303,8 @@ public class DataManager {
 		Calendar dateOfEntrys = new GregorianCalendar(2015, 10, 3);
 
 		Advisor tempAdvisor = new Advisor("Örnek İsim", "Örnek Soyisim", tempInstructorID, dateOfEntrys, null, null,
-					instructorType, new Schedule(null));
+					instructorType, new Schedule(null, Term.Fall, TermYear.Senior));
+		tempAdvisor.getSchedule().setPerson(tempAdvisor);
 
 		HashMap<Lecture, LetterGrade> listOfLecturesTaken = new HashMap<Lecture, LetterGrade>();
 		listOfLecturesTaken.put(tempLecture, LetterGrade.AA);
@@ -309,11 +312,13 @@ public class DataManager {
 		List<Semester> listOfSemesters = new ArrayList<Semester>();
 		listOfSemesters.add(semester);
 		Transcript tempTranscript = new Transcript(tempStudent, listOfSemesters);
+		tempStudent.setTranscript(tempTranscript);
 
-		jsonGenerator.generateAdvisor(tempAdvisor);
-		jsonGenerator.generateLecture(tempLecture);
+
 		jsonGenerator.generateMetaData();
 		jsonGenerator.generateNamePool();
+		jsonGenerator.generateAdvisor(tempAdvisor);
+		jsonGenerator.generateLecture(tempLecture);
 		jsonGenerator.generateStudent(tempStudent);
 		jsonGenerator.generateTranscript(tempTranscript);
 	}
