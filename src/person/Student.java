@@ -1,16 +1,21 @@
 package person;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import Debt_LRA_Transcript.Debt;
 import Debt_LRA_Transcript.LectureRegistrationApplication;
 import Debt_LRA_Transcript.Transcript;
 import Enums.ApprovalState;
+import Enums.LetterGrade;
 import IDs.StudentID;
+import lecture.Lecture;
 import lecture.LectureSession;
 import lecture.Schedule;
+import lecture.Semester;
 
 //Kaan Camci 150119063
 public class Student extends Person {
@@ -101,5 +106,47 @@ public class Student extends Person {
 		this.registirationApplication = new LectureRegistrationApplication(approvalList, this.advisor, this);
 		this.advisor.getListOfApplications().add(this.registirationApplication);
 	}
+	
+	private boolean canTakeLecture(Lecture lecture, Transcript transcript) {
+		boolean canTake;
+		
+		List<Lecture> listOfTaken = new ArrayList<>();
+		
+		int a = 0;
+		boolean in = false;
+		
+		for (int i = 0 ; i< transcript.getListOfSemester().size(); i++) {
+			Semester semester = transcript.getListOfSemester().get(i);
+			for (Lecture lectureTaken : semester.getListOfLecturesTaken().keySet()) {
+				listOfTaken.add(lectureTaken);
+				if (lectureTaken.getName() == lecture.getName()) {
+					a = i;
+					in = true;
+				}
+			}
+		}
+		if(canTake = hasPreqLectureTaken(lecture.getPrerequisite(),listOfTaken)) {
+			if(in) {
+				canTake = takenPoint(lecture, transcript.getListOfSemester().get(a).getListOfLecturesTaken());
+			}
+		}
+		return canTake;
+	}
+	
+	private boolean hasPreqLectureTaken(Lecture preqLecture, List<Lecture> listOfLecture) {
+		for(Lecture lecture : listOfLecture) {
+			if(lecture.getName() == preqLecture.getName())
+				return true;
+		}
+		return false;
+	}
+	
+	private boolean takenPoint(Lecture lecture, Map<Lecture, LetterGrade> listOfLecturesTaken) {
+		boolean point = true;
+		if(listOfLecturesTaken.get(lecture).getLetterGradeValue() > 1.99)
+			point = false;
+		return point;
+	}
+	
 
 }
