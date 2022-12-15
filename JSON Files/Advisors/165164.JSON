@@ -3,13 +3,18 @@
   ],
   "schedule": {
     "sessions": {},
-    "ID": "165164",
+    "ID": "150097",
     "term": "Fall",
     "termYear": "Senior"
   },
+
   "instructorType": "Instructor",
-  "instructorID": "165164",
+  "instructorID": "150097",
   "dateOfEntry": "2015-11-03",
-  "firstName": "Örnek İsim",
-  "lastName": "Örnek Soyisim"
+  "firstName": "Betul",
+  "lastName": "BOZ"
+
 }
+
+
+
