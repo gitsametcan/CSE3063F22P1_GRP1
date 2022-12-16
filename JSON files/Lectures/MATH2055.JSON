@@ -6,12 +6,12 @@
     "quota": 50,
     "credit": 4,
     "term": "Fall",
-    "termYear": "Senior",
+    "termYear": "Sophomore",
     "lectureSessions": [
       {
         "ID": "1",
         "lectureID": "MATH2055",
-        "instructorID": "150000",
+        "instructorID": "150185",
         "sessionType": "Theorytical",
         "sessionHours": [
           [
@@ -45,6 +45,18 @@
             0,
             0,
             0,
+            1,
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
             0,
             0,
             0,
@@ -57,19 +69,7 @@
             0,
             0,
             0,
-            0,
-            0,
-            0,
-            0
-          ],
-          [
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
+            1,
             0,
             0,
             0

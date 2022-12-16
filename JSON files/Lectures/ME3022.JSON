@@ -5,29 +5,17 @@
     "lectureType": "FTE",
     "quota": 50,
     "credit": 5,
-    "term": "Fall",
+    "term": "Spring",
     "termYear": "Senior",
     "lectureSessions": [
       {
         "ID": "1",
         "lectureID": "ME3022",
-        "instructorID": "150000",
+        "instructorID": "150533",
         "sessionType": "Theorytical",
         "sessionHours": [
           [
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0
-          ],
-          [
-            0,
+            1,
             0,
             0,
             0,
@@ -57,6 +45,18 @@
             0,
             0,
             0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            1,
+            1,
             0,
             0,
             0,

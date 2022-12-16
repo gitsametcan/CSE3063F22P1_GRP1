@@ -5,13 +5,13 @@
     "lectureType": "FTE",
     "quota": 50,
     "credit": 5,
-    "term": "Fall",
+    "term": "Spring",
     "termYear": "Senior",
     "lectureSessions": [
       {
         "ID": "1",
         "lectureID": "MGT4088",
-        "instructorID": "150000",
+        "instructorID": "150286",
         "sessionType": "Theorytical",
         "sessionHours": [
           [
@@ -44,6 +44,18 @@
             0,
             0,
             0,
+            1,
+            1,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
             0,
             0,
             0,
@@ -53,19 +65,7 @@
           [
             0,
             0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0
-          ],
-          [
-            0,
-            0,
-            0,
+            1,
             0,
             0,
             0,
