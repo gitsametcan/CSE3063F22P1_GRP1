@@ -7,10 +7,11 @@ import java.util.Scanner;
 import Enums.FilterType;
 import data.DataManager;
 import person.Advisor;
+import logger.Logger;
 
 //Kaan Camci 150119063
 public class AdvisorRegistrationSystem {
-
+	Logger log = Logger.getLogger("logs");
 	private Scanner scanner;
 	private RegistrationSystem registrationSystem1;
 
@@ -23,8 +24,8 @@ public class AdvisorRegistrationSystem {
 	private void AdvisorLogin() throws FileNotFoundException {
 		Advisor currentUser = null;
 
-		System.out.println("Please provide your ID:");
-		System.out.println("----\nSuggestion: Enter \"????\"");
+		log.info("Please provide your ID:");
+		log.info("----\nSuggestion: Enter \"????\"");
 		while (true) {
 			String providedID = scanner.nextLine();
 			Optional<Advisor> currentOptionalAdvisor = DataManager.getInstance().findAdvisor(providedID, FilterType.ID);
@@ -33,7 +34,7 @@ public class AdvisorRegistrationSystem {
 				advisorMenu(currentUser);
 				break;
 			} else {
-				System.out.print("Advisor not found, please try again: ");
+				log.info("Advisor not found, please try again: ");
 			}
 		}
 
@@ -47,9 +48,9 @@ public class AdvisorRegistrationSystem {
 
 		while (menuChoice != 3) {
 
-			System.out.println("Please choose a menu: ");
-			System.out.println("1-Registration Applications");
-			System.out.println("2-Sign Out");
+			log.info("Please choose a menu: ");
+			log.info("1-Registration Applications");
+			log.info("2-Sign Out");
 
 			validInput = false;
 
@@ -67,7 +68,7 @@ public class AdvisorRegistrationSystem {
 					signOut();
 					break;
 				default:
-					System.out.print("The input is not valid, please provide a valid input.");
+					log.info("The input is not valid, please provide a valid input.");
 				}
 			}
 		}
