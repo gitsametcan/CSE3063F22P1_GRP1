@@ -17,7 +17,7 @@ public class Main {
 		
 		//DataManager.getInstance().writeExamples();
 		
-		RegistrationSystem registrationSystem = new RegistrationSystem();
+		new RegistrationSystem();
 
 	}
 

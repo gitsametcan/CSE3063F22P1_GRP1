@@ -23,12 +23,7 @@ public class LectureSessionJSON {
 			this.sessionHours = sessionHours;
 		}
 		
-		if (listOfAssistantIDs == null) {
-			listOfAssistantIDs = new ArrayList<String>();
-		} else {
-			this.listOfAssistantIDs = listOfAssistantIDs;
-		}
-		
+		listOfAssistantIDs = new ArrayList<String>();
 		ID = iD;
 		this.lectureID = lectureID;
 		this.instructorID = instructorID;
