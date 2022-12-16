@@ -60,7 +60,7 @@ public class AdvisorRegistrationSystem {
 				switch (menuChoice) {
 				case 1:
 					validInput = true;
-					showApplications(currentUser);
+					currentUser.showApplications();
 					break;
 				case 2:
 					validInput = true;
@@ -71,12 +71,6 @@ public class AdvisorRegistrationSystem {
 				}
 			}
 		}
-
-	}
-
-	private void showApplications(Advisor currentUser) {
-
-		currentUser.showApplications();
 
 	}
 
