@@ -7,6 +7,7 @@ public class MetaData {
 	private String transcriptsPath;
 	private String lecturesPath;
 	private String namePoolPath;
+	private String logsPath;
 
 	public MetaData(String studentsPath, String advisorsPath, String transcriptsPath, String lecturesPath,
 			String namePoolPath) {
@@ -56,6 +57,14 @@ public class MetaData {
 
 	public void setNamePoolPath(String namePoolPath) {
 		this.namePoolPath = namePoolPath;
+	}
+
+	public void setLogsPath(String logsPath) {
+		this.logsPath = logsPath;
+	}
+
+	public String getLogsPath() {
+		return this.logsPath;
 	}
 
 }

@@ -39,7 +39,7 @@ public class JsonOperator {
 		transcriptList = new ArrayList<TranscriptJSON>();
 		advisorList = new ArrayList<AdvisorJSON>();
 		
-		JsonReader json = new JsonReader("metadata.json");
+		JsonReader json = new JsonReader("JSON Files/MetaData.JSON");
 		MetaData metaData = json.readJsonFile(MetaData.class);
 		this.metaData = metaData;
 
