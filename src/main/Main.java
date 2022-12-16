@@ -2,20 +2,20 @@ package main;
 
 import java.io.FileNotFoundException;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
 import System.RegistrationSystem;
-import data.DataManager;
+import logger.Logger;
 
 public class Main {
-	
-	private static final Logger LOG = LogManager.getLogger(Main.class);
 
 	public static void main(String[] args) throws FileNotFoundException {
-		LOG.info("Appending string: {}.", "Hello, World");
+
+		Logger log = Logger.getLogger("logs");
+		log.info("info deneme");
+		log.error("error deneme");
+		log.info("formatted info %s", "deneme");
+		log.error("formatted error %s", "deneme");
 		
-		DataManager.getInstance().writeExamples();
+		//DataManager.getInstance().writeExamples();
 		
 		RegistrationSystem registrationSystem = new RegistrationSystem();
 
