@@ -19,58 +19,63 @@ import person.Student;
 
 public class StudentGenerator {
 
-	private Transcript transcript = null;
-	
+	private Transcript transcript;
+	private NamePool namePool;
 
-	public StudentGenerator(Simulation simulation, int year, int orderOfPlacement, int semesterCount) {
-		StudentID id = new StudentID(150, 100 + year, orderOfPlacement);
-		Student student = new Student(null, null, id, null, null, null);
-		String firstName = null;
-		String lastName = null;
+	public StudentGenerator( ) {
 		
-		Schedule schedule = new Schedule(student, Term.values()[semesterCount % 2], TermYear.values()[semesterCount / 2]);
-		Calendar dateOfEntry = null;
-		Debt debt = null;
+		Optional<NamePool> optNamePool = DataManager.getInstance().getNamePool();
+		namePool = null;
+		if (optNamePool.isPresent()) {
+			namePool = optNamePool.get();
+		}
+
+	}
+	
+	public Student generate(int year, int semesterCount) {
+		
+		Calendar dateOfEntry = new GregorianCalendar(2000 + year + 18, 1, 22);
+		
+		Student student = new Student(getRandomFirstName(),getRandomLastName(),studentIdGenerator(year + 18, semesterCount),null,null, dateOfEntry);
+		
+		Schedule schedule = new Schedule(student, Term.values()[semesterCount % 2],TermYear.values()[semesterCount / 2]);
+		
+		student.setSchedule(schedule);
+		student.setDebt(studentDebtGenerator());
+		student.setAdvisor(getRandomAdvisor());
+		
+		return student;
+	}
+	
+	
+	
+	private String getRandomFirstName() {
+		return namePool.getRandomName();
+	}
+	
+	private String getRandomLastName() {
+		return namePool.getRandomLastName();
+	}
+	
+	private StudentID studentIdGenerator(int year, int orderOf) {
+		return new StudentID(150, year, orderOf);
+	}
+	private Debt studentDebtGenerator() {
+		Debt debt;
+
 		int min = 1;
 		int max = 10;
 		int a = (int) Math.random() * (max - min + 1) + min;
 		if (a <= 3) {
-			debt = new Debt(20000, student);
+			debt = new Debt(20000, null);
 		} else {
-			debt = new Debt(0, student);
+			debt = new Debt(0, null);
 		}
-
-		dateOfEntry = new GregorianCalendar(2000 + year, 1, 22);
-
-		Optional<NamePool> namePool = DataManager.getInstance().getNamePool();
-		NamePool namePool1 = null;
-		if (namePool.isPresent()) {
-			namePool1 = namePool.get();
-		}
-		firstName = namePool1.getRandomName();
-		lastName = namePool1.getRandomLastName();
-
-		List<Advisor> advisors = DataManager.getInstance().searchAdvisor("", FilterType.Name);
-		max = 13;
-		a = (int) Math.random() * (max - min + 1) + min;
-		student.setAdvisor(advisors.get(a));
-
-		// send lectureSession registration of "first semester lecture sessions" to the
-		// advisor of this object
-
-		TranscriptGenerator transcriptGenerator = new TranscriptGenerator(this, schedule);
-
-		student = new Student(firstName, lastName, id, schedule, this.transcript, dateOfEntry);
-		student.setFirstName(firstName);
-		student.setLastName(lastName);
-		student.setSchedule(schedule);
-		student.setTranscript(this.transcript);
-		student.setDateOfEntry(dateOfEntry);
-		student.setDebt(debt);
-
-		simulation.getListOfStudents().add(student);
+		return debt;
 	}
 	
-	
+	private Advisor getRandomAdvisor() {
+		return DataManager.getInstance().searchAdvisor("", FilterType.Name).get((int) (Math.random() * 13));
+	}
 
 }

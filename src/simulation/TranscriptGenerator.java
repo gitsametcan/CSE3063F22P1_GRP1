@@ -14,6 +14,7 @@ import lecture.Semester;
 
 public class TranscriptGenerator {
 
+	
 	private Map<String, Integer> termAndYear;
 
 	public TranscriptGenerator(StudentGenerator student, Schedule schedule) {
@@ -36,6 +37,7 @@ public class TranscriptGenerator {
 
 		}
 	}
+	
 
 	private void build() {
 		termAndYear = new HashMap<String, Integer>();
