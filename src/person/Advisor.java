@@ -5,6 +5,7 @@ import java.util.Calendar;
 import java.util.List;
 import java.util.Scanner;
 import java.util.Map.Entry;
+import logger.Logger;
 
 import Debt_LRA_Transcript.LectureRegistrationApplication;
 import Enums.ApprovalState;
@@ -16,7 +17,7 @@ import lecture.Schedule;
 
 //Kaan Camci 150119063
 public class Advisor extends Instructor {
-
+	Logger log = Logger.getLogger("logs");
 	private List<Student> listOfStudents;
 	private List<LectureRegistrationApplication> listOfApplications;
 	private Scanner scanner;
@@ -42,11 +43,11 @@ public class Advisor extends Instructor {
 			int count = 0;
 			for (LectureRegistrationApplication lectureRegistrationApplication : this.getListOfApplications()) {
 				count++;
-				System.out.println("" + count + ". " + lectureRegistrationApplication.getStudent().getFullName());
+				log.info("" + count + ". " + lectureRegistrationApplication.getStudent().getFullName());
 			}
-			System.out.println("0. Exit");
+			log.info("0. Exit");
 
-			System.out.print("Choose A Lecture Registration Application: ");
+			log.info("Choose A Lecture Registration Application: ");
 			choice = scanner.nextInt();
 			if (choice != 0) {
 				applicationOperations(choice - 1);
@@ -58,18 +59,18 @@ public class Advisor extends Instructor {
 		LectureRegistrationApplication lectureRegistrationApplication = this.getListOfApplications().get(choice);
 		String lectureChoice = "";
 		while (!lectureChoice.equals("0")) {
-			System.out.println("Name Of Student: " + lectureRegistrationApplication.getStudent().getFullName());
+			log.info("Name Of Student: " + lectureRegistrationApplication.getStudent().getFullName());
 			int count = 0;
 
-			System.out.println("Session Name                 Approval State");
+			log.info("Session Name                 Approval State");
 			for (Entry<LectureSession, ApprovalState> me : lectureRegistrationApplication.getSessionsSentForApproval()
 					.entrySet()) {
 				count++;
 				String sessionName = me.getKey().getLecture().getID() + "." + me.getKey().getSessionID();
-				System.out.printf("%d. %-30s%s", count, sessionName, me.getValue());
+				log.info("%d. %-30s%s", count, sessionName, me.getValue());
 			}
-			System.out.println("0. Exit");
-			System.out.print("Please Enter The Session Name(0 for exit): ");
+			log.info("0. Exit");
+			log.info("Please Enter The Session Name(0 for exit): ");
 			lectureChoice = scanner.nextLine();
 
 			LectureSession lectureSession = null;
@@ -82,9 +83,9 @@ public class Advisor extends Instructor {
 				}
 			}
 
-			System.out.println("1. Approve");
-			System.out.println("2. Reject");
-			System.out.println("3. Go Back");
+			log.info("1. Approve");
+			log.info("2. Reject");
+			log.info("3. Go Back");
 
 			int approveChoice = scanner.nextInt();
 
