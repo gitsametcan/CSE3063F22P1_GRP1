@@ -20,6 +20,7 @@ import person.Student;
 public class StudentGenerator {
 
 	private Transcript transcript = null;
+	
 
 	public StudentGenerator(Simulation simulation, int year, int orderOfPlacement, int semesterCount) {
 		StudentID id = new StudentID(150, 100 + year, orderOfPlacement);
@@ -69,5 +70,7 @@ public class StudentGenerator {
 
 		simulation.getListOfStudents().add(student);
 	}
+	
+	
 
 }
