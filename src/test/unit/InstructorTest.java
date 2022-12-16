@@ -12,58 +12,61 @@ import org.junit.Test;
 import Enums.InstructorType;
 import IDs.InstructorID;
 import lecture.Lecture;
+import lecture.Schedule;
 import person.Instructor;
 
 public class InstructorTest {
 
 	@Test
-	public void test_student_InstructorID() {
+	public void test_instructor_InstructorID() {
 	
 		InstructorID testInstructorID = new InstructorID(1,2);
-		List<Lecture> testListOfLectures = new ArrayList<Lecture>();
 		Calendar testDateOfEntry = new GregorianCalendar(2011,10,28);
 		InstructorType testInstructorType = InstructorType.Assistant;
+		Schedule testSchedule = new Schedule(null, null, null);
 		
-		Instructor testInstructor = new Instructor("a","b",testInstructorID,testListOfLectures,testDateOfEntry,testInstructorType);
+		Instructor testInstructor = new Instructor("a","b",testInstructorID,testDateOfEntry,testInstructorType,testSchedule);
 		
-		assertEquals(testInstructorID, testInstructor.getId());
+		assertEquals(testInstructorID, testInstructor.getID());
 
 	}
 	@Test
-	public void test_student_list_of_lectures() {
+	public void test_instructor_scheudle() {
 	
 		InstructorID testInstructorID = new InstructorID(1,2);
-		List<Lecture> testListOfLectures = new ArrayList<Lecture>();
+		Schedule testSchedule = new Schedule(null, null, null);
 		Calendar testDateOfEntry = new GregorianCalendar(2011,10,28);
 		InstructorType testInstructorType = InstructorType.Assistant;
 		
-		Instructor testInstructor = new Instructor("a","b",testInstructorID,testListOfLectures,testDateOfEntry,testInstructorType);
+		Instructor testInstructor = new Instructor("a","b",testInstructorID,testDateOfEntry,testInstructorType,testSchedule);
 		
-		assertEquals(testListOfLectures, testInstructor.getListOfLectures());
+		testSchedule.setPerson(testInstructor);
+		
+		assertEquals(testSchedule, testInstructor.getSchedule());
 
 	}
 	@Test
-	public void test_student_date_of_entry() {
+	public void test_instructor_date_of_entry() {
 	
 		InstructorID testInstructorID = new InstructorID(1,2);
-		List<Lecture> testListOfLectures = new ArrayList<Lecture>();
+		Schedule testSchedule = new Schedule(null, null, null);
 		Calendar testDateOfEntry = new GregorianCalendar(2011,10,28);
 		InstructorType testInstructorType = InstructorType.Assistant;
 		
-		Instructor testInstructor = new Instructor("a","b",testInstructorID,testListOfLectures,testDateOfEntry,testInstructorType);
+		Instructor testInstructor = new Instructor("a","b",testInstructorID,testDateOfEntry,testInstructorType,testSchedule);
 		
 		assertEquals(null, testInstructor.getDateOfEntry());
 
 	}
 	@Test
-	public void test_student_instructor_type() {
+	public void test_instructor_instructor_type() {
 	
 		InstructorID testInstructorID = new InstructorID(1,2);
-		List<Lecture> testListOfLectures = new ArrayList<Lecture>();
+		Schedule testSchedule = new Schedule(null, null, null);
 		Calendar testDateOfEntry = new GregorianCalendar(2011,10,28);
 		InstructorType testInstructorType = InstructorType.Assistant;
 		
-		Instructor testInstructor = new Instructor("a","b",testInstructorID,testListOfLectures,testDateOfEntry,testInstructorType);
+		Instructor testInstructor = new Instructor("a","b",testInstructorID,testDateOfEntry,testInstructorType,testSchedule);
 	
 		assertEquals(InstructorType.Assistant, testInstructor.getInstructorType());
 		

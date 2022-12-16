@@ -31,20 +31,19 @@ public class LectureRegistrationApplicationTest {
 
 		SessionID testID = new SessionID(123);
 		
-		LectureSession testLectureSession = new LectureSession(testID , null , null, null, null, null);
+		LectureSession testLectureSession = new LectureSession(testID , null , null, null, null, null,null);
 		
 		testSessionsSentForApproval.put(testLectureSession,ApprovalState.Approved);
 		testSessionsSentForApproval2.put(testLectureSession,ApprovalState.Rejected);
 
 		
-		Semester testSemester = new Semester(null, 1, 2, 2.1 , 1.2);
-		Semester testSemester2 = new Semester(null, 2, 3, 3.1, 1.3);
+		Semester testSemester = new Semester(null);
+		Semester testSemester2 = new Semester(null);
 		List<Semester> testListOfSemester = new ArrayList<>();
 		testListOfSemester.add(testSemester);
 		testListOfSemester.add(testSemester2);
 		
-		Transcript testTranscript = new Transcript(null, testListOfSemester, 
-				3.4, 23, 13, 2.3);
+		Transcript testTranscript = new Transcript(null, testListOfSemester);
 		
 		StudentID testId = new StudentID(000,000,000);
 		InstructorID testInstructorID = new InstructorID(123, 456);

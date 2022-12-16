@@ -13,6 +13,7 @@ import Debt_LRA_Transcript.LectureRegistrationApplication;
 import Enums.InstructorType;
 import IDs.InstructorID;
 import lecture.Lecture;
+import lecture.Schedule;
 import person.Advisor;
 import person.Student;
 
@@ -26,7 +27,8 @@ public class AdvisorTest {
 		List<Student> testListOfStudents = new ArrayList<Student>();
 		List<LectureRegistrationApplication> testListOfApplications = new ArrayList<LectureRegistrationApplication>();
 		InstructorType testInstructorType = InstructorType.Assistant;
-		Advisor testAdvisor = new Advisor("A","B",testInstructorID,testListOfLectures,testDateOfEntry,testListOfStudents,testListOfApplications,testInstructorType);
+		Schedule testSchedule = new Schedule(null,null,null);
+		Advisor testAdvisor = new Advisor("A","B",testInstructorID,testListOfLectures,testDateOfEntry,testListOfStudents,testListOfApplications,testInstructorType,testSchedule);
 	
 		assertEquals(testListOfStudents, testAdvisor.getListOfStudents());
 	}	
@@ -40,7 +42,8 @@ public class AdvisorTest {
 		List<Student> testListOfStudents = new ArrayList<Student>();
 		List<LectureRegistrationApplication> testListOfApplications = new ArrayList<LectureRegistrationApplication>();
 		InstructorType testInstructorType = InstructorType.Assistant;
-		Advisor testAdvisor = new Advisor("A","B",testInstructorID,testListOfLectures,testDateOfEntry,testListOfStudents,testListOfApplications,testInstructorType);
+		Schedule testSchedule = new Schedule(null,null,null);
+		Advisor testAdvisor = new Advisor("A","B",testInstructorID,testListOfLectures,testDateOfEntry,testListOfStudents,testListOfApplications,testInstructorType,testSchedule);
 	
 		assertEquals(testListOfApplications, testAdvisor.getListOfApplications());
 	}

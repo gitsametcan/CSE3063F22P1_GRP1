@@ -50,13 +50,13 @@ public class LectureSessionTest {
 		InstructorID testInsID1 = new InstructorID(123,123);
 		InstructorID testInsID2 = new InstructorID(124,124);
 		Instructor testInstructor1 = new Instructor("testInsFName1","testInsLName1",testInsID1,
-				null,null,InstructorType.Instructor);
+				null,InstructorType.Instructor,null);
 		Instructor testInstructor2 = new Instructor("testInsFName2","testInsLName2",testInsID2,
-				null,null,InstructorType.Assistant);
+				null,InstructorType.Assistant,null);
 		LectureSession testSession1 = new LectureSession(testSemID1,null,sessionHours,SessionType.Application,
-				testInstructor1,null);
+				testInstructor1,null,null);
 		LectureSession testSession2 = new LectureSession(testSemID2,null,sessionHours,SessionType.Theorytical,
-				testInstructor1,null);
+				testInstructor1,null,null);
 		List<LectureSession> testSessions = new ArrayList<>();
 		testSessions.add(testSession1);
 		testSessions.add(testSession2);
@@ -68,9 +68,9 @@ public class LectureSessionTest {
 		testListAssistants2.add(testInstructor1);
 		
 		Lecture testLecture1 = new Lecture(testLecID1,"testLecName1", LectureType.FTE, 3,
-				testSessions, null, 5);
+				testSessions, null, 5,null,null);
 		Lecture testLecture = new Lecture(testLecID2,"testLecName2", LectureType.NTE, 4,
-				testSessions, testLecture1, 6);
+				testSessions, testLecture1, 6,null,null);
 		
 		testSession1.setLecture(testLecture1);
 		testSession2.setLecture(testLecture);

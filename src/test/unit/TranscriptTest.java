@@ -16,51 +16,90 @@ import person.Student;
 public class TranscriptTest {
 	
 	@Test
-	public void test_transcript_default_constructor() {
+	public void test_transcript_student() {
 		StudentID testId = new StudentID(000,000,000);
-		Semester testSemester = new Semester(null, 1, 2, 2.1 , 1.2);
-		Semester testSemester2 = new Semester(null, 2, 3, 3.1, 1.3);
+		Semester testSemester = new Semester(null);
+		Semester testSemester2 = new Semester(null);
 		List<Semester> testListOfSemester = new ArrayList<>();
 		testListOfSemester.add(testSemester);
 		testListOfSemester.add(testSemester2);
 		
-		Semester testSemester3 = new Semester(null, 2, 3, 1.3 , 2.3);
-		List<Semester> testListOfSemester2 = new ArrayList<>();
-		testListOfSemester2.add(testSemester3);
-		testListOfSemester2.add(testSemester2);
-		
-		
-		Transcript testTranscript = new Transcript(null, testListOfSemester, 
-				3.4, 23, 13, 2.3);
-		Student testStudent = new Student("testFName", "testLName",
-				testId, null, testTranscript, null);
+		Transcript testTranscript = new Transcript(null, testListOfSemester);
 		
 		Student testStudent2 = new Student("testFName2", "testLName2",
 				testId, null, testTranscript, null);
 				
 		testTranscript.setStudent(testStudent2);;
-		assertEquals(testStudent2, testTranscript.getStudent());
+		assertEquals(testStudent2, testTranscript.getStudent());		
+	}
+	@Test
+	public void test_transcript_list_of_semester() {
+		Semester testSemester = new Semester(null);
+		Semester testSemester2 = new Semester(null);
+		List<Semester> testListOfSemester = new ArrayList<>();
+		testListOfSemester.add(testSemester);
+		testListOfSemester.add(testSemester2);
 		
+		Semester testSemester3 = new Semester(null);
+		List<Semester> testListOfSemester2 = new ArrayList<>();
+		testListOfSemester2.add(testSemester3);
+		testListOfSemester2.add(testSemester2);
+		
+		Transcript testTranscript = new Transcript(null, testListOfSemester);
+				
 		testTranscript.setListOfSemester(testListOfSemester2);
 		assertEquals(testListOfSemester2 , testTranscript.getListOfSemester());
+	}
+	@Test
+	public void test_transcript_total_credits_completed() {
+		Semester testSemester = new Semester(null);
+		Semester testSemester2 = new Semester(null);
+		List<Semester> testListOfSemester = new ArrayList<>();
+		testListOfSemester.add(testSemester);
+		testListOfSemester.add(testSemester2);
 		
+		Transcript testTranscript = new Transcript(null, testListOfSemester);
+			
 		testTranscript.setTotalCreditsCompleted(6);
-		assertEquals(6 , testTranscript.getTotalCreditsCompleted());
+		assertEquals(6 , testTranscript.getTotalCreditsCompleted());	
+	}
+	@Test
+	public void test_transcript_gano() {
+		Semester testSemester = new Semester(null);
+		Semester testSemester2 = new Semester(null);
+		List<Semester> testListOfSemester = new ArrayList<>();
+		testListOfSemester.add(testSemester);
+		testListOfSemester.add(testSemester2);
+		
+		Transcript testTranscript = new Transcript(null, testListOfSemester);
 		
 		testTranscript.setGano(3.2);
-		assertEquals(3.2 , testTranscript.getGano());
+		assertEquals(3.2 , testTranscript.getGano(),0.001);
+	}
+	@Test
+	public void test_transcript_points() {
+		Semester testSemester = new Semester(null);
+		Semester testSemester2 = new Semester(null);
+		List<Semester> testListOfSemester = new ArrayList<>();
+		testListOfSemester.add(testSemester);
+		testListOfSemester.add(testSemester2);
 		
+		Transcript testTranscript = new Transcript(null, testListOfSemester);
+
 		testTranscript.setPoints(5.1);
-		assertEquals(5.1 , testTranscript.getPoints());
+		assertEquals(5.1 , testTranscript.getPoints(),0.001);
+	}
+	@Test
+	public void test_transcript_total_credits_taken() {
+		Semester testSemester = new Semester(null);
+		Semester testSemester2 = new Semester(null);
+		List<Semester> testListOfSemester = new ArrayList<>();
+		testListOfSemester.add(testSemester);
+		testListOfSemester.add(testSemester2);	
+		
+		Transcript testTranscript = new Transcript(null, testListOfSemester);
 		
 		testTranscript.setTotalCreditsTaken(8);
 		assertEquals(8, testTranscript.getTotalCreditsTaken());
-
-		
-		
-		
-		
 	}
-
-
 }
