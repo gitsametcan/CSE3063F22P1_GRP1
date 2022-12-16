@@ -1,8 +1,105 @@
 {
-    "id": "ME3004",
-    "name": "Mathematical Modeling in Mechanical Engineering" ,
+    "ID": "ME3004",
+    "Name": "Mathematical Modeling in Mechanical Engineering",
+    "prerequisiteID": "",
     "lectureType": "FTE",
-    "credit": "5",
-    "prerequisites": "",
-    "quota": "40"
-}
+    "quota": 50,
+    "credit": 5,
+    "term": "Fall",
+    "termYear": "Senior",
+    "lectureSessions": [
+      {
+        "ID": "1",
+        "lectureID": "ME3004",
+        "instructorID": "150000",
+        "sessionType": "Theorytical",
+        "sessionHours": [
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "listOfAssistantIDs": []
+      }
+    ]
+  }

@@ -1,8 +1,105 @@
 {
-    "id": "ME4018",
-    "name": "Introduction to Robotics" ,
+    "ID": "ME4018",
+    "Name": "Introduction to Robotics",
+    "prerequisiteID": "",
     "lectureType": "FTE",
-    "credit": "5",
-    "prerequisites": "",
-    "quota": "40"
-}
+    "quota": 50,
+    "credit": 5,
+    "term": "Fall",
+    "termYear": "Senior",
+    "lectureSessions": [
+      {
+        "ID": "1",
+        "lectureID": "ME4018",
+        "instructorID": "150000",
+        "sessionType": "Theorytical",
+        "sessionHours": [
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "listOfAssistantIDs": []
+      }
+    ]
+  }

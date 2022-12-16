@@ -1,8 +1,105 @@
 {
-    "id": "MATH2256",
-    "name": "Linear Algebra for Comp. Eng." ,
+    "ID": "MATH2256",
+    "Name": "Linear Algebra for Comp. Eng.",
+    "prerequisiteID": "",
     "lectureType": "MANDATORY",
-    "credit": "5",
-    "prerequisites": "",
-    "quota": "40"
-}
+    "quota": 50,
+    "credit": 5,
+    "term": "Fall",
+    "termYear": "Senior",
+    "lectureSessions": [
+      {
+        "ID": "1",
+        "lectureID": "MATH2256",
+        "instructorID": "150000",
+        "sessionType": "Theorytical",
+        "sessionHours": [
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "listOfAssistantIDs": []
+      }
+    ]
+  }

@@ -1,8 +1,105 @@
 {
-    "id": "ME4051",
-    "name": "Automotive Engineering" ,
+    "ID": "ME4051",
+    "Name": "Automotive Engineering",
+    "prerequisiteID": "",
     "lectureType": "FTE",
-    "credit": "5",
-    "prerequisites": "",
-    "quota": "40"
-}
+    "quota": 50,
+    "credit": 5,
+    "term": "Fall",
+    "termYear": "Senior",
+    "lectureSessions": [
+      {
+        "ID": "1",
+        "lectureID": "ME4051",
+        "instructorID": "150000",
+        "sessionType": "Theorytical",
+        "sessionHours": [
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "listOfAssistantIDs": []
+      }
+    ]
+  }

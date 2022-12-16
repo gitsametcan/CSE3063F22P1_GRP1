@@ -1,8 +1,105 @@
 {
-    "id": "MGT4088",
-    "name": "Project Management for Engineers" ,
+    "ID": "MGT4088",
+    "Name": "Project Management for Engineers",
+    "prerequisiteID": "",
     "lectureType": "FTE",
-    "credit": "5",
-    "prerequisites": "",
-    "quota": "40"
-}
+    "quota": 50,
+    "credit": 5,
+    "term": "Fall",
+    "termYear": "Senior",
+    "lectureSessions": [
+      {
+        "ID": "1",
+        "lectureID": "MGT4088",
+        "instructorID": "150000",
+        "sessionType": "Theorytical",
+        "sessionHours": [
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "listOfAssistantIDs": []
+      }
+    ]
+  }
