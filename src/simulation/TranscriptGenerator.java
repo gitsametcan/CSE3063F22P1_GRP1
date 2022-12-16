@@ -13,33 +13,30 @@ import lecture.Schedule;
 import lecture.Semester;
 
 public class TranscriptGenerator {
-	
+
 	private Map<String, Integer> termAndYear;
-	
+
 	public TranscriptGenerator(StudentGenerator student, Schedule schedule) {
-		
+
 		build();
-		
+
 		Transcript transcript = new Transcript(null, null);
-		
-		List<Lecture> lecture = DataManager.getInstance().searchLectureUntilTerm(schedule.getTerm(), schedule.getTermYear());
-		
-		
-		
-		
-		
-		for(int i = 0; i< termAndYear.get(schedule.getTerm() + "" + schedule.getTermYear()); i++) {
+
+		List<Lecture> lecture = DataManager.getInstance().searchLectureUntilTerm(schedule.getTerm(),
+				schedule.getTermYear());
+
+		for (int i = 0; i < termAndYear.get(schedule.getTerm() + "" + schedule.getTermYear()); i++) {
 			Map<Lecture, LetterGrade> listOfLecture = new HashMap<Lecture, LetterGrade>();
 			for (Lecture l : DataManager.getInstance().searchLecture(i)) {
-			// if can take
+				// if can take
 				listOfLecture.put(l, randomLetterGrade());
 			}
 			Semester tempSemester = new Semester(listOfLecture);
+			transcript.addSemester(tempSemester);
+
 		}
-		
 	}
-	
-	
+
 	private void build() {
 		termAndYear = new HashMap<String, Integer>();
 		termAndYear.put("FallFreshman", 0);
@@ -51,11 +48,11 @@ public class TranscriptGenerator {
 		termAndYear.put("FallSenior", 6);
 		termAndYear.put("SpringSenior", 7);
 	}
-	
+
 	private LetterGrade randomLetterGrade() {
-		
+
 		LetterGrade grade = LetterGrade.None;
-		switch ((int)(Math.random() * 9)) {
+		switch ((int) (Math.random() * 9)) {
 		case 0:
 			grade = LetterGrade.FF;
 			break;
@@ -84,11 +81,8 @@ public class TranscriptGenerator {
 			grade = LetterGrade.AA;
 			break;
 		}
-		
+
 		return grade;
 	}
-	
-}
-	
-	
 
+}
