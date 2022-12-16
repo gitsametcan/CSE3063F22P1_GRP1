@@ -7,10 +7,11 @@ import java.util.Scanner;
 import Enums.FilterType;
 import data.DataManager;
 import person.Student;
+import logger.Logger;
 
 //Kaan Camci 150119063
 public class StudentRegistrationSystem {
-
+	Logger log = Logger.getLogger("logs");
 	private Scanner scanner;
 	private RegistrationSystem registrationSystem1;
 
@@ -22,8 +23,8 @@ public class StudentRegistrationSystem {
 
 	private void studentLogin() throws FileNotFoundException {
 		Student currentUser = null;
-		System.out.println("Please provide your ID:");
-		System.out.println("----\nSuggestion: Enter \"150119063\"");
+		log.info("Please provide your ID:");
+		log.info("----\nSuggestion: Enter \"150119063\"");
 		while (true) {
 			String providedID = scanner.nextLine();
 			Optional<Student> currentOptionalStudent = DataManager.getInstance().findStudent(providedID, FilterType.ID);
@@ -32,7 +33,7 @@ public class StudentRegistrationSystem {
 				studentMenu(currentUser);
 				break;
 			} else {
-				System.out.print("Student not found, please try again: ");
+				log.info("Student not found, please try again: ");
 			}
 		}
 
@@ -45,14 +46,14 @@ public class StudentRegistrationSystem {
 		int menuChoice = 0;
 		while (menuChoice != 6) {
 
-			System.out.println("Please choose a menu: ");
-			System.out.println("1-Transcript");
-			System.out.println("2-Make Lecture Registration");
-			System.out.println("3-Schedule");
-			System.out.println("4-Registration Status");
-			System.out.println("5-Debt");
-			System.out.println("6-Sign Out");
-			System.out.println(
+			log.info("Please choose a menu: ");
+			log.info("1-Transcript");
+			log.info("2-Make Lecture Registration");
+			log.info("3-Schedule");
+			log.info("4-Registration Status");
+			log.info("5-Debt");
+			log.info("6-Sign Out");
+			log.info(
 					"----\nSuggestion: Enter \"2\" to go to he registartion menu, then check by entering \"4\" to go to the status menu");
 
 			validInput = false;
@@ -87,7 +88,7 @@ public class StudentRegistrationSystem {
 					signOut();
 					break;
 				default:
-					System.out.print("The input is not valid, please provide a valid input.");
+					log.info("The input is not valid, please provide a valid input.");
 				}
 			}
 		}
