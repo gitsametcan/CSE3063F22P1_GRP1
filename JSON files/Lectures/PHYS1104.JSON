@@ -5,13 +5,13 @@
     "lectureType": "MANDATORY",
     "quota": 50,
     "credit": 2,
-    "term": "Fall",
-    "termYear": "Senior",
+    "term": "Spring",
+    "termYear": "Freshman",
     "lectureSessions": [
       {
         "ID": "1",
         "lectureID": "PHYS1104",
-        "instructorID": "150000",
+        "instructorID": "150187",
         "sessionType": "Application",
         "sessionHours": [
           [
@@ -57,8 +57,8 @@
             0,
             0,
             0,
-            0,
-            0,
+            1,
+            1,
             0,
             0
           ],
