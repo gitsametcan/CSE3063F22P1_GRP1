@@ -33,10 +33,4 @@ public class PersonTest {
 		
 		assertEquals("John Green", testPersonClass.getFullName());
 	}
-	@Test
-	public void test_person_id() {
-		Person testPersonClass = new Person("John","Green");
-		
-		assertEquals(null, testPersonClass.getId());
-	}
 }
