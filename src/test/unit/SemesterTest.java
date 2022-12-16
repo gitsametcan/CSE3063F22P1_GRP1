@@ -54,8 +54,8 @@ public class SemesterTest {
 		testSessions.add(testSession2);
 		
 		List<LectureSession> testSessions2 = new ArrayList<>();
-		testSessions.add(testSession1);
-		testSessions.add(testSession3);
+		testSessions2.add(testSession1);
+		testSessions2.add(testSession3);
 		
 		List<Instructor> testListAssistants = new ArrayList<>();
 		testListAssistants.add(testInstructor2);
@@ -79,27 +79,6 @@ public class SemesterTest {
 		
 		testSemester.setListOfLecturesTaken(testListOfLecturesTaken2);
 		assertEquals(testListOfLecturesTaken2, testSemester.getListOfLecturesTaken());
-		
-		testSemester.setCreditsTaken(20);
-		assertEquals(20, testSemester.getCreditsTaken());
-		
-		testSemester.setCreditsCompleted(13);
-		assertEquals(13, testSemester.getCreditsCompleted());
-		
-		testSemester.setPoints(2.99);
-		assertEquals(2.99, testSemester.getPoints(),0.001);
-		
-		testSemester.setYano(3.66);
-		assertEquals(3.66, testSemester.getYano(),0.001);
-		
-		
-		
-		
-		
-		
-		
-		
-		
 	}
 
 }
