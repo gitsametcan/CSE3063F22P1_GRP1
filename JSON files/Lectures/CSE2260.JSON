@@ -5,30 +5,18 @@
     "lectureType": "MANDATORY",
     "quota": 50,
     "credit": 6,
-    "term": "Fall",
-    "termYear": "Senior",
+    "term": "Spring",
+    "termYear": "Sophomore",
     "lectureSessions": [
       {
         "ID": "1",
         "lectureID": "CSE2260",
-        "instructorID": "150145",
+        "instructorID": "150315",
         "sessionType": "Theorytical",
         "sessionHours": [
           [
             0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0
-          ],
-          [
-            0,
-            0,
+            1,
             0,
             0,
             0,
@@ -66,6 +54,18 @@
             0,
             0,
             0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            1,
             0,
             0,
             0,

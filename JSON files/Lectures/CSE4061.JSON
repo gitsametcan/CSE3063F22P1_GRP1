@@ -1,5 +1,5 @@
 {
-    "ID": "CSE4016",
+    "ID": "CSE4061",
     "Name": "Compiler Design",
     "prerequisiteID": "",
     "lectureType": "TE",
@@ -10,8 +10,8 @@
     "lectureSessions": [
       {
         "ID": "1",
-        "lectureID": "CSE4016",
-        "instructorID": "150000",
+        "lectureID": "CSE4061",
+        "instructorID": "150669",
         "sessionType": "Theorytical",
         "sessionHours": [
           [
@@ -67,9 +67,9 @@
             0,
             0,
             0,
-            0,
-            0,
-            0,
+            1,
+            1,
+            1,
             0,
             0,
             0

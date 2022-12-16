@@ -11,7 +11,7 @@
       {
         "ID": "1",
         "lectureID": "CSE4219",
-        "instructorID": "150000",
+        "instructorID": "150185",
         "sessionType": "Theorytical",
         "sessionHours": [
           [
@@ -33,14 +33,14 @@
             0,
             0,
             0,
-            0,
-            0,
+            1,
+            1,
             0,
             0
           ],
           [
             0,
-            0,
+            1,
             0,
             0,
             0,

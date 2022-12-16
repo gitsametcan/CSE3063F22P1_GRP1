@@ -6,12 +6,12 @@
     "quota": 50,
     "credit": 6,
     "term": "Fall",
-    "termYear": "Senior",
+    "termYear": "Freshman",
     "lectureSessions": [
       {
         "ID": "1",
         "lectureID": "MATH1001",
-        "instructorID": "150145",
+        "instructorID": "150097",
         "sessionType": "Theorytical",
         "sessionHours": [
           [

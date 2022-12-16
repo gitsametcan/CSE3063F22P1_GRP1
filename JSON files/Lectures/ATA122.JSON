@@ -6,12 +6,12 @@
     "quota": 50,
     "credit": 2,
     "term": "Spring",
-    "termYear": "Senior",
+    "termYear": "Freshman",
     "lectureSessions": [
       {
         "ID": "1",
         "lectureID": "ATA122",
-        "instructorID": "150097",
+        "instructorID": "150412",
         "sessionType": "Theorytical",
         "sessionHours": [
           [

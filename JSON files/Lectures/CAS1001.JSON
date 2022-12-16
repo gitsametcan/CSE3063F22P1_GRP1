@@ -5,8 +5,8 @@
     "lectureType": "NTE",
     "quota": 50,
     "credit": 3,
-    "term": "Fall",
-    "termYear": "Senior",
+    "term": "Spring",
+    "termYear": "Freshman",
     "lectureSessions": [
       {
         "ID": "1",
@@ -44,10 +44,10 @@
             0,
             0,
             0,
+            0,
+            0,
             1,
-            0,
-            0,
-            0,
+            1,
             0
           ],
           [

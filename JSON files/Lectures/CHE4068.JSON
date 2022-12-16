@@ -1,16 +1,16 @@
-{    "ID": "CHE4068",
+{   "ID": "CHE4068",
     "Name": "Financial Engineering",
     "prerequisiteID": "",
     "lectureType": "FTE",
     "quota": 50,
     "credit": 5,
-    "term": "Fall",
+    "term": "Spring",
     "termYear": "Senior",
     "lectureSessions": [
       {
         "ID": "1",
         "lectureID": "CHE4068",
-        "instructorID": "150158",
+        "instructorID": "150219",
         "sessionType": "Theorytical",
         "sessionHours": [
           [
@@ -22,8 +22,8 @@
             0,
             0,
             0,
-            0,
-            0
+            1,
+            1
           ],
           [
             0,
@@ -33,7 +33,7 @@
             0,
             0,
             0,
-            0,
+            1,
             0,
             0
           ],

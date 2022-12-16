@@ -1,5 +1,5 @@
 {
-    "ID": "CSE4023",
+    "ID": "CSE4026",
     "Name": "Introduction to Robotics and Control Theory",
     "prerequisiteID": "",
     "lectureType": "TE",
@@ -10,8 +10,8 @@
     "lectureSessions": [
       {
         "ID": "1",
-        "lectureID": "CSE4023",
-        "instructorID": "150000",
+        "lectureID": "CSE4026",
+        "instructorID": "150315",
         "sessionType": "Theorytical",
         "sessionHours": [
           [
@@ -19,6 +19,18 @@
             0,
             0,
             0,
+            1,
+            1,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
             0,
             0,
             0,
@@ -34,19 +46,7 @@
             0,
             0,
             0,
-            0,
-            0,
-            0
-          ],
-          [
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
+            1,
             0,
             0
           ],

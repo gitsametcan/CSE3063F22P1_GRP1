@@ -6,12 +6,12 @@
     "quota": 50,
     "credit": 7,
     "term": "Fall",
-    "termYear": "Senior",
+    "termYear": "Sophomore",
     "lectureSessions": [
       {
         "ID": "1",
         "lectureID": "CSE2225",
-        "instructorID": "150145",
+        "instructorID": "150286",
         "sessionType": "Theorytical",
         "sessionHours": [
           [
@@ -31,8 +31,8 @@
             0,
             0,
             0,
-            0,
-            0,
+            1,
+            1,
             0,
             0,
             0,
@@ -40,7 +40,7 @@
           ],
           [
             0,
-            0,
+            1,
             0,
             0,
             0,
