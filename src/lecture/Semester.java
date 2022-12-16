@@ -20,7 +20,7 @@ public class Semester {
 	private Term term;
 	private TermYear termYear;
 
-	public Semester(HashMap<Lecture, LetterGrade> listOfLecturesTaken) {
+	public Semester(Map<Lecture, LetterGrade> listOfLecturesTaken) {
 		super();
 		this.listOfLecturesTaken = listOfLecturesTaken;
 		this.creditsTaken = creditsTakenCalculator(listOfLecturesTaken);

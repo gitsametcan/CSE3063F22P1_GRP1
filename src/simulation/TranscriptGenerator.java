@@ -10,6 +10,7 @@ import Enums.LetterGrade;
 import data.DataManager;
 import lecture.Lecture;
 import lecture.Schedule;
+import lecture.Semester;
 
 public class TranscriptGenerator {
 	
@@ -25,10 +26,15 @@ public class TranscriptGenerator {
 		
 		
 		
-		Map<Lecture, LetterGrade> listOfLecture = new HashMap<Lecture, LetterGrade>();
 		
-		for(int i = 0; i<= termAndYear.get(schedule.getTerm() + " " + schedule.getTermYear()); i++) {
-			
+		
+		for(int i = 0; i< termAndYear.get(schedule.getTerm() + "" + schedule.getTermYear()); i++) {
+			Map<Lecture, LetterGrade> listOfLecture = new HashMap<Lecture, LetterGrade>();
+			for (Lecture l : DataManager.getInstance().searchLecture(i)) {
+			// if can take
+				listOfLecture.put(l, randomLetterGrade());
+			}
+			Semester tempSemester = new Semester(listOfLecture);
 		}
 		
 	}

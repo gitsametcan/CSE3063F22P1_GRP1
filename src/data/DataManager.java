@@ -231,7 +231,7 @@ public class DataManager {
 		return result;
 	}
 	
-	private List<Lecture> searchLecture(int term){
+	public List<Lecture> searchLecture(int term){
 		List<Lecture> result = new ArrayList<Lecture>();
 		switch (term) {
 			case 0:
