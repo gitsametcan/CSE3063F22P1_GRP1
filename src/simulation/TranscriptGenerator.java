@@ -13,10 +13,11 @@ import lecture.Schedule;
 
 public class TranscriptGenerator {
 	
-	private Map<String, Integer> termAndyear;
+	private Map<String, Integer> termAndYear;
 	
 	public TranscriptGenerator(StudentGenerator student, Schedule schedule) {
 		
+		build();
 		
 		Transcript transcript = new Transcript(null, null);
 		
@@ -26,7 +27,9 @@ public class TranscriptGenerator {
 		
 		Map<Lecture, LetterGrade> listOfLecture = new HashMap<Lecture, LetterGrade>();
 		
-		for(int i = 0; i<= termAndYear.)
+		for(int i = 0; i<= termAndYear.get(schedule.getTerm() + " " + schedule.getTermYear()); i++) {
+			
+		}
 		
 	}
 	
@@ -41,6 +44,42 @@ public class TranscriptGenerator {
 		termAndYear.put("SpringJunior", 5);
 		termAndYear.put("FallSenior", 6);
 		termAndYear.put("SpringSenior", 7);
+	}
+	
+	private LetterGrade randomLetterGrade() {
+		
+		LetterGrade grade = LetterGrade.None;
+		switch ((int)(Math.random() * 9)) {
+		case 0:
+			grade = LetterGrade.FF;
+			break;
+		case 1:
+			grade = LetterGrade.FD;
+			break;
+		case 2:
+			grade = LetterGrade.DD;
+			break;
+		case 3:
+			grade = LetterGrade.DC;
+			break;
+		case 4:
+			grade = LetterGrade.CC;
+			break;
+		case 5:
+			grade = LetterGrade.CB;
+			break;
+		case 6:
+			grade = LetterGrade.BB;
+			break;
+		case 7:
+			grade = LetterGrade.BA;
+			break;
+		case 8:
+			grade = LetterGrade.AA;
+			break;
+		}
+		
+		return grade;
 	}
 	
 }
