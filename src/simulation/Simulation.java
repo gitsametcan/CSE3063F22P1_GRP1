@@ -10,7 +10,7 @@ public class Simulation {
 	private List<Student> listOfStudents;
 	private StudentGenerator studentGenerator;
 	
-	public void Simulation() {
+	public Simulation() {
 		studentGenerator = new StudentGenerator();
 		listOfStudents = new ArrayList<Student>();
 	}

@@ -11,14 +11,16 @@ import data.DataManager;
 import lecture.Lecture;
 import lecture.Schedule;
 import lecture.Semester;
+import person.Student;
 
 public class TranscriptGenerator {
 
 	
 	private Map<String, Integer> termAndYear;
 
-	public TranscriptGenerator(StudentGenerator student, Schedule schedule) {
+	public TranscriptGenerator() {
 
+		//StudentGenerator student, Schedule schedule
 		build();
 
 		Transcript transcript = new Transcript(null, null);
@@ -38,6 +40,12 @@ public class TranscriptGenerator {
 		}
 	}
 	
+	public Transcript generate(Student student, Schedule schedule) {
+		build();
+		Transcript transcript = new Transcript(student, null);
+		
+		return transcript;
+	}
 
 	private void build() {
 		termAndYear = new HashMap<String, Integer>();
@@ -83,7 +91,6 @@ public class TranscriptGenerator {
 			grade = LetterGrade.AA;
 			break;
 		}
-
 		return grade;
 	}
 

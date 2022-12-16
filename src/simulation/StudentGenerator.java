@@ -2,11 +2,9 @@ package simulation;
 
 import java.util.Calendar;
 import java.util.GregorianCalendar;
-import java.util.List;
 import java.util.Optional;
 
 import Debt_LRA_Transcript.Debt;
-import Debt_LRA_Transcript.Transcript;
 import Enums.FilterType;
 import Enums.Term;
 import Enums.TermYear;
@@ -19,8 +17,8 @@ import person.Student;
 
 public class StudentGenerator {
 
-	private Transcript transcript;
 	private NamePool namePool;
+	private TranscriptGenerator transcriptGenerator;
 
 	public StudentGenerator( ) {
 		
@@ -29,6 +27,8 @@ public class StudentGenerator {
 		if (optNamePool.isPresent()) {
 			namePool = optNamePool.get();
 		}
+		
+		transcriptGenerator = new TranscriptGenerator();
 
 	}
 	
@@ -38,11 +38,12 @@ public class StudentGenerator {
 		
 		Student student = new Student(getRandomFirstName(),getRandomLastName(),studentIdGenerator(year + 18, semesterCount),null,null, dateOfEntry);
 		
-		Schedule schedule = new Schedule(student, Term.values()[semesterCount % 2],TermYear.values()[semesterCount / 2]);
+		Schedule schedule = new Schedule(student, Term.values()[semesterCount % 2],TermYear.values()[semesterCount / 2]);//Warning
 		
 		student.setSchedule(schedule);
 		student.setDebt(studentDebtGenerator());
 		student.setAdvisor(getRandomAdvisor());
+		student.setTranscript(transcriptGenerator.generate(student, schedule));
 		
 		return student;
 	}
