@@ -1,11 +1,9 @@
 package simulation;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import Debt_LRA_Transcript.Transcript;
-import Enums.FilterType;
 import Enums.LetterGrade;
 import data.DataManager;
 import lecture.Lecture;
@@ -24,20 +22,7 @@ public class TranscriptGenerator {
 		build();
 
 		Transcript transcript = new Transcript(null, null);
-
-		List<Lecture> lecture = DataManager.getInstance().searchLectureUntilTerm(schedule.getTerm(),
-				schedule.getTermYear());
-
-		for (int i = 0; i < termAndYear.get(schedule.getTerm() + "" + schedule.getTermYear()); i++) {
-			Map<Lecture, LetterGrade> listOfLecture = new HashMap<Lecture, LetterGrade>();
-			for (Lecture l : DataManager.getInstance().searchLecture(i)) {
-				// if can take
-				listOfLecture.put(l, randomLetterGrade());
-			}
-			Semester tempSemester = new Semester(listOfLecture);
-			transcript.addSemester(tempSemester);
-
-		}
+		
 	}
 	
 	public Transcript generate(Student student, Schedule schedule) {
@@ -92,6 +77,20 @@ public class TranscriptGenerator {
 			break;
 		}
 		return grade;
+	}
+	private Semester semesterGenerator(Schedule schedule) {
+		
+		Semester tempSemester = new Semester(null);
+		
+		for (int i = 0; i < termAndYear.get(schedule.getTerm() + "" + schedule.getTermYear()); i++) {
+			Map<Lecture, LetterGrade> listOfLecture = new HashMap<Lecture, LetterGrade>();
+			for (Lecture l : DataManager.getInstance().searchLecture(i)) {
+				// if can take
+				listOfLecture.put(l, randomLetterGrade());
+			}
+			tempSemester.setListOfLecturesTaken(listOfLecture);
+		}
+		return tempSemester;
 	}
 
 }
