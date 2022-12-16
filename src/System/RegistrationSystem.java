@@ -2,9 +2,11 @@ package System;
 
 import java.io.FileNotFoundException;
 import java.util.Scanner;
+import logger.Logger;
 
 public class RegistrationSystem {
 
+	Logger log = Logger.getLogger("logs");
 	private Scanner scanner;
 
 	public RegistrationSystem() throws FileNotFoundException {
@@ -14,12 +16,12 @@ public class RegistrationSystem {
 
 	public void menu() throws FileNotFoundException {
 
-		System.out.println("Log in as...");
-		System.out.println("1-Student");
-		System.out.println("2-Instructor \"Not Finished!!!\"");
-		System.out.println("3-Advisor \"Not Finished!!!\"");
-		System.out.println("4-Exit");
-		System.out.println("----\nSuggestion: Enter \"1\"");
+		log.info("Log in as...");
+		log.info("1-Student");
+		log.info("2-Instructor \"Not Finished!!!\"");
+		log.info("3-Advisor \"Not Finished!!!\"");
+		log.info("4-Exit");
+		log.info("----\nSuggestion: Enter \"1\"");
 
 		boolean validInput = false;
 
@@ -41,7 +43,7 @@ public class RegistrationSystem {
 			case 4:
 				System.exit(0);
 			default:
-				System.out.print("The input is not valid, please provide a valid input.");
+				log.info("The input is not valid, please provide a valid input.");
 			}
 		}
 

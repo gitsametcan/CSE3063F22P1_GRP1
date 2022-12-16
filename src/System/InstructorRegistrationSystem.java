@@ -7,10 +7,12 @@ import java.util.Scanner;
 import Enums.FilterType;
 import data.DataManager;
 import person.Instructor;
+import logger.Logger;
 
 //Kaan Camci 150119063
 public class InstructorRegistrationSystem {
 
+	Logger log = Logger.getLogger("logs");
 	private Scanner scanner;
 	private RegistrationSystem registrationSystem1;
 
@@ -23,8 +25,8 @@ public class InstructorRegistrationSystem {
 	private void instructorLogin() throws FileNotFoundException {
 		Instructor currentUser = null;
 
-		System.out.println("Please provide your ID:");
-		System.out.println("----\nSuggestion: Enter \"????\"");
+		log.info("Please provide your ID:");
+		log.info("----\nSuggestion: Enter \"????\"");
 		while (true) {
 			String providedID = scanner.nextLine();
 			Optional<Instructor> currentOptionalAdvisor = DataManager.getInstance().findInstructor(providedID,
@@ -34,7 +36,7 @@ public class InstructorRegistrationSystem {
 				instructorMenu(currentUser);
 				break;
 			} else {
-				System.out.print("Instructor not found, please try again: ");
+				log.info("Instructor not found, please try again: ");
 			}
 		}
 	}
@@ -47,10 +49,10 @@ public class InstructorRegistrationSystem {
 
 		while (menuChoice != 3) {
 
-			System.out.println("Please choose a menu: ");
-			System.out.println("1-Show Lecture Sessions");
-			System.out.println("2-Show Students Of A Lecture Session");
-			System.out.println("3-Sign Out");
+			log.info("Please choose a menu: ");
+			log.info("1-Show Lecture Sessions");
+			log.info("2-Show Students Of A Lecture Session");
+			log.info("3-Sign Out");
 
 			validInput = false;
 
@@ -72,7 +74,7 @@ public class InstructorRegistrationSystem {
 					signOut();
 					break;
 				default:
-					System.out.print("The input is not valid, please provide a valid input.");
+					log.info("The input is not valid, please provide a valid input.");
 				}
 			}
 		}

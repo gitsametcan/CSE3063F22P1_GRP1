@@ -3,6 +3,7 @@ package person;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Scanner;
+import logger.Logger;
 
 import Enums.InstructorType;
 import IDs.InstructorID;
@@ -11,7 +12,7 @@ import lecture.Schedule;
 
 //Kaan Camci 150119063
 public class Instructor extends Person {
-
+	Logger log = Logger.getLogger("logs");
 	protected InstructorID id;
 	private Schedule schedule;
 	protected Calendar dateOfEntry;
@@ -36,10 +37,10 @@ public class Instructor extends Person {
 		List<LectureSession> listOfLectureSessions = schedule.getListOfLectureSessions();
 
 		for (LectureSession lectureSession : listOfLectureSessions) {
-			System.out.println(lectureSession.getLecture().getName() + "." + lectureSession.getSessionID());
-			System.out.println("------------");
-			System.out.println("Quota: " + lectureSession.getLecture().getQuota());
-			System.out.println("Number Of Students: " + lectureSession.getListOfStudents().size());
+			log.info(lectureSession.getLecture().getName() + "." + lectureSession.getSessionID());
+			log.info("------------");
+			log.info("Quota: " + lectureSession.getLecture().getQuota());
+			log.info("Number Of Students: " + lectureSession.getListOfStudents().size());
 		}
 
 		schedule.showSchedule();
@@ -49,14 +50,14 @@ public class Instructor extends Person {
 		int count = 0;
 		for (LectureSession lectureSession : this.getSchedule().getListOfLectureSessions()) {
 			count++;
-			System.out.println(
+			log.info(
 					count + ". " + lectureSession.getLecture().getName() + "." + lectureSession.getSessionID());
 		}
-		System.out.print("Choose A Session: ");
+		log.info("Choose A Session: ");
 		int sessionChoice = scanner.nextInt();
 		LectureSession lectureSession = this.getSchedule().getListOfLectureSessions().get(sessionChoice - 1);
 		for (Student student : lectureSession.getListOfStudents()) {
-			System.out.println("ID: " + student.getID() + "Name: " + student.getFullName());
+			log.info("ID: " + student.getID() + "Name: " + student.getFullName());
 		}
 	}
 

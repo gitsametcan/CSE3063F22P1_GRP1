@@ -7,6 +7,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
+import logger.Logger;
 
 import Debt_LRA_Transcript.Debt;
 import Debt_LRA_Transcript.LectureRegistrationApplication;
@@ -20,10 +21,11 @@ import lecture.Lecture;
 import lecture.LectureSession;
 import lecture.Schedule;
 import lecture.Semester;
+import logger.Logger;
 
 //Kaan Camci 150119063
 public class Student extends Person {
-
+	Logger log = Logger.getLogger("logs");
 	private transient Advisor advisor;
 	private StudentID id;
 	private Schedule schedule;
@@ -117,33 +119,26 @@ public class Student extends Person {
 		int semesterSize = this.getTranscript().getListOfSemester().size();
 		for (int i = 0; i < semesterSize; i++) {
 			if (i == 0) {
-				System.out.println("1st Semester");
+				log.info("1st Semester");
 			} else if (i == 1) {
-				System.out.println("2nd Semester");
+				log.info("2nd Semester");
 			} else {
-				System.out.println((i + 1) + "th Semester");
+				log.info((i + 1) + "th Semester");
 			}
-
-			System.out.printf("%-12s", "Lecture Code");
-			System.out.printf("%-40s", "Lecture Name");
-			System.out.printf("%-10s", "Credit");
-			System.out.printf("%-15s%n", "Letter Grade");
+			log.info("%-12s%-40s%-10s%-15s","Lecture Code","Lecture Name","Credit","Letter Grade");
 
 			Map<Lecture, LetterGrade> tempTakenLectures = this.getTranscript().getListOfSemester().get(i)
 					.getListOfLecturesTaken();
 
 			for (Lecture l : tempTakenLectures.keySet()) {
 
-				System.out.printf("%-12s", l.getID());
-				System.out.printf("%-40s", l.getName());
-				System.out.printf("%-10s", l.getCredit());
-				System.out.printf("%-15s%n", tempTakenLectures.get(l).toString());
+				log.info("%-12s%-40s%-10s%-15s%n",l.getID(),l.getName(),l.getCredit(),tempTakenLectures.get(l).toString());
 			}
 
-			System.out.printf("%-31s", "Credits taken in Semester:");
-			System.out.println(this.getTranscript().getListOfSemester().get(i).getCreditsTaken());
-			System.out.printf("%-31s", "Credits completed in Semester:");
-			System.out.println(this.getTranscript().getListOfSemester().get(i).getCreditsCompleted());
+			log.info("%-31s", "Credits taken in Semester:");
+			log.info(""+this.getTranscript().getListOfSemester().get(i).getCreditsTaken());
+			log.info("%-31s", "Credits completed in Semester:");
+			log.info(""+this.getTranscript().getListOfSemester().get(i).getCreditsCompleted());
 		}
 
 	}
@@ -154,11 +149,11 @@ public class Student extends Person {
 
 	public void debtMenu() throws FileNotFoundException {
 		if (this.getDebt().getAmount() == 0) {
-			System.out.println("You have no debt.");
+			log.info("You have no debt.");
 		} else {
-			System.out.println("Your debt is " + this.getDebt().getAmount() + "TL.");
-			System.out.println("1- Pay your debt");
-			System.out.println("2- Go back");
+			log.info("Your debt is " + this.getDebt().getAmount() + "TL.");
+			log.info("1- Pay your debt");
+			log.info("2- Go back");
 
 			int payDebtChoice = 0;
 
@@ -177,7 +172,7 @@ public class Student extends Person {
 					validInput = true;
 					break;
 				default:
-					System.out.println("Please enter a valid input(1,2)");
+					log.info("Please enter a valid input(1,2)");
 				}
 			}
 
@@ -186,36 +181,31 @@ public class Student extends Person {
 
 	public void registrationStatusMenu() throws FileNotFoundException {
 		if (this.getRegistirationApplication() == null) {
-			System.out.println("You did not apply for registration.\n");
+			log.info("You did not apply for registration.\n");
 			return;
 		}
 		Map<LectureSession, ApprovalState> sessions = this.getRegistirationApplication().getSessionsSentForApproval();
-		System.out.println();
+		log.info("");
 		for (LectureSession s : sessions.keySet()) {
 
-			System.out.printf("%s.%s", s.getLecture().getID(), s.getSessionID());
-			System.out.printf(" %-15s%n", sessions.get(s).toString());
+			log.info("%s.%s%-15s%n",s.getLecture().getID(), s.getSessionID(),sessions.get(s).toString());
 		}
-		System.out.println();
+		log.info("");
 	}
 
 	public void makeRegistrationMenu() throws FileNotFoundException {
 
 		List<Lecture> currentStudentAvailableLectures = DataManager.getInstance().searchLecture("", FilterType.Name);
-		System.out.println("Lectures: ");
+		log.info("Lectures: ");
 
 		for (int i = 0; i < currentStudentAvailableLectures.size(); i++) {
 			for (LectureSession s : currentStudentAvailableLectures.get(i).getSessions()) {
-				System.out.printf("Lecture Code: %-15s",
-						currentStudentAvailableLectures.get(i).getID() + "." + s.getSessionID());
-				System.out.printf("Lecture Name: %-40s", currentStudentAvailableLectures.get(i).getName());
-				System.out.printf("Lecture Type: %-10s",
-						currentStudentAvailableLectures.get(i).getLectureType().toString());
-				System.out.printf("Lecture Credit: %-4s%n", currentStudentAvailableLectures.get(i).getCredit());
+				log.info("Lecture Code: %-15sLecture Name: %-40sLecture Type: %-10sLecture Credit: %-4s%n",
+						currentStudentAvailableLectures.get(i).getID() + "." + s.getSessionID(),currentStudentAvailableLectures.get(i).getName(),currentStudentAvailableLectures.get(i).getLectureType().toString(),currentStudentAvailableLectures.get(i).getCredit());
 			}
 		}
 
-		System.out.println("Enter a lecture session code that you will send for approval.\n"
+		log.info("Enter a lecture session code that you will send for approval.\n"
 				+ "\"add lecture_id\" to add session for approval list.\n"
 				+ "\"remove lecture_id\" to remove session from approval list.\n" + "Enter \"send\" to send\n"
 				+ "Enter \"exit\" to exit");
@@ -252,7 +242,7 @@ public class Student extends Person {
 		if (partedInput[1].contains(".")) {
 			partedLectureID = partedInput[1].split("[.]");
 		} else {
-			System.out.println("Please enter a valid input.");
+			log.info("Please enter a valid input.");
 			return;
 		}
 
@@ -268,7 +258,7 @@ public class Student extends Person {
 					}
 				}
 			}
-			System.out.printf("Couldn't find %s", partedInput[1]);
+			log.info("Couldn't find %s", partedInput[1]);
 		}
 		if (partedInput[0].equalsIgnoreCase("remove")) {
 			for (Lecture l : lectures) {
@@ -282,19 +272,16 @@ public class Student extends Person {
 					}
 				}
 			}
-			System.out.printf("Couldn't find %s", partedInput[1]);
+			log.info("Couldn't find %s", partedInput[1]);
 		}
 	}
 
 	private void showChosenLectureSessions(List<LectureSession> chosenLectureSessions) {
-		System.out.println("Chosen Lectures:\n");
+		log.info("Chosen Lectures:\n");
 		for (LectureSession ls : chosenLectureSessions) {
-			System.out.printf("Lecture Code: %-15s", ls.getLecture().getID() + "." + ls.getSessionID());
-			System.out.printf("Lecture Name: %-40s", ls.getLecture().getName());
-			System.out.printf("Lecture Type: %-10s", ls.getLecture().getLectureType().toString());
-			System.out.printf("Lecture Credit: %-4s%n", ls.getLecture().getCredit());
+			log.info("Lecture Code: %-15sLecture Name: %-40sLecture Type: %-10sLecture Credit: %-4s%n",ls.getLecture().getID() + "." + ls.getSessionID(),ls.getLecture().getName(),ls.getLecture().getLectureType().toString(),ls.getLecture().getCredit());
 		}
-		System.out.println("\n\n\nEnter a lecture session code that you will send for approval.\n"
+		log.info("\n\n\nEnter a lecture session code that you will send for approval.\n"
 				+ "\"add lecture_id\" to add session for approval list.\n"
 				+ "\"remove lecture_id\" to remove session from approval list.\n" + "Enter \"send\" to send\n"
 				+ "Enter \"exit\" to exit");
