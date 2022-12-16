@@ -206,34 +206,6 @@ public class JsonGenerator {
         }
     }
 
-    
-
-    //Silinecek
-    public void  generateNamePool() {
-        JsonWriter json = new JsonWriter("NamePool.json");
-        List<String> firstNames = new ArrayList<String>();
-        List<String> lastNames = new ArrayList<String>();
-
-        firstNames.add("firstName1");
-        firstNames.add("firstName2");
-        firstNames.add("firstName3");
-
-        lastNames.add("lastName1");
-        lastNames.add("lastName2");
-        lastNames.add("lastName3");
-
-        NamePool namePool = new NamePool(firstNames, lastNames);
-        json.writeJsonFile(namePool);
-    }
-    
-    //Silinecek
-    public void generateMetaData() {
-    	JsonWriter json = new JsonWriter("MetaData.JSON");
-        MetaData metaData = new MetaData("Students/", "Advisors/", 
-            "Transcripts/", "Lectures/", "NamePool.JSON");
-        json.writeJsonFile(metaData);
-    }
-
 
     private String CalendarToString(Calendar calender) {
 		
