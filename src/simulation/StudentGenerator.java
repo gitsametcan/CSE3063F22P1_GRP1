@@ -2,15 +2,21 @@ package simulation;
 
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Optional;
 
 import Debt_LRA_Transcript.Debt;
+import Debt_LRA_Transcript.LectureRegistrationApplication;
+import Enums.ApprovalState;
 import Enums.FilterType;
 import Enums.Term;
 import Enums.TermYear;
 import IDs.StudentID;
 import data.DataManager;
 import data.json.NamePool;
+import lecture.Lecture;
+import lecture.LectureSession;
 import lecture.Schedule;
 import person.Advisor;
 import person.Student;
@@ -44,6 +50,8 @@ public class StudentGenerator {
 		student.setDebt(studentDebtGenerator());
 		student.setAdvisor(getRandomAdvisor());
 		student.setTranscript(transcriptGenerator.generate(student, schedule));
+		student.setRegistirationApplication(LRAGenerator(student));
+		
 		
 		return student;
 	}
@@ -77,6 +85,18 @@ public class StudentGenerator {
 	
 	private Advisor getRandomAdvisor() {
 		return DataManager.getInstance().searchAdvisor("", FilterType.Name).get((int) (Math.random() * 13));
+	}
+	
+	private LectureRegistrationApplication LRAGenerator(Student student) {
+		LectureRegistrationApplication LRA = new LectureRegistrationApplication(null, student.getAdvisor(),student);
+		
+		Map<LectureSession, ApprovalState> listOfLecture = new HashMap<LectureSession, ApprovalState>();
+		for (Lecture l : DataManager.getInstance().searchLecture(student.getSchedule().getTerm(),student.getSchedule().getTermYear())) {
+			if (student.canTakeLecture(l, student.getTranscript()))
+				listOfLecture.put(l.getSessions().get(0), ApprovalState.Pending);
+		}
+		
+		return LRA;
 	}
 
 }
