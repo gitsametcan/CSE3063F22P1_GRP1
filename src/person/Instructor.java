@@ -40,7 +40,7 @@ public class Instructor extends Person {
 			log.info(lectureSession.getLecture().getName() + "." + lectureSession.getSessionID());
 			log.info("------------");
 			log.info("Quota: " + lectureSession.getLecture().getQuota());
-			log.info("Number Of Students: " + lectureSession.getListOfStudents().size());
+			log.info("Number Of Students: " + lectureSession.getListOfStudents().size() + "\n");
 		}
 
 		schedule.showSchedule();

@@ -26,7 +26,7 @@ public class Advisor extends Instructor {
 			Calendar dateOfEntry, List<Student> listOfStudents, List<LectureRegistrationApplication> listOfApplications,
 			InstructorType instructorType, Schedule schedule) {
 		super(firstName, lastName, id, dateOfEntry, instructorType, schedule);
-		scanner = new Scanner(System.in);
+		this.scanner = new Scanner(System.in);
 		this.listOfStudents = listOfStudents;
 		this.listOfApplications = listOfApplications;
 		if (this.listOfStudents == null) {
@@ -38,6 +38,7 @@ public class Advisor extends Instructor {
 	}
 	
 	public void showApplications() {
+		this.scanner = new Scanner(System.in);
 		int choice = -1;
 		while (choice != 0) {
 			int count = 0;

@@ -41,10 +41,10 @@ public class Simulation {
 		log.info("Do you want to save generated Students? Y/N : ");
 		Scanner scanner = new Scanner(System.in);
 		String answer = scanner.next();
-		scanner.close();
 		if (answer.equalsIgnoreCase("Y")) {
 			DataManager.getInstance().addStudents(listOfStudents);
 			DataManager.getInstance().saveObjectAsJson();
+			log.info("All students that is generated and their effect on lectures and advisors are saved");
 		}
 	}
 

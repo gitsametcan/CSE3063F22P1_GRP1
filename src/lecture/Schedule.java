@@ -32,16 +32,15 @@ public class Schedule {
 		}
 		int lecturePlaceX = 0;
 		int lecturePlaceY = 1;
-		String a = "";
+		String temp = "";
 		for (int y = 1; y < 42; y++) {
 			for (int x = 1; x < 79; x++) {
 				if (y == 1 || y == 41) {
-					a+="_";
+					temp += "_";
 					if ((x == 78 && y == 1)) {
-						log.info(a);
-						a="";
+						log.info(temp);
+						temp = "";
 					}
-					a = null;
 				} else if ((((x - 2) % 11) == 0) && (((y - 3) % 4) == 0)) {
 
 					if (lecturePlaceX == 7) {
@@ -55,7 +54,7 @@ public class Schedule {
 					for (LectureSession ls : lectureSessions) {
 						if (ls.getSessionHours()[lecturePlaceX - 1][lecturePlaceY - 1] == LectureHour.YES) {
 							String lectureSessionName = ls.getLecture().getID() + "." + ls.getSessionID();
-							a+=(lectureSessionName);
+							temp += lectureSessionName;
 							x = x + (lectureSessionName.length()) - 1;
 							thereIsLecture = true;
 							break;
@@ -63,26 +62,26 @@ public class Schedule {
 					}
 
 					if (thereIsLecture == false) {
-						a+=" ";
+						temp += " ";
 					}
 
 				} else if (x == 1 || x == 78) {
-					a+="|";
+					temp += "|";
 					if (x == 78) {
-						log.info(a);
+						log.info(temp);
+						temp = "";
 					}
 				} else if ((y - 1) % 4 == 0) {
-					a+="_";
+					temp += "_";
 				} else if ((x - 1) % 11 == 0) {
-					a+="|";
+					temp += "|";
 				} else {
-					a+=" ";
+					temp += " ";
 				}
 			}
 		}
-
-		log.info(a);
-		a="";
+		log.info(temp);
+		temp = "";
 	}
 
 	public Person getPerson() {
