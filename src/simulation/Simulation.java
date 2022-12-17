@@ -20,7 +20,7 @@ public class Simulation {
 			
 			Student student;
 			try {
-				student = studentGenerator.generate((semesterCount/2) ,(studentCount+1));
+				student = studentGenerator.generate((studentCount+1), semesterCount);
 				listOfStudents.add(student);
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
