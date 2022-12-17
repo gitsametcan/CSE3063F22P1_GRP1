@@ -2,7 +2,9 @@ package System;
 
 import java.io.FileNotFoundException;
 import java.util.Scanner;
+
 import logger.Logger;
+import simulation.Simulation;
 
 public class RegistrationSystem {
 
@@ -19,10 +21,10 @@ public class RegistrationSystem {
 
 		log.info("Log in as...");
 		log.info("1-Student");
-		log.info("2-Instructor \"Not Finished!!!\"");
-		log.info("3-Advisor \"Not Finished!!!\"");
+		log.info("2-Instructor");
+		log.info("3-Advisor");
+		log.info("4-Simulation");
 		log.info("4-Exit");
-		log.info("----\nSuggestion: Enter \"1\"");
 
 		boolean validInput = false;
 
@@ -42,6 +44,9 @@ public class RegistrationSystem {
 				AdvisorRegistrationSystem advisorRegistrationSystem = new AdvisorRegistrationSystem(this);
 				break;
 			case 4:
+				validInput = true;
+				Simulation simulation = new Simulation();
+			case 5:
 				System.exit(0);
 			default:
 				log.info("The input is not valid, please provide a valid input.");

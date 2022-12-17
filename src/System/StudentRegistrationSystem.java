@@ -55,7 +55,7 @@ public class StudentRegistrationSystem {
 			log.info("5-Debt");
 			log.info("6-Sign Out");
 			log.info(
-					"----\nSuggestion: Enter \"2\" to go to he registartion menu, then check by entering \"4\" to go to the status menu");
+					"----\nSuggestion: Enter \"2\" to go to he registration menu, then check by entering \"4\" to go to the status menu");
 
 			validInput = false;
 
