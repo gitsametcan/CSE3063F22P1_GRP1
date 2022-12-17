@@ -329,7 +329,7 @@ public class Student extends Person {
 		return point;
 	}
 	
-	public List<Lecture> availableLessons(Student student, List<Lecture>termLectures){
+	public List<Lecture> availableLessons(Student student){
 		List<Lecture> availableLessons = new ArrayList<Lecture>();
 		
 		for (Lecture l : DataManager.getInstance().searchLectureUntilTerm(student.getSchedule().getTerm(), student.getSchedule().getTermYear())) {
