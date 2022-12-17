@@ -32,6 +32,7 @@ import lecture.Lecture;
 import lecture.LectureSession;
 import lecture.Schedule;
 import lecture.Semester;
+import logger.Logger;
 import person.Advisor;
 import person.Student;
 
@@ -346,8 +347,7 @@ public class ObjectGenerator {
 		try {
 			calendar.setTime(formOfDate.parse(string));
 		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			System.err.println("String format is not suitable");
+			Logger.getLogger("logs").error("String format is not suitable");
 			return Optional.empty();
 		}
 		

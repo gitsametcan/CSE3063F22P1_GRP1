@@ -18,14 +18,13 @@ public class DebtTest {
 	@Test
 	public void test_debt_default_constructor() {
 		StudentID testId = new StudentID(000,000,000);
-		Semester testSemester = new Semester(null, 1, 2, 2.1 , 1.2);
-		Semester testSemester2 = new Semester(null, 2, 3, 3.1, 1.3);
+		Semester testSemester = new Semester(null);
+		Semester testSemester2 = new Semester(null);
 		List<Semester> testListOfSemester = new ArrayList<>();
 		testListOfSemester.add(testSemester);
 		testListOfSemester.add(testSemester2);
 
-		Transcript testTranscript = new Transcript(null, testListOfSemester, 
-				3.4, 23, 13, 2.3);
+		Transcript testTranscript = new Transcript(null, testListOfSemester);
 		Student testStudent = new Student("testFName", "testLName",
 				testId, null, testTranscript, null);
 		
@@ -37,7 +36,7 @@ public class DebtTest {
 		Debt testDebt = new Debt(23.23 , testStudent);
 		
 		testDebt.setAmount(12.3);
-		assertEquals(12.3 , testDebt.getAmount());
+		assertEquals(12.3 , testDebt.getAmount(),0.001);
 		
 		testDebt.setStudent(testStudent2);
 		assertEquals(testStudent2, testDebt.getStudent());

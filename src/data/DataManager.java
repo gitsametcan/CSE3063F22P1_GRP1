@@ -72,8 +72,6 @@ public class DataManager {
 			jsonOperator.readLectureJSON(name);
 		}
 		
-		
-		
 		jsonOperator.generateObjects();
 
 		listOfLectures.addAll(jsonOperator.getReadLectures());
@@ -365,6 +363,9 @@ public class DataManager {
 		return jsonOperator.getNamePool();
 	}
 
+	public Optional<MetaData> getMetaData() {
+		return Optional.ofNullable(this.jsonOperator.getMetaData());
+	}
 	//Silinecek
 	public void writeExamples() {
 		JsonGenerator jsonGenerator = jsonOperator.getJsonGenerator();

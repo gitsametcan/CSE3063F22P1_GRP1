@@ -6,6 +6,8 @@ import java.util.Scanner;
 
 import com.google.gson.Gson;
 
+import logger.Logger;
+
 public class JsonReader {
 
 	private File file;
@@ -24,7 +26,7 @@ public class JsonReader {
 		try {
 			scanner = new Scanner(file);
 		} catch (FileNotFoundException e) {
-			System.err.println("ERROR File is not found: " + file.getAbsolutePath());
+			Logger.getLogger("logs").error("File is not found: %s", file.getAbsolutePath());
 			return null;
 		}
 		String contents = "";

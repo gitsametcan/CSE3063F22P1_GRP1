@@ -1,20 +1,18 @@
 package System;
 
 import java.io.FileNotFoundException;
-import java.util.List;
 import java.util.Optional;
 import java.util.Scanner;
 
 import Enums.FilterType;
 import data.DataManager;
-import lecture.LectureSession;
-import lecture.Schedule;
 import person.Instructor;
-import person.Student;
+import logger.Logger;
 
 //Kaan Camci 150119063
 public class InstructorRegistrationSystem {
 
+	Logger log = Logger.getLogger("logs");
 	private Scanner scanner;
 	private RegistrationSystem registrationSystem1;
 
@@ -27,8 +25,8 @@ public class InstructorRegistrationSystem {
 	private void instructorLogin() throws FileNotFoundException {
 		Instructor currentUser = null;
 
-		System.out.println("Please provide your ID:");
-		System.out.println("----\nSuggestion: Enter \"????\"");
+		log.info("Please provide your ID:");
+		log.info("----\nSuggestion: Enter \"????\"");
 		while (true) {
 			String providedID = scanner.nextLine();
 			Optional<Instructor> currentOptionalAdvisor = DataManager.getInstance().findInstructor(providedID,
@@ -38,7 +36,7 @@ public class InstructorRegistrationSystem {
 				instructorMenu(currentUser);
 				break;
 			} else {
-				System.out.print("Instructor not found, please try again: ");
+				log.info("Instructor not found, please try again: ");
 			}
 		}
 	}
@@ -51,10 +49,10 @@ public class InstructorRegistrationSystem {
 
 		while (menuChoice != 3) {
 
-			System.out.println("Please choose a menu: ");
-			System.out.println("1-Show Lecture Sessions");
-			System.out.println("2-Show Students Of A Lecture Session");
-			System.out.println("3-Sign Out");
+			log.info("Please choose a menu: ");
+			log.info("1-Show Lecture Sessions");
+			log.info("2-Show Students Of A Lecture Session");
+			log.info("3-Sign Out");
 
 			validInput = false;
 
@@ -65,51 +63,22 @@ public class InstructorRegistrationSystem {
 				switch (menuChoice) {
 				case 1:
 					validInput = true;
-					showLectures(currentUser);
+					currentUser.showLectures();
 					break;
 				case 2:
 					validInput = true;
-					showStudents(currentUser);
+					currentUser.showStudents();
 					break;
 				case 3:
 					validInput = true;
 					signOut();
 					break;
 				default:
-					System.out.print("The input is not valid, please provide a valid input.");
+					log.info("The input is not valid, please provide a valid input.");
 				}
 			}
 		}
 
-	}
-
-	private void showLectures(Instructor currentUser) {
-		Schedule schedule = currentUser.getSchedule();
-		List<LectureSession> listOfLectureSessions = schedule.getListOfLectureSessions();
-
-		for (LectureSession lectureSession : listOfLectureSessions) {
-			System.out.println(lectureSession.getLecture().getName() + "." + lectureSession.getSessionID());
-			System.out.println("------------");
-			System.out.println("Quota: " + lectureSession.getLecture().getQuota());
-			System.out.println("Number Of Students: " + lectureSession.getListOfStudents().size());
-		}
-
-		schedule.showSchedule();
-	}
-
-	private void showStudents(Instructor currentUser) {
-		int count = 0;
-		for (LectureSession lectureSession : currentUser.getSchedule().getListOfLectureSessions()) {
-			count++;
-			System.out.println(
-					count + ". " + lectureSession.getLecture().getName() + "." + lectureSession.getSessionID());
-		}
-		System.out.print("Choose A Session: ");
-		int sessionChoice = scanner.nextInt();
-		LectureSession lectureSession = currentUser.getSchedule().getListOfLectureSessions().get(sessionChoice - 1);
-		for (Student student : lectureSession.getListOfStudents()) {
-			System.out.println("ID: " + student.getID() + "Name: " + student.getFullName());
-		}
 	}
 
 	private void signOut() throws FileNotFoundException {

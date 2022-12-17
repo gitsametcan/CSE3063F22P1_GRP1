@@ -8,6 +8,8 @@ import java.io.IOException;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import logger.Logger;
+
 public class JsonWriter {
 	private File file;
 
@@ -26,7 +28,7 @@ public class JsonWriter {
 		try {
 			fStream = new FileOutputStream(file.getAbsolutePath());
 		} catch (FileNotFoundException e) {
-			System.err.println("ERROR Could not open file: " + file.getAbsolutePath());
+			Logger.getLogger("logs").error("ERROR Could not open file: " + file.getAbsolutePath());
 			return;
 		}
 
@@ -36,14 +38,14 @@ public class JsonWriter {
 		try {
 			fStream.write(contents.getBytes());
 		} catch (IOException e) {
-			System.err.println("ERROR Could not write to file: " + file.getAbsolutePath());
+			Logger.getLogger("logs").error("ERROR Could not write to file: " + file.getAbsolutePath());
 			return;
 		}
 
 		try {
 			fStream.close();
 		} catch (IOException e) {
-			System.err.println("ERROR Could not close file: " + file.getAbsolutePath());
+			Logger.getLogger("logs").error("ERROR Could not close file: " + file.getAbsolutePath());
 			return;
 		}
 	}

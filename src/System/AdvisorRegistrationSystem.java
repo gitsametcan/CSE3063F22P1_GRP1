@@ -1,20 +1,17 @@
 package System;
 
 import java.io.FileNotFoundException;
-import java.util.Map.Entry;
 import java.util.Optional;
 import java.util.Scanner;
 
-import Debt_LRA_Transcript.LectureRegistrationApplication;
-import Enums.ApprovalState;
 import Enums.FilterType;
 import data.DataManager;
-import lecture.LectureSession;
 import person.Advisor;
+import logger.Logger;
 
 //Kaan Camci 150119063
 public class AdvisorRegistrationSystem {
-
+	Logger log = Logger.getLogger("logs");
 	private Scanner scanner;
 	private RegistrationSystem registrationSystem1;
 
@@ -27,8 +24,8 @@ public class AdvisorRegistrationSystem {
 	private void AdvisorLogin() throws FileNotFoundException {
 		Advisor currentUser = null;
 
-		System.out.println("Please provide your ID:");
-		System.out.println("----\nSuggestion: Enter \"????\"");
+		log.info("Please provide your ID:");
+		log.info("----\nSuggestion: Enter \"????\"");
 		while (true) {
 			String providedID = scanner.nextLine();
 			Optional<Advisor> currentOptionalAdvisor = DataManager.getInstance().findAdvisor(providedID, FilterType.ID);
@@ -37,7 +34,7 @@ public class AdvisorRegistrationSystem {
 				advisorMenu(currentUser);
 				break;
 			} else {
-				System.out.print("Advisor not found, please try again: ");
+				log.info("Advisor not found, please try again: ");
 			}
 		}
 
@@ -51,9 +48,9 @@ public class AdvisorRegistrationSystem {
 
 		while (menuChoice != 3) {
 
-			System.out.println("Please choose a menu: ");
-			System.out.println("1-Registration Applications");
-			System.out.println("2-Sign Out");
+			log.info("Please choose a menu: ");
+			log.info("1-Registration Applications");
+			log.info("2-Sign Out");
 
 			validInput = false;
 
@@ -64,85 +61,16 @@ public class AdvisorRegistrationSystem {
 				switch (menuChoice) {
 				case 1:
 					validInput = true;
-					showApplications(currentUser);
+					currentUser.showApplications();
 					break;
 				case 2:
 					validInput = true;
 					signOut();
 					break;
 				default:
-					System.out.print("The input is not valid, please provide a valid input.");
+					log.info("The input is not valid, please provide a valid input.");
 				}
 			}
-		}
-
-	}
-
-	private void showApplications(Advisor currentUser) {
-
-		int choice = -1;
-		while (choice != 0) {
-			int count = 0;
-			for (LectureRegistrationApplication lectureRegistrationApplication : currentUser.getListOfApplications()) {
-				count++;
-				System.out.println("" + count + ". " + lectureRegistrationApplication.getStudent().getFullName());
-			}
-			System.out.println("0. Exit");
-
-			System.out.print("Choose A Lecture Registration Application: ");
-			choice = scanner.nextInt();
-			if (choice != 0) {
-				applicationOperations(choice - 1, currentUser);
-			}
-		}
-
-	}
-
-	private void applicationOperations(int choice, Advisor currentUser) {
-		LectureRegistrationApplication lectureRegistrationApplication = currentUser.getListOfApplications().get(choice);
-		String lectureChoice = "";
-		while (!lectureChoice.equals("0")) {
-			System.out.println("Name Of Student: " + lectureRegistrationApplication.getStudent().getFullName());
-			int count = 0;
-
-			System.out.println("Session Name                 Approval State");
-			for (Entry<LectureSession, ApprovalState> me : lectureRegistrationApplication.getSessionsSentForApproval()
-					.entrySet()) {
-				count++;
-				String sessionName = me.getKey().getLecture().getID() + "." + me.getKey().getSessionID();
-				System.out.printf("%d. %-30s%s", count, sessionName, me.getValue());
-			}
-			System.out.println("0. Exit");
-			System.out.print("Please Enter The Session Name(0 for exit): ");
-			lectureChoice = scanner.nextLine();
-
-			LectureSession lectureSession = null;
-
-			for (Entry<LectureSession, ApprovalState> me : lectureRegistrationApplication.getSessionsSentForApproval()
-					.entrySet()) {
-				String sessionName = me.getKey().getLecture().getID() + "." + me.getKey().getSessionID();
-				if (sessionName.equalsIgnoreCase(lectureChoice)) {
-					lectureSession = me.getKey();
-				}
-			}
-
-			System.out.println("1. Approve");
-			System.out.println("2. Reject");
-			System.out.println("3. Go Back");
-
-			int approveChoice = scanner.nextInt();
-
-			switch (approveChoice) {
-			case 1:
-				currentUser.approveApplication(lectureRegistrationApplication, lectureSession);
-				break;
-			case 2:
-				currentUser.rejectApplication(lectureRegistrationApplication, lectureSession);
-				break;
-			default:
-				break;
-			}
-
 		}
 
 	}
