@@ -27,7 +27,7 @@ public class InstructorRegistrationSystem {
 		Instructor currentUser = null;
 
 		log.info("Please provide your ID:");
-		log.info("----\nSuggestion: Enter \"????\"");
+		log.info("----\nSuggestion: Enter \"150097\"");
 		while (true) {
 			String providedID = scanner.nextLine();
 			Optional<Instructor> currentOptionalAdvisor = DataManager.getInstance().findInstructor(providedID,
