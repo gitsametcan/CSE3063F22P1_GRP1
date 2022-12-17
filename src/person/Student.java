@@ -288,7 +288,7 @@ public class Student extends Person {
 				+ "Enter \"exit\" to exit");
 	}
 
-	private boolean canTakeLecture(Lecture lecture, Transcript transcript) {
+	public boolean canTakeLecture(Lecture lecture, Transcript transcript) {
   
 		boolean canTake;
 
