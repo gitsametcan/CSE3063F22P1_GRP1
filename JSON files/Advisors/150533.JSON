@@ -1,0 +1,17 @@
+{
+    "listOfStudentIDs": [
+    ],
+    "schedule": {
+      "sessions": {},
+      "ID": "150533",
+      "term": "Fall",
+      "termYear": "Senior"
+    },
+  
+    "instructorType": "Instructor",
+    "instructorID": "150533",
+    "dateOfEntry": "2018-03-28",
+    "firstName": "Murat Can",
+    "lastName": "GANIZ"
+  
+  }
