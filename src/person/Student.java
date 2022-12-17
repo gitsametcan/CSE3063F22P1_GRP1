@@ -23,7 +23,6 @@ import lecture.Schedule;
 import lecture.Semester;
 import logger.Logger;
 
-//Kaan Camci 150119063
 public class Student extends Person {
 	Logger log = Logger.getLogger("logs");
 	private transient Advisor advisor;
@@ -328,6 +327,17 @@ public class Student extends Person {
 		if (listOfLecturesTaken.get(lecture).getLetterGradeValue() > 1.99)
 			point = false;
 		return point;
+	}
+	
+	public List<Lecture> availableLessons(Student student, List<Lecture>termLectures){
+		List<Lecture> availableLessons = new ArrayList<Lecture>();
+		
+		for (Lecture l : DataManager.getInstance().searchLectureUntilTerm(student.getSchedule().getTerm(), student.getSchedule().getTermYear())) {
+			if (l.getTerm() == student.getSchedule().getTerm() && l.getTermYear() == student.getSchedule().getTermYear() && canTakeLecture(l,student.getTranscript()))
+				availableLessons.add(l);
+		}
+		
+		return availableLessons;
 	}
 
 }
