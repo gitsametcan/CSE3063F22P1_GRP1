@@ -91,9 +91,8 @@ public class StudentGenerator {
 		LectureRegistrationApplication LRA = new LectureRegistrationApplication(null, student.getAdvisor(), student);
 
 		Map<LectureSession, ApprovalState> listOfLecture = new HashMap<LectureSession, ApprovalState>();
-		for (Lecture l : student.availableLessons(student))
+		for (Lecture l : student.availableLessons())
 			listOfLecture.put(l.getSessions().get(0), ApprovalState.Pending);
-
 		return LRA;
 	}
 

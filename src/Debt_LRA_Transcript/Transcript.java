@@ -20,15 +20,15 @@ public class Transcript {
 	public Transcript(Student student, List<Semester> listOfSemester) {
 		super();
 		this.student = student;
-		student.setTranscript(this);
 		this.listOfSemester = listOfSemester;
-		this.totalCreditsTaken = totalCreditsTakenCalculator(listOfSemester);
-		this.totalCreditsCompleted = totalCreditsCompletedCalculator(listOfSemester);
-		this.points = pointsCalculator(listOfSemester);
-		this.gano = points / totalCreditsTaken;
 		if (this.listOfSemester == null) {
 			this.listOfSemester = new ArrayList<Semester>();
 		}
+		this.totalCreditsTaken = totalCreditsTakenCalculator(this.listOfSemester);
+		this.totalCreditsCompleted = totalCreditsCompletedCalculator(this.listOfSemester);
+		this.points = pointsCalculator(this.listOfSemester);
+		this.gano = points / totalCreditsTaken;
+		
 	}
 
 	// Creating get and set methods for variables

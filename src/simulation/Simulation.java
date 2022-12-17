@@ -2,7 +2,10 @@ package simulation;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
+import data.DataManager;
+import logger.Logger;
 import person.Student;
 
 public class Simulation {
@@ -33,6 +36,15 @@ public class Simulation {
 	public void run() {
 		for (int i = 0; i<8; i++) {
 			newSemester(i);
+		}
+		Logger log = Logger.getLogger("logs");
+
+		log.info("Do you want to save generated Students? Y/N : ");
+		Scanner scanner = new Scanner(System.in);
+		String answer = scanner.next();
+		if (answer.equalsIgnoreCase("Y")) {
+			DataManager.getInstance().addStudents(listOfStudents);
+			DataManager.getInstance().saveObjectAsJson();
 		}
 	}
 

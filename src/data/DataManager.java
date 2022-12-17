@@ -49,8 +49,6 @@ public class DataManager {
 		listOfPeople = new ArrayList<Person>();
 		cacheList = new LinkedList<Person>();
 		jsonOperator = new JsonOperator();
-
-		
 	}
 
 	public static DataManager getInstance() {
@@ -62,6 +60,7 @@ public class DataManager {
 
 	public void loadFiles() {
 		MetaData metaData = jsonOperator.getMetaData();
+		jsonOperator.readNamePool();
 		
 		List<String> studentFiles = listFiles(metaData.getStudentsPath());
 		List<String> advisorFiles = listFiles(metaData.getAdvisorsPath());

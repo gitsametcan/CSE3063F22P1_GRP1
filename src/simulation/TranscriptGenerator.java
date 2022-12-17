@@ -11,6 +11,7 @@ import data.DataManager;
 import lecture.Lecture;
 import lecture.Schedule;
 import lecture.Semester;
+import logger.Logger;
 import person.Student;
 
 public class TranscriptGenerator {
@@ -83,6 +84,10 @@ public class TranscriptGenerator {
 
 		Map<Lecture, LetterGrade> listOfLecture = new HashMap<Lecture, LetterGrade>();
 		for (Lecture l : DataManager.getInstance().searchLecture(i)) {
+			if (student.getTranscript() == null) {
+				listOfLecture.put(l, randomLetterGrade());
+				continue;
+			}
 			if (student.canTakeLecture(l, student.getTranscript()))
 				listOfLecture.put(l, randomLetterGrade());
 		}

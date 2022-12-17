@@ -32,13 +32,13 @@ public class NamePool {
 		int max = names.size();
 		int a = (int)(Math.random() * (max - min + 1) + min);
 		
-		return this.getNames().get(a);
+		return this.getNames().get(a - 1);
 	}
 	public String getRandomLastName() {
 		int min = 1;
 		int max = lastNames.size();
 		int a = (int)(Math.random() * (max - min + 1) + min);
 		
-		return this.getLastNames().get(a);
+		return this.getLastNames().get(a - 1);
 	}
 }

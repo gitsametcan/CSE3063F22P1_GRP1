@@ -24,7 +24,7 @@ import lecture.Semester;
 import logger.Logger;
 
 public class Student extends Person {
-	Logger log = Logger.getLogger("logs");
+	private Logger log;
 	private transient Advisor advisor;
 	private StudentID id;
 	private Schedule schedule;
@@ -37,6 +37,7 @@ public class Student extends Person {
 	public Student(String firstName, String lastName, StudentID id, Schedule schedule, Transcript transcript,
 			Calendar dateOfEntry) {
 		super(firstName, lastName);
+		log = Logger.getLogger("logs");
 		scanner = new Scanner(System.in);
 		this.id = id;
 		this.schedule = schedule;
@@ -195,7 +196,7 @@ public class Student extends Person {
 
 	public void makeRegistrationMenu() throws FileNotFoundException {
 
-		List<Lecture> currentStudentAvailableLectures = DataManager.getInstance().searchLecture("", FilterType.Name);
+		List<Lecture> currentStudentAvailableLectures = availableLessons();
 		log.info("Lectures: ");
 
 		for (int i = 0; i < currentStudentAvailableLectures.size(); i++) {
@@ -288,7 +289,9 @@ public class Student extends Person {
 	}
 
 	public boolean canTakeLecture(Lecture lecture, Transcript transcript) {
-  
+		if (transcript == null) {
+			return true;
+		}
 		boolean canTake;
 
 		List<Lecture> listOfTaken = new ArrayList<>();
@@ -329,11 +332,15 @@ public class Student extends Person {
 		return point;
 	}
 	
-	public List<Lecture> availableLessons(Student student){
+	public List<Lecture> availableLessons(){
 		List<Lecture> availableLessons = new ArrayList<Lecture>();
-		
-		for (Lecture l : DataManager.getInstance().searchLectureUntilTerm(student.getSchedule().getTerm(), student.getSchedule().getTermYear())) {
-			if (l.getTerm() == student.getSchedule().getTerm() && l.getTermYear() == student.getSchedule().getTermYear() && canTakeLecture(l,student.getTranscript()))
+		List<Lecture> lecturesUntilNow = DataManager.getInstance().searchLectureUntilTerm(this.getSchedule().getTerm(), this.getSchedule().getTermYear());
+
+		for (Lecture l : lecturesUntilNow) {
+			if (l.getTerm() == this.getSchedule().getTerm() && 
+					l.getTermYear() == this.getSchedule().getTermYear() && 
+					canTakeLecture(l,this.getTranscript())
+				)
 				availableLessons.add(l);
 		}
 		

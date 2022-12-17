@@ -23,13 +23,14 @@ public class Semester {
 	public Semester(Map<Lecture, LetterGrade> listOfLecturesTaken) {
 		super();
 		this.listOfLecturesTaken = listOfLecturesTaken;
-		this.creditsTaken = creditsTakenCalculator(listOfLecturesTaken);
-		this.creditsCompleted = creditsCompletedCalculator(listOfLecturesTaken);
-		this.points = pointsCalculator(listOfLecturesTaken);
-		this.yano = points / creditsTaken;
 		if (this.listOfLecturesTaken == null) {
 			this.listOfLecturesTaken = new HashMap<Lecture, LetterGrade>();
 		}
+		this.creditsTaken = creditsTakenCalculator(this.listOfLecturesTaken);
+		this.creditsCompleted = creditsCompletedCalculator(this.listOfLecturesTaken);
+		this.points = pointsCalculator(this.listOfLecturesTaken);
+		this.yano = points / creditsTaken;
+		
 	}
 
 	// Creating get and set methods for variables

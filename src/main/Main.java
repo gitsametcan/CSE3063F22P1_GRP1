@@ -13,8 +13,8 @@ public class Main {
 		DataManager.getInstance().loadFiles();
 		Logger log = Logger.getLogger("logs");
 
-		new RegistrationSystem();
-
+		RegistrationSystem registrationSystem = new RegistrationSystem();
+		registrationSystem.menu();
 	}
 
 }

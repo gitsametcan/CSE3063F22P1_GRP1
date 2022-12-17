@@ -328,6 +328,7 @@ public class ObjectGenerator {
 		List<LectureSession> result = new ArrayList<LectureSession>();
 		for (LectureSessionJSON ls : jsonList) {
 			String ID = ls.getID();
+			String instructorID = ls.getInstructorID();
 			SessionID tempSessionID = new SessionID(Integer.parseInt(ID));
 			LectureHour[][] sessionHours = intToLectureHours(ls.getListOfSessionHours());
 			SessionType sessionType = stringToSessionType(ls.getSessionType());

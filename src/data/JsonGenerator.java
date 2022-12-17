@@ -24,6 +24,7 @@ import data.json.TranscriptJSON;
 import lecture.Lecture;
 import lecture.LectureSession;
 import lecture.Semester;
+import logger.Logger;
 import person.Advisor;
 import person.Student;
 
@@ -45,6 +46,9 @@ public class JsonGenerator {
     }
 
     public void generateTranscript(Transcript transcript) {
+        if (transcript == null) {
+            return;
+        }
         TranscriptJSON transcriptJson = new TranscriptJSON(transcript.getStudent().getID());
 
         List<SemesterJSON> semesterJSONs = new ArrayList<SemesterJSON>();
@@ -140,7 +144,11 @@ public class JsonGenerator {
         for (LectureSession ls : lecture.getSessions()) {
             String sessionID = ls.getSessionID();
             String lectureID = ID;
-            String instructorID = ls.getInstructor().getID();
+            String instructorID = "";
+            if (ls.getInstructor() != null) {
+                instructorID = ls.getInstructor().getID();
+            }
+            Logger.getLogger("logs").info("%s.%s \t\t %s", lectureID, sessionID, instructorID);
             String sessionType = ls.getSessionType().toString();
             LectureHour[][] lectureHours = ls.getSessionHours();
             int[][] sessionHours = new int[7][10];
