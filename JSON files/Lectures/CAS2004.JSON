@@ -11,7 +11,7 @@
       {
         "ID": "1",
         "lectureID": "CAS2004",
-        "instructorID": "150219",
+        "instructorID": "150158",
         "sessionType": "Theorytical",
         "sessionHours": [
           [
@@ -102,4 +102,4 @@
         "listOfAssistantIDs": []
       }
     ]
-}
+  }
