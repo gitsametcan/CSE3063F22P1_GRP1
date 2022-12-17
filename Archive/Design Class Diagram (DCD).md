@@ -470,3 +470,27 @@
 **AdvisorRegistirationSystem**
 
 ----
+
+**Simulation** has a private *transcriptCreator* as **TranscriptCreator**
+
+**Simulation** has a private *studentCreator* as **StudentCreator**
+
+----
+
+**StudentCreator** has a private *firstNamePool* as **List<-String->**
+
+**StudentCreator** has a private *lastNamePool* as **List<-String->**
+
+**StudentCreator** has a public method named *generateStudent(): Student* 
+
+----
+
+**TranscriptCreator** has a private *transcriptList* as **List<-Transcript->**
+
+**TranscriptCreator** has a public method named *generateTranscript(Student): Transcript*
+
+**TranscriptCreator** has a public method named *addGeneration(): void*
+
+**TranscriptCreator** has a private *transcriptList* as **List<-Transcript->**
+
+----
