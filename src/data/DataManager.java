@@ -10,6 +10,7 @@ import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import Debt_LRA_Transcript.Transcript;
 import Enums.FilterType;
@@ -215,6 +216,101 @@ public class DataManager {
 				result.add(l);
 			}
 		}
+		return result;
+	}
+	
+	public List<Lecture> searchLecture(Term term, TermYear termYear){
+		List<Lecture> result = new ArrayList<Lecture>();
+		for (Lecture l : listOfLectures) {
+			if (term == l.getTerm() && termYear == l.getTermYear())
+				result.add(l);
+		}
+		
+		return result;
+	}
+	
+	public List<Lecture> searchLecture(int term){
+		List<Lecture> result = new ArrayList<Lecture>();
+		switch (term) {
+			case 0:
+				result = searchLecture(Term.Fall,TermYear.Freshman);
+				break;
+			case 1:
+				result = searchLecture(Term.Spring,TermYear.Freshman);
+				break;
+			case 2:
+				result = searchLecture(Term.Fall,TermYear.Sophomore);
+				break;
+			case 3:
+				result = searchLecture(Term.Spring,TermYear.Sophomore);
+				break;
+			case 4:
+				result = searchLecture(Term.Fall,TermYear.Junior);
+				break;
+			case 5:
+				result = searchLecture(Term.Spring, TermYear.Junior);
+				break;
+			case 6:
+				result = searchLecture(Term.Fall,TermYear.Senior);
+				break;
+			case 7:
+				result = searchLecture(Term.Spring,TermYear.Senior);
+				break;
+		}
+		
+		return result;
+	}
+	
+	public List<Lecture> searchLectureUntilTerm(int term){
+		List<Lecture> result = new ArrayList<Lecture>();
+		switch (term) {
+			case 0:
+				result = searchLectureUntilTerm(Term.Fall,TermYear.Freshman);
+				break;
+			case 1:
+				result = searchLectureUntilTerm(Term.Spring,TermYear.Freshman);
+				break;
+			case 2:
+				result = searchLectureUntilTerm(Term.Fall,TermYear.Sophomore);
+				break;
+			case 3:
+				result = searchLectureUntilTerm(Term.Spring,TermYear.Sophomore);
+				break;
+			case 4:
+				result = searchLectureUntilTerm(Term.Fall,TermYear.Junior);
+				break;
+			case 5:
+				result = searchLectureUntilTerm(Term.Spring, TermYear.Junior);
+				break;
+			case 6:
+				result = searchLectureUntilTerm(Term.Fall,TermYear.Senior);
+				break;
+			case 7:
+				result = searchLectureUntilTerm(Term.Spring,TermYear.Senior);
+				break;
+		}
+		
+		return result;
+	}
+	
+	public List<Lecture> searchLectureUntilTerm(Term term, TermYear termYear){
+		List<Lecture> result = new ArrayList<Lecture>();
+		Map<String, Integer> termAndYear = new HashMap<String, Integer>();
+		termAndYear.put("FallFreshman", 0);
+		termAndYear.put("SpringFreshman", 1);
+		termAndYear.put("FallSophomore", 2);
+		termAndYear.put("SpringSophomore", 3);
+		termAndYear.put("FallJunior", 4);
+		termAndYear.put("SpringJunior", 5);
+		termAndYear.put("FallSenior", 6);
+		termAndYear.put("SpringSenior", 7);
+		String termAndYearS = term + "" + termYear;
+		
+		for(int i = 0; i<=termAndYear.get(termAndYearS); i++) {
+			result.addAll(searchLecture(i));
+		}
+		
+		
 		return result;
 	}
 

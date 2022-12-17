@@ -10,7 +10,6 @@ import Enums.LetterGrade;
 import Enums.Term;
 import Enums.TermYear;
 
-//Serdar Alsan	150120034 
 public class Semester {
 
 	private Map<Lecture, LetterGrade> listOfLecturesTaken;
@@ -21,7 +20,7 @@ public class Semester {
 	private Term term;
 	private TermYear termYear;
 
-	public Semester(HashMap<Lecture, LetterGrade> listOfLecturesTaken) {
+	public Semester(Map<Lecture, LetterGrade> listOfLecturesTaken) {
 		super();
 		this.listOfLecturesTaken = listOfLecturesTaken;
 		this.creditsTaken = creditsTakenCalculator(listOfLecturesTaken);
@@ -56,6 +55,14 @@ public class Semester {
 
 	public void setListOfLecturesTaken(Map<Lecture, LetterGrade> listOfLecturesTaken) {
 		this.listOfLecturesTaken = listOfLecturesTaken;
+	}
+	
+	public void addLecture(Lecture lecture) {
+		this.listOfLecturesTaken.put(lecture, LetterGrade.None);
+	}
+	
+	public void addLecture(Lecture lecture, LetterGrade grade) {
+		this.listOfLecturesTaken.put(lecture, grade);
 	}
 	
 	private int creditsTakenCalculator(Map<Lecture, LetterGrade> listOfLecturesTaken){

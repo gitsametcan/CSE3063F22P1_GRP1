@@ -115,6 +115,7 @@ public class Student extends Person {
 		this.advisor.getListOfApplications().add(this.registirationApplication);
 	}
 
+
 	public void showTranscript() throws FileNotFoundException {
 		int semesterSize = this.getTranscript().getListOfSemester().size();
 		for (int i = 0; i < semesterSize; i++) {
@@ -288,6 +289,7 @@ public class Student extends Person {
 	}
 
 	private boolean canTakeLecture(Lecture lecture, Transcript transcript) {
+  
 		boolean canTake;
 
 		List<Lecture> listOfTaken = new ArrayList<>();

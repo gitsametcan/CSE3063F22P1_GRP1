@@ -1,29 +1,39 @@
 package simulation;
 
+import java.util.ArrayList;
 import java.util.List;
 
-import Enums.Term;
-import person.Advisor;
-import person.Instructor;
 import person.Student;
 
 public class Simulation {
 
 	private List<Student> listOfStudents;
-	private List<Advisor> listOfAdvisors;
-	private List<Instructor> listOfInstructors;
-
-	public void simulation() {
-		for (int semesterCount = 0; semesterCount < 8; semesterCount++) {
-			newSemester(semesterCount);
-		}
+	private StudentGenerator studentGenerator;
+	
+	public Simulation() {
+		studentGenerator = new StudentGenerator();
+		listOfStudents = new ArrayList<Student>();
 	}
 
 	private void newSemester(int semesterCount) {
 		for (int studentCount = 0; studentCount < 50; studentCount++) {
-			StudentGenerator studentGenerator = new StudentGenerator(this, (semesterCount / 2) + 18, studentCount, semesterCount);
+			
+			Student student;
+			try {
+				student = studentGenerator.generate((semesterCount/2) ,(studentCount+1));
+				listOfStudents.add(student);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
 		}
-
+	}
+	
+	public void run() {
+		for (int i = 0; i<8; i++) {
+			newSemester(i);
+		}
 	}
 
 	public List<Student> getListOfStudents() {
@@ -32,22 +42,6 @@ public class Simulation {
 
 	public void setListOfStudents(List<Student> listOfStudents) {
 		this.listOfStudents = listOfStudents;
-	}
-
-	public List<Advisor> getListOfAdvisors() {
-		return listOfAdvisors;
-	}
-
-	public void setListOfAdvisors(List<Advisor> listOfAdvisors) {
-		this.listOfAdvisors = listOfAdvisors;
-	}
-
-	public List<Instructor> getListOfInstructors() {
-		return listOfInstructors;
-	}
-
-	public void setListOfInstructors(List<Instructor> listOfInstructors) {
-		this.listOfInstructors = listOfInstructors;
 	}
 
 }

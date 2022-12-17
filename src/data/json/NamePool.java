@@ -29,14 +29,14 @@ public class NamePool {
 	}
 	public String getRandomName() {
 		int min = 1;
-		int max = 40;
+		int max = names.size();
 		int a = (int)(Math.random() * (max - min + 1) + min);
 		
 		return this.getNames().get(a);
 	}
 	public String getRandomLastName() {
 		int min = 1;
-		int max = 40;
+		int max = lastNames.size();
 		int a = (int)(Math.random() * (max - min + 1) + min);
 		
 		return this.getLastNames().get(a);
