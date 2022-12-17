@@ -1,0 +1,7 @@
+[2022/12/17 12:38:00][INFO]Log in as...
+[2022/12/17 12:38:00][INFO]1-Student
+[2022/12/17 12:38:01][INFO]2-Instructor "Not Finished!!!"
+[2022/12/17 12:38:01][INFO]3-Advisor "Not Finished!!!"
+[2022/12/17 12:38:01][INFO]4-Exit
+[2022/12/17 12:38:01][INFO]----
+Suggestion: Enter "1"
