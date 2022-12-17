@@ -1,0 +1,25 @@
+[2022/12/17 17:24:16][INFO]Log in as...
+[2022/12/17 17:24:16][INFO]1-Student
+[2022/12/17 17:24:16][INFO]2-Instructor
+[2022/12/17 17:24:16][INFO]3-Advisor
+[2022/12/17 17:24:16][INFO]4-Simulation
+[2022/12/17 17:24:16][INFO]5-Exit
+[2022/12/17 17:24:19][INFO]Initiating simulation...
+[2022/12/17 17:24:20][INFO]Do you want to save generated Students? Y/N : 
+[2022/12/17 17:26:07][INFO]Done.
+[2022/12/17 17:26:07][INFO]Log in as...
+[2022/12/17 17:26:07][INFO]1-Student
+[2022/12/17 17:26:07][INFO]2-Instructor
+[2022/12/17 17:26:07][INFO]3-Advisor
+[2022/12/17 17:26:07][INFO]4-Simulation
+[2022/12/17 17:26:07][INFO]5-Exit
+[2022/12/17 17:26:09][INFO]Initiating simulation...
+[2022/12/17 17:26:09][INFO]Do you want to save generated Students? Y/N : 
+[2022/12/17 17:26:14][INFO]Done.
+[2022/12/17 17:26:14][INFO]Log in as...
+[2022/12/17 17:26:14][INFO]1-Student
+[2022/12/17 17:26:14][INFO]2-Instructor
+[2022/12/17 17:26:14][INFO]3-Advisor
+[2022/12/17 17:26:14][INFO]4-Simulation
+[2022/12/17 17:26:14][INFO]5-Exit
+[2022/12/17 17:26:15][INFO]Exiting...
