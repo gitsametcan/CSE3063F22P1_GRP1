@@ -43,9 +43,6 @@ public class JsonGenerator {
     }
 
     public void generateTranscript(Transcript transcript) {
-        if (transcript == null) {
-            return;
-        }
         TranscriptJSON transcriptJson = new TranscriptJSON(transcript.getStudent().getID());
 
         List<SemesterJSON> semesterJSONs = new ArrayList<SemesterJSON>();

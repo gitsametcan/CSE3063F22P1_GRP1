@@ -1,0 +1,17 @@
+[2022/12/17 17:27:09][INFO]Log in as...
+[2022/12/17 17:27:09][INFO]1-Student
+[2022/12/17 17:27:09][INFO]2-Instructor
+[2022/12/17 17:27:09][INFO]3-Advisor
+[2022/12/17 17:27:09][INFO]4-Simulation
+[2022/12/17 17:27:09][INFO]5-Exit
+[2022/12/17 17:27:11][INFO]Initiating simulation...
+[2022/12/17 17:27:11][INFO]Do you want to save generated Students? Y/N : 
+[2022/12/17 17:27:15][INFO]All students that is generated and their effect on lectures and advisors are saved
+[2022/12/17 17:27:15][INFO]Done.
+[2022/12/17 17:27:15][INFO]Log in as...
+[2022/12/17 17:27:15][INFO]1-Student
+[2022/12/17 17:27:15][INFO]2-Instructor
+[2022/12/17 17:27:15][INFO]3-Advisor
+[2022/12/17 17:27:15][INFO]4-Simulation
+[2022/12/17 17:27:15][INFO]5-Exit
+[2022/12/17 17:27:17][INFO]Exiting...

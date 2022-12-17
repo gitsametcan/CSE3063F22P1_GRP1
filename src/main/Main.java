@@ -16,5 +16,4 @@ public class Main {
 		RegistrationSystem registrationSystem = new RegistrationSystem();
 		registrationSystem.menu();
 	}
-
 }

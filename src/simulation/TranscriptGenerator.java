@@ -27,7 +27,7 @@ public class TranscriptGenerator {
 		
 		transcript.setListOfSemester(setAllSemester(student, schedule));
 
-		return student.getTranscript();
+		return transcript;
 	}
 
 	private void build() {

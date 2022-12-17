@@ -317,7 +317,12 @@ public class Student extends Person {
 	}
 
 	private boolean hasPreqLectureTaken(Lecture preqLecture, List<Lecture> listOfLecture) {
+		if (preqLecture == null) {
+			return true;
+		}
+		
 		for (Lecture lecture : listOfLecture) {
+			
 			if (lecture.getName() == preqLecture.getName())
 				return true;
 		}
