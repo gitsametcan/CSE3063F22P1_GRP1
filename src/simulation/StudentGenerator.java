@@ -26,49 +26,49 @@ public class StudentGenerator {
 	private NamePool namePool;
 	private TranscriptGenerator transcriptGenerator;
 
-	public StudentGenerator( ) {
-		
+	public StudentGenerator() {
+
 		Optional<NamePool> optNamePool = DataManager.getInstance().getNamePool();
 		namePool = null;
 		if (optNamePool.isPresent()) {
 			namePool = optNamePool.get();
 		}
-		
+
 		transcriptGenerator = new TranscriptGenerator();
 
 	}
-	
+
 	public Student generate(int studentCount, int semesterCount) {
-		
+
 		Calendar dateOfEntry = new GregorianCalendar(2000 + (semesterCount / 2) + 18, 1, 22);
-		
-		Student student = new Student(getRandomFirstName(),getRandomLastName(),studentIdGenerator(semesterCount + 18, studentCount),null,null, dateOfEntry);
-		
-		Schedule schedule = new Schedule(student, Term.values()[semesterCount % 2],TermYear.values()[semesterCount / 2]);
-		
+
+		Student student = new Student(getRandomFirstName(), getRandomLastName(),
+				studentIdGenerator(semesterCount + 18, studentCount), null, null, dateOfEntry);
+
+		Schedule schedule = new Schedule(student, Term.values()[semesterCount % 2],
+				TermYear.values()[semesterCount / 2]);
+
 		student.setSchedule(schedule);
 		student.setDebt(studentDebtGenerator());
 		student.setAdvisor(getRandomAdvisor());
 		student.setTranscript(transcriptGenerator.generate(student, schedule));
 		student.setRegistirationApplication(LRAGenerator(student));
-		
-		
+
 		return student;
 	}
-	
-	
-	
+
 	private String getRandomFirstName() {
 		return namePool.getRandomName();
 	}
-	
+
 	private String getRandomLastName() {
 		return namePool.getRandomLastName();
 	}
-	
+
 	private StudentID studentIdGenerator(int year, int orderOf) {
 		return new StudentID(150, year, orderOf);
 	}
+
 	private Debt studentDebtGenerator() {
 		Debt debt;
 
@@ -82,20 +82,18 @@ public class StudentGenerator {
 		}
 		return debt;
 	}
-	
+
 	private Advisor getRandomAdvisor() {
 		return DataManager.getInstance().searchAdvisor("", FilterType.Name).get((int) (Math.random() * 13));
 	}
-	
+
 	private LectureRegistrationApplication LRAGenerator(Student student) {
-		LectureRegistrationApplication LRA = new LectureRegistrationApplication(null, student.getAdvisor(),student);
-		
+		LectureRegistrationApplication LRA = new LectureRegistrationApplication(null, student.getAdvisor(), student);
+
 		Map<LectureSession, ApprovalState> listOfLecture = new HashMap<LectureSession, ApprovalState>();
-		for (Lecture l : DataManager.getInstance().searchLecture(student.getSchedule().getTerm(),student.getSchedule().getTermYear())) {
-			if (student.canTakeLecture(l, student.getTranscript()))
-				listOfLecture.put(l.getSessions().get(0), ApprovalState.Pending);
-		}
-		
+		for (Lecture l : student.availableLessons(student))
+			listOfLecture.put(l.getSessions().get(0), ApprovalState.Pending);
+
 		return LRA;
 	}
 
