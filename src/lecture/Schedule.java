@@ -31,13 +31,15 @@ public class Schedule {
 		}
 		int lecturePlaceX = 0;
 		int lecturePlaceY = 1;
+		String a = null;
 		for (int y = 1; y < 42; y++) {
 			for (int x = 1; x < 79; x++) {
 				if (y == 1 || y == 41) {
-					log.info("_");
+					a+="_";
 					if ((x == 78 && y == 1)) {
-						log.info("");
+						log.info(a);;
 					}
+					a = null;
 				} else if ((((x - 2) % 11) == 0) && (((y - 3) % 4) == 0)) {
 
 					if (lecturePlaceX == 7) {
@@ -59,25 +61,25 @@ public class Schedule {
 					}
 
 					if (thereIsLecture == false) {
-						log.info(" ");
+						a+=" ";
 					}
 
 				} else if (x == 1 || x == 78) {
-					log.info("|");
+					a+="|";
 					if (x == 78) {
-						log.info("");
+						log.info(a);
 					}
 				} else if ((y - 1) % 4 == 0) {
-					log.info("_");
+					a+="_";
 				} else if ((x - 1) % 11 == 0) {
-					log.info("|");
+					a+="|";
 				} else {
-					log.info(" ");
+					a+=" ";
 				}
 			}
 		}
 
-		log.info("");
+		log.info(a);
 	}
 
 	public Person getPerson() {
