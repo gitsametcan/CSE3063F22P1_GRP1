@@ -1,0 +1,11 @@
+[2022/12/17 12:39:40][INFO]Log in as...
+[2022/12/17 12:39:40][INFO]1-Student
+[2022/12/17 12:39:40][INFO]2-Instructor "Not Finished!!!"
+[2022/12/17 12:39:40][INFO]3-Advisor "Not Finished!!!"
+[2022/12/17 12:39:40][INFO]4-Exit
+[2022/12/17 12:39:40][INFO]----
+Suggestion: Enter "1"
+[2022/12/17 12:48:19][INFO]Please provide your ID:
+[2022/12/17 12:48:19][INFO]----
+Suggestion: Enter "150119063"
+[2022/12/17 12:48:22][INFO]Student not found, please try again: 

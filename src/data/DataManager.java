@@ -49,17 +49,24 @@ public class DataManager {
 		listOfPeople = new ArrayList<Person>();
 		cacheList = new LinkedList<Person>();
 		jsonOperator = new JsonOperator();
+
 		
-		jsonOperator.readMetaData();
-		
+	}
+
+	public static DataManager getInstance() {
+		if (singleInstance == null) {
+			singleInstance = new DataManager();
+		}
+		return singleInstance;
+	}
+
+	public void loadFiles() {
 		MetaData metaData = jsonOperator.getMetaData();
 		
 		List<String> studentFiles = listFiles(metaData.getStudentsPath());
 		List<String> advisorFiles = listFiles(metaData.getAdvisorsPath());
 		List<String> lectureFiles = listFiles(metaData.getLecturesPath());
-		
-		this.writeExamples();
-		
+
 		for (String name : studentFiles) {
 			jsonOperator.readStudentJSON(name);
 		}
@@ -78,13 +85,6 @@ public class DataManager {
 		listOfPeople.addAll(jsonOperator.getReadAdvisors());
 		listOfPeople.addAll(jsonOperator.getReadStudents());
 		
-	}
-
-	public static DataManager getInstance() {
-		if (singleInstance == null) {
-			singleInstance = new DataManager();
-		}
-		return singleInstance;
 	}
 
 	public void saveObjectAsJson() {
@@ -365,64 +365,6 @@ public class DataManager {
 
 	public Optional<MetaData> getMetaData() {
 		return Optional.ofNullable(this.jsonOperator.getMetaData());
-	}
-	//Silinecek
-	public void writeExamples() {
-		JsonGenerator jsonGenerator = jsonOperator.getJsonGenerator();
-
-		LectureID lectureID = new LectureID("CSE1502");
-		String name = "Lecture Name";
-		LectureType lectureType = LectureType.MANDATORY;
-		int credits = 5;
-		int quota = 50;
-
-		List<LectureSession> lectureSessions = new ArrayList<LectureSession>();
-
-		SessionID tempSessionID = new SessionID(1);
-		LectureHour[][] sessionHours = new LectureHour[7][10];
-
-		SessionType sessionType = SessionType.Theorytical;
-
-		LectureSession tempLectureSession = new LectureSession(tempSessionID, null, sessionHours, sessionType, null,
-			null, null);
-		lectureSessions.add(tempLectureSession);
-
-		Lecture tempLecture = new Lecture(lectureID, name, lectureType, credits, lectureSessions, null, quota, Term.Fall, TermYear.Senior);
-		tempLectureSession.setLecture(tempLecture);
-
-		StudentID studentID = new StudentID("150156156");
-		Calendar dateOfEntry = new GregorianCalendar(2015, 10, 3);
-		Student tempStudent = new Student("İsim Örnek", "Soyisim Örnek", studentID, new Schedule(null, Term.Fall, TermYear.Senior), null, dateOfEntry);
-		tempStudent.getSchedule().setPerson(tempStudent);
-
-		InstructorID tempInstructorID = new InstructorID("165164");
-		InstructorType instructorType = InstructorType.Instructor;
-		Calendar dateOfEntrys = new GregorianCalendar(2015, 10, 3);
-
-		Advisor tempAdvisor = new Advisor("Örnek İsim", "Örnek Soyisim", tempInstructorID, dateOfEntrys, null, null,
-					instructorType, new Schedule(null, Term.Fall, TermYear.Senior));
-		tempAdvisor.getSchedule().setPerson(tempAdvisor);
-		
-		tempLectureSession.setInstructor(tempAdvisor);
-		HashMap<Lecture, LetterGrade> listOfLecturesTaken = new HashMap<Lecture, LetterGrade>();
-		listOfLecturesTaken.put(tempLecture, LetterGrade.AA);
-		Semester semester = new Semester(listOfLecturesTaken);
-		List<Semester> listOfSemesters = new ArrayList<Semester>();
-		listOfSemesters.add(semester);
-		Transcript tempTranscript = new Transcript(tempStudent, listOfSemesters);
-		tempStudent.setTranscript(tempTranscript);
-		tempStudent.setAdvisor(tempAdvisor);
-
-		tempStudent.getSchedule().setPerson(tempStudent);
-		tempStudent.getSchedule().setListOfLectureSessions(lectureSessions);
-
-		tempAdvisor.getListOfStudents().add(tempStudent);
-		
-		jsonGenerator.generateAdvisor(tempAdvisor);
-		jsonGenerator.generateLecture(tempLecture);
-		jsonGenerator.generateStudent(tempStudent);
-		jsonGenerator.generateTranscript(tempTranscript);
-		jsonGenerator.writeJsons();
 	}
 
 	public void addStudents(List<Student> studentList) {

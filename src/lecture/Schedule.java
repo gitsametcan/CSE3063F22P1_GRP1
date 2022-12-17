@@ -10,7 +10,7 @@ import person.Person;
 import logger.Logger;
 
 public class Schedule {
-	Logger log = Logger.getLogger("logs");
+	private Logger log;
 	private Person person;
 	private List<LectureSession> listOfLectureSessions;
 	private Term term;
@@ -21,6 +21,7 @@ public class Schedule {
 		this.person = person;
 		this.term = term;
 		this.termYear = termYear;
+		log = Logger.getLogger("logs");
 	}
 
 	public void showSchedule() {

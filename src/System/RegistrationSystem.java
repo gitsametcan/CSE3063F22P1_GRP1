@@ -6,10 +6,11 @@ import logger.Logger;
 
 public class RegistrationSystem {
 
-	Logger log = Logger.getLogger("logs");
+	private Logger log;
 	private Scanner scanner;
 
 	public RegistrationSystem() throws FileNotFoundException {
+		log = Logger.getLogger("logs");
 		scanner = new Scanner(System.in);
 		menu();
 	}

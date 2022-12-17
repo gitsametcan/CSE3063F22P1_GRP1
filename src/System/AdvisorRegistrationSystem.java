@@ -11,11 +11,12 @@ import logger.Logger;
 
 //Kaan Camci 150119063
 public class AdvisorRegistrationSystem {
-	Logger log = Logger.getLogger("logs");
+	private Logger log;
 	private Scanner scanner;
 	private RegistrationSystem registrationSystem1;
 
 	public AdvisorRegistrationSystem(RegistrationSystem registrationSystem) throws FileNotFoundException {
+		log = Logger.getLogger("logs");
 		scanner = new Scanner(System.in);
 		registrationSystem1 = registrationSystem;
 		AdvisorLogin();

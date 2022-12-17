@@ -52,13 +52,13 @@ public class JsonOperator {
 		NamePool namePool = json.readJsonFile(NamePool.class);
 		this.namePool = namePool;
 	}
-	
+	/*
 	public void readMetaData() {
 		JsonReader json = new JsonReader("JSON Files/MetaData.JSON");
 		MetaData metaData = json.readJsonFile(MetaData.class);
 		this.metaData = metaData;
 	}
-
+*/
 	public void readLectureJSON(String path){
 		JsonReader json = new JsonReader(metaData.getLecturesPath() + path);
 		LectureJSON tempLecture = json.readJsonFile(LectureJSON.class);
@@ -73,14 +73,14 @@ public class JsonOperator {
 	
 	public void readTranscriptJSON(String path) {
 		JsonReader json = new JsonReader(metaData.getTranscriptsPath() + path);
-		TranscriptJSON tempStudent = json.readJsonFile(TranscriptJSON.class);
-		transcriptList.add(tempStudent);
+		TranscriptJSON tempTranscript = json.readJsonFile(TranscriptJSON.class);
+		transcriptList.add(tempTranscript);
 	}
 	
 	public void readAdvisorJSON(String path) {
 		JsonReader json = new JsonReader(metaData.getAdvisorsPath() + path);
-		AdvisorJSON tempStudent = json.readJsonFile(AdvisorJSON.class);
-		advisorList.add(tempStudent);
+		AdvisorJSON tempAdvisor = json.readJsonFile(AdvisorJSON.class);
+		advisorList.add(tempAdvisor);
 	}
 	
 	public MetaData getMetaData() {
