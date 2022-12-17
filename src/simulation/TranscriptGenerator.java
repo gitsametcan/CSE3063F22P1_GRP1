@@ -1,6 +1,8 @@
 package simulation;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import Debt_LRA_Transcript.Transcript;
@@ -13,23 +15,19 @@ import person.Student;
 
 public class TranscriptGenerator {
 
-	
 	private Map<String, Integer> termAndYear;
 
 	public TranscriptGenerator() {
 
-		//StudentGenerator student, Schedule schedule
-		build();
-
-		Transcript transcript = new Transcript(null, null);
-		
 	}
-	
+
 	public Transcript generate(Student student, Schedule schedule) {
 		build();
 		Transcript transcript = new Transcript(student, null);
 		
-		return transcript;
+		transcript.setListOfSemester(setAllSemester(student, schedule));
+
+		return student.getTranscript();
 	}
 
 	private void build() {
@@ -78,19 +76,29 @@ public class TranscriptGenerator {
 		}
 		return grade;
 	}
-	private Semester semesterGenerator(Schedule schedule) {
-		
-		Semester tempSemester = new Semester(null);
-		
-		for (int i = 0; i < termAndYear.get(schedule.getTerm() + "" + schedule.getTermYear()); i++) {
-			Map<Lecture, LetterGrade> listOfLecture = new HashMap<Lecture, LetterGrade>();
-			for (Lecture l : DataManager.getInstance().searchLecture(i)) {
-				// if can take
+
+	private Semester semesterGenerator(Student student, Schedule schedule, int i) {
+
+		Semester semester = new Semester(null);
+
+		Map<Lecture, LetterGrade> listOfLecture = new HashMap<Lecture, LetterGrade>();
+		for (Lecture l : DataManager.getInstance().searchLecture(i)) {
+			if (student.canTakeLecture(l, student.getTranscript()))
 				listOfLecture.put(l, randomLetterGrade());
-			}
-			tempSemester.setListOfLecturesTaken(listOfLecture);
 		}
-		return tempSemester;
+		semester.setListOfLecturesTaken(listOfLecture);
+
+		return semester;
+	}
+
+	private List<Semester> setAllSemester(Student student, Schedule schedule) {
+		List<Semester> semesterList = new ArrayList<Semester>();
+
+		for (int i = 0; i < termAndYear.get(schedule.getTerm() + "" + schedule.getTermYear()); i++) {
+			semesterList.add(semesterGenerator(student, schedule, i));
+		}
+
+		return semesterList;
 	}
 
 }

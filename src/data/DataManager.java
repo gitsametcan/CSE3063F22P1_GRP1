@@ -263,6 +263,38 @@ public class DataManager {
 		return result;
 	}
 	
+	public List<Lecture> searchLectureUntilTerm(int term){
+		List<Lecture> result = new ArrayList<Lecture>();
+		switch (term) {
+			case 0:
+				result = searchLectureUntilTerm(Term.Fall,TermYear.Freshman);
+				break;
+			case 1:
+				result = searchLectureUntilTerm(Term.Spring,TermYear.Freshman);
+				break;
+			case 2:
+				result = searchLectureUntilTerm(Term.Fall,TermYear.Sophomore);
+				break;
+			case 3:
+				result = searchLectureUntilTerm(Term.Spring,TermYear.Sophomore);
+				break;
+			case 4:
+				result = searchLectureUntilTerm(Term.Fall,TermYear.Junior);
+				break;
+			case 5:
+				result = searchLectureUntilTerm(Term.Spring, TermYear.Junior);
+				break;
+			case 6:
+				result = searchLectureUntilTerm(Term.Fall,TermYear.Senior);
+				break;
+			case 7:
+				result = searchLectureUntilTerm(Term.Spring,TermYear.Senior);
+				break;
+		}
+		
+		return result;
+	}
+	
 	public List<Lecture> searchLectureUntilTerm(Term term, TermYear termYear){
 		List<Lecture> result = new ArrayList<Lecture>();
 		Map<String, Integer> termAndYear = new HashMap<String, Integer>();
