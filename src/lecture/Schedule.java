@@ -31,13 +31,14 @@ public class Schedule {
 		}
 		int lecturePlaceX = 0;
 		int lecturePlaceY = 1;
-		String a = null;
+		String a = "";
 		for (int y = 1; y < 42; y++) {
 			for (int x = 1; x < 79; x++) {
 				if (y == 1 || y == 41) {
 					a+="_";
 					if ((x == 78 && y == 1)) {
-						log.info(a);;
+						log.info(a);
+						a="";
 					}
 					a = null;
 				} else if ((((x - 2) % 11) == 0) && (((y - 3) % 4) == 0)) {
@@ -53,7 +54,7 @@ public class Schedule {
 					for (LectureSession ls : lectureSessions) {
 						if (ls.getSessionHours()[lecturePlaceX - 1][lecturePlaceY - 1] == LectureHour.YES) {
 							String lectureSessionName = ls.getLecture().getID() + "." + ls.getSessionID();
-							log.info(lectureSessionName);
+							a+=(lectureSessionName);
 							x = x + (lectureSessionName.length()) - 1;
 							thereIsLecture = true;
 							break;
@@ -80,6 +81,7 @@ public class Schedule {
 		}
 
 		log.info(a);
+		a="";
 	}
 
 	public Person getPerson() {
