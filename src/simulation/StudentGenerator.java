@@ -32,13 +32,13 @@ public class StudentGenerator {
 
 	}
 	
-	public Student generate(int year, int semesterCount) {
+	public Student generate(int studentCount, int semesterCount) {
 		
-		Calendar dateOfEntry = new GregorianCalendar(2000 + year + 18, 1, 22);
+		Calendar dateOfEntry = new GregorianCalendar(2000 + (semesterCount / 2) + 18, 1, 22);
 		
-		Student student = new Student(getRandomFirstName(),getRandomLastName(),studentIdGenerator(year + 18, semesterCount),null,null, dateOfEntry);
+		Student student = new Student(getRandomFirstName(),getRandomLastName(),studentIdGenerator(semesterCount + 18, studentCount),null,null, dateOfEntry);
 		
-		Schedule schedule = new Schedule(student, Term.values()[semesterCount % 2],TermYear.values()[semesterCount / 2]);//Warning
+		Schedule schedule = new Schedule(student, Term.values()[semesterCount % 2],TermYear.values()[semesterCount / 2]);
 		
 		student.setSchedule(schedule);
 		student.setDebt(studentDebtGenerator());
