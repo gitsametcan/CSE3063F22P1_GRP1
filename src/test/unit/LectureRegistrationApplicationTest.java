@@ -9,7 +9,6 @@ import java.util.Map;
 
 import org.junit.Test;
 
-import Debt_LRA_Transcript.Debt;
 import Debt_LRA_Transcript.LectureRegistrationApplication;
 import Debt_LRA_Transcript.Transcript;
 import Enums.ApprovalState;

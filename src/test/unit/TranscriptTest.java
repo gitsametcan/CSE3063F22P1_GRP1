@@ -7,7 +7,6 @@ import java.util.List;
 
 import org.junit.Test;
 
-import Debt_LRA_Transcript.Debt;
 import Debt_LRA_Transcript.Transcript;
 import IDs.StudentID;
 import lecture.Semester;

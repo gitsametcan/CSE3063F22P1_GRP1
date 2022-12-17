@@ -1,11 +1,8 @@
 package lecture;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
-import Debt_LRA_Transcript.Transcript;
 import Enums.LetterGrade;
 import Enums.Term;
 import Enums.TermYear;

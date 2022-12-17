@@ -11,7 +11,6 @@ import data.DataManager;
 import lecture.Lecture;
 import lecture.Schedule;
 import lecture.Semester;
-import logger.Logger;
 import person.Student;
 
 public class TranscriptGenerator {

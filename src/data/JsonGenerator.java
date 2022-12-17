@@ -15,8 +15,6 @@ import Enums.TermYear;
 import data.json.AdvisorJSON;
 import data.json.LectureJSON;
 import data.json.LectureSessionJSON;
-import data.json.MetaData;
-import data.json.NamePool;
 import data.json.ScheduleJSON;
 import data.json.SemesterJSON;
 import data.json.StudentJSON;
@@ -24,7 +22,6 @@ import data.json.TranscriptJSON;
 import lecture.Lecture;
 import lecture.LectureSession;
 import lecture.Semester;
-import logger.Logger;
 import person.Advisor;
 import person.Student;
 
@@ -148,7 +145,6 @@ public class JsonGenerator {
             if (ls.getInstructor() != null) {
                 instructorID = ls.getInstructor().getID();
             }
-            Logger.getLogger("logs").info("%s.%s \t\t %s", lectureID, sessionID, instructorID);
             String sessionType = ls.getSessionType().toString();
             LectureHour[][] lectureHours = ls.getSessionHours();
             int[][] sessionHours = new int[7][10];

@@ -21,7 +21,6 @@ import lecture.Lecture;
 import lecture.LectureSession;
 import lecture.Schedule;
 import lecture.Semester;
-import logger.Logger;
 
 public class Student extends Person {
 	private Logger log;

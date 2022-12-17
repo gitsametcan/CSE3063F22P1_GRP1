@@ -27,13 +27,13 @@ public class RegistrationSystem {
 			int loginType = scanner.nextInt();
 			switch (loginType) {
 				case 1:
-					StudentRegistrationSystem studentRegistrationSystem = new StudentRegistrationSystem(this);
+					new StudentRegistrationSystem(this);
 					break;
 				case 2:
-					InstructorRegistrationSystem instructorRegistrationSystem = new InstructorRegistrationSystem(this);
+					new InstructorRegistrationSystem(this);
 					break;
 				case 3:
-					AdvisorRegistrationSystem advisorRegistrationSystem = new AdvisorRegistrationSystem(this);
+					new AdvisorRegistrationSystem(this);
 					break;
 				case 4:
 					log.info("Initiating simulation...");

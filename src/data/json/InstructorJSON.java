@@ -1,7 +1,5 @@
 package data.json;
 
-import java.util.List;
-
 public class InstructorJSON extends PersonJSON {
 
 	private ScheduleJSON schedule;

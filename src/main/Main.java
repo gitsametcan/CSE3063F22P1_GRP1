@@ -11,7 +11,7 @@ public class Main {
 	public static void main(String[] args) throws FileNotFoundException {
 
 		DataManager.getInstance().loadFiles();
-		Logger log = Logger.getLogger("logs");
+		Logger.getLogger("logs"); // To ensure logger is loaded here
 
 		RegistrationSystem registrationSystem = new RegistrationSystem();
 		registrationSystem.menu();

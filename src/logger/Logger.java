@@ -46,7 +46,6 @@ public class Logger {
 		try {
 			randomOutputFile = new RandomAccessFile(outputFile, "rws");
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -88,7 +87,6 @@ public class Logger {
 			randomOutputFile.seek(randomOutputFile.length());
 			randomOutputFile.write(message.getBytes());
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 

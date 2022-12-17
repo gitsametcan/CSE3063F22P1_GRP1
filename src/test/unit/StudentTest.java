@@ -18,7 +18,6 @@ import Enums.TermYear;
 import IDs.InstructorID;
 import IDs.StudentID;
 import lecture.Lecture;
-import lecture.LectureSession;
 import lecture.Schedule;
 import lecture.Semester;
 import person.Advisor;

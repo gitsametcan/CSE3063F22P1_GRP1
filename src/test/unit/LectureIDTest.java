@@ -3,7 +3,6 @@ package test.unit;
 import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
-import IDs.InstructorID;
 import IDs.LectureID;
 
 public class LectureIDTest {

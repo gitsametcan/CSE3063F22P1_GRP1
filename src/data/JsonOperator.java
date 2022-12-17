@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import Debt_LRA_Transcript.Transcript;
 import data.json.AdvisorJSON;
 import data.json.LectureJSON;
 import data.json.MetaData;

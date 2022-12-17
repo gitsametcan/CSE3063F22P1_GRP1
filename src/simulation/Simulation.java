@@ -26,7 +26,6 @@ public class Simulation {
 				student = studentGenerator.generate((studentCount+1), semesterCount);
 				listOfStudents.add(student);
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			
@@ -42,6 +41,7 @@ public class Simulation {
 		log.info("Do you want to save generated Students? Y/N : ");
 		Scanner scanner = new Scanner(System.in);
 		String answer = scanner.next();
+		scanner.close();
 		if (answer.equalsIgnoreCase("Y")) {
 			DataManager.getInstance().addStudents(listOfStudents);
 			DataManager.getInstance().saveObjectAsJson();

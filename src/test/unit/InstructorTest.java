@@ -2,16 +2,13 @@ package test.unit;
 
 import static org.junit.Assert.assertEquals;
 
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
-import java.util.List;
 
 import org.junit.Test;
 
 import Enums.InstructorType;
 import IDs.InstructorID;
-import lecture.Lecture;
 import lecture.Schedule;
 import person.Instructor;
 
