@@ -11,6 +11,7 @@ import IDs.InstructorID
 import lecture.LectureSession
 
 import lecture.Schedule
+from pythonCode.person.Person import Person
 
 class Instructor(Person):
     """ generated source for class Instructor """
@@ -51,14 +52,14 @@ class Instructor(Person):
             count += 1
             """self.log.info(count + ". " + lectureSession.getLecture().__name__ + "." + lectureSession.getSessionID())"""
         """self.log.info("Choose A Session: ")"""
-        sessionChoice = self.scanner.nextInt()
+        sessionChoice = input()
         lectureSession = self.getSchedule().getListOfLectureSessions().get(sessionChoice - 1)
         for student in lectureSession.getListOfStudents():
             """self.log.info("ID: " + student.getID() + "Name: " + student.getFullName())"""
 
     def __init__(self, firstName, lastName, id, dateOfEntry, InstructorType, schedule):
         """ generated source for method __init__ """
-        super(Instructor, self).__init__(lastName)
+        super(firstName, lastName)
         self.scanner = input()
         self.id = id
         self.setSchedule(schedule)

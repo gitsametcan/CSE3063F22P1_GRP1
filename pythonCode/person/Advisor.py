@@ -2,6 +2,8 @@
 # package person;
 
 from ast import List
+
+from pythonCode.person.Student import Student
 """import logger.Logger;"""
 
 import Debt_LRA_Transcript.LectureRegistrationApplication;
@@ -22,20 +24,21 @@ class Advisor(Instructor):
     @overloaded
     def __init__(self, firstName, lastName, id, listOfLectures, dateOfEntry, listOfStudents, listOfApplications, instructorType, schedule):
         """ generated source for method __init__ """
-        super(Advisor, self).__init__(schedule)
+        super(firstName, lastName, id, dateOfEntry, instructorType, schedule)
         self.scanner = input()
         self.listOfStudents = listOfStudents
         self.listOfApplications = listOfApplications
         if self.listOfStudents == None:
-            self.listOfStudents = List()
+            self.listOfStudents = List(Student)
         if self.listOfApplications == None:
-            self.listOfApplications = List()
+            self.listOfApplications = List(LectureRegistrationApplication)
 
     def showApplications(self):
         """ generated source for method showApplications """
         self.scanner = input()
         choice = -1
         while choice != 0:
+            count = 0
             for lectureRegistrationApplication in self.getListOfApplications():
                 count += 1
                 """self.log.info("" + count + ". " + lectureRegistrationApplication.getStudent().getFullName())"""
@@ -51,24 +54,29 @@ class Advisor(Instructor):
         lectureChoice = ""
         while not lectureChoice == "0":
             """self.log.info("Name Of Student: " + lectureRegistrationApplication.getStudent().getFullName())"""
+            count = 0
             """self.log.info("Session Name                 Approval State")"""
             for me in lectureRegistrationApplication.getSessionsSentForApproval().entrySet():
                 count += 1
+                sessionName = me.getKey().getLecture().getID() + "." + me.getKey().getSessionID()
                 """self.log.info("%d. %-30s%s", count, sessionName, me.getValue())"""
             """self.log.info("0. Exit")"""
             """self.log.info("Please Enter The Session Name(0 for exit): ")"""
             lectureChoice = input()
+            lectureSession = None
             for me in lectureRegistrationApplication.getSessionsSentForApproval().entrySet():
+                sessionName = me.getKey().getLecture().getID() + "." + me.getKey().getSessionID()
                 if sessionName.lower() == lectureChoice.lower():
                     lectureSession = me.getKey()
             """self.log.info("1. Approve")"""
             """self.log.info("2. Reject")"""
             """self.log.info("3. Go Back")"""
+            approveChoice = input()
             if approveChoice==1:
                 self.approveApplication(lectureRegistrationApplication, lectureSession)
             elif approveChoice==2:
                 self.rejectApplication(lectureRegistrationApplication, lectureSession)
-            else:
+            """else:"""
 
     def getListOfStudents(self):
         """ generated source for method getListOfStudents """
@@ -90,10 +98,10 @@ class Advisor(Instructor):
     @__init__.register(object, str, str, InstructorID, Calendar, List, List, InstructorType, Schedule)
     def __init___0(self, firstName, lastName, id, dateOfEntry, listOfStudents, listOfApplications, instructorType, schedule):
         """ generated source for method __init___0 """
-        super(Advisor, self).__init__(schedule)
+        super(firstName, lastName, id, dateOfEntry, instructorType, schedule)
         self.listOfStudents = listOfStudents
         self.listOfApplications = listOfApplications
         if self.listOfStudents == None:
-            self.listOfStudents = List()
+            self.listOfStudents = List(Student)
         if self.listOfApplications == None:
-            self.listOfApplications = List()
+            self.listOfApplications = List(LectureRegistrationApplication)
