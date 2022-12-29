@@ -1,5 +1,5 @@
 class Debt:
-    def __init__(self, __amount, __student):
+    def __init__(self, __amount: float, __student):
         self.amount = __amount
         self.student = __student
 
