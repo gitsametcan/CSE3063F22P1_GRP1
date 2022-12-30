@@ -1,39 +1,19 @@
+sys.path.append('../data')
+import DataManager
+
+sys.path.append('../logger')
+import Logger
+
 import StudentGenerator
-
-class simulation:
-    list = []
-    studentGenerator = StudentGenerator()
-
-    def __init__(self) -> None:
-        pass
-
-
-def ListOfStudents():
-    list = []
-
-#!/usr/bin/env python
-# package: simulation
-import java.util.ArrayList
-
-import java.util.List
-
-import java.util.Scanner
-
-import data.DataManager
-
-import logger.Logger
-
-import person.Student
-
 class Simulation(object):
     """ generated source for class Simulation """
-    listOfStudents = List()
+    listOfStudents = []
     studentGenerator = StudentGenerator()
 
     def __init__(self):
         """ generated source for method __init__ """
         self.studentGenerator = StudentGenerator()
-        self.listOfStudents = ArrayList()
+        self.listOfStudents = []
 
     def newSemester(self, semesterCount):
         """ generated source for method newSemester """
