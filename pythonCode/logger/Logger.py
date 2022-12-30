@@ -1,8 +1,13 @@
 from datetime import datetime
 import sys
 
+if "../data" not in sys.path:
+    sys.path.append('../data')
+import DataManager
+
+dataManagerInstance = DataManager.DataManager.getInstance()
 class Logger :
-    __loggers = None
+    loggers = None
 
     @staticmethod
     def getLogger(fileNameWithoutExtension):
@@ -10,17 +15,19 @@ class Logger :
         # object corresponding to the given name
 
         # if a dictionary is not present, generate one
-        if (__loggers is None) :
-            __loggers =  dict()
+        try:
+            val = loggers
+        except NameError:
+            loggers = dict()
         
         # if the given name is contained in keys of loggers
         # return that logger object
-        if (fileNameWithoutExtension in __loggers.keys()):
-            return __loggers.get(fileNameWithoutExtension)
+        if (fileNameWithoutExtension in loggers):
+            return loggers[fileNameWithoutExtension]
         
         # otherwise generate a new logger object and return it
         tLog = Logger(fileNameWithoutExtension)
-        __loggers[fileNameWithoutExtension] = tLog
+        loggers[fileNameWithoutExtension] = tLog
         return tLog
 
     def __init__(self, fileNameWithoutExtension):
@@ -29,13 +36,16 @@ class Logger :
         now = datetime.now()
         date = now.strftime("%Y-%m-%d-%H-%M-%S")
 
+        metaData = dataManagerInstance.getMetaData()
+        logsFolder = "../" + metaData["logsPath"]
+
         # to create file with given name
         # because otherwise open for append fails
-        fp = open(date + "_" + fileNameWithoutExtension + ".txt", "x")
+        fp = open(logsFolder + date + "_" + fileNameWithoutExtension + ".txt", "x")
         fp.close()
 
         # opens the file to append
-        self.outputFile = open(date + "_" + fileNameWithoutExtension + ".txt", "a", encoding="utf-8")
+        self.outputFile = open(logsFolder + date + "_" + fileNameWithoutExtension + ".txt", "a", encoding="utf-8")
 
     def error(self, text, *args):
         # to be able to access 

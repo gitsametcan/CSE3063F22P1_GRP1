@@ -1,0 +1,17 @@
+{
+    "listOfStudentIDs": [
+    ],
+    "schedule": {
+      "sessions": {},
+      "ID": "150129",
+      "term": "Fall",
+      "termYear": "Senior"
+    },
+  
+    "instructorType": "Instructor",
+    "instructorID": "150129",
+    "dateOfEntry": "2013-10-10",
+    "firstName": "Haluk Rahmi",
+    "lastName": "TOPCUOGLU"
+  
+  }
