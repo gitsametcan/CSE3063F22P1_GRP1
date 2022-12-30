@@ -1,0 +1,14 @@
+{
+  "listOfStudentIDs": [],
+  "schedule": {
+    "sessions": {},
+    "ID": "150186",
+    "term": "Fall",
+    "termYear": "Senior"
+  },
+  "instructorType": "Instructor",
+  "instructorID": "150186",
+  "dateOfEntry": "2017-12-13",
+  "firstName": "Mustafa",
+  "lastName": "AGAOGLU"
+}

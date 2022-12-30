@@ -1,0 +1,17 @@
+{
+    "listOfStudentIDs": [
+    ],
+    "schedule": {
+      "sessions": {},
+      "ID": "150145",
+      "term": "Fall",
+      "termYear": "Senior"
+    },
+  
+    "instructorType": "Instructor",
+    "instructorID": "150145",
+    "dateOfEntry": "2016-05-12",
+    "firstName": "Fatma",
+    "lastName": "CORUT ERGIN"
+  
+  }

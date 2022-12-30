@@ -1,0 +1,8 @@
+{
+  "studentsPath": "JSON Files/Students/",
+  "advisorsPath": "JSON Files/Advisors/",
+  "transcriptsPath": "JSON Files/Transcripts/",
+  "lecturesPath": "JSON Files/Lectures/",
+  "namePoolPath": "JSON Files/NamePool.JSON",
+  "logsPath": "Logs/"
+}
