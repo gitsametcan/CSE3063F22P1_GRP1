@@ -3,12 +3,10 @@
 # from data import DataManager
 import sys
 
-sys.path.append('../data')
+# sys.path.append('../data')
 import DataManager
-sys.path.append('../logger')
+# sys.path.append('../logger')
 import Logger
-#import pythonCode.data.DataManager
-#import pythonCode.logger.Logger
 
 print("Logger" in sys.modules)
 
@@ -64,3 +62,5 @@ logger = Logger.Logger.getLogger("denemelog")
 
 logger.error("hatamesajiiii")
 logger.info("infomesajii")
+
+DataManager.DataManager.getInstance().logCircleDeneme()

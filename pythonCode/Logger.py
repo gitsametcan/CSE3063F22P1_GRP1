@@ -1,33 +1,28 @@
 from datetime import datetime
 import sys
 
-if "../data" not in sys.path:
-    sys.path.append('../data')
-import DataManager
-
-dataManagerInstance = DataManager.DataManager.getInstance()
 class Logger :
-    loggers = None
+    _loggers = dict()
 
-    @staticmethod
-    def getLogger(fileNameWithoutExtension):
+    @classmethod
+    def getLogger(cls,fileNameWithoutExtension):
         # this function retrieves the logger 
         # object corresponding to the given name
 
         # if a dictionary is not present, generate one
-        try:
-            val = loggers
-        except NameError:
-            loggers = dict()
+        #try:
+         #   val = cls._loggers
+        #except NameError:
+         #   cls._loggers = dict()
         
         # if the given name is contained in keys of loggers
         # return that logger object
-        if (fileNameWithoutExtension in loggers):
-            return loggers[fileNameWithoutExtension]
+        if (fileNameWithoutExtension in cls._loggers):
+            return cls._loggers[fileNameWithoutExtension]
         
         # otherwise generate a new logger object and return it
         tLog = Logger(fileNameWithoutExtension)
-        loggers[fileNameWithoutExtension] = tLog
+        cls._loggers[fileNameWithoutExtension] = tLog
         return tLog
 
     def __init__(self, fileNameWithoutExtension):
@@ -36,8 +31,10 @@ class Logger :
         now = datetime.now()
         date = now.strftime("%Y-%m-%d-%H-%M-%S")
 
-        metaData = dataManagerInstance.getMetaData()
-        logsFolder = "../" + metaData["logsPath"]
+        import DataManager
+
+        metaData = DataManager.DataManager.getInstance().getMetaData()
+        logsFolder = metaData["logsPath"]
 
         # to create file with given name
         # because otherwise open for append fails
