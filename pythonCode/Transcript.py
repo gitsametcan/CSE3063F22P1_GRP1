@@ -1,10 +1,22 @@
+from Semester import Semester
+from Student import Student
+
 class Transcript:
-    def __init__(self, __student, __listOfSemester=None):
+
+    __student = Student()
+    __listOfSemester = [Semester()]
+
+    def __init__(self, __student, __listOfSemester):
         self.__student = __student
-        self.__listOfSemester = __listOfSemester or []
-        self.__totalCreditsTaken = self.totalCreditsTakenCalculator(self, self.__listOfSemester)
+        self.__listOfSemester = __listOfSemester
+        if self.__listOfSemester == None:
+            self.__listOfSemester = [Semester]
+
+
+
+        self.__totalCreditsTaken = self.totalCreditsTakenCalculator(self, __listOfSemester[])
         self.__totalCreditsCompleted = self.totalCreditsCompletedCalculator()
-        self.__points = self.pointsCalculator()
+        self.__points = self.pointsCalculator(__listOfSemester)
         self.__gano = self.__points / self.__totalCreditsTaken
 
      # Creating properties for variables 
