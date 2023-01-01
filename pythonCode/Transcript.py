@@ -3,80 +3,65 @@ from Student import Student
 
 class Transcript:
 
-    __student = Student()
-    __listOfSemester = [Semester()]
-
-    def __init__(self, __student, __listOfSemester):
+    def init(self, __student, __listOfSemester, __totalCreditsTaken, __totalCreditsCompleted, __points, __gano):
         self.__student = __student
         self.__listOfSemester = __listOfSemester
+
         if self.__listOfSemester == None:
             self.__listOfSemester = [Semester]
 
-
-
-        self.__totalCreditsTaken = self.totalCreditsTakenCalculator(self, __listOfSemester[])
-        self.__totalCreditsCompleted = self.totalCreditsCompletedCalculator()
-        self.__points = self.pointsCalculator(__listOfSemester)
+        self.__totalCreditsTaken = self.totalCreditsTakenCalculator(self.__listOfSemester)
+        self.__totalCreditsCompleted = self.totalCreditsCompletedCalculator(self.__listOfSemester)
+        self.__points = self.pointsCalculator(self.__listOfSemester)
         self.__gano = self.__points / self.__totalCreditsTaken
-
+ 
      # Creating properties for variables 
-    @property
-    def student(self):
-        return self.__student
-
-    @student.setter
-    def student(self, __student):
-        self.__student = __student
     
-    @property
-    def listOfSemester(self):
-        return self.__listOfSemester
+    def getStudent(self):
+        return self.student
 
-    @listOfSemester.setter
-    def listOfSemester(self, __listOfSemester):
-        self.__listOfSemester = __listOfSemester
+    def setStudent(self,  student):
+        self.student = student
+    
+    def getListOfSemester(self):
+        return self.listOfSemester
 
-    @property
-    def gano(self):
-        return self.__gano
+    def setListOfSemester(self, listOfSemester):
+        self.listOfSemester = listOfSemester
 
-    @gano.setter
-    def gano(self, __gano):
-        self.__gano = __gano   
+    def getGano(self):
+        return self.gano
 
-    @property
-    def totalCreditsTaken(self):
-        return self.__totalCreditsTaken
+    def setGano(self, gano):
+        self.gano = gano   
 
-    @totalCreditsTaken.setter
-    def totalCreditsTaken(self, __totalCreditsTaken):
-        self.__totalCreditsTaken = __totalCreditsTaken
+    def getTotalCreditsTaken(self):
+        return self.totalCreditsTaken
 
-    @property
-    def points(self):
-        return self.__points
+    def setTotalCreditsTaken(self, totalCreditsTaken):
+        self.totalCreditsTaken = totalCreditsTaken
 
-    @points.setter
-    def points(self, __points):
-        self.__points = __points
+    def getPoints(self):
+        return self.points
 
-    @property
-    def totalCreditsCompleted(self):
-        return self.__totalCreditsCompleted
+    def setPoints(self, points):
+        self.points = points
 
-    @totalCreditsCompleted.setter
-    def totalCreditsCompleted(self, __totalCreditsCompleted):
-        self.__totalCreditsCompleted = __totalCreditsCompleted
+    def getTotalCreditsCompleted(self):
+        return self.totalCreditsCompleted
+
+    def setTotalCreditsCompleted(self, totalCreditsCompleted):
+        self.totalCreditsCompleted = totalCreditsCompleted
 
     # Creating other methods
 
     def addSemester(self, semester):
-        self.__listOfSemester.append(semester)
+        self.listOfSemester.append(semester)
 
     def totalCreditsTakenCalculator(self, listOfSemester):
         totalCreditsTaken = 0
         for semester in listOfSemester:
-            totalCreditsTaken += semester.creditsTaken()
+            totalCreditsTaken + semester.creditsTaken()
         return totalCreditsTaken
 
     def totalCreditsCompletedCalculator(self, listOfSemester):
@@ -85,8 +70,8 @@ class Transcript:
             totalCreditsCompleted += semester.creditsCompleted
         return totalCreditsCompleted
 
-    def pointsCalculator(self):
+    def pointsCalculator(self, listOfSemester):
         points = 0
         for semester in self.listOfSemester:
-            points += semester.points
+            points += semester.points()
         return points
