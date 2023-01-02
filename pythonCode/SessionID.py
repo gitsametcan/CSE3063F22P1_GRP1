@@ -7,7 +7,7 @@ class SessionID:
     # Creating properties for variables
 
     def setID(datatype, *args):
-        if datatype == 'str':
+        if datatype == str:
             try:
             int(string, base=10)
         except ValueError:
@@ -15,7 +15,7 @@ class SessionID:
         finally:
             self.id = int(string)
 
-        if datatype == 'int':
+        if datatype == int:
             self.id = id
       
 

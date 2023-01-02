@@ -2,14 +2,14 @@ from UniqueID import UniqueID
 
 class InstructorID(UniqueID):
 
-    def __init__(self, __departmentCode: int, __orderOfEntry: int):
+    def init(self, __departmentCode: int, __orderOfEntry: int):
         self.__departmentCode = __departmentCode
         self.__orderOfEntry = __orderOfEntry
 
     def init(self, ID: str):
         self.setID(ID)
 
-         # Creating another properties for variables
+    # Creating another properties for variables
 
     def setID(self, string: str):
         try:
