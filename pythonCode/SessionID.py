@@ -1,20 +1,23 @@
+from UniqueID import UniqueID
+
 class SessionID:
-    def __init__(self, __id: int):
+    def init(self, __id: int):
         self.__id = __id
 
-    @ ID.setter
-    def ID(self, string: str):
-        try:
-            int(string)
+    # Creating properties for variables
+
+    def setID(datatype, *args):
+        if datatype == 'str':
+            try:
+            int(string, base=10)
         except ValueError:
             pass
         finally:
-            self.__id = int(string)
+            self.id = int(string)
 
-    @ ID.setter
-    def ID(self, id: int):
-        self.__id = __id
+        if datatype == 'int':
+            self.id = id
+      
 
-    @property
-    def ID(self) -> str:
-        return str(self.__id)
+    def getID(self) -> str:
+        return str(self.id)

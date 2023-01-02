@@ -1,32 +1,33 @@
-class InstructorID:
-    def __init__(self, __departmentCode: int, __orderOfEntry: int, __ID: str):
+from UniqueID import UniqueID
+
+class InstructorID(UniqueID):
+
+    def __init__(self, __departmentCode: int, __orderOfEntry: int):
         self.__departmentCode = __departmentCode
         self.__orderOfEntry = __orderOfEntry
-        self.__ID = __ID
 
-    def __init__(self, ID: str):
-        self.ID(ID)
+    def init(self, ID: str):
+        self.setID(ID)
 
-     # Creating properties for variables
-    @ ID.setter
-    def Id(self, departmentCode: int, orderOfEntry: int):
-        self.__departmentCode = departmentCode
-        self.__orderOfEntry = orderOfEntry
+         # Creating another properties for variables
 
-    @property
-    def ID(self) -> str:
-        return self.digitFixer(self.__departmentCode) + self.digitFixer(self.__orderOfEntry)
-
-     # Creating another properties for variables
-    @ ID.setter
-    def ID(self, string: str):
+    def setID(self, string: str):
         try:
             int(string)
         except ValueError:
             pass
         finally:
-            self.__departmentCode = int(string[:3])
-            self.__orderOfEntry = int(string[3:])
+            self.departmentCode = int(string[:3])
+            self.orderOfEntry = int(string[3:])
+
+     # Creating properties for variables
+
+    def setId(self, departmentCode: int, orderOfEntry: int):
+        self.departmentCode = departmentCode
+        self.orderOfEntry = orderOfEntry
+
+    def getID(self) -> str:
+        return self.digitFixer(self.departmentCode) + self.digitFixer(self.orderOfEntry)
 
     ## Creeate another methods
     def digitFixer(self, integer: int) -> str:
