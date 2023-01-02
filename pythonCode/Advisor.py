@@ -2,19 +2,19 @@
 # package person;
 
 from ast import List
-import logger.Logger
-from pythonCode.person.Instructor import Instructor
+import Logger
+import Instructor
 
-from pythonCode.person.Student import Student
+import Student
 
 
-import Debt_LRA_Transcript.LectureRegistrationApplication;
-import Enums.ApprovalState;
-import Enums.InstructorType;
-import IDs.InstructorID;
-import lecture.Lecture;
-import lecture.LectureSession;
-import lecture.Schedule;
+import LectureRegistrationApplication;
+import ApprovalState;
+import InstructorType;
+import InstructorID;
+import Lecture;
+import LectureSession;
+import Schedule;
 
 class Advisor(Instructor):
     # generated source for class Advisor 
@@ -78,7 +78,7 @@ class Advisor(Instructor):
                 self.approveApplication(lectureRegistrationApplication, lectureSession)
             elif approveChoice==2:
                 self.rejectApplication(lectureRegistrationApplication, lectureSession)
-            """else:"""
+            #else:
 
     def getListOfStudents(self):
         # generated source for method getListOfStudents 

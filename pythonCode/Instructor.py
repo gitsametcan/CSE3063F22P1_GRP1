@@ -2,16 +2,17 @@
 # package: person
 
 
-import logger.Logger
+import Logger
 
-import Enums.InstructorType
+import InstructorType
 
-import IDs.InstructorID
+import InstructorID
 
-import lecture.LectureSession
+import LectureSession
 
-import lecture.Schedule
-from pythonCode.person.Person import Person
+import Schedule
+
+import Person
 
 class Instructor(Person):
     # generated source for class Instructor 

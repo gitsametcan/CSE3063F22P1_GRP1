@@ -1,20 +1,23 @@
 # package: person
 
 from ast import List
-import logger.Logger;
+from calendar import Calendar
+import Logger;
 
-import Debt_LRA_Transcript.Debt;
-import Debt_LRA_Transcript.LectureRegistrationApplication;
-import Debt_LRA_Transcript.Transcript;
-import Enums.ApprovalState;
-import Enums.FilterType;
-import Enums.LetterGrade;
-import IDs.StudentID;
-import data.DataManager;
-import lecture.Lecture;
-import lecture.LectureSession;
-import lecture.Schedule;
-import lecture.Semester;
+import Debt;
+import LectureRegistrationApplication;
+import Transcript;
+import ApprovalState;
+import FilterType;
+import LetterGrade;
+import StudentID;
+import DataManager;
+import Lecture;
+import LectureSession;
+import Schedule;
+import Semester
+import Person
+import Advisor;
 
 class Student(Person):
     # generated source for class Student 
@@ -66,14 +69,14 @@ class Student(Person):
     def getDateOfEntry(self):        
         return self.dateOfEntry
     def sendForApproval(self, chosenLectureSessions):
-        """ generated source for method sendForApproval """
+        # generated source for method sendForApproval 
         approvalList = HashMap()
         for ls in chosenLectureSessions:
             approvalList.put(ls, ApprovalState.Pending)
         self.registirationApplication = LectureRegistrationApplication(approvalList, self.advisor, self)
         self.advisor.getListOfApplications().add(self.registirationApplication)
     def showTranscript(self):
-        """ generated source for method showTranscript """
+        # generated source for method showTranscript 
         semesterSize = self.getTranscript().getListOfSemester().size()
         i = 0
         while i < semesterSize:
@@ -93,10 +96,10 @@ class Student(Person):
             i += 1
 
     def showSchedule(self):
-        """ generated source for method showSchedule """
+        # generated source for method showSchedule 
         self.getSchedule().showSchedule()
     def debtMenu(self):
-        """ generated source for method debtMenu """
+        # generated source for method debtMenu 
         if self.getDebt().getAmount() == 0:
             log.info("You have no debt.")
         else:
@@ -114,7 +117,7 @@ class Student(Person):
                     log.info("Please enter a valid input(1,2)")
 
     def registrationStatusMenu(self):
-        """ generated source for method registrationStatusMenu """
+        # generated source for method registrationStatusMenu 
         if self.getRegistirationApplication() == None:
             log.info("You did not apply for registration.\n")
             return
@@ -125,7 +128,7 @@ class Student(Person):
         log.info("")
 
     def makeRegistrationMenu(self):
-        """ generated source for method makeRegistrationMenu """
+        # generated source for method makeRegistrationMenu 
         currentStudentAvailableLectures = availableLessons()
         log.info("Lectures: ")
         i = 0
@@ -150,7 +153,7 @@ class Student(Person):
                 break
 
     def parseSelectionCommand(self, input, chosenLectures):
-        """ generated source for method parseSelectionCommand """
+        # generated source for method parseSelectionCommand 
         partedInput = []
         partedLectureID = []
         lectures = DataManager.getInstance().searchLecture("", FilterType.Name)
@@ -183,7 +186,7 @@ class Student(Person):
             log.info("Couldn't find %s", partedInput[1])
 
     def showChosenLectureSessions(self, chosenLectureSessions):
-        """ generated source for method showChosenLectureSessions """
+        # generated source for method showChosenLectureSessions 
         log.info("Chosen Lectures:\n")
         for ls in chosenLectureSessions:
             log.info("Lecture Code: %-15sLecture Name: %-40sLecture Type: %-10sLecture Credit: %-4s%n",
@@ -195,7 +198,7 @@ class Student(Person):
          + "Enter \"send\" to send\n" + "Enter \"exit\" to exit")
 
     def canTakeLecture(self, lecture, transcript):
-        """ generated source for method canTakeLecture """
+        # generated source for method canTakeLecture 
         if transcript == None:
             return True
         canTake = bool()
@@ -216,7 +219,7 @@ class Student(Person):
         return canTake
 
     def hasPreqLectureTaken(self, preqLecture, listOfLecture):
-        """ generated source for method hasPreqLectureTaken """
+        # generated source for method hasPreqLectureTaken 
         if preqLecture == None:
             return True
         for lecture in listOfLecture:
@@ -225,14 +228,14 @@ class Student(Person):
         return False
 
     def takenPoint(self, lecture, listOfLecturesTaken):
-        """ generated source for method takenPoint """
+        # generated source for method takenPoint 
         point = True
         if listOfLecturesTaken.get(lecture).getLetterGradeValue() > 1.99:
             point = False
         return point
 
     def availableLessons(self):
-        """ generated source for method availableLessons """
+        # generated source for method availableLessons 
         availableLessons = ArrayList()
         lecturesUntilNow = DataManager.getInstance().searchLectureUntilTerm(self.getSchedule().getTerm(), self.getSchedule().getTermYear())
         for l in lecturesUntilNow:
