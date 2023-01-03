@@ -1,11 +1,13 @@
-class LectureID:
+from UniqueID import UniqueID
+
+class LectureID(UniqueID):
     def __init__(self, __lectureCode: str):
         self.__lectureCode = __lectureCode
 
-     # Creating another properties for variables
+     # Creating properties for variables
+
     def setID(self, string: str):
-        self.__lectureCode = string
+        self.lectureCode = string
 
     def getID(self) -> str:
-        return self.__lectureCode
-
+        return self.lectureCode

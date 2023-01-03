@@ -1,40 +1,52 @@
-class StudentID:
-    def __init__(self, __departmentCode: int, __yearCode: int, __orderOfPlacement: int):
-        self.__departmentCode = __departmentCode
-        self.__yearCode = __yearCode
-        self.__orderOfPlacement = __orderOfPlacement
-    
-    # Creating another properties for variables
-    @ ID.setter
-    def __init__(self, ID: str):
-        self.__ID(ID)
+from UniqueID import UniqueID
 
-    @ ID.setter
-    def ID(self, __departmentCode: int, __yearCode: int, __orderOfPlacement: int):
-        self.__departmentCode = __departmentCode
-        self.yearCode = __yearCode
-        self.orderOfPlacement = __orderOfPlacement
+class StudentID(UniqueID):
 
-    @property
+    def __init__(self, *args):
+        index = 0
+        for t in args: 
+            if (isinstance(t, int)):
+                if index == 0:
+                    self.__departmentCode = t
+                if index == 1:
+                    self.__yearCode = t
+                if index == 2:
+                    self.__orderOfPlacement = t
+
+            if (isinstance(t, str)):
+                self.setID(t)
+
+    # Creating properties for variables
+        
+    def setID(self, *args):
+        index = 0
+        for t in args: 
+            if (isinstance(t, int)):
+                if index == 0:
+                    self.__departmentCode = t
+                if index == 1:
+                    self.__yearCode = t
+                if index == 2:
+                    self.__orderOfPlacement = t
+
+            if (isinstance(t, str)):
+                try:
+                    int(t)
+                except ValueError:
+                    pass
+                finally:
+                    self.__departmentCode = int(t[:3])
+                    self.__yearCode = int(t[3:6])
+                    self.__orderOfPlacement = int(t[6:])
+
     def getID(self) -> str:
-        return self.digitFixer(self.__departmentCode) + self.digitFixer(self.__yearCode) + self.digitFixer(self.__orderOfPlacement)
-
-    @ ID.setter
-    def setID(self, string: str):
-        try:
-            int(string)
-        except ValueError:
-            pass
-        finally:
-            self.__departmentCode = int(string[:3])
-            self.__yearCode = int(string[3:6])
-            self.__orderOfPlacement = int(string[6:])
+        return self.digitFixer(self.departmentCode) + self.digitFixer(self.yearCode) + self.digitFixer(self.orderOfPlacement)
 
     ## Creating another methods
     def digitFixer(self, integer: int) -> str:
-        temp_order = str(integer)
+        tempOrder = str(integer)
         if integer < 10:
-            temp_order = "00" + temp_order
+            tempOrder = "00" + tempOrder
         elif integer < 100:
-            temp_order = "0" + temp_order
-        return temp_order
+            tempOrder = "0" + tempOrder
+        return tempOrder
