@@ -17,7 +17,7 @@ class Simulation():
                 student = self.__studentGenerator.generate(studentCount, semesterCount)
                 self.__listOfStudents.append(student)
             except Exception as e:
-                e.printStackTrace()
+                e.printStackTrace() #Instance of 'Exception' has no 'printStackTrace' memberPylint(E1101:no-member)
 
     def run(self):
 

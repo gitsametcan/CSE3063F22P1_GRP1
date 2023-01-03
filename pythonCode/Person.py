@@ -2,8 +2,8 @@
 # package: person
 class Person():
 
-    #_firstName = str()
-    #_lastName = str()
+    #__firstName = str()
+    #__lastName = str()
 
     def __init__(self):
         # generated source for method __init__ 

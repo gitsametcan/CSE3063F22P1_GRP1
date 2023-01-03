@@ -8,14 +8,14 @@ class Debt:
     # Creating properties for variables
     
     def getAmount(self):
-        return self.amount
+        return self.__amount
 
     def setAmount(self, amount):
-        self.amount = amount
+        self.__amount = amount
 
     #def getStudent(self):
-    #    return self.student
+    #    return self.__student
 
     def setStudent(self, student):
-        self._student = student
+        self.__student = student
 
