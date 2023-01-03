@@ -1,7 +1,3 @@
-#!/usr/bin/env python
-# package: person
-
-
 from calendar import Calendar
 from Logger import Logger
 
@@ -68,6 +64,7 @@ class Instructor(Person):
         self._dateOfEntry = Calendar()
         self._instructorType = InstructorType()
         pass
+
 
     def getSchedule(self):
         # generated source for method getSchedule 

@@ -1,7 +1,3 @@
-#!/usr/bin/env python
-# package person;
-
-from ast import List
 from calendar import Calendar
 from Logger import Logger
 from Instructor import Instructor
@@ -31,10 +27,12 @@ class Advisor(Instructor):
         self.__scanner = input()
         self.__listOfStudents = List()
         self.__listOfApplications = List()
+
         if self.listOfStudents == None:
             self.listOfStudents = List(Student)
         if self.listOfApplications == None:
             self.listOfApplications = List(LectureRegistrationApplication)
+
         pass
 
     def showApplications(self):
@@ -111,3 +109,4 @@ class Advisor(Instructor):
         if self.listOfApplications == None:
             self.listOfApplications = List(LectureRegistrationApplication)
         pass
+
