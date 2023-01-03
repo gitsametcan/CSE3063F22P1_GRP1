@@ -6,13 +6,14 @@ from ApprovalState import ApprovalState
 class LectureRegistrationApplication:
 
 
-    def init(self, __sessionsSentForApproval, __advisor, __student):
-        self.__sessionsSentForApproval = {hash(LectureSession): ApprovalState for LectureSession, ApprovalState in __sessionsSentForApproval.items()}
-        self.__advisor = __advisor
-        self.__student = __student
+    def __init__(self):
+        pass
+        #self.__sessionsSentForApproval = {hash(LectureSession): ApprovalState for LectureSession, ApprovalState in __sessionsSentForApproval.items()}
+        #self.__advisor = __advisor
+        #self.__student = __student
 
-        if self.__sessionsSentForApproval is None:
-            self.__sessionsSentForApproval = {hash(LectureSession): ApprovalState for LectureSession in hash(LectureSession)}
+        #if self.__sessionsSentForApproval is None:
+        #    self.__sessionsSentForApproval = {hash(LectureSession): ApprovalState for LectureSession in hash(LectureSession)}
 
 
      # Creating properties for variables
@@ -22,7 +23,7 @@ class LectureRegistrationApplication:
 
     
     def getAdvisor(self):
-        return self.__advisor
+        return self.advisor
 
     def getStudent(self):
         return self.student
@@ -34,5 +35,5 @@ class LectureRegistrationApplication:
         self.student = student
 
     def setAdvisor(self, advisor):
-        self.__advisor = advisor
+        self.advisor = advisor
 

@@ -1,7 +1,7 @@
 from UniqueID import UniqueID
 
 class LectureID(UniqueID):
-    def init(self, __lectureCode: str):
+    def __init__(self, __lectureCode: str):
         self.__lectureCode = __lectureCode
 
      # Creating properties for variables

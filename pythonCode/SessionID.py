@@ -9,15 +9,16 @@ class SessionID:
     def getID(self) -> str:
         return str(self.__id)
 
-    def setID(datatype, *args):
-        if datatype == str:
+    def setID(self, *args):
+        t = args
+        if (isinstance(t, str)):
             try:
-                int(datatype)
+                int(t)
             except ValueError:
                 pass
             finally:
-                self.id = int(datatype)
+                self.id = int(t)
 
-        if datatype == int:
-            self.id = datatype
+        if t == int:
+                self.id = t
             

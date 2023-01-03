@@ -3,17 +3,18 @@ from Student import Student
 
 class Transcript:
 
-    def init(self, __student, __listOfSemester, __totalCreditsTaken, __totalCreditsCompleted, __points, __gano):
-        self.__student = __student
-        self.__listOfSemester = __listOfSemester
+    def __init__(self):
+        pass
+        #self.__student = __student
+        #self.__listOfSemester = __listOfSemester
 
-        if self.__listOfSemester == None:
-            self.__listOfSemester = [Semester]
+        #if self.__listOfSemester == None:
+        #    self.__listOfSemester = [Semester]
 
-        self.__totalCreditsTaken = self.totalCreditsTakenCalculator(self.__listOfSemester)
-        self.__totalCreditsCompleted = self.totalCreditsCompletedCalculator(self.__listOfSemester)
-        self.__points = self.pointsCalculator(self.__listOfSemester)
-        self.__gano = self.__points / self.__totalCreditsTaken
+        #self.__totalCreditsTaken = self.totalCreditsTakenCalculator(self.__listOfSemester)
+        #self.__totalCreditsCompleted = self.totalCreditsCompletedCalculator(self.__listOfSemester)
+        #self.__points = self.pointsCalculator(self.__listOfSemester)
+        #self.__gano = self.__points / self.__totalCreditsTaken
  
      # Creating properties for variables 
     
