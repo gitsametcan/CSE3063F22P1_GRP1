@@ -7,30 +7,29 @@ class Person():
 
     def __init__(self):
         # generated source for method __init__ 
-        self.firstName = str()
-        self.lastName = str()
-        pass
+        self.__firstName = str()
+        self.__lastName = str()
 
     #  Creating get and set methods for variables
     def getFirstName(self):
         # generated source for method getFirstName 
-        return self.firstName
+        return self.__firstName
 
-    def setFirstName(self, firstName):
+    def setFirstName(self, __firstName):
         # generated source for method setFirstName 
-        self.firstName = firstName
+        self.firstName = __firstName
 
     def getLastName(self):
         # generated source for method getLastName 
-        return self.lastName
+        return self.__lastName
 
-    def setLastName(self, lastName):
+    def setLastName(self, __lastName):
         # generated source for method setLastName 
-        self.lastName = lastName
+        self.lastName = __lastName
 
     def getFullName(self):
         # generated source for method getFullName 
-        return self.firstName + " " + self.lastName
+        return self.__firstName + " " + self.__lastName
 
     #def getID(self):---------------------------------------------------
         # generated source for method getID 

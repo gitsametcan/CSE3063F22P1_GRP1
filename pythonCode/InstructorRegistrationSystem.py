@@ -3,7 +3,7 @@ from DataManager import DataManager
 from Instructor import Instructor
 #import logger.Logger
 
-class InstructorRegistrationSystem(object):
+class InstructorRegistrationSystem():
     #log = Logger()
     #scanner = Scanner()
 
@@ -14,8 +14,7 @@ class InstructorRegistrationSystem(object):
 
         #self.log = Logger.getLogger("logs")
         #self.scanner = Scanner(System.in_)
-        self.registrationSystem1 = registrationSystem
-        self.instructorLogin()
+        self.__registrationSystem1 = registrationSystem
 
     def instructorLogin(self):
 

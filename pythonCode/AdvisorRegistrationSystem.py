@@ -3,7 +3,7 @@ from DataManager import DataManager
 from Advisor import Advisor
 #import logger.Logger#
 
-class AdvisorRegistrationSystem(object):
+class AdvisorRegistrationSystem():
     #log = Logger()
     #scanner = Scanner()#
 
@@ -22,17 +22,17 @@ class AdvisorRegistrationSystem(object):
 
         #Searching for a Advisor with a given id. If there is an id equal with providedId currentUser is that Advisor.#
         currentUser = None
-        #self.log.info("Please provide your ID:")
-        #self.log.info("----\nSuggestion: Enter \"150097\"")#
-        #while True:
-        #    providedID = input()
+        self.log.info("Please provide your ID:")
+        self.log.info("----\nSuggestion: Enter \"150097\"")#
+        while True:
+            providedID = input()
             #Optional<Advisor> currentOptionalAdvisor = DataManager.getInstance().findAdvisor(providedID, FilterType.ID);#
-            #if currentOptionalAdvisor.isPresent():
-        #        currentUser = currentOptionalAdvisor.get()
-        #        self.advisorMenu(currentUser)
-        #        break
-        #    else:
-        #        self.log.info("Advisor not found, please try again: ")#
+            if currentOptionalAdvisor.isPresent():
+                currentUser = currentOptionalAdvisor.get()
+                self.advisorMenu(currentUser)
+                break
+            else:
+                self.log.info("Advisor not found, please try again: ")#
 
     def advisorMenu(self, currentUser):
         #Showing Advisor's menu choices and making a choice#

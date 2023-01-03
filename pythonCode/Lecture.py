@@ -1,5 +1,4 @@
-class Lecture(object):
-    """ generated source for class Lecture """
+class Lecture():
     # __id = LectureID()
     # __name = str()
     # __lectureType = LectureType()

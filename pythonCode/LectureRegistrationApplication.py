@@ -1,4 +1,4 @@
-class LectureRegistrationApplication:
+class LectureRegistrationApplication():
 
 
     def __init__(self):

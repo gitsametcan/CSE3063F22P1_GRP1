@@ -21,7 +21,6 @@ class Advisor(Instructor):
     #__listOfApplications = List()
     #__scanner = input()
 
-    @overloaded
     def __init__(self):
         # generated source for method __init__ 
         #super(firstName, lastName, id, dateOfEntry, instructorType, schedule)
@@ -51,7 +50,7 @@ class Advisor(Instructor):
             self.log.info("Choose A Lecture Registration Application: ")
             choice = input()
             if choice != 0:
-                applicationOperations(choice - 1)
+                self.applicationOperations(choice - 1)
 
     def applicationOperations(self, choice):
         # generated source for method applicationOperations 
@@ -102,16 +101,3 @@ class Advisor(Instructor):
     def rejectApplication(self, lectureRegistirationApplication, lectureSession):
         # generated source for method rejectApplication 
         lectureRegistirationApplication.getSessionsSentForApproval().put(lectureSession, ApprovalState.Rejected)
-
-    @__init__.register(object, str, str, InstructorID, Calendar, List, List, InstructorType, Schedule)
-
-    def __init___0(self):
-        # generated source for method __init___0 
-        #super(firstName, lastName, id, dateOfEntry, instructorType, schedule)
-        self.__listOfStudents = List()
-        self.__listOfApplications = List()
-        if self.listOfStudents == None:
-            self.listOfStudents = List(Student)
-        if self.listOfApplications == None:
-            self.listOfApplications = List(LectureRegistrationApplication)
-        pass
