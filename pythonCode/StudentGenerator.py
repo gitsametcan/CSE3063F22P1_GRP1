@@ -31,6 +31,7 @@ class StudentGenerator():
         student = Student()
         #2 schedule = Schedule(student, Term.values()[semesterCount % 2], TermYear.values()[semesterCount / 2])
         #5 student.setSchedule(schedule)
+
         student.setDebt(studentDebtGenerator())
         student.setAdvisor(getRandomAdvisor())
         student.setTranscript(self.transcriptGenerator.generate(student, schedule))
