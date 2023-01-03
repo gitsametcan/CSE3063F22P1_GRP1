@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # package: person
-class Person(object):
-    # generated source for class Person 
+class Person():
+
     #_firstName = str()
     #_lastName = str()
 

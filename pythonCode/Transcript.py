@@ -1,4 +1,5 @@
 
+
 from Semester import Semester
 from Student import Student
 
@@ -56,7 +57,6 @@ class Transcript:
         self.totalCreditsCompleted = totalCreditsCompleted
 
 
-
     # Creating other methods
 
     def addSemester(self, semester):
@@ -67,8 +67,8 @@ class Transcript:
         totalCreditsTaken = 0
         for semester in listOfSemester:
 
-            totalCreditsTaken + semester.creditsTaken()
 
+            totalCreditsTaken + semester.creditsTaken()
 
     def totalCreditsCompletedCalculator(self, listOfSemester):
         totalCreditsCompleted = 0
@@ -81,5 +81,3 @@ class Transcript:
         points = 0
         for semester in self.listOfSemester:
             points += semester.points()
-
-

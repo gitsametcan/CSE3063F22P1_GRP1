@@ -1,3 +1,4 @@
+
 from calendar import Calendar
 from Logger import Logger
 from Instructor import Instructor
@@ -28,12 +29,14 @@ class Advisor(Instructor):
         self.__listOfStudents = List()
         self.__listOfApplications = List()
 
+
         if self.listOfStudents == None:
             self.listOfStudents = List(Student)
         if self.listOfApplications == None:
             self.listOfApplications = List(LectureRegistrationApplication)
 
         pass
+
 
     def showApplications(self):
         # generated source for method showApplications 
@@ -78,8 +81,10 @@ class Advisor(Instructor):
                 self.approveApplication(lectureRegistrationApplication, lectureSession)
             elif approveChoice==2:
                 self.rejectApplication(lectureRegistrationApplication, lectureSession)
+
             else:
                 pass
+
 
     def getListOfStudents(self):
         # generated source for method getListOfStudents 
@@ -99,6 +104,7 @@ class Advisor(Instructor):
         lectureRegistirationApplication.getSessionsSentForApproval().put(lectureSession, ApprovalState.Rejected)
 
     @__init__.register(object, str, str, InstructorID, Calendar, List, List, InstructorType, Schedule)
+
     def __init___0(self):
         # generated source for method __init___0 
         #super(firstName, lastName, id, dateOfEntry, instructorType, schedule)
@@ -109,4 +115,3 @@ class Advisor(Instructor):
         if self.listOfApplications == None:
             self.listOfApplications = List(LectureRegistrationApplication)
         pass
-

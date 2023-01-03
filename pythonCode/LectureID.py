@@ -1,4 +1,3 @@
-
 from UniqueID import UniqueID
 
 class LectureID(UniqueID):

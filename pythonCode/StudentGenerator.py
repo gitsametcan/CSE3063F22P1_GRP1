@@ -1,4 +1,3 @@
-
 from Debt import Debt
 from LectureRegistrationApplication import LectureRegistrationApplication
 from StudentID import StudentID
@@ -32,6 +31,7 @@ class StudentGenerator():
         student = Student()
         #2 schedule = Schedule(student, Term.values()[semesterCount % 2], TermYear.values()[semesterCount / 2])
         #5 student.setSchedule(schedule)
+
 
 
         student.setDebt(studentDebtGenerator())
