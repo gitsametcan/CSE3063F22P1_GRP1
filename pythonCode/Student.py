@@ -1,9 +1,9 @@
+from calendar import Calendar
 from Logger import Logger
 #from Schedule import Schedule
 from Person import Person
 from StudentID import StudentID
 from Transcript import Transcript
-from calendar import Calendar
 from Debt import Debt
 from LectureRegistrationApplication import LectureRegistrationApplication
 from ApprovalState import ApprovalState
@@ -16,7 +16,7 @@ from LectureSession import LectureSession
 from Semester import Semester
 
 class Student(Person):
-    # generated source for class Student 
+    # generated source for class Student
     #__log = Logger()
     #__advisor = Advisor()
     #__id = StudentID()
@@ -25,7 +25,6 @@ class Student(Person):
     #__dateOfEntry = Calendar()
     #__debt = Debt()
     #__registirationApplication = LectureRegistrationApplication()
-    #__scanner = input()
     def __init__(self):
         #super(firstName, lastName)
         self.__log = Logger.getLogger("logs")
@@ -33,13 +32,9 @@ class Student(Person):
         self.__schedule = Schedule()
         self.__transcript = Transcript()
         self.__dateOfEntry = Calendar()
-        pass
 
     def setID(self, nID):        
         self.__id.setID(nID)
-
-    def setID(self,DepartmentCode, YearCode, OrderOfPlacement):        
-        self.__id.setID(DepartmentCode, YearCode, OrderOfPlacement)
 
     def setTranscript(self,transcript):     
         self.__transcript = transcript
@@ -83,45 +78,18 @@ class Student(Person):
     def sendForApproval(self, chosenLectureSessions):
 
         # generated source for method sendForApproval 
-        approvalList = None
+        approvalList = dict()
 
         for ls in chosenLectureSessions:
-            approvalList.put(ls, ApprovalState.Pending)
-        self.registirationApplication = LectureRegistrationApplication(approvalList, self.__advisor, self)
-        self.__advisor.getListOfApplications().add(self.registirationApplication)
-    def showTranscript(self):
+            approvalList[ls] = ApprovalState.Pending
+        #adding lectureSessions and pending state to student's RegistrationApplication
+        self.__registirationApplication = LectureRegistrationApplication()
+        self.__registirationApplication.setAdvisor(self.__advisor)
+        self.__registirationApplication.setSsessionsSentForApproval(approvalList)
+        self.__registirationApplication.setStudent(self)
+        self.__advisor.getListOfApplications().add(self.__registirationApplication)
 
-        # generated source for method showTranscript 
-
-        semesterSize = self.getTranscript().getListOfSemester().size()
-        i = 0
-        while i < semesterSize:
-            if i == 0:
-                self.__log.info("1st Semester")
-            elif i == 1:
-                self.__log.info("2nd Semester")
-            else:
-                self.__log.info((i + 1) + "th Semester")
-            self.__log.info("%-12s%-40s%-10s%-15s", "Lecture Code", "Lecture Name", "Credit", "Letter Grade")
-
-            tempTakenLectures = self.getTranscript().getListOfSemester().get(i).getListOfLecturesTaken()
-
-
-            for l in tempTakenLectures.keySet():
-                self.__log.info("%-12s%-40s%-10s%-15s%n", l.getID(), l.__name__, l.getCredit(), tempTakenLectures.get(l).__str__())
-            self.__log.info("%-31s", "Credits taken in Semester:")
-            self.__log.info("" + self.getTranscript().getListOfSemester().get(i).getCreditsTaken())
-            self.__log.info("%-31s", "Credits completed in Semester:")
-            self.__log.info("" + self.getTranscript().getListOfSemester().get(i).getCreditsCompleted())
-            i += 1
-
-    def showSchedule(self):
-
-        # generated source for method showSchedule 
-        self.getSchedule().showSchedule()
-
-
-    def debtMenu(self):
+    """def debtMenu(self):
         # generated source for method debtMenu 
 
         if self.getDebt().getAmount() == 0:
@@ -138,9 +106,9 @@ class Student(Person):
                 elif payDebtChoice==2:
                     validInput = True
                 else:
-                    self.__log.info("Please enter a valid input(1,2)")
+                    self.__log.info("Please enter a valid input(1,2)")"""
 
-    def registrationStatusMenu(self):
+    """def registrationStatusMenu(self):
 
         # generated source for method registrationStatusMenu 
 
@@ -151,10 +119,10 @@ class Student(Person):
         self.__log.info("")
         for s in sessions.keySet():
             self.__log.info("%s.%s%-15s%n", s.getLecture().getID(), s.getSessionID(), sessions.get(s).__str__())
-        self.__log.info("")
+        self.__log.info("")"""
 
 
-    def makeRegistrationMenu(self):
+    """def makeRegistrationMenu(self):
 
         # generated source for method makeRegistrationMenu 
         currentStudentAvailableLectures = self.availableLessons()
@@ -181,9 +149,9 @@ class Student(Person):
                 #  currentUser.setListOfLectureSessions(chosenLectures);
                 break
             if input.lower() == "exit".lower():
-                break
+                break"""
 
-    def parseSelectionCommand(self, input, chosenLectures):
+    """def parseSelectionCommand(self, input, chosenLectures):
 
         # generated source for method parseSelectionCommand 
 
@@ -223,12 +191,12 @@ class Student(Person):
 
 
                             return
-            self.__log.info("Couldn't find %s", partedInput[1])
+            self.__log.info("Couldn't find %s", partedInput[1])"""
 
-    def showChosenLectureSessions(self, chosenLectureSessions):
+    """def showChosenLectureSessions(self, chosenLectureSessions):
 
         # generated source for method showChosenLectureSessions 
-
+        
 
         self.__log.info("Chosen Lectures:\n")
         for ls in chosenLectureSessions:
@@ -238,31 +206,30 @@ class Student(Person):
         self.__log.info("\n\n\nEnter a lecture session code that you will send for approval.\n"
          + "\"add lecture_id\" to add session for approval list.\n" 
          + "\"remove lecture_id\" to remove session from approval list.\n" 
-         + "Enter \"send\" to send\n" + "Enter \"exit\" to exit")
+         + "Enter \"send\" to send\n" + "Enter \"exit\" to exit")"""
 
     def canTakeLecture(self, lecture, transcript):
 
         # generated source for method canTakeLecture 
 
-
-        if transcript == None:
+        if self.__transcript == None:
             return True
         canTake = bool()
         listOfTaken = list()
         a = 0
         in_ = False
         i = 0
-        while i < transcript.getListOfSemester().size():
+        while i < self.__transcript.getListOfSemester().size():
+            semester = transcript.getListOfSemester().get(i)
+            for lectureTaken in semester.keySet():
+                listOfTaken.append(lectureTaken)
 
-            for lectureTaken in Semester.getListOfLecturesTaken().keySet():
-
-
-                listOfTaken.add(lectureTaken)
-                if lectureTaken.__name__ == lecture.__name__:
+                if lectureTaken.getID() == lecture.getID():
                     a = i
                     in_ = True
             i += 1
-        if canTake == hasPreqLectureTaken(lecture.getPrerequisite(), listOfTaken):
+        canTake = self.hasPreqLectureTaken(lecture.getPrerequisite(), listOfTaken)
+        if canTake:
             if in_:
                 canTake = self.takenPoint(lecture, transcript.getListOfSemester().get(a).getListOfLecturesTaken())
         return canTake
@@ -274,7 +241,7 @@ class Student(Person):
         if preqLecture == None:
             return True
         for lecture in listOfLecture:
-            if lecture.__name__ == preqLecture.__name__:
+            if lecture.getID() == preqLecture.getID:
                 return True
         return False
 
@@ -296,10 +263,6 @@ class Student(Person):
 
         lecturesUntilNow = DataManager.getInstance().searchLectureUntilTerm(self.getSchedule().getTerm(), self.getSchedule().getTermYear())
         for l in lecturesUntilNow:
-            if l.getTerm() == self.getSchedule().getTerm() and l.getTermYear() == self.getSchedule().getTermYear() and canTakeLecture(l, self.getTranscript()):
-                availableLessons.add(l)
+            if l.getTerm() == self.getSchedule().getTerm() and l.getTermYear() == self.getSchedule().getTermYear() and self.canTakeLecture(l, self.getTranscript()):
+                availableLessons.append(l)
         return availableLessons
-
-
-
-

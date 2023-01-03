@@ -45,18 +45,42 @@ class InstructorRegistrationSystem():
                 menuChoice = input()
                 if menuChoice==1:
                     validInput = True
-                    currentUser.showLectures()
+                    self.showLectures(currentUser)
                 elif menuChoice==2:
                     validInput = True
-                    currentUser.showStudents()
+                    self.showStudents(currentUser)
                 elif menuChoice==3:
                     validInput = True
                     self.signOut()
                 else:
                     self.__log.info("The input is not valid, please provide a valid input.")
 
+    def showLectures(self, currentUser):
+        # generated source for method showLectures 
+        schedule = currentUser.getSchedule()
+        listOfLectureSessions = schedule.getListOfLectureSessions()
+        for lectureSession in listOfLectureSessions:
+            self.__log.info(lectureSession.getLecture().getName() + "." + lectureSession.getSessionID())
+            self.__log.info("---------------------------------------")
+            self.__log.info("Quota: " + lectureSession.getLecture().getQuota())
+            self.__log.info("Number Of Students: " + lectureSession.getListOfStudents().size() + "\n")
+            self.__log.info("---------------------------------------")
+
+        schedule.showSchedule()
+
+    def showStudents(self, currentUser):
+        # generated source for method showStudents 
+        count = 0
+        for lectureSession in currentUser.getSchedule().getListOfLectureSessions():
+            count += 1
+            self.__log.info(count + ". " + lectureSession.getLecture().getName() + "." + lectureSession.getSessionID())
+        self.__log.info("Choose A Session: ")
+        sessionChoice = input()
+        lectureSession = currentUser.getSchedule().getListOfLectureSessions().get(sessionChoice - 1)
+        for student in lectureSession.getListOfStudents():
+            self.__log.info("ID: " + student.getID() + "Name: " + student.getFullName())
+
+
     def signOut(self):
         #returning back to RegistrationSystem's menu
         self.__registrationSystem1.menu()
-        
-
