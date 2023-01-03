@@ -30,39 +30,40 @@ class Student(Person):
     __debt = Debt()
     __registirationApplication = LectureRegistrationApplication()
     __scanner = input()
-    def __init__(self, firstName, lastName, id, schedule, transcript, dateOfEntry):
-    super(firstName, lastName)
-    log = Logger.getLogger("logs")
-    self.scanner = input()
-    self.id = id
-    self.schedule = schedule
-    self.transcript = transcript
-    self.dateOfEntry = dateOfEntry
-    def setID(nID):        
+    def __init__(self):
+        #super(firstName, lastName)
+        #__log = Logger.getLogger("logs")
+        #self.scanner = input()
+        #self.id = id
+        #self.schedule = schedule
+        #self.transcript = transcript
+        #self.dateOfEntry = dateOfEntry
+        pass
+    def setID(self, nID):        
         self.id.setID(nID)
-    def setID(DepartmentCode, YearCode, OrderOfPlacement):        
+    def setID(self,DepartmentCode, YearCode, OrderOfPlacement):        
         self.setID(DepartmentCode, YearCode, OrderOfPlacement)
-    def setTranscript(transcript):     
+    def setTranscript(self,transcript):     
         self.transcript(transcript)
-    def setDateOfEntry(dateOfEntry):       
+    def setDateOfEntry(self,dateOfEntry):       
         self.dateOfEntry(dateOfEntry)
     def getAdvisor(self):      
         return self.advisor
-    def setAdvisor(advisor):       
+    def setAdvisor(self,advisor):       
         self.advisor(advisor)
     def getDebt(self):        
         return self.debt
-    def setDebt(dateOfEntry):       
+    def setDebt(self,dateOfEntry):       
         self.dateOfEntry(dateOfEntry)
     def getRegistirationApplication(self):       
         return self.registirationApplication
-    def setRegistirationApplication(registirationApplication):        
+    def setRegistirationApplication(self,registirationApplication):        
         self.registirationApplication(registirationApplication)
     def getID(self):       
         return id.getID()
     def getSchedule(self):       
         return self.schedule
-    def setSchedule(schedule):       
+    def setSchedule(self,schedule):       
         self.schedule(schedule)
     def getTranscript(self):        
         return self.transcript
@@ -70,7 +71,7 @@ class Student(Person):
         return self.dateOfEntry
     def sendForApproval(self, chosenLectureSessions):
         # generated source for method sendForApproval 
-        approvalList = HashMap()
+        approvalList = None
         for ls in chosenLectureSessions:
             approvalList.put(ls, ApprovalState.Pending)
         self.registirationApplication = LectureRegistrationApplication(approvalList, self.advisor, self)
@@ -87,6 +88,7 @@ class Student(Person):
             else:
                 log.info((i + 1) + "th Semester")
             log.info("%-12s%-40s%-10s%-15s", "Lecture Code", "Lecture Name", "Credit", "Letter Grade")
+            tempTakenLectures = self.getTranscript().getListOfSemester().get(i).getListOfLecturesTaken()
             for l in tempTakenLectures.keySet():
                 log.info("%-12s%-40s%-10s%-15s%n", l.getID(), l.__name__, l.getCredit(), tempTakenLectures.get(l).__str__())
             log.info("%-31s", "Credits taken in Semester:")
@@ -207,7 +209,7 @@ class Student(Person):
         in_ = False
         i = 0
         while i < transcript.getListOfSemester().size():
-            for lectureTaken in semester.getListOfLecturesTaken().keySet():
+            for lectureTaken in Semester.getListOfLecturesTaken().keySet():
                 listOfTaken.add(lectureTaken)
                 if lectureTaken.__name__ == lecture.__name__:
                     a = i
@@ -215,7 +217,7 @@ class Student(Person):
             i += 1
         if canTake = hasPreqLectureTaken(lecture.getPrerequisite(), listOfTaken):
             if in_:
-                canTake = takenPoint(lecture, transcript.getListOfSemester().get(a).getListOfLecturesTaken())
+                canTake = self.takenPoint(lecture, transcript.getListOfSemester().get(a).getListOfLecturesTaken())
         return canTake
 
     def hasPreqLectureTaken(self, preqLecture, listOfLecture):
@@ -236,7 +238,7 @@ class Student(Person):
 
     def availableLessons(self):
         # generated source for method availableLessons 
-        availableLessons = ArrayList()
+        availableLessons = List()
         lecturesUntilNow = DataManager.getInstance().searchLectureUntilTerm(self.getSchedule().getTerm(), self.getSchedule().getTermYear())
         for l in lecturesUntilNow:
             if l.getTerm() == self.getSchedule().getTerm() and l.getTermYear() == self.getSchedule().getTermYear() and canTakeLecture(l, self.getTranscript()):

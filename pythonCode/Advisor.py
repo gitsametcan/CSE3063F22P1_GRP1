@@ -24,16 +24,17 @@ class Advisor(Instructor):
     __scanner = input()
 
     @overloaded
-    def __init__(self, firstName, lastName, id, listOfLectures, dateOfEntry, listOfStudents, listOfApplications, instructorType, schedule):
+    def __init__(self):
         # generated source for method __init__ 
-        super(firstName, lastName, id, dateOfEntry, instructorType, schedule)
-        self.scanner = input()
-        self.listOfStudents = listOfStudents
-        self.listOfApplications = listOfApplications
-        if self.listOfStudents == None:
-            self.listOfStudents = List(Student)
-        if self.listOfApplications == None:
-            self.listOfApplications = List(LectureRegistrationApplication)
+        #super(firstName, lastName, id, dateOfEntry, instructorType, schedule)
+        #self.scanner = input()
+        #self.listOfStudents = listOfStudents
+        #self.listOfApplications = listOfApplications
+        #if self.listOfStudents == None:
+            #self.listOfStudents = List(Student)
+        #if self.listOfApplications == None:
+            #self.listOfApplications = List(LectureRegistrationApplication)
+        pass
 
     def showApplications(self):
         # generated source for method showApplications 
@@ -98,12 +99,13 @@ class Advisor(Instructor):
         lectureRegistirationApplication.getSessionsSentForApproval().put(lectureSession, ApprovalState.Rejected)
 
     @__init__.register(object, str, str, InstructorID, Calendar, List, List, InstructorType, Schedule)
-    def __init___0(self, firstName, lastName, id, dateOfEntry, listOfStudents, listOfApplications, instructorType, schedule):
+    def __init___0(self):
         # generated source for method __init___0 
-        super(firstName, lastName, id, dateOfEntry, instructorType, schedule)
-        self.listOfStudents = listOfStudents
-        self.listOfApplications = listOfApplications
-        if self.listOfStudents == None:
-            self.listOfStudents = List(Student)
-        if self.listOfApplications == None:
-            self.listOfApplications = List(LectureRegistrationApplication)
+        #super(firstName, lastName, id, dateOfEntry, instructorType, schedule)
+        #self.listOfStudents = listOfStudents
+        #self.listOfApplications = listOfApplications
+        #if self.listOfStudents == None:
+            #self.listOfStudents = List(Student)
+        #if self.listOfApplications == None:
+            #self.listOfApplications = List(LectureRegistrationApplication)
+        pass

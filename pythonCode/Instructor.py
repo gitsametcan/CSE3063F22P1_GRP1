@@ -2,6 +2,7 @@
 # package: person
 
 
+from calendar import Calendar
 import Logger
 
 import InstructorType
@@ -58,14 +59,15 @@ class Instructor(Person):
         for student in lectureSession.getListOfStudents():
             self.log.info("ID: " + student.getID() + "Name: " + student.getFullName())
 
-    def __init__(self, firstName, lastName, id, dateOfEntry, InstructorType, schedule):
+    def __init__(self):
         # generated source for method __init__ 
-        super(firstName, lastName)
-        self.scanner = input()
-        self._id = id
-        self.setSchedule(schedule)
-        self.dateOfEntry = dateOfEntry
-        self.instructorType = InstructorType
+        #super(firstName, lastName)
+        #self.scanner = input()
+        #self._id = id
+        #self.setSchedule(schedule)
+        #self.dateOfEntry = dateOfEntry
+        #self.instructorType = InstructorType
+        pass
 
     def getSchedule(self):
         # generated source for method getSchedule 

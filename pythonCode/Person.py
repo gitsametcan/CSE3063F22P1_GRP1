@@ -5,10 +5,11 @@ class Person(object):
     _firstName = str()
     _lastName = str()
 
-    def __init__(self, firstName, lastName):
+    def __init__(self):
         # generated source for method __init__ 
-        self.firstName = firstName
-        self.lastName = lastName
+        #self.firstName = firstName
+        #self.lastName = lastName
+        pass
 
     #  Creating get and set methods for variables
     def getFirstName(self):
