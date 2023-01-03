@@ -14,7 +14,7 @@ class RegistrationSystem(object):
 
 
     def __init__(self):
-        simulation = Simulation();
+        self.simulation = Simulation()
         #Constructor of RegistrationSystem#
 
         #self.log = Logger.getLogger("logs")
@@ -39,7 +39,7 @@ class RegistrationSystem(object):
                 AdvisorRegistrationSystem(self)
             elif loginType==4:
                 #self.log.info("Initiating simulation...")
-                simulation.run()
+                self.simulation.run()
                 #self.log.info("Done.")
             elif loginType==5:
                 #self.log.info("Exiting...")

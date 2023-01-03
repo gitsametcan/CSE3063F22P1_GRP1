@@ -11,7 +11,6 @@ class StudentRegistrationSystem(object):
     #scanner = Scanner()#
 
     #Holding registrationSystem object for returning after signing out#
-    registrationSystem1 = None
 
     def __init__(self, registrationSystem):
         #Constructor of StudentRegistrationSystem#
@@ -78,5 +77,4 @@ class StudentRegistrationSystem(object):
 
     def signOut(self):
         #returning back to RegistrationSystem's menu#
-
         self.registrationSystem1.menu()

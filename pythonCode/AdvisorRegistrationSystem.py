@@ -11,7 +11,6 @@ class AdvisorRegistrationSystem(object):
     #scanner = Scanner()#
 
     #Holding registrationSystem object for returning after signing out#
-    registrationSystem1 = None
 
     def __init__(self, registrationSystem):
         #Constructor of InstructorRegistrationSystem#
