@@ -1,33 +1,39 @@
+
+from Student import Student
+from Advisor import Advisor
+from LectureSession import LectureSession
+from ApprovalState import ApprovalState
+
 class LectureRegistrationApplication:
 
-    def __init__(self, __sessionsSentForApproval, __advisor, __student):
-        self.__sessionsSentForApproval = __sessionsSentForApproval or {}
-        self.__advisor = __advisor
-        self.__student = __student
+
+    def __init__(self):
+        pass
+        #self.__sessionsSentForApproval = {hash(LectureSession): ApprovalState for LectureSession, ApprovalState in __sessionsSentForApproval.items()}
+        #self.__advisor = __advisor
+        #self.__student = __student
+
+        #if self.__sessionsSentForApproval is None:
+        #    self.__sessionsSentForApproval = {hash(LectureSession): ApprovalState for LectureSession in hash(LectureSession)}
+
 
      # Creating properties for variables
 
-    @property
-    def __sessionsSentForApproval(self):
-        return self.__sessionsSentForApproval
+    def getSessionsSentForApproval(self):
+        return self.sessionsSentForApproval
+
     
-    @property
-    def __advisor(self):
-        return self.__advisor
+    def getAdvisor(self):
+        return self.advisor
 
-    @property
-    def __student(self):
-        return self.__student
+    def getStudent(self):
+        return self.student
 
-    @__sessionsSentForApproval.setter
-    def __sessionsSentForApproval(self, __sessionsSentForApproval):
-        self.__sessionsSentForApproval = __sessionsSentForApproval
+    def setSsessionsSentForApproval(self, sessionsSentForApproval):
+        self.sessionsSentForApproval = sessionsSentForApproval
 
-    @__student.setter
-    def __student(self, __student):
-        self.__student = __student
+    def setStudent(self, student):
+        self.student = student
 
-    @__advisor.setter
-    def __advisor(self, __advisor):
-        self.__advisor = __advisor
-
+    def setAdvisor(self, advisor):
+        self.advisor = advisor

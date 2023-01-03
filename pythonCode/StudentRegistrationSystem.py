@@ -1,6 +1,3 @@
-##!/usr/bin/env python
-# package: System#
-
 from FilterType import FilterType
 from DataManager import DataManager
 from Student import Student
@@ -17,6 +14,7 @@ class StudentRegistrationSystem(object):
 
         #self.log = Logger.getLogger("logs")
         #self.scanner = Scanner(System.in_)#
+
         self.registrationSystem1 = registrationSystem
         self.studentLogin()
 
@@ -39,6 +37,7 @@ class StudentRegistrationSystem(object):
     def studentMenu(self, currentUser):
         #Showing Student's menu choices and making a choice#
 
+
         validInput = False
         menuChoice = 0
         while menuChoice != 6:
@@ -50,6 +49,7 @@ class StudentRegistrationSystem(object):
             #self.log.info("5-Debt")
             #self.log.info("6-Sign Out")
             #self.log.info("----\nSuggestion: Enter \"2\" to go to he registration menu, then check by entering \"4\" to go to the status menu")#
+
             validInput = False
             while not validInput:
                 menuChoice = input()
@@ -78,3 +78,4 @@ class StudentRegistrationSystem(object):
     def signOut(self):
         #returning back to RegistrationSystem's menu#
         self.registrationSystem1.menu()
+

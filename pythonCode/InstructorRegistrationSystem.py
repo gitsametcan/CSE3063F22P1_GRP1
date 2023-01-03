@@ -1,6 +1,3 @@
-#!/usr/bin/env python
-# package: System
-
 from FilterType import FilterType
 from DataManager import DataManager
 from Instructor import Instructor
@@ -21,6 +18,7 @@ class InstructorRegistrationSystem(object):
         self.instructorLogin()
 
     def instructorLogin(self):
+
         #Searching for a Instructor with a given id. If there is an id equal with providedId currentUser is that Instructor.
 
         currentUser = None
@@ -45,6 +43,7 @@ class InstructorRegistrationSystem(object):
             #self.log.info("1-Show Lecture Sessions")
             #self.log.info("2-Show Students Of A Lecture Session")
             #self.log.info("3-Sign Out")
+
             validInput = False
             while not validInput:
                 menuChoice = input()
@@ -65,3 +64,4 @@ class InstructorRegistrationSystem(object):
         #returning back to RegistrationSystem's menu
         self.registrationSystem1.menu()
         
+

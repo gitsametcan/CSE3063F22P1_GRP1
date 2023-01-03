@@ -1,6 +1,3 @@
-##!/usr/bin/env python
-# package: System#
-
 from FilterType import FilterType
 from DataManager import DataManager
 from Advisor import Advisor
@@ -17,10 +14,12 @@ class AdvisorRegistrationSystem(object):
 
         #self.log = Logger.getLogger("logs")
         #self.scanner = Scanner(System.in_)#
+
         self.registrationSystem1 = registrationSystem
         self.advisorLogin()
 
     def advisorLogin(self):
+
         #Searching for a Advisor with a given id. If there is an id equal with providedId currentUser is that Advisor.#
         currentUser = None
         #self.log.info("Please provide your ID:")
@@ -43,6 +42,7 @@ class AdvisorRegistrationSystem(object):
             #self.log.info("Please choose a menu: ")
             #self.log.info("1-Registration Applications")
             #self.log.info("2-Sign Out")#
+
             validInput = False
             while not validInput:
                 menuChoice = input()
@@ -58,5 +58,6 @@ class AdvisorRegistrationSystem(object):
 
     def signOut(self):
         #returning back to RegistrationSystem's menu#
+
         
         self.registrationSystem1.menu()

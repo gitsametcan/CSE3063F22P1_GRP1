@@ -1,7 +1,3 @@
-#/usr/bin/env python
-#package: System"""
-
-#import logger.Logger
 import sys
 from Simulation import Simulation
 from StudentRegistrationSystem import StudentRegistrationSystem
@@ -30,6 +26,7 @@ class RegistrationSystem(object):
             #self.log.info("3-Advisor")
             #self.log.info("4-Simulation")
             #self.log.info("5-Exit")
+
             loginType = input()
             if loginType==1:
                 StudentRegistrationSystem(self)
