@@ -1,7 +1,19 @@
-from Logger import Logger;
-
+from Logger import Logger
+#from Schedule import Schedule
 from Person import Person
 from StudentID import StudentID
+from Transcript import Transcript
+from calendar import Calendar
+from Debt import Debt
+from LectureRegistrationApplication import LectureRegistrationApplication
+from ApprovalState import ApprovalState
+from FilterType import FilterType
+from LetterGrade import LetterGrade
+from StudentID import StudentID
+from DataManager import DataManager
+from Lecture import Lecture
+from LectureSession import LectureSession
+from Semester import Semester
 
 class Student(Person):
     # generated source for class Student 
