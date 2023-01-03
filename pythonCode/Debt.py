@@ -1,4 +1,3 @@
-
 from Student import Student
 
 class Debt:

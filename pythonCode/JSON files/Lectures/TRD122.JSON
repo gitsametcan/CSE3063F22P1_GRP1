@@ -1,0 +1,105 @@
+{
+    "ID": "TRD122",
+    "Name": "Turkish Language II",
+    "prerequisiteID": "",
+    "lectureType": "MANDATORY",
+    "quota": 50,
+    "credit": 2,
+    "term": "Fall",
+    "termYear": "Freshman",
+    "lectureSessions": [
+      {
+        "ID": "1",
+        "lectureID": "TRD122",
+        "instructorID": "150145",
+        "sessionType": "Theorytical",
+        "sessionHours": [
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            1,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "listOfAssistantIDs": []
+      }
+    ]
+  }

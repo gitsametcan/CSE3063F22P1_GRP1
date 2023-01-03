@@ -1,4 +1,3 @@
-
 from Student import Student
 from Advisor import Advisor
 from LectureSession import LectureSession

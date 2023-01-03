@@ -5,11 +5,10 @@ from DataManagerInstance import DataManagerInstance
 
 class DataManager():
 
-    _singleInstance = DataManagerInstance()
+    __singleInstance = DataManagerInstance()
 
     def __init__(self):
         pass
-            
 
     @classmethod
     def getInstance(cls):

@@ -2,27 +2,21 @@ from datetime import datetime
 import sys
 
 class Logger :
-    _loggers = dict()
+    __loggers = dict()
 
     @classmethod
     def getLogger(cls,fileNameWithoutExtension):
         # this function retrieves the logger 
         # object corresponding to the given name
-
-        # if a dictionary is not present, generate one
-        #try:
-         #   val = cls._loggers
-        #except NameError:
-         #   cls._loggers = dict()
         
         # if the given name is contained in keys of loggers
         # return that logger object
-        if (fileNameWithoutExtension in cls._loggers):
-            return cls._loggers[fileNameWithoutExtension]
+        if (fileNameWithoutExtension in cls.__loggers):
+            return cls.__loggers[fileNameWithoutExtension]
         
         # otherwise generate a new logger object and return it
         tLog = Logger(fileNameWithoutExtension)
-        cls._loggers[fileNameWithoutExtension] = tLog
+        cls.__loggers[fileNameWithoutExtension] = tLog
         return tLog
 
     def __init__(self, fileNameWithoutExtension):
@@ -57,7 +51,7 @@ class Logger :
             message = text
         
         # appends [ERROR] at the start of message and prints
-        self.log("[ERROR]", message)
+        self.__log("[ERROR]", message)
 
     def info(self, text, *args):
         # to be able to access 
@@ -72,9 +66,9 @@ class Logger :
             message = text
         
         # appends [INFO] at the start of message and prints
-        self.log("[INFO]", message)
+        self.__log("[INFO]", message)
 
-    def log(self, tag,  text):
+    def __log(self, tag,  text):
         # retrieving current date and time
         # to print with log message
         now = datetime.now()
@@ -82,7 +76,7 @@ class Logger :
         currentTime = "[" + date + "]"
         
         # concatanates current time, tag and message
-        message = currentTime + tag + text
+        message = currentTime + tag + " " +text
         if ( "ERROR" in tag ):
             # prints the message to the stderr
             # if the tag contains "ERROR"

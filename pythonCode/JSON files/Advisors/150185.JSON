@@ -1,0 +1,17 @@
+{
+    "listOfStudentIDs": [
+    ],
+    "schedule": {
+      "sessions": {},
+      "ID": "150185",
+      "term": "Fall",
+      "termYear": "Senior"
+    },
+  
+    "instructorType": "Instructor",
+    "instructorID": "150185",
+    "dateOfEntry": "2018-09-03",
+    "firstName": "Sanem",
+    "lastName": "ARSLAN"
+  
+  }
