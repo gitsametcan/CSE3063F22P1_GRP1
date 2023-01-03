@@ -36,4 +36,3 @@ class LectureRegistrationApplication:
 
     def setAdvisor(self, advisor):
         self.advisor = advisor
-

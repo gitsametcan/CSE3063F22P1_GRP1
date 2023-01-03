@@ -20,3 +20,4 @@ class Debt:
 
     def setStudent(self, student):
         self._student = student
+        

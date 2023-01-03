@@ -54,16 +54,19 @@ class Transcript:
     def setTotalCreditsCompleted(self, totalCreditsCompleted):
         self.totalCreditsCompleted = totalCreditsCompleted
 
+
     # Creating other methods
 
     def addSemester(self, semester):
-        self.listOfSemester.append(semester)
+
+        self.__listOfSemester.append(semester)
 
     def totalCreditsTakenCalculator(self, listOfSemester):
         totalCreditsTaken = 0
         for semester in listOfSemester:
+
             totalCreditsTaken + semester.creditsTaken()
-        return totalCreditsTaken
+
 
     def totalCreditsCompletedCalculator(self, listOfSemester):
         totalCreditsCompleted = 0
@@ -75,4 +78,5 @@ class Transcript:
         points = 0
         for semester in self.listOfSemester:
             points += semester.points()
+
         return points

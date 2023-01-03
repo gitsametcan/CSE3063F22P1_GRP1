@@ -37,6 +37,7 @@ class InstructorID(UniqueID):
                     self.orderOfEntry = int(t[3:])
 
 
+
     ## Creeate another methods
     def digitFixer(self, integer: int) -> str:
         tempOrder = str(integer)

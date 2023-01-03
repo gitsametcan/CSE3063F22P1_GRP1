@@ -11,4 +11,3 @@ class LectureID(UniqueID):
 
     def getID(self) -> str:
         return self.lectureCode
-

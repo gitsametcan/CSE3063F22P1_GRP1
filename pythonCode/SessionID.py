@@ -21,4 +21,3 @@ class SessionID:
 
         if t == int:
                 self.id = t
-            
