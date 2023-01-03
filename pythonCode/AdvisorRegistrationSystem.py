@@ -1,9 +1,9 @@
 ##!/usr/bin/env python
 # package: System#
 
-import FilterType
-import DataManager
-import Advisor
+from FilterType import FilterType
+from DataManager import DataManager
+from Advisor import Advisor
 #import logger.Logger#
 
 class AdvisorRegistrationSystem(object):
@@ -54,7 +54,8 @@ class AdvisorRegistrationSystem(object):
                     validInput = True
                     self.signOut()
                 else:
-                    self.log.info("The input is not valid, please provide a valid input.")
+                    pass
+                    #self.log.info("The input is not valid, please provide a valid input.")
 
     def signOut(self):
         #returning back to RegistrationSystem's menu#

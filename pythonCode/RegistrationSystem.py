@@ -14,6 +14,7 @@ class RegistrationSystem(object):
 
 
     def __init__(self):
+        pass
         #Constructor of RegistrationSystem#
 
         #self.log = Logger.getLogger("logs")

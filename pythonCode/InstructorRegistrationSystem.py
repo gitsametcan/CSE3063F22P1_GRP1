@@ -1,9 +1,9 @@
 #!/usr/bin/env python
 # package: System
 
-import FilterType
-import DataManager
-import Instructor
+from FilterType import FilterType
+from DataManager import DataManager
+from Instructor import Instructor
 #import logger.Logger
 
 class InstructorRegistrationSystem(object):
@@ -59,6 +59,7 @@ class InstructorRegistrationSystem(object):
                     validInput = True
                     self.signOut()
                 else:
+                    pass
                     #self.log.info("The input is not valid, please provide a valid input.")
 
     def signOut(self):
