@@ -3,26 +3,26 @@
 
 
 from calendar import Calendar
-import Logger
+from Logger import Logger
 
-import InstructorType
+from InstructorType import InstructorType
 
-import InstructorID
+from InstructorID import InstructorID
 
-import LectureSession
+from LectureSession import LectureSession
 
-import Schedule
+from Schedule import Schedule
 
-import Person
+from Person import Person
 
 class Instructor(Person):
     # generated source for class Instructor 
-    log = Logger.getLogger("logs")
-    _id = InstructorID()
-    __schedule = Schedule()
-    _dateOfEntry = Calendar()
-    _instructorType = InstructorType()
-    __scanner = input()
+    #log = Logger.getLogger("logs")
+    #_id = InstructorID()
+    #__schedule = Schedule()
+    #_dateOfEntry = Calendar()
+    #_instructorType = InstructorType()
+    #__scanner = input()
 
     def getID(self):
         # generated source for method getID 
@@ -62,11 +62,11 @@ class Instructor(Person):
     def __init__(self):
         # generated source for method __init__ 
         #super(firstName, lastName)
-        #self.scanner = input()
-        #self._id = id
-        #self.setSchedule(schedule)
-        #self.dateOfEntry = dateOfEntry
-        #self.instructorType = InstructorType
+        self.scanner = input()
+        self._id = InstructorID()
+        self.__schedule = Schedule()
+        self._dateOfEntry = Calendar()
+        self._instructorType = InstructorType()
         pass
 
     def getSchedule(self):
