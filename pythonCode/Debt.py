@@ -1,21 +1,23 @@
+from Student import Student
+
 class Debt:
-    def __init__(self, __amount: float, __student):
-        self.amount = __amount
-        self.student = __student
+
+    def __init__(self):
+        pass
+    #    self.amount = __amount
+    #    self.student = __student
 
     # Creating properties for variables
-    @property
-    def __amount(self):
-        return self.__amount
+    
+    def getAmount(self):
+        return self.amount
 
-    @__amount.setter
-    def __amount(self, __amount):
-        self._amount = __amount
+    def setAmount(self, amount):
+        self.amount = amount
 
-    @property
-    def __student(self):
-        return self.__student
+    #def getStudent(self):
+    #    return self.student
 
-    @__student.setter
-    def __student(self, __student):
-        self._student = __student
+    def setStudent(self, student):
+        self._student = student
+        

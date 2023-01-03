@@ -1,32 +1,42 @@
-class InstructorID:
-    def __init__(self, __departmentCode: int, __orderOfEntry: int, __ID: str):
-        self.__departmentCode = __departmentCode
-        self.__orderOfEntry = __orderOfEntry
-        self.__ID = __ID
+from UniqueID import UniqueID
 
-    def __init__(self, ID: str):
-        self.ID(ID)
+class InstructorID(UniqueID):
 
-     # Creating properties for variables
-    @ ID.setter
-    def Id(self, departmentCode: int, orderOfEntry: int):
-        self.__departmentCode = departmentCode
-        self.__orderOfEntry = orderOfEntry
+    def __init__(self, *args):
+        index = 0
+        for t in args: 
+            if (isinstance(t, int)):
+                if index == 0:
+                    self.__departmentCode = t
+                if index == 1:
+                    self.__orderOfEntry = t
+            if (isinstance(t, str)):
+                self.setID(t)
 
-    @property
-    def ID(self) -> str:
-        return self.digitFixer(self.__departmentCode) + self.digitFixer(self.__orderOfEntry)
+    # Creating another properties for variables
 
-     # Creating another properties for variables
-    @ ID.setter
-    def ID(self, string: str):
-        try:
-            int(string)
-        except ValueError:
-            pass
-        finally:
-            self.__departmentCode = int(string[:3])
-            self.__orderOfEntry = int(string[3:])
+    def getID(self) -> str:
+        return self.digitFixer(self.departmentCode) + self.digitFixer(self.orderOfEntry)
+        
+    def setID(self, *args):
+        index = 0
+        for t in args: 
+            if (isinstance(t, int)):
+                if index == 0:
+                    self.departmentCode = t
+                if index == 1:
+                    self.orderOfPlacement = t
+
+            if (isinstance(t, str)):
+                try:
+                    int(t)
+                except ValueError:
+                    pass
+                finally:
+                    self.departmentCode = int(t[:3])
+                    self.orderOfEntry = int(t[3:])
+
+
 
     ## Creeate another methods
     def digitFixer(self, integer: int) -> str:
