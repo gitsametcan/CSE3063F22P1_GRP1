@@ -1,21 +1,23 @@
+from LetterGrade import LetterGrade
 class Semester(object):
-    listOfLecturesTaken = Map()
-    creditsTaken = int()
-    creditsCompleted = int()
-    points = float()
-    yano = float()
-    term = Term()
-    termYear = TermYear()
+    #listOfLecturesTaken = Map()
+    #creditsTaken = int()
+    #creditsCompleted = int()
+    #points = float()
+    #yano = float()
+    #term = Term()
+    #termYear = TermYear()
 
-    def __init__(self, listOfLecturesTaken):
-        super(Semester, self).__init__()
-        self.listOfLecturesTaken = listOfLecturesTaken
-        if self.listOfLecturesTaken == None:
-            self.listOfLecturesTaken = HashMap()
-        self.creditsTaken = creditsTakenCalculator(self.listOfLecturesTaken)
-        self.creditsCompleted = creditsCompletedCalculator(self.listOfLecturesTaken)
-        self.points = pointsCalculator(self.listOfLecturesTaken)
-        self.yano = points / creditsTaken
+    def __init__(self ):
+        pass
+        #super(Semester, self).__init__()
+        #self.listOfLecturesTaken = listOfLecturesTaken
+        #if self.listOfLecturesTaken == None:
+        #    self.listOfLecturesTaken = HashMap()
+        #self.creditsTaken = creditsTakenCalculator(self.listOfLecturesTaken)
+        #self.creditsCompleted = creditsCompletedCalculator(self.listOfLecturesTaken)
+        #self.points = pointsCalculator(self.listOfLecturesTaken)
+        #self.yano = points / creditsTaken
 
     #  Creating get and set methods for variables
     def getListOfLecturesTaken(self):
@@ -36,12 +38,7 @@ class Semester(object):
     def setListOfLecturesTaken(self, listOfLecturesTaken):
         self.listOfLecturesTaken = listOfLecturesTaken
 
-    @overloaded
-    def addLecture(self, lecture):
-        self.listOfLecturesTaken.put(lecture, LetterGrade.None_)
-
-    @addLecture.register(object, Lecture, LetterGrade)
-    def addLecture_0(self, lecture, grade):
+    def addLecture(self, lecture, grade):
         self.listOfLecturesTaken.put(lecture, grade)
 
     def creditsTakenCalculator(self, listOfLecturesTaken):

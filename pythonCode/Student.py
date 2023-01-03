@@ -1,21 +1,7 @@
-from ast import List
-from calendar import Calendar
-import Logger;
+from Logger import Logger;
 
-from Debt import Debt;
-from LectureRegistrationApplication import LectureRegistrationApplication;
-from Transcript import Transcript;
-from ApprovalState import ApprovalState;
-from FilterType import FilterType;
-from LetterGrade import LetterGrade;
-from StudentID import StudentID;
-from DataManager import DataManager;
-from Lecture import Lecture;
-from LectureSession import LectureSession;
-from Schedule import Schedule;
-from Semester import Semester
 from Person import Person
-from Advisor import Advisor;
+from StudentID import StudentID
 
 class Student(Person):
     # generated source for class Student 

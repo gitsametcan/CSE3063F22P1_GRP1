@@ -1,8 +1,3 @@
-from Student import Student
-from Advisor import Advisor
-from LectureSession import LectureSession
-from ApprovalState import ApprovalState
-
 class LectureRegistrationApplication:
 
 

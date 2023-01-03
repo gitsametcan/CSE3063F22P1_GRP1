@@ -12,5 +12,5 @@ class DataManager():
 
     @classmethod
     def getInstance(cls):
-        return cls._singleInstance;
+        return cls.__singleInstance;
 

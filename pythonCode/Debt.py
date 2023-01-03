@@ -1,5 +1,3 @@
-from Student import Student
-
 class Debt:
 
     def __init__(self):
