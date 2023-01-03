@@ -1,4 +1,5 @@
-class TranscriptGenerator(object):
+class TranscriptGenerator():
+
     """ generated source for class TranscriptGenerator """
     termAndYear = Map()
 
