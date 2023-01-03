@@ -3,10 +3,10 @@
 
 #import logger.Logger
 import sys
-import Simulation
-import StudentRegistrationSystem
-import AdvisorRegistrationSystem
-import InstructorRegistrationSystem
+from Simulation import Simulation
+from StudentRegistrationSystem import StudentRegistrationSystem
+from AdvisorRegistrationSystem import AdvisorRegistrationSystem
+from InstructorRegistrationSystem import InstructorRegistrationSystem
 
 class RegistrationSystem(object):
     #log = Logger()
@@ -14,7 +14,7 @@ class RegistrationSystem(object):
 
 
     def __init__(self):
-        pass
+        simulation = Simulation();
         #Constructor of RegistrationSystem#
 
         #self.log = Logger.getLogger("logs")
@@ -45,4 +45,5 @@ class RegistrationSystem(object):
                 #self.log.info("Exiting...")
                 sys.exit("Exit...")
             else:
+                pass
                 #self.log.info("The input is not valid, please provide a valid input.")
