@@ -2,13 +2,14 @@
 # package: person
 class Person(object):
     # generated source for class Person 
-    _firstName = str()
-    _lastName = str()
+    #_firstName = str()
+    #_lastName = str()
 
-    def __init__(self, firstName, lastName):
+    def __init__(self):
         # generated source for method __init__ 
-        self.firstName = firstName
-        self.lastName = lastName
+        self.firstName = str()
+        self.lastName = str()
+        pass
 
     #  Creating get and set methods for variables
     def getFirstName(self):

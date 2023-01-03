@@ -1,39 +1,39 @@
-#!/usr/bin/env python
-# package person;
+from calendar import Calendar
+from Logger import Logger
+from Instructor import Instructor
 
-from ast import List
-import logger.Logger
-from pythonCode.person.Instructor import Instructor
-
-from pythonCode.person.Student import Student
+from Student import Student
 
 
-import Debt_LRA_Transcript.LectureRegistrationApplication;
-import Enums.ApprovalState;
-import Enums.InstructorType;
-import IDs.InstructorID;
-import lecture.Lecture;
-import lecture.LectureSession;
-import lecture.Schedule;
+from LectureRegistrationApplication import LectureRegistrationApplication;
+from ApprovalState import ApprovalState;
+from InstructorType import InstructorType;
+from InstructorID import InstructorID;
+from Lecture import Lecture;
+from LectureSession import LectureSession;
+from Schedule import Schedule;
 
 class Advisor(Instructor):
     # generated source for class Advisor 
-    log = Logger.getLogger("logs")
-    __listOfStudents = List()
-    __listOfApplications = List()
-    __scanner = input()
+    #log = Logger.getLogger("logs")
+    #__listOfStudents = List()
+    #__listOfApplications = List()
+    #__scanner = input()
 
     @overloaded
-    def __init__(self, firstName, lastName, id, listOfLectures, dateOfEntry, listOfStudents, listOfApplications, instructorType, schedule):
+    def __init__(self):
         # generated source for method __init__ 
-        super(firstName, lastName, id, dateOfEntry, instructorType, schedule)
-        self.scanner = input()
-        self.listOfStudents = listOfStudents
-        self.listOfApplications = listOfApplications
+        #super(firstName, lastName, id, dateOfEntry, instructorType, schedule)
+        self.__scanner = input()
+        self.__listOfStudents = List()
+        self.__listOfApplications = List()
+
         if self.listOfStudents == None:
             self.listOfStudents = List(Student)
         if self.listOfApplications == None:
             self.listOfApplications = List(LectureRegistrationApplication)
+
+        pass
 
     def showApplications(self):
         # generated source for method showApplications 
@@ -78,7 +78,8 @@ class Advisor(Instructor):
                 self.approveApplication(lectureRegistrationApplication, lectureSession)
             elif approveChoice==2:
                 self.rejectApplication(lectureRegistrationApplication, lectureSession)
-            """else:"""
+            else:
+                pass
 
     def getListOfStudents(self):
         # generated source for method getListOfStudents 
@@ -98,12 +99,14 @@ class Advisor(Instructor):
         lectureRegistirationApplication.getSessionsSentForApproval().put(lectureSession, ApprovalState.Rejected)
 
     @__init__.register(object, str, str, InstructorID, Calendar, List, List, InstructorType, Schedule)
-    def __init___0(self, firstName, lastName, id, dateOfEntry, listOfStudents, listOfApplications, instructorType, schedule):
+    def __init___0(self):
         # generated source for method __init___0 
-        super(firstName, lastName, id, dateOfEntry, instructorType, schedule)
-        self.listOfStudents = listOfStudents
-        self.listOfApplications = listOfApplications
+        #super(firstName, lastName, id, dateOfEntry, instructorType, schedule)
+        self.__listOfStudents = List()
+        self.__listOfApplications = List()
         if self.listOfStudents == None:
             self.listOfStudents = List(Student)
         if self.listOfApplications == None:
             self.listOfApplications = List(LectureRegistrationApplication)
+        pass
+

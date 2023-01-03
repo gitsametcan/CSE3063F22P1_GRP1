@@ -1,3 +1,4 @@
+
 from UniqueID import UniqueID
 
 class InstructorID(UniqueID):
@@ -35,8 +36,6 @@ class InstructorID(UniqueID):
                 finally:
                     self.departmentCode = int(t[:3])
                     self.orderOfEntry = int(t[3:])
-
-
 
     ## Creeate another methods
     def digitFixer(self, integer: int) -> str:

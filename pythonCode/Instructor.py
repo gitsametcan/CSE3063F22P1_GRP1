@@ -1,26 +1,24 @@
-#!/usr/bin/env python
-# package: person
+from calendar import Calendar
+from Logger import Logger
 
+from InstructorType import InstructorType
 
-import logger.Logger
+from InstructorID import InstructorID
 
-import Enums.InstructorType
+from LectureSession import LectureSession
 
-import IDs.InstructorID
+from Schedule import Schedule
 
-import lecture.LectureSession
-
-import lecture.Schedule
-from pythonCode.person.Person import Person
+from Person import Person
 
 class Instructor(Person):
     # generated source for class Instructor 
-    log = Logger.getLogger("logs")
-    _id = InstructorID()
-    __schedule = Schedule()
-    _dateOfEntry = Calendar()
-    _instructorType = InstructorType()
-    __scanner = input()
+    #log = Logger.getLogger("logs")
+    #_id = InstructorID()
+    #__schedule = Schedule()
+    #_dateOfEntry = Calendar()
+    #_instructorType = InstructorType()
+    #__scanner = input()
 
     def getID(self):
         # generated source for method getID 
@@ -57,14 +55,16 @@ class Instructor(Person):
         for student in lectureSession.getListOfStudents():
             self.log.info("ID: " + student.getID() + "Name: " + student.getFullName())
 
-    def __init__(self, firstName, lastName, id, dateOfEntry, InstructorType, schedule):
+    def __init__(self):
         # generated source for method __init__ 
-        super(firstName, lastName)
+        #super(firstName, lastName)
         self.scanner = input()
-        self._id = id
-        self.setSchedule(schedule)
-        self.dateOfEntry = dateOfEntry
-        self.instructorType = InstructorType
+        self._id = InstructorID()
+        self.__schedule = Schedule()
+        self._dateOfEntry = Calendar()
+        self._instructorType = InstructorType()
+        pass
+
 
     def getSchedule(self):
         # generated source for method getSchedule 
