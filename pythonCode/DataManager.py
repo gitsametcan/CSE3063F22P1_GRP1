@@ -9,7 +9,6 @@ class DataManager():
 
     def __init__(self):
         pass
-            
 
     @classmethod
     def getInstance(cls):

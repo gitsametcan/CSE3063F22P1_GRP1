@@ -1,40 +1,26 @@
 # package: person
 
-from ast import List
-import logger.Logger;
-
-import Debt_LRA_Transcript.Debt;
-import Debt_LRA_Transcript.LectureRegistrationApplication;
-import Debt_LRA_Transcript.Transcript;
-import Enums.ApprovalState;
-import Enums.FilterType;
-import Enums.LetterGrade;
-import IDs.StudentID;
-import data.DataManager;
-import lecture.Lecture;
-import lecture.LectureSession;
-import lecture.Schedule;
-import lecture.Semester;
+from Person import Person
 
 class Student(Person):
     # generated source for class Student 
-    __log = Logger()
-    __advisor = Advisor()
-    __id = StudentID()
-    __schedule = Schedule()
-    __transcript = Transcript()
-    __dateOfEntry = Calendar()
-    __debt = Debt()
-    __registirationApplication = LectureRegistrationApplication()
-    __scanner = input()
+    # __log = Logger()
+    # __advisor = Advisor()
+    # __id = StudentID()
+    # __schedule = Schedule()
+    # __transcript = Transcript()
+    # __dateOfEntry = Calendar()
+    # __debt = Debt()
+    # __registirationApplication = LectureRegistrationApplication()
+    # __scanner = input()
     def __init__(self, firstName, lastName, id, schedule, transcript, dateOfEntry):
-    super(firstName, lastName)
-    log = Logger.getLogger("logs")
-    self.scanner = input()
-    self.id = id
-    self.schedule = schedule
-    self.transcript = transcript
-    self.dateOfEntry = dateOfEntry
+        super(firstName, lastName)
+        log = Logger.getLogger("logs")
+        self.scanner = input()
+        self.id = id
+        self.schedule = schedule
+        self.transcript = transcript
+        self.dateOfEntry = dateOfEntry
     def setID(nID):        
         self.id.setID(nID)
     def setID(DepartmentCode, YearCode, OrderOfPlacement):        
@@ -210,7 +196,7 @@ class Student(Person):
                     a = i
                     in_ = True
             i += 1
-        if canTake = hasPreqLectureTaken(lecture.getPrerequisite(), listOfTaken):
+        if canTake == hasPreqLectureTaken(lecture.getPrerequisite(), listOfTaken):
             if in_:
                 canTake = takenPoint(lecture, transcript.getListOfSemester().get(a).getListOfLecturesTaken())
         return canTake

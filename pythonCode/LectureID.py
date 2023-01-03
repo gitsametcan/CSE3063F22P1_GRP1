@@ -3,11 +3,9 @@ class LectureID:
         self.__lectureCode = __lectureCode
 
      # Creating another properties for variables
-    @ID.setter
-    def ID(self, string: str):
+    def setID(self, string: str):
         self.__lectureCode = string
 
-    @property
-    def ID(self) -> str:
+    def getID(self) -> str:
         return self.__lectureCode
 

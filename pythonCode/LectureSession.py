@@ -1,64 +1,64 @@
+from SessionID import SessionID
+from Lecture import Lecture
+from LectureHour import LectureHour
+# from Instructor import Instructor
+from Student import Student
+
 class LectureSession(object):
-    sessionID = SessionID()
-    lecture = Lecture()
-    sessionHours = []
-    sessionType = SessionType()
-    instructor = Instructor()
-    listOfAssistans = List()
-    listOfStudents = List()
+    # __sessionID = SessionID()
+    # __lecture = Lecture()
+    # __sessionHours = []
+    # __sessionType = SessionType()
+    # __instructor = Instructor()
+    # __listOfAssistans = List()
+    # __listOfStudents = List()
 
     #  Method will add about this property
-    def __init__(self, sessionID, lecture, sessionHours, sessionType, instructor, listOfAssistans, listOfStudents):
-        super(LectureSession, self).__init__()
-        self.sessionID = sessionID
-        self.lecture = lecture
-        self.sessionHours = sessionHours
-        self.sessionType = sessionType
-        self.instructor = instructor
-        self.listOfAssistans = listOfAssistans
-        self.listOfStudents = listOfStudents
-        if listOfStudents == None:
-            self.listOfStudents = ArrayList()
+    def __init__(self):
+        # sessionID: SessionID, lecture: Lecture, sessionHours : LectureHour[][], 
+        # instructor: Instructor, listOfStudents: list<Student>
+        pass
+        
 
     #  Creating get and set methods for variables
     def setSessionID(self, sessionID):
-        self.sessionID = sessionID
+        self.__sessionID = sessionID
 
     def setLecture(self, lecture):
-        self.lecture = lecture
+        self.__lecture = lecture
 
     def setSessionHours(self, sessionHours):
-        self.sessionHours = sessionHours
+        self.__sessionHours = sessionHours
 
     def setSessionType(self, sessionType):
-        self.sessionType = sessionType
+        self.__sessionType = sessionType
 
     def setInstructor(self, instructor):
-        self.instructor = instructor
+        self.__instructor = instructor
 
     def setListOfAssistans(self, listOfAssistans):
-        self.listOfAssistans = listOfAssistans
+        self.__listOfAssistans = listOfAssistans
 
     def getSessionID(self):
-        return self.sessionID.getID()
+        return self.__sessionID.getID()
 
     def getSessionHours(self):
-        return self.sessionHours
+        return self.__sessionHours
 
     def getSessionType(self):
-        return self.sessionType
+        return self.__sessionType
 
     def getInstructor(self):
-        return self.instructor
+        return self.__instructor
 
     def getListOfAssistans(self):
-        return self.listOfAssistans
+        return self.__listOfAssistans
 
     def getLecture(self):
-        return self.lecture
+        return self.__lecture
 
     def getListOfStudents(self):
-        return self.listOfStudents
+        return self.__listOfStudents
 
     def setListOfStudents(self, listOfStudents):
-        self.listOfStudents = listOfStudents
+        self.__listOfStudents = listOfStudents

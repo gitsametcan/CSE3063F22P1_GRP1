@@ -1,20 +1,18 @@
 class SessionID:
-    def __init__(self, __id: int):
-        self.__id = __id
+    def __init__(self, id: int):
+        self.__id = id
+    
 
-    @ ID.setter
-    def ID(self, string: str):
-        try:
-            int(string)
-        except ValueError:
-            pass
-        finally:
-            self.__id = int(string)
+    def ID(self, id):
+        if isinstance(id, str):
+            try:
+                int(id)
+            except ValueError:
+                pass
+            finally:
+                self.__id = int(id)
+        elif isinstance(id, int):
+            self.__id = id
 
-    @ ID.setter
-    def ID(self, id: int):
-        self.__id = __id
-
-    @property
-    def ID(self) -> str:
+    def getID(self) -> str:
         return str(self.__id)
