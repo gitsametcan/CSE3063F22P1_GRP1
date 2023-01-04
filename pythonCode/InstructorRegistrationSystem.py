@@ -18,7 +18,7 @@ class InstructorRegistrationSystem():
         #Searching for a Instructor with a given id. If there is an id equal with providedId currentUser is that Instructor.
 
         currentUser = None
-        self.__log.info("Please provide your ID:")
+        self.__log.info("Please provide an Instructor ID:")
         self.__log.info("----\nSuggestion: Enter \"150097\"")
         while True:
             providedID = input()
@@ -35,7 +35,7 @@ class InstructorRegistrationSystem():
         validInput = False
         menuChoice = 0
         while menuChoice != 3:
-            self.__log.info("Please choose a menu: ")
+            self.__log.info("Choose a menu: ")
             self.__log.info("1-Show Lecture Sessions")
             self.__log.info("2-Show Students Of A Lecture Session")
             self.__log.info("3-Sign Out")

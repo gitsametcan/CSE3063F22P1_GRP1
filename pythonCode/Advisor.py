@@ -24,6 +24,8 @@ class Advisor(Instructor):
         self.__listOfStudents = list()
         self.__listOfApplications = list()
         self.__log = Logger.getLogger("logs")
+        self.__acceptedRegistrations = list()
+        self.__declinedRegistrations = list()
 
         if self.__listOfStudents == None:
             self.__listOfStudents = list(Student)

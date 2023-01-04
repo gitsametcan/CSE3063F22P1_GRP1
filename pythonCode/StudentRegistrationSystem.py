@@ -19,7 +19,7 @@ class StudentRegistrationSystem(object):
         #Searching for a Student with a given id. If there is an id equal with providedId currentUser is that Student.
 
         currentUser = None
-        self.__log.info("Please provide your ID:")
+        self.__log.info("Please provide a Student ID:")
         self.__log.info("----\nSuggestion: Enter \"150119063\"")#
         while True:
             providedID = input()
@@ -38,13 +38,11 @@ class StudentRegistrationSystem(object):
         validInput = False
         menuChoice = 0
         while menuChoice != 6:
-            self.__log.info("Please choose a menu: ")
+            self.__log.info("Choose a menu: ")
             self.__log.info("1-Transcript")
-            self.__log.info("2-Make Lecture Registration")
-            self.__log.info("3-Schedule")
-            self.__log.info("4-Registration Status")
-            self.__log.info("5-Debt")
-            self.__log.info("6-Sign Out")
+            self.__log.info("2-Schedule")
+            self.__log.info("3-Simulation Results")
+            self.__log.info("4-Exit")
             
             validInput = False
             while not validInput:
@@ -54,17 +52,11 @@ class StudentRegistrationSystem(object):
                     self.showTranscript(currentUser)
                 elif menuChoice==2:
                     validInput = True
-                    currentUser.makeRegistrationMenu()
+                    self.showSchedule(currentUser)
                 elif menuChoice==3:
                     validInput = True
-                    self.showSchedule(currentUser)
+                    #showing student logs
                 elif menuChoice==4:
-                    validInput = True
-                    currentUser.registrationStatusMenu()
-                elif menuChoice==5:
-                    validInput = True
-                    currentUser.debtMenu()
-                elif menuChoice==6:
                     validInput = True
                     self.signOut()
                 else:

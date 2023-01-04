@@ -19,7 +19,7 @@ class AdvisorRegistrationSystem():
 
         #Searching for a Advisor with a given id. If there is an id equal with providedId currentUser is that Advisor.#
         currentUser = None
-        self.__log.info("Please provide your ID:")
+        self.__log.info("Please provide an Advisor ID:")
         self.__log.info("----\nSuggestion: Enter \"150097\"")#
         while True:
             providedID = input()
@@ -36,16 +36,16 @@ class AdvisorRegistrationSystem():
         validInput = False
         menuChoice = 0
         while menuChoice != 3:
-            self.__log.info("Please choose a menu: ")
-            self.__log.info("1-Registration Applications")
-            self.__log.info("2-Sign Out")#
+            self.__log.info("Choose a menu: ")
+            self.__log.info("1-Simulation Results")
+            self.__log.info("2-Exit")
 
             validInput = False
             while not validInput:
                 menuChoice = input()
                 if menuChoice==1:
                     validInput = True
-                    currentUser.showApplications()
+                    #simulasyon sonuçları
                 elif menuChoice==2:
                     validInput = True
                     self.signOut()

@@ -32,6 +32,8 @@ class Student(Person):
         self.__schedule = Schedule()
         self.__transcript = Transcript()
         self.__dateOfEntry = Calendar()
+        self.__acceptedRegistrations = list()
+        self.__declinedRegistrations = list()
 
     def setID(self, nID):        
         self.__id.setID(nID)
