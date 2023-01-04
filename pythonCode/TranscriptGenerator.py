@@ -1,58 +1,54 @@
+from LectureRegistrationApplication import LectureRegistrationApplication
+from LetterGrade import LetterGrade
+from DataManager import DataManager
+from Lecture import Lecture
+from Schedule import Schedule
+from Semester import Semester
+from Student import Student
+import random
+from TermAndYear import TermAndYear
+
 
 class TranscriptGenerator():
 
-    """ generated source for class TranscriptGenerator """
-    termAndYear = Map()
+
 
     def __init__(self):
-        """ generated source for method __init__ """
+        pass
 
     def generate(self, student, schedule):
-        """ generated source for method generate """
-        build()
-        transcript = Transcript(student, None)
-        transcript.setListOfSemester(setAllSemester(student, schedule))
+        #transcript = Transcript()
+        transcript.setListOfSemester(self.setAllSemester(student, schedule))
         return transcript
 
-    def build(self):
-        """ generated source for method build """
-        self.termAndYear = HashMap()
-        self.termAndYear.put("FallFreshman", 0)
-        self.termAndYear.put("SpringFreshman", 1)
-        self.termAndYear.put("FallSophomore", 2)
-        self.termAndYear.put("SpringSophomore", 3)
-        self.termAndYear.put("FallJunior", 4)
-        self.termAndYear.put("SpringJunior", 5)
-        self.termAndYear.put("FallSenior", 6)
-        self.termAndYear.put("SpringSenior", 7)
-
-    def randomLetterGrade(self):
-        """ generated source for method randomLetterGrade """
-        grade = LetterGrade.None_
-        if ((Math.random() * 9))==0:
+    def __randomLetterGrade(self):
+        
+        a = random.randint(0, 9)
+        grade = LetterGrade.Non
+        if a==0:
             grade = LetterGrade.FF
-        elif ((Math.random() * 9))==1:
+        elif a==1:
             grade = LetterGrade.FD
-        elif ((Math.random() * 9))==2:
+        elif a==2:
             grade = LetterGrade.DD
-        elif ((Math.random() * 9))==3:
+        elif a==3:
             grade = LetterGrade.DC
-        elif ((Math.random() * 9))==4:
+        elif a==4:
             grade = LetterGrade.CC
-        elif ((Math.random() * 9))==5:
+        elif a==5:
             grade = LetterGrade.CB
-        elif ((Math.random() * 9))==6:
+        elif a==6:
             grade = LetterGrade.BB
-        elif ((Math.random() * 9))==7:
+        elif a==7:
             grade = LetterGrade.BA
-        elif ((Math.random() * 9))==8:
+        elif a==8:
             grade = LetterGrade.AA
         return grade
 
     def semesterGenerator(self, student, schedule, i):
         """ generated source for method semesterGenerator """
-        semester = Semester(None)
-        listOfLecture = HashMap()
+        semester = Semester()
+        listOfLecture = {hash(Lecture): LetterGrade for Lecture, LetterGrade in listOfLecture.items()}
         for l in DataManager.getInstance().searchLecture(i):
             if student.getTranscript() == None:
                 listOfLecture.put(l, self.randomLetterGrade())
@@ -64,9 +60,9 @@ class TranscriptGenerator():
 
     def setAllSemester(self, student, schedule):
         """ generated source for method setAllSemester """
-        semesterList = ArrayList()
+        semesterList = List()
         i = 0
-        while i < termAndYear.get(schedule.getTerm() + "" + schedule.getTermYear()):
+        while i < TermAndYear[schedule.Term+""+schedule.TermYear].value:
             semesterList.add(self.semesterGenerator(student, schedule, i))
             i += 1
         return semesterList
