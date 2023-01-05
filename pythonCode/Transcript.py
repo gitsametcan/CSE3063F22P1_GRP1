@@ -53,6 +53,12 @@ class Transcript:
     def setTotalCreditsCompleted(self, totalCreditsCompleted):
         self.totalCreditsCompleted = totalCreditsCompleted
 
+    def getLastSemester(self):
+        lastSemester = Semester()
+        for s in range(0, len(self.listOfSemester)):
+            if s == (len(self.listOfSemester)-1):
+                lastSemester = s
+        return lastSemester
 
     # Creating other methods
 

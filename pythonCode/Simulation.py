@@ -13,16 +13,8 @@ class Simulation():
     def __init__(self):
         
         self.__studentGenerator = StudentGenerator()
+        self.__LRA = LectureRegistrationApplication()
         self.__listOfStudents = list()
-
-    def __newSemester(self, semesterCount):
-        
-        for studentCount in range(1,51):
-            try:
-                student = self.__studentGenerator.generate(studentCount, semesterCount)
-                self.__listOfStudents.append(student)
-            except Exception as e:
-                e.printStackTrace() #Instance of 'Exception' has no 'printStackTrace' memberPylint(E1101:no-member)
 
     def run(self):
 
@@ -38,9 +30,9 @@ class Simulation():
             if i % 2 != 0:
                 year = year + 1
                 for i in range(1, 101):
-                    student = StudentGenerator.generate(year,i)
+                    student = self.__studentGenerator.generate(year,i)
                     listOfStudents.append(student)
-            LRAGenerator.generate(listOfStudents)
+            listOfStudents = self.__LRA.generate(listOfStudents)
             self.takeAutoAnswerForLRA(listOfStudents)
             self.fillSemesterFromLRA(listOfStudents)
             self.emptyLRA(listOfStudents)
@@ -67,10 +59,9 @@ class Simulation():
         #Give states for every students LRA lectures 
         pass
 
-    def emptyLRA(self, listOfStudent):       
+    def emptyLRA(self, listOfStudent):      
         for s in listOfStudent:
-            LRA = LectureRegistrationApplication()
-            s.setRegistirationApplication(LRA)
+            s.setRegistirationApplication(None)
 
     def getListOfStudents(self):
         return self.__listOfStudents

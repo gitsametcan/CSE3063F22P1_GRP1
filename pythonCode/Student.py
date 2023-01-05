@@ -12,6 +12,8 @@ from LetterGrade import LetterGrade
 from StudentID import StudentID
 from Lecture import Lecture
 from Semester import Semester
+from Schedule import Schedule
+from DataManager import DataManager
 
 class Student(Person):
     # generated source for class Student

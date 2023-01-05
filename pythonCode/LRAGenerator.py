@@ -11,11 +11,13 @@ class LRAGenerator():
     def __init__(self):
         pass
 
-    def generate(self, listOfStudents:list):
+    def generate(self, listOfStudents):
 
         for s in listOfStudents:
 
             s.setRegistirationApplication = self.fillLRA(s)
+        
+        return listOfStudents
 
     def fillLRA(self, student:Student):
 
