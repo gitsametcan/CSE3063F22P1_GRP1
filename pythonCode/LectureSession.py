@@ -1,64 +1,55 @@
 from SessionID import SessionID
-from Lecture import Lecture
 from LectureHour import LectureHour
-# from Instructor import Instructor
+from SessionType import SessionType
 from Student import Student
+from Instructor import Instructor
 
 class LectureSession(object):
-    # __sessionID = SessionID()
-    # __lecture = Lecture()
-    # __sessionHours = []
-    # __sessionType = SessionType()
-    # __instructor = Instructor()
-    # __listOfAssistans = List()
-    # __listOfStudents = List()
 
-    #  Method will add about this property
     def __init__(self):
-        # sessionID: SessionID, lecture: Lecture, sessionHours : LectureHour[][], 
-        # instructor: Instructor, listOfStudents: list<Student>
+    #    if self.listOfStudents is None:
+    #        self.__listOfStudents = [Student]
         pass
-        
 
-    #  Creating get and set methods for variables
+    # Creating properties for variables
     def setSessionID(self, sessionID):
-        self.__sessionID = sessionID
+        self.sessionID = sessionID
 
     def setLecture(self, lecture):
-        self.__lecture = lecture
+        self.lecture = lecture
 
     def setSessionHours(self, sessionHours):
-        self.__sessionHours = sessionHours
+        self.sessionHours = sessionHours
 
     def setSessionType(self, sessionType):
-        self.__sessionType = sessionType
+        self.sessionType = sessionType
 
     def setInstructor(self, instructor):
-        self.__instructor = instructor
+        self.instructor = instructor
 
     def setListOfAssistans(self, listOfAssistans):
-        self.__listOfAssistans = listOfAssistans
+        self.listOfAssistans = listOfAssistans
 
     def getSessionID(self):
-        return self.__sessionID.getID()
+        return self.sessionID.getID()
 
     def getSessionHours(self):
-        return self.__sessionHours
+        return self.sessionHours
 
     def getSessionType(self):
-        return self.__sessionType
+        return self.sessionType
 
     def getInstructor(self):
-        return self.__instructor
+        return self.instructor
 
     def getListOfAssistans(self):
-        return self.__listOfAssistans
+        return self.listOfAssistans
 
     def getLecture(self):
-        return self.__lecture
+        return self.lecture
 
     def getListOfStudents(self):
-        return self.__listOfStudents
+        return self.listOfStudents
 
     def setListOfStudents(self, listOfStudents):
-        self.__listOfStudents = listOfStudents
+        self.listOfStudents = listOfStudents

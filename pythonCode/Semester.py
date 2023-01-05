@@ -1,38 +1,30 @@
 from LetterGrade import LetterGrade
-class Semester(object):
-    #listOfLecturesTaken = Map()
-    #creditsTaken = int()
-    #creditsCompleted = int()
-    #points = float()
-    #yano = float()
-    #term = Term()
-    #termYear = TermYear()
+from Term import Term
+from TermYear import TermYear
 
-    def __init__(self ):
+class Semester():
+
+    def __init__(self):
         pass
-        #super(Semester, self).__init__()
-        #self.listOfLecturesTaken = listOfLecturesTaken
-        #if self.listOfLecturesTaken == None:
-        #    self.listOfLecturesTaken = HashMap()
-        #self.creditsTaken = creditsTakenCalculator(self.listOfLecturesTaken)
-        #self.creditsCompleted = creditsCompletedCalculator(self.listOfLecturesTaken)
-        #self.points = pointsCalculator(self.listOfLecturesTaken)
-        #self.yano = points / creditsTaken
 
-    #  Creating get and set methods for variables
+    # Creating properties for variables
     def getListOfLecturesTaken(self):
         return self.listOfLecturesTaken
 
     def getCreditsTaken(self):
+        self.creditsTaken = self.creditsTakenCalculator(self.listOfLecturesTaken)
         return self.creditsTaken
 
     def getCreditsCompleted(self):
+        self.creditsCompleted = self.creditsCompletedCalculator(self.listOfLecturesTaken)
         return self.creditsCompleted
 
     def getPoints(self):
+        self.points = self.pointsCalculator(self.listOfLecturesTaken);
         return self.points
 
     def getYano(self):
+        self.yano = self.points/self.creditsTaken
         return self.yano
 
     def setListOfLecturesTaken(self, listOfLecturesTaken):
