@@ -1,7 +1,4 @@
-
-
 from Semester import Semester
-from Student import Student
 
 class Transcript:
 

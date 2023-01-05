@@ -79,9 +79,9 @@ class DataManagerInstance():
     def searchLecturesUntilTerm(self, key: str, term: Term, termYear: TermYear):
         result = list()
         for l in self.__listOfLectures:
-            if l.getTermYear() < termYear.value:
+            if key in l.getName() and l.getTermYear() < termYear.value:
                 result.append(l)
-            if l.getTermYear() == termYear.value and l.getTerm() <= term.value:
+            if key in l.getName() and l.getTermYear() == termYear.value and l.getTerm() <= term.value:
                 result.append(l)
         # mandatory, 
         mandatoryList = list()
