@@ -1,5 +1,8 @@
 from JsonOperator import JsonOperator
+from LectureType import LectureType
 from FilterType import FilterType
+from Term import Term
+from TermYear import TermYear
 
 class DataManagerInstance():
 
@@ -68,10 +71,43 @@ class DataManagerInstance():
             if key in a.getID() and filterType is FilterType.ID and isinstance(a, Advisor):
                 advisor : Advisor = a
                 result.append(advisor)
-            if key in s.getFullName() and filterType is FilterType.ID and isinstance(a, Advisor):
+            if key in a.getFullName() and filterType is FilterType.ID and isinstance(a, Advisor):
                 advisor : Advisor = a
                 result.append(advisor)
         return result
+
+    def searchLecturesUntilTerm(self, key: str, term: Term, termYear: TermYear):
+        result = list()
+        for l in self.__listOfLectures:
+            if l.getTermYear() < termYear.value:
+                result.append(l)
+            if l.getTermYear() == termYear.value and l.getTerm() <= term.value:
+                result.append(l)
+        # mandatory, 
+        mandatoryList = list()
+        fteList = list()
+        teList = list()
+        ueList = list()
+        nteList = list()
+
+        for l in result:
+            if l.getLectureType() == LectureType.MANDATORY:
+                mandatoryList.append(l)
+                continue
+            if l.getLectureType() == LectureType.FTE:
+                fteList.append(l)
+                continue
+            if l.getLectureType() == LectureType.NTE:
+                nteList.append(l)
+                continue
+            if l.getLectureType() == LectureType.TE:
+                teList.append(l)
+                continue
+            if l.getLectureType() == LectureType.UE:
+                ueList.append(l)
+                continue
+
+        return (nteList, ueList, teList, fteList, mandatoryList)
 
 
     def hello(self):
