@@ -1,6 +1,7 @@
 #import Lecture
 import json
 import os
+from datetime import datetime
 
 from LectureID import LectureID
 from SessionID import SessionID
@@ -11,6 +12,11 @@ from Lecture import Lecture
 from LectureType import LectureType
 from Term import Term
 from TermYear import TermYear
+from InstructorType import InstructorType
+from InstructorID import InstructorID
+from Advisor import Advisor
+from StudentID import StudentID
+from Student import Student
 
 class JsonOperator():
 
@@ -19,8 +25,15 @@ class JsonOperator():
         self.__lectureObjectsList = list()
 
         self.__advisorJsonDicts = list()
+        self.__advisorObjectsList = list()
 
-        self.__metaData = dict()
+        self.__studentJsonDicts = list()
+        self.__studentObjectsList = list()
+
+        self.__transcriptJsonDicts = list()
+        self.__transcriptObjectsList = list()
+
+        self.__metaData = dict() 
         pass
 
     def readMetaData(self):
@@ -32,7 +45,7 @@ class JsonOperator():
         namePoolFile = open(self.__metaData["namePoolPath"])
         self.__namePool = json.load(namePoolFile)
         namePoolFile.close()
-    
+
     def getMetaData(self): 
         return self.__metaData
 
@@ -113,11 +126,82 @@ class JsonOperator():
             fullPath = lecturesPath + fileName
             f = open(fullPath, "r")
             jsonDict = json.load(f)
-            print(jsonDict)
             self.__advisorJsonDicts.append(jsonDict)
         self.__generateAdvisors()
 
     def __generateAdvisors(self):
         for a in self.__advisorJsonDicts:
-            pass
+            instructorTypeObject = InstructorType[a["instructorType"]]
+            instructorIDObject = InstructorID(a["instructorID"])
+            dateOfEntryObject = self.__strToDateTime(a["dateOfEntry"])
+            firstName = a["firstName"]
+            lastName = a["lastName"]
+
+            advisorObject = Advisor()
+            advisorObject.setFirstName(firstName)
+            advisorObject.setLastName(lastName)
+            # advisorObject.setDateOfEntry(dateOfEntryObject)
+            # advisorObject.setID(instructorIDObject)
+            # advisorObject.setInstructorType = instructorTypeObject
+
+            self.__advisorObjectsList.append(advisorObject)
+
+    def readStudents(self):
+        studentsPath = self.__metaData["studentsPath"]
+        fileList = os.listdir(studentsPath)
+        for fileName in fileList:
+            fullPath = studentsPath + fileName
+            f = open(fullPath, "r")
+            jsonDict = json.load(f)
+            print(jsonDict)
+            self.__studentJsonDicts.append(jsonDict)
+        self.__generateStudentObjects()
+
+    def __generateStudentObjects(self):
+        for s in self.__studentJsonDicts:
+            dateOfEntryObject = self.__strToDateTime(s["dateOfEntry"])
+            firstName = s["firstName"]
+            lastName = s["lastName"]
+
+            studentObject = Student()
+            studentObject.setID(s["studentID"])
+            studentObject.setDateOfEntry(dateOfEntryObject)
+            studentObject.setFirstName(firstName)
+            studentObject.setLastName(lastName)
+
+            self.__studentObjectsList.append(studentObject)
+
+    def readTranscripts(self):
+        transcriptsPath = self.__metaData["transcriptsPath"]
+        fileList = os.listdir(transcriptsPath)
+        for fileName in fileList:
+            fullPath = transcriptsPath + fileName
+            f = open(fullPath, "r")
+            jsonDict = json.load(f)
+            print(jsonDict)
+            self.__transcriptJsonDicts.append(jsonDict)
+
+
+    def pairObjects(self):
+        self.pairLectures()
+
+    def pairLectures(self):
+        for ljs in self.__lectureJsonDicts:
+            currentLecture = self.__findLecture(ljs["ID"])
+            prerequisiteLecture = self.__findLecture(ljs["prerequisiteID"])
+            if (prerequisiteLecture is not None):
+                currentLecture.setPrerequisite(prerequisiteLecture)
+            
+
+
+    def __findLecture(self, id):
+        for l in self.__lectureObjectsList:
+            if l.getID() == id:
+                return l
+        return None
+
+    def __strToDateTime(self, dtstr):
+        dtformat = "%Y-%m-%d"
+        dtobject = datetime.strptime(dtstr, dtformat)
+        return dtobject
 
