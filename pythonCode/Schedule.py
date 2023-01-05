@@ -9,6 +9,7 @@ class Schedule():
     def __init__(self):
         pass
 
+    # Creating show method
     def showSchedule(self, log):
         lectureSessions = self.getListOfLectureSessions()
         if len(lectureSessions) == 0:
@@ -53,6 +54,8 @@ class Schedule():
                     temp += " "
         log.info(temp)
         temp = ""
+
+    # Creating properties for variables
 
     def getPerson(self):
         return self.person

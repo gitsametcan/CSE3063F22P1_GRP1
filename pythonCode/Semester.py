@@ -4,23 +4,27 @@ from TermYear import TermYear
 
 class Semester():
 
-    def __init__(self ):
+    def __init__(self):
         pass
 
-    #  Creating get and set methods for variables
+    # Creating properties for variables
     def getListOfLecturesTaken(self):
         return self.listOfLecturesTaken
 
     def getCreditsTaken(self):
+        self.creditsTaken = self.creditsTakenCalculator(self.listOfLecturesTaken)
         return self.creditsTaken
 
     def getCreditsCompleted(self):
+        self.creditsCompleted = self.creditsCompletedCalculator(self.listOfLecturesTaken)
         return self.creditsCompleted
 
     def getPoints(self):
+        self.points = self.pointsCalculator(self.listOfLecturesTaken);
         return self.points
 
     def getYano(self):
+        self.yano = self.points/self.creditsTaken
         return self.yano
 
     def setListOfLecturesTaken(self, listOfLecturesTaken):

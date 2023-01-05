@@ -1,8 +1,8 @@
 from SessionID import SessionID
-from Lecture import Lecture
 from LectureHour import LectureHour
-# from Instructor import Instructor
+from SessionType import SessionType
 from Student import Student
+from Instructor import Instructor
 
 class LectureSession(object):
 
@@ -10,7 +10,6 @@ class LectureSession(object):
     #    if self.listOfStudents is None:
     #        self.__listOfStudents = [Student]
         pass
-     
 
     # Creating properties for variables
     def setSessionID(self, sessionID):
