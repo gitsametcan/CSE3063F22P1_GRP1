@@ -31,6 +31,7 @@ class Student(Person):
         self.__log = Logger.getLogger("logs")
         self.__id = StudentID()
         self.__schedule = Schedule()
+        self.__debt = Debt()
         self.__transcript = Transcript()
         self.__dateOfEntry = Calendar()
         pass

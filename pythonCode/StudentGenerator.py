@@ -9,6 +9,7 @@ from Advisor import Advisor
 from Student import Student
 from ApprovalState import ApprovalState
 from FilterType import FilterType
+from Transcript import Transcript
 from Term import Term
 from TermYear import TermYear
 from TranscriptGenerator import TranscriptGenerator
@@ -18,39 +19,41 @@ import random
 class StudentGenerator():
 
     def __init__(self):
-
-        __namePool = DataManager.getInstance().getNamePool()
-        self.__transcriptGenerator = TranscriptGenerator()
-        if __namePool.isPresent():
-            namePool = __namePool.get()
-        self.__transcriptGenerator = TranscriptGenerator()
+        pass
 
     def generate(self, studentCount, semesterCount):
         
-        dateOfEntry = datetime.date(2000 + (semesterCount / 2) + 18, 10, 22)
-        student = Student()
-        #2 schedule = Schedule(student, Term.values()[semesterCount % 2], TermYear.values()[semesterCount / 2])
-        #5 student.setSchedule(schedule)
+        studentList = list()
+        for i in range(1,101):
+            student = Student()
+            student.setID = self.studentIdGenerator(150,120,i)
+            student.setFirstName = self.getRandomFirstName()
+            student.setLastName = self.getRandomLastName()
+            student.setDebt = self.studentDebtGenerator()
+            student.setAdvisor = self.getRandomAdvisor()
+            student.setTranscript = Transcript()#Here
+            student.setDateOfEntry = datetime.date(2000 + (semesterCount / 2) + 18, 10, 22)
+            student.setSchedule = Schedule()#Here
+            student.setRegistirationApplication = LectureRegistrationApplication()#Here
+            studentList.append(student)
 
+        return studentList
 
-
-        student.setDebt(studentDebtGenerator())
-        student.setAdvisor(getRandomAdvisor())
-        student.setTranscript(self.transcriptGenerator.generate(student, schedule))
-        student.setRegistirationApplication(LRAGenerator(student))
-        return student
 
     def getRandomFirstName(self):
 
-        namePool = DataManager.getInstance().getNamePool().getRandomName()
+        namePool = DataManager.getInstance().getNamePool()
+        nameList = namePool["names"]
         a = random.randint(0, 50)
-        name = namePool(a)
+        name = nameList[a]
         return name
 
     def getRandomLastName(self):
-        namePool = DataManager.getInstance().getNamePool().getRandomName()
+
+        namePool = DataManager.getInstance().getNamePool()
+        nameList = namePool["lastNames"]
         a = random.randint(0, 50)
-        name = namePool(a)
+        name = nameList[a]
         return name
 
     def studentIdGenerator(self, year, orderOf):
@@ -60,7 +63,6 @@ class StudentGenerator():
         debt = Debt()
         a = random()
         if a <= 0.3:
-
             debt = Debt(20000, None)
         else:
             debt = Debt(0, None)
@@ -68,13 +70,4 @@ class StudentGenerator():
 
     def getRandomAdvisor(self):
 
-        #3
-        return DataManager.getInstance().searchAdvisor("", FilterType.Name).get(((Math.random() * 13)))
-
-    def LRAGenerator(self, student):
-        #4
-        LRA = LectureRegistrationApplication(None, student.getAdvisor(), student)
-        listOfLecture = HashMap()
-        for l in student.availableLessons():
-            listOfLecture.put(l.getSessions().get(0), ApprovalState.Pending)
-        return LRA
+        return DataManager.getInstance().searchAdvisor("", FilterType.Name).get(((random.randint(1,13))))
