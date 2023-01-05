@@ -21,23 +21,24 @@ class StudentGenerator():
     def __init__(self):
         pass
 
-    def generate(self, studentCount, semesterCount):
-        
-        studentList = list()
-        for i in range(1,101):
-            student = Student()
-            student.setID = self.studentIdGenerator(150,120,i)
-            student.setFirstName = self.getRandomFirstName()
-            student.setLastName = self.getRandomLastName()
-            student.setDebt = self.studentDebtGenerator()
-            student.setAdvisor = self.getRandomAdvisor()
-            student.setTranscript = Transcript()#Here
-            student.setDateOfEntry = datetime.date(2000 + (semesterCount / 2) + 18, 10, 22)
-            student.setSchedule = Schedule()#Here
-            student.setRegistirationApplication = LectureRegistrationApplication()#Here
-            studentList.append(student)
+    def generate(self, year, i):
 
-        return studentList
+        student = Student()
+
+        student.setID = self.studentIdGenerator(150,year,i)
+        student.setFirstName = self.getRandomFirstName()
+        student.setLastName = self.getRandomLastName()
+        student.setDebt = self.studentDebtGenerator()
+        student.setAdvisor = self.getRandomAdvisor()
+        student.setTranscript = Transcript()#Here
+        student.setDateOfEntry = datetime.date( (year/10) +2000, 10, 22)
+        student.setSchedule = Schedule()#Here
+        student.getSchedule.setSchedule(Term.Fall)
+        student.getSchedule.setSchedule(TermYear.Freshman)
+        student.setRegistirationApplication = LectureRegistrationApplication()#Here
+
+        return student
+
 
 
     def getRandomFirstName(self):
