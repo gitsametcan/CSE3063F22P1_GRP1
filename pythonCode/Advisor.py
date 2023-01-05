@@ -24,6 +24,8 @@ class Advisor(Instructor):
         self.__listOfStudents = list()
         self.__listOfApplications = list()
         self.__log = Logger.getLogger("logs")
+        self.__acceptedRegistrations = list()
+        self.__declinedRegistrations = list()
 
         if self.__listOfStudents == None:
             self.__listOfStudents = list(Student)
@@ -31,7 +33,7 @@ class Advisor(Instructor):
             self.__listOfApplications = list(LectureRegistrationApplication)
 
 
-    def showApplications(self):
+    """def showApplications(self):
         # generated source for method showApplications 
         choice = -1
         while choice != 0:
@@ -43,9 +45,9 @@ class Advisor(Instructor):
             self.__log.info("Choose A Lecture Registration Application: ")
             choice = input()
             if choice != 0:
-                self.applicationOperations(choice - 1)
+                self.applicationOperations(choice - 1)"""
 
-    def applicationOperations(self, choice):
+    """def applicationOperations(self, choice):
         # generated source for method applicationOperations 
         lectureRegistrationApplication = self.getListOfApplications()[choice]
         lectureChoice = ""
@@ -74,7 +76,7 @@ class Advisor(Instructor):
             elif approveChoice==2:
                 self.rejectApplication(lectureRegistrationApplication, lectureSession)
             else:
-                pass
+                pass"""
 
 
     def getListOfStudents(self):

@@ -18,26 +18,88 @@ class RegistrationSystem(object):
         #Prints menu choices
 
         while True:
-            self.__log.info("Log in as...")
-            self.__log.info("1-Student")
-            self.__log.info("2-Instructor")
-            self.__log.info("3-Advisor")
-            self.__log.info("4-Simulation")
-            self.__log.info("5-Exit")
+            if(#öğrenciler oluşturulmamışsa):
+                self.__log.info("1-Simulation")
+                self.__log.info("2-Exit")
 
-            loginType = input()
-            if loginType==1:
-                StudentRegistrationSystem(self)
-            elif loginType==2:
-                InstructorRegistrationSystem(self)
-            elif loginType==3:
-                AdvisorRegistrationSystem(self)
-            elif loginType==4:
-                self.__log.info("Initiating simulation...")
-                self.__simulation.run()
-                self.__log.info("Done.")
-            elif loginType==5:
-                self.__log.info("Exiting...")
-                sys.exit("Exit...")
-            else:
-                self.__log.info("The input is not valid, please provide a valid input.")
+                loginType = input()
+                if loginType==1:
+                    self.__log.info("1-Generate Students")
+                    self.__log.info("2-Exit")
+                    loginChoice = input()
+                    if loginChoice == 1:
+                        self.__log.info("Generating students...")
+                        self.__simulation.studentGenerator() #doğru mu bilmiyorum, burda öğrenci oluşturma methodu çağırılacak
+                        self.__log.info("Done.")
+                    elif loginChoice == 2:
+                        self.__log.info("Exiting...")
+                    else:
+                        pass #buraya exception yazılabilir
+                elif loginType==2:
+                    self.__log.info("Exiting...")
+                    sys.exit("Exit...")
+                else:
+                    self.__log.info("The input is not valid, please provide a valid input.")
+            elif(#simulasyon çalışmamışsa):
+                self.__log.info("1-Simulation")
+                self.__log.info("2-Exit")
+
+                loginType = input()
+                if loginType==1:
+                    self.__log.info("1-Generate Students")
+                    self.__log.info("2-Start Simulation")
+                    self.__log.info("3-Exit")
+                    loginChoice = input()
+                    if loginChoice == 1:
+                        self.__log.info("Generating students...")
+                        self.__simulation.studentGenerator() #doğru mu bilmiyorum, burda öğrenci oluşturma methodu çağırılacak
+                        self.__log.info("Done.")
+                    elif loginChoice == 2:
+                        self.__log.info("Initiating simulation...")
+                        self.__simulation.run()
+                        self.__log.info("Done.")
+                    elif loginChoice == 3:
+                        self.__log.info("Exiting...")
+                    else:
+                        pass #buraya exception yazılabilir
+                elif loginType==2:
+                    self.__log.info("Exiting...")
+                    sys.exit("Exit...")
+                else:
+                    self.__log.info("The input is not valid, please provide a valid input.")
+            else#hem simulasyon çalışmış hem de öğrenciler oluşturulmuşsa:
+                self.__log.info("1-Simulation")
+                self.__log.info("2-Student Simulation Logs")
+                self.__log.info("3-Advisor Simulation Logs")
+                self.__log.info("4-Instructor Simulation Logs")
+                self.__log.info("5-Exit")
+
+                loginType = input()
+                if loginType==1:
+                    self.__log.info("1-Generate Students")
+                    self.__log.info("2-Start Simulation")
+                    self.__log.info("3-Exit")
+                    loginChoice = input()
+                    if loginChoice == 1:
+                        self.__log.info("Generating students...")
+                        self.__simulation.studentGenerator() #doğru mu bilmiyorum, burda öğrenci oluşturma methodu çağırılacak
+                        self.__log.info("Done.")
+                    elif loginChoice == 2:
+                        self.__log.info("Initiating simulation...")
+                        self.__simulation.run()
+                        self.__log.info("Done.")
+                    elif loginChoice == 3:
+                        self.__log.info("Exiting...")
+                    else:
+                        pass #buraya exception yazılabilir
+                elif loginType==2:
+                    StudentRegistrationSystem(self)
+                elif loginType==3:
+                    AdvisorRegistrationSystem(self)
+                elif loginType==4:
+                    InstructorRegistrationSystem(self)
+                elif loginType==5:
+                    self.__log.info("Exiting...")
+                    sys.exit("Exit...")
+                else:
+                    self.__log.info("The input is not valid, please provide a valid input.")
