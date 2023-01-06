@@ -17,11 +17,9 @@ class LectureSessionTest(unittest.TestCase):
         self.assertEqual(testSessionID, testLectureSession.getID())
     def test_lecture_session_SessionHours(self):
         # generated source for method test_lecture_session_SessionHours
-        #
-        #
-        #
         testLectureSession = LectureSession()
-        testSessionHours = LectureHour[7][10]
+        testSessionHours = LectureHour[7]*10
+        testSessionHours[1] = LectureHour.NO
         testLectureSession.setSessionHours(testSessionHours)
         self.assertEqual(testSessionHours, testLectureSession.getSessionHours)
     def test_lecture_session_SessionType(self):
@@ -41,7 +39,8 @@ class LectureSessionTest(unittest.TestCase):
         testLectureSession = LectureSession()
         testInstructor = Instructor()
         testInstructor.setFirstName("testFName")
-        testListOfAssistans = list(testInstructor)
+        testListOfAssistans = list()
+        testListOfAssistans.append(testInstructor)
         testLectureSession.setListOfAssistans(testListOfAssistans)
         self.assertEqual(testListOfAssistans, testLectureSession.getListOfAssistans)
     def test_lecture_session_Lecture(self):
@@ -56,7 +55,9 @@ class LectureSessionTest(unittest.TestCase):
         testLectureSession = LectureSession()
         testStudent = Student()
         testStudent.setFirstName("testFName")
-        testListOfStudents = list(testStudent)
+        testListOfStudents = list()
+        testListOfStudents.append(testStudent)
         testLectureSession.setListOfStudents(testListOfStudents)
         self.assertEqual(testListOfStudents, testLectureSession.getListOfStudents)
-    
+if __name__ == '__main__':
+    unittest.main()

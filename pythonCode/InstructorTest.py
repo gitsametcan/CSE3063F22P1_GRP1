@@ -10,23 +10,27 @@ class InstructorTest(unittest.TestCase):
     def test_instructor_InstructorID(self):
         # generated source for method test_instructor_InstructorID 
         testInstructorID = InstructorID(1, 2)
-        testInstructor = Instructor(None, None, testInstructorID, None, None, None)
+        testInstructor = Instructor()
+        testInstructor.setID(testInstructorID)
         self.assertEqual(testInstructorID, testInstructor.getID())
     def test_instructor_scheudle(self):
         # generated source for method test_instructor_scheudle 
-        testSchedule = Schedule(None, None, None)
-        testInstructor = Instructor(None, None, None, None, None, testSchedule)
+        testSchedule = Schedule()
+        testInstructor = Instructor()
         testSchedule.setPerson(testInstructor)
+        testInstructor.setSchedule(testSchedule)
         self.assertEqual(testSchedule, testInstructor.getSchedule())
     def test_instructor_date_of_entry(self):
         # generated source for method test_instructor_date_of_entry 
         testDateOfEntry = datetime.date(2011, 10, 28)
-        testInstructor = Instructor(None, None, None, testDateOfEntry, None, None)
+        testInstructor = Instructor()
+        testInstructor.setDateOfEntry(testDateOfEntry)
         self.assertEqual(testDateOfEntry, testInstructor.getDateOfEntry())
     def test_instructor_instructor_type(self):
         # generated source for method test_instructor_instructor_type 
         testInstructorType = InstructorType.Assistant
-        testInstructor = Instructor(None, None, None, None, testInstructorType, None)
+        testInstructor = Instructor()
+        testInstructor.setInstructorType(testInstructorType)
         self.assertEqual(InstructorType.Assistant, testInstructor.getInstructorType())
 if __name__ == '__main__':
     unittest.main()

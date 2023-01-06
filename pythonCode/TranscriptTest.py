@@ -16,7 +16,8 @@ class TranscriptTest(unittest.TestCase):
         # generated source for method test_transcript_ListOfSemester 
         testTranscript = Transcript()
         testSemester = Semester()
-        testListOfSemester = list(testSemester)
+        testListOfSemester = list()
+        testListOfSemester.append(testSemester)
         testTranscript.setListOfSemester(testListOfSemester)
         self.assertEqual(testListOfSemester, testTranscript.getListOfSemester())
     def test_semester_Gano(self):
