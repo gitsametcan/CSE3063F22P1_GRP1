@@ -9,29 +9,29 @@ class Semester():
 
     # Creating properties for variables
     def getListOfLecturesTaken(self):
-        return self.listOfLecturesTaken
+        return self.__listOfLecturesTaken
 
     def getCreditsTaken(self):
-        self.creditsTaken = self.creditsTakenCalculator(self.listOfLecturesTaken)
-        return self.creditsTaken
+        self.__creditsTaken = self.creditsTakenCalculator(self.__listOfLecturesTaken)
+        return self.__creditsTaken
 
     def getCreditsCompleted(self):
-        self.creditsCompleted = self.creditsCompletedCalculator(self.listOfLecturesTaken)
-        return self.creditsCompleted
+        self.__creditsCompleted = self.creditsCompletedCalculator(self.__listOfLecturesTaken)
+        return self.__creditsCompleted
 
     def getPoints(self):
-        self.points = self.pointsCalculator(self.listOfLecturesTaken);
-        return self.points
+        self.__points = self.pointsCalculator(self.__listOfLecturesTaken);
+        return self.__points
 
     def getYano(self):
-        self.yano = self.points/self.creditsTaken
-        return self.yano
+        self.__yano = self.__points/self.__creditsTaken
+        return self.__yano
 
     def setListOfLecturesTaken(self, listOfLecturesTaken):
-        self.listOfLecturesTaken = listOfLecturesTaken
+        self.__listOfLecturesTaken = listOfLecturesTaken
 
     def addLecture(self, lecture, grade):
-        self.listOfLecturesTaken.put(lecture, grade)
+        self.__listOfLecturesTaken.put(lecture, grade)
 
     def creditsTakenCalculator(self, listOfLecturesTaken):
         totalCredit = 0

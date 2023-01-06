@@ -13,43 +13,43 @@ class LectureSession(object):
 
     # Creating properties for variables
     def setSessionID(self, sessionID):
-        self.sessionID = sessionID
+        self.__sessionID = sessionID
 
     def setLecture(self, lecture):
-        self.lecture = lecture
+        self.__lecture = lecture
 
     def setSessionHours(self, sessionHours):
-        self.sessionHours = sessionHours
+        self.__sessionHours = sessionHours
 
     def setSessionType(self, sessionType):
-        self.sessionType = sessionType
+        self.__sessionType = sessionType
 
     def setInstructor(self, instructor):
-        self.instructor = instructor
+        self.__instructor = instructor
 
     def setListOfAssistans(self, listOfAssistans):
-        self.listOfAssistans = listOfAssistans
+        self.__listOfAssistans = listOfAssistans
 
     def getSessionID(self):
-        return self.sessionID.getID()
+        return self.__sessionID.getID()
 
     def getSessionHours(self):
-        return self.sessionHours
+        return self.__sessionHours
 
     def getSessionType(self):
-        return self.sessionType
+        return self.__sessionType
 
     def getInstructor(self):
-        return self.instructor
+        return self.__instructor
 
     def getListOfAssistans(self):
-        return self.listOfAssistans
+        return self.__listOfAssistans
 
     def getLecture(self):
-        return self.lecture
+        return self.__lecture
 
     def getListOfStudents(self):
-        return self.listOfStudents
+        return self.__listOfStudents
 
     def setListOfStudents(self, listOfStudents):
-        self.listOfStudents = listOfStudents
+        self.__listOfStudents = listOfStudents

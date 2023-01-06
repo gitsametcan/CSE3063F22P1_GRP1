@@ -15,67 +15,67 @@ class Lecture():
 
     # Creating properties for variables
     def getID(self):
-        return self.id.getID()
+        return self.__id.getID()
 
     def getName(self):
-        return self.name
+        return self.__name
 
     def getLectureType(self):
-        return self.lectureType
+        return self.__lectureType
 
     def getCredit(self):
-        return self.credit
+        return self.__credit
 
     def getSessions(self):
-        return self.sessions
+        return self.__sessions
 
     def getPrerequisite(self):
-        return self.prerequisite
+        return self.__prerequisite
 
     def getId(self):
-        return self.id
+        return self.__id
 
     def setId(self, id):
-        self.id = id
+        self.__id = id
 
     def setSessions(self, sessions):
-        self.sessions = sessions
+        self.__sessions = sessions
 
     def setPrerequisite(self, prerequisite):
-        self.prerequisite = prerequisite
+        self.__prerequisite = prerequisite
 
     def getQuota(self):
-        return self.quota
+        return self.__quota
 
     def setName(self, name):
-        self.name = name
+        self.__name = name
 
     def setLectureType(self, lectureType):
-        self.lectureType = lectureType
+        self.__lectureType = lectureType
 
     def setCredit(self, credit):
-        self.credit = credit
+        self.__credit = credit
 
     def setQuota(self, quota):
-        self.quota = quota
+        self.__quota = quota
 
     def removeLectureSession(self, lectureSession):
-        self.sessions.remove(lectureSession)
+        self.__sessions.remove(lectureSession)
 
     def addPrerequisiteLecture(self, lecture):
-        self.prerequisite = lecture
+        self.__prerequisite = lecture
 
     def removePrerequisitielLecture(self):
-        self.prerequisite = None
+        self.__prerequisite = None
 
     def getTerm(self):
-        return self.term
+        return self.__term
 
     def setTerm(self, term):
-        self.term = term
+        self.__term = term
 
     def getTermYear(self):
-        return self.termYear
+        return self.__termYear
 
     def setTermYear(self, termYear):
-        self.termYear = termYear
+        self.__termYear = termYear

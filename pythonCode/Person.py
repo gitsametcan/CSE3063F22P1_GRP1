@@ -15,17 +15,17 @@ class Person():
         # generated source for method getFirstName 
         return self.__firstName
 
-    def setFirstName(self, __firstName):
+    def setFirstName(self, firstName):
         # generated source for method setFirstName 
-        self.firstName = __firstName
+        self.__firstName = firstName
 
     def getLastName(self):
         # generated source for method getLastName 
         return self.__lastName
 
-    def setLastName(self, __lastName):
+    def setLastName(self, lastName):
         # generated source for method setLastName 
-        self.lastName = __lastName
+        self.__lastName = lastName
 
     def getFullName(self):
         # generated source for method getFullName 

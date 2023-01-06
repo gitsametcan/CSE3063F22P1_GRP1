@@ -18,40 +18,40 @@ class Transcript:
      # Creating properties for variables 
     
     def getStudent(self):
-        return self.student
+        return self.__student
 
     def setStudent(self,  student):
-        self.student = student
+        self.__student = student
     
     def getListOfSemester(self):
-        return self.listOfSemester
+        return self.__listOfSemester
 
     def setListOfSemester(self, listOfSemester):
-        self.listOfSemester = listOfSemester
+        self.__listOfSemester = listOfSemester
 
     def getGano(self):
-        return self.gano
+        return self.__gano
 
     def setGano(self, gano):
-        self.gano = gano   
+        self.__gano = gano   
 
     def getTotalCreditsTaken(self):
-        return self.totalCreditsTaken
+        return self.__totalCreditsTaken
 
     def setTotalCreditsTaken(self, totalCreditsTaken):
-        self.totalCreditsTaken = totalCreditsTaken
+        self.__totalCreditsTaken = totalCreditsTaken
 
     def getPoints(self):
-        return self.points
+        return self.__points
 
     def setPoints(self, points):
-        self.points = points
+        self.__points = points
 
     def getTotalCreditsCompleted(self):
-        return self.totalCreditsCompleted
+        return self.__totalCreditsCompleted
 
     def setTotalCreditsCompleted(self, totalCreditsCompleted):
-        self.totalCreditsCompleted = totalCreditsCompleted
+        self.__totalCreditsCompleted = totalCreditsCompleted
 
 
     # Creating other methods
@@ -68,12 +68,12 @@ class Transcript:
 
     def totalCreditsCompletedCalculator(self, listOfSemester):
         totalCreditsCompleted = 0
-        for semester in self.listOfSemester:
+        for semester in self.__listOfSemester:
             totalCreditsCompleted += semester.creditsCompleted
         return totalCreditsCompleted
 
     def pointsCalculator(self):
         points = 0
-        for semester in self.listOfSemester:
+        for semester in self.__listOfSemester:
             points += semester.points
         return points

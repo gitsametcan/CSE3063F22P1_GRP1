@@ -14,20 +14,20 @@ class LectureRegistrationApplication():
      # Creating properties for variables
 
     def getSessionsSentForApproval(self):
-        return self.sessionsSentForApproval
+        return self.__sessionsSentForApproval
 
     
     def getAdvisor(self):
-        return self.advisor
+        return self.__advisor
 
     def getStudent(self):
-        return self.student
+        return self.__student
 
     def setSsessionsSentForApproval(self, sessionsSentForApproval):
-        self.sessionsSentForApproval = sessionsSentForApproval
+        self.__sessionsSentForApproval = sessionsSentForApproval
 
     def setStudent(self, student):
-        self.student = student
+        self.__student = student
 
     def setAdvisor(self, advisor):
-        self.advisor = advisor
+        self.__advisor = advisor

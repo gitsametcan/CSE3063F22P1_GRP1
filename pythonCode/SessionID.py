@@ -17,7 +17,7 @@ class SessionID:
             except ValueError:
                 pass
             finally:
-                self.id = int(t)
+                self.__id = int(t)
 
         if t == int:
-                self.id = t
+                self.__id = t
