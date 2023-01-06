@@ -203,12 +203,156 @@ class JsonOperator():
                         # advisor.getSchedule().getListOfLectureSessions().append(ls)
 
     def pairStudents(self):
+        from Schedule import Schedule
         for sjs in self.__studentJsonDicts:
             currentStudent = self.__findStudent(sjs["studentID"])
 
+            schedule = Schedule()
+            schedulejs = sjs["schedule"]
+
+            schedule.setPerson(currentStudent)
+            schedule.setTerm(Term[schedulejs["term"]])
+            schedule.setTermYear(TermYear[schedulejs["termYear"]])
+
+            sessions = sjs["sessions"]
+
+            for key in sessions.keys():
+                tempLecture = self.__findLecture(key)
+                sessionsList = schedule.getListOfLectureSessions()
+                sessionsOfLecture = tempLecture.getSessions()
+                sessionsList.append(sessionsOfLecture[0])
+                schedule.setListOfLectureSessions(sessionsList)
+
+            currentStudent.setSchedule(schedule)
+
+            self.__pairTranscripts(currentStudent)
+    
+    def pairAdvisors(self):
+        from Schedule import Schedule
+        for ajs in self.__advisorJsonDicts:
+            currentAdvisor = self.__findAdvisor(ajs["instructorID"])
+
+            schedule = Schedule()
+            schedulejs = ajs["schedule"]
+
+            schedule.setPerson(currentAdvisor)
+            schedule.setTerm(Term[schedulejs["term"]])
+            schedule.setTermYear(TermYear[schedulejs["termYear"]])
+
+            sessions = ajs["sessions"]
+
+            for key in sessions.keys():
+                tempLecture = self.__findLecture(key)
+                sessionsList = schedule.getListOfLectureSessions()
+                sessionsOfLecture = tempLecture.getSessions()
+                sessionsList.append(sessionsOfLecture[0])
+                schedule.setListOfLectureSessions(sessionsList)
+
+            currentAdvisor.setSchedule(schedule)
+
+            listOfStudents = ajs["listOfStudentIDs"]
+            for studentID in listOfStudents:
+                for student in self.__studentJsonDicts:
+                    if studentID == student["studentID"]:
+                        currentStudent = self.__findStudent(studentID)
+                        currentStudent.setAdvisor(currentAdvisor)
+                        advisorStudents = currentAdvisor.getListOfStudents()
+                        advisorStudents.append(currentStudent)
+                        currentAdvisor.setListOfStudents(advisorStudents)
+
         pass
 
-    def pairAdvisors(self):
+    def __pairTranscripts(self, student):
+        from LetterGrade import LetterGrade
+        from Semester import Semester
+        from Transcript import Transcript
+        for tjs in self.__transcriptJsonDicts:
+            if tjs["studentID"] != student.getId():
+                continue
+            
+            listOfSemesters = tjs["listOfSemesters"]
+            listOfSemesterObjects = list()
+            for semester in listOfSemesters:
+                listOfLecturesTaken = dict()
+                for key in semester.keys():
+                    lecture = self.__findLecture(key)
+                    letterGrade = LetterGrade[semester[key]]
+                    listOfLecturesTaken[lecture] = letterGrade
+                semesterObject = Semester()
+                semesterObject.setListOfLecturesTaken(listOfLecturesTaken)
+                listOfSemesterObjects.append(semesterObject)
+
+            transcript = Transcript()
+            transcript.setListOfSemester(listOfSemesterObjects)
+            transcript.setStudent(student)
+            student.setTranscript(transcript)
+            self.__transcriptObjectsList.append(transcript)
+        
+    def saveStudent(self, student):
+        advisorID = student.getAdvisor().getID()
+        studentID = student.getID()
+        schedule = student.getSchedule()
+        schedulejs = dict()
+        schedulejs["ID"] = studentID
+        schedulejs["term"] = schedule.getTerm().name
+        schedulejs["termYear"] = schedule.getTermYear().name
+        sessionsjs = dict()
+        sessions = schedule.getListOfLectureSessions()
+        for session in sessions:
+            sessionsjs[session.getLecture().getID()] = session.getID()
+        schedulejs["sessions"] = sessionsjs
+        dateOfEntry = student.getDateOfEntry().strftime("%Y-%m-%d")
+        firstName = student.getFirstName()
+        lastName = student.getLastName()
+
+        writeJson = dict()
+        writeJson["advisorID"] = advisorID
+        writeJson["studentID"] = studentID
+        writeJson["schedule"] = schedulejs
+        writeJson["dateOfEntry"] = dateOfEntry
+        writeJson["firstName"] = firstName
+        writeJson["lastName"] = lastName
+        
+        dumpedJson = json.dump(writeJson, indent=4)
+        writeFile = open(self.__metaData["studentsList"] + studentID + ".JSON", "w")
+        writeFile.writelines(dumpedJson)
+
+    def saveAdvisor(self, advisor):
+        instructorID = advisor.getID()
+        listOfStudents = advisor.getListOfStudents()
+        studentList = list()
+        for s in listOfStudents:
+            studentList.append(s.getID())
+        schedule = advisor.getSchedule()
+        schedulejs = dict()
+        schedulejs["ID"] = instructorID
+        schedulejs["term"] = schedule.getTerm().name
+        schedulejs["termYear"] = schedule.getTermYear().name
+        sessionsjs = dict()
+        sessions = schedule.getListOfLectureSessions()
+        for session in sessions:
+            sessionsjs[session.getLecture().getID()] = session.getID()
+        schedulejs["sessions"] = sessionsjs
+        instructorType = advisor.getInstructorType().name
+        dateOfEntry = advisor.getDateOfEntry().strftime("%Y-%m-%d")
+        firstName = advisor.getFirstName()
+        lastName = advisor.getLastName()
+
+        writeJson = dict()
+        writeJson["instructorID"] = instructorID
+        writeJson["listOfStudentIDs"] = studentList
+        writeJson["schedule"] = schedulejs
+        writeJson["instructorType"] = instructorType
+        writeJson["dateOfEntry"] = dateOfEntry
+        writeJson["firstName"] = firstName
+        writeJson["lastName"] = lastName
+        
+        dumpedJson = json.dump(writeJson, indent=4)
+        writeFile = open(self.__metaData["advisorsList"] + instructorID + ".JSON", "w")
+        writeFile.writelines(dumpedJson)
+        
+    def saveLecture(self, lecture):
+        
         pass
 
     def __findLecture(self, id):
