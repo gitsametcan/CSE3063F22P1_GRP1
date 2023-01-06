@@ -4,6 +4,8 @@ from Transcript import Transcript
 from Lecture import Lecture
 from LectureType import LectureType
 from Term import Term
+from TermYear import TermYear
+from DataManager import DataManager
 
 
 class LRAGenerator():
@@ -11,17 +13,31 @@ class LRAGenerator():
     def __init__(self):
         pass
 
-    def generate(self, listOfStudents):
+    def generate(self, listOfStudents:list, term: Term):
 
+        nteList, ueList, teList, fteList, mandatoryList = DataManager.getInstance().searchLecturesUntilTerm("",Term.Spring, TermYear.Senior)
+        student = Student()
         for s in listOfStudents:
 
-            s.setRegistirationApplication = self.fillLRA(s)
+            LRA = LectureRegistrationApplication()
+
+            for l in mandatoryList:
+                a = 0
+                b = 0
+                for la in student.availableLessons()
+                    if l == la:
+                        a=1
+                if student.canTakeLecture(l,student.getTranscript()):
+                    b = 1
+                
+
         
         return listOfStudents
 
     def fillLRA(self, student:Student):
 
         LRA = LectureRegistrationApplication()
+
 
         #if
         #UE

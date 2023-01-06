@@ -2,17 +2,13 @@ from Debt import Debt
 from LectureRegistrationApplication import LectureRegistrationApplication
 from StudentID import StudentID
 from DataManager import DataManager
-from Lecture import Lecture
-from LectureSession import LectureSession
 from Schedule import Schedule
 from Advisor import Advisor
 from Student import Student
-from ApprovalState import ApprovalState
 from FilterType import FilterType
 from Transcript import Transcript
 from Term import Term
 from TermYear import TermYear
-from TranscriptGenerator import TranscriptGenerator
 import datetime
 import random
 
@@ -72,4 +68,6 @@ class StudentGenerator():
 
     def getRandomAdvisor(self):
 
-        return DataManager.getInstance().searchAdvisor("", FilterType.Name).get(((random.randint(1,13))))
+        listOfAdvisor = DataManager.getInstance().searchAdvisor("", FilterType.Name)
+
+        return listOfAdvisor[random.radint(0,13)]

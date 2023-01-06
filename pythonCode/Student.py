@@ -269,3 +269,7 @@ class Student(Person):
             if l.getTerm() == self.getSchedule().getTerm() and l.getTermYear() == self.getSchedule().getTermYear() and self.canTakeLecture(l, self.getTranscript()):
                 availableLessons.append(l)
         return availableLessons
+
+    def checkScheduleForLecture(self, schedule : Schedule, lecture : Lecture)
+
+        

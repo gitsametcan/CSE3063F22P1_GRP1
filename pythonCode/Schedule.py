@@ -80,3 +80,4 @@ class Schedule():
 
     def setTermYear(self, termYear):
         self.termYear = termYear
+    

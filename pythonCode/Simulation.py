@@ -3,6 +3,8 @@ from Logger import Logger
 from Student import Student
 from Term import Term
 from TermYear import TermYear
+from Semester import Semester
+from ApprovalState import ApprovalState
 from LectureRegistrationApplication import LectureRegistrationApplication
 
 from StudentGenerator import StudentGenerator
@@ -13,7 +15,7 @@ class Simulation():
     def __init__(self):
         
         self.__studentGenerator = StudentGenerator()
-        self.__LRA = LectureRegistrationApplication()
+        self.__LRA = LRAGenerator()
         self.__listOfStudents = list()
 
     def run(self):
@@ -32,16 +34,16 @@ class Simulation():
                 for i in range(1, 101):
                     student = self.__studentGenerator.generate(year,i)
                     listOfStudents.append(student)
-            listOfStudents = self.__LRA.generate(listOfStudents)
+            listOfStudents = self.__LRA.generate(listOfStudents,term)
             self.takeAutoAnswerForLRA(listOfStudents)
             self.fillSemesterFromLRA(listOfStudents)
             self.emptyLRA(listOfStudents)
             self.takeAutoLetterGradeForSemester(listOfStudents)
             
-            
+        return listOfStudents
 
 
-    #loglar gelecek
+    #logs will come here
 
     def skipTerm(self, listOfStudents:list(), term:Term):
 
@@ -54,10 +56,34 @@ class Simulation():
                 elif s.getSchedule.getTermYear() == TermYear.Junior:
                     s.getSchedule.setTermYear(TermYear.Senior)
             s.getSchedule.setTerm(term)
+
+    def takeAutoAnswerForLRA(self, listOfStudent):
+        for s in listOfStudent:
+            LRA = s.getRegistirationApplication()
+            #for l in LRA:
+                #random Approval State will given
+            s.setRegistirationApplication(LRA)
+
+    
+    def fillSemesterFromLRA(self, listOfStudent):
+        for s in listOfStudent:
+            listOflecture = list()
+            LRA = s.getRegistirationApplication()
+            for l in LRA:
+                if l.ApprovalState == ApprovalState.Approved:
+                    listOflecture.append(l)
+            semester  = Semester()
+            semester.setListOfLecturesTaken(listOflecture)
+            s.getTranscript().addSemester(semester)
+
+
         
-    def takeAutoAnswerForLRA(self, listOfStudents):
-        #Give states for every students LRA lectures 
-        pass
+    def takeAutoLetterGradeForSemester(self, listOfStudents):
+        for s in listOfStudents:
+            semester = s.getTranscript().getLastSemester()
+            lectureList = semester.getListOfLecturesTaken()
+            #Random letterGrade will given
+            s.getTranscript().getLastSemester().setListOfLecturesTaken(lectureList)
 
     def emptyLRA(self, listOfStudent):      
         for s in listOfStudent:

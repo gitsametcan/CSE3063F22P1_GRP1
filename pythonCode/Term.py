@@ -1,5 +1,5 @@
 from enum import Enum
  
 class Term(Enum):
-    Spring = 1
-    Fall = 2
+    Fall = 1
+    Spring = 2
