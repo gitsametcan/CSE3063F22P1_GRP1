@@ -16,12 +16,14 @@ class LRAGenerator():
     def generate(self, listOfStudents:list, term: Term):
 
         nteList, ueList, teList, fteList, mandatoryList = DataManager.getInstance().searchLecturesUntilTerm("",Term.Spring, TermYear.Senior)
+        lectureQuota ={}
         student = Student()
         for s in listOfStudents:
 
             LRA = LectureRegistrationApplication()
 
             for l in mandatoryList:
+                lectureQuota.update({l : 1})
                 a = 0
                 b = 0
                 c = 0
@@ -32,7 +34,11 @@ class LRAGenerator():
                     b = 1
                 if student.checkScheduleForLecture(student.getSchedule(),l):
                     c = 1
+                
                 #Add Lecture
+            
+
+
         return listOfStudents
 
     def fillLRA(self, student:Student):
