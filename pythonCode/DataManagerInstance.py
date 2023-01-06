@@ -79,9 +79,9 @@ class DataManagerInstance():
     def searchLecturesUntilTerm(self, key: str, term: Term, termYear: TermYear):
         result = list()
         for l in self.__listOfLectures:
-            if key in l.getName() and l.getTermYear() < termYear.value:
+            if key in l.getName() and l.getTermYear().value < termYear.value:
                 result.append(l)
-            if key in l.getName() and l.getTermYear() == termYear.value and l.getTerm() <= term.value:
+            if key in l.getName() and l.getTermYear().value == termYear.value and l.getTerm().value <= term.value:
                 result.append(l)
         # mandatory, 
         mandatoryList = list()
@@ -109,6 +109,36 @@ class DataManagerInstance():
 
         return (nteList, ueList, teList, fteList, mandatoryList)
 
+    def searchLecturesOfTerm(self, key: str, term: Term):
+        result = list()
+        for l in self.__listOfLectures:
+            if key in l.getName() and l.getTerm().value == term.value:
+                result.append(l)
+        mandatoryList = list()
+        fteList = list()
+        teList = list()
+        ueList = list()
+        nteList = list()
+        
+        for l in result:
+            if l.getLectureType() == LectureType.MANDATORY:
+                mandatoryList.append(l)
+                continue
+            if l.getLectureType() == LectureType.FTE:
+                fteList.append(l)
+                continue
+            if l.getLectureType() == LectureType.NTE:
+                nteList.append(l)
+                continue
+            if l.getLectureType() == LectureType.TE:
+                teList.append(l)
+                continue
+            if l.getLectureType() == LectureType.UE:
+                ueList.append(l)
+                continue
+        
+        return (nteList, ueList, teList, fteList, mandatoryList)
+
 
     def hello(self):
        print("hello")
@@ -118,7 +148,7 @@ class DataManagerInstance():
     
     def logCircleDeneme(self):
         from Logger import Logger
-        Logger.getLogger("denemelog").info("circle!!")
+        Logger.getLogger("logs").info("circle!!")
 
     def getNamePool(self):
         return self.__jsonOperator.getNamePool()

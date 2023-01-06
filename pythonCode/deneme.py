@@ -7,7 +7,7 @@ from Logger import Logger
 DataManager.getInstance().loadFiles()
 DataManager.getInstance().hello()
 
-logger = Logger.getLogger("denemelog")
+logger = Logger.getLogger("logs")
 
 logger.error("hatamesajiiii")
 logger.info("infomesajii")

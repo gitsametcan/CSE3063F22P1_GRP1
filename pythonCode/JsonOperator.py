@@ -92,7 +92,6 @@ class JsonOperator():
         for ls in lectureSessions:
 
             id = ls["ID"]
-            instructorID = ls["instructorID"]
             sessionType = ls["sessionType"]
             sessionHours = ls["sessionHours"]
 
@@ -110,10 +109,10 @@ class JsonOperator():
                 sessionHoursObject.append(day)
             
             lectureSessionObject = LectureSession()
-            lectureSessionObject.setLecture = lecture
-            lectureSessionObject.setSessionID = idObject
-            lectureSessionObject.setSessionType = sessionTypeObject
-            lectureSessionObject.setSessionHours = sessionHoursObject
+            lectureSessionObject.setLecture(lecture)
+            lectureSessionObject.setSessionID(idObject)
+            lectureSessionObject.setSessionType(sessionTypeObject)
+            lectureSessionObject.setSessionHours(sessionHoursObject)
 
             sessionsList.append(lectureSessionObject)
 
@@ -184,6 +183,8 @@ class JsonOperator():
 
     def pairObjects(self):
         self.pairLectures()
+        self.pairStudents()
+        self.pairAdvisors()
 
     def pairLectures(self):
         for ljs in self.__lectureJsonDicts:
@@ -191,13 +192,41 @@ class JsonOperator():
             prerequisiteLecture = self.__findLecture(ljs["prerequisiteID"])
             if (prerequisiteLecture is not None):
                 currentLecture.setPrerequisite(prerequisiteLecture)
-            
+            lectureSessions = ljs["lectureSessions"]
 
+            for lsjs in lectureSessions:
+                for ls in currentLecture.getSessions():
+                    if ls.getSessionID() == lsjs["ID"]:
+                        instructorID = lsjs["instructorID"]
+                        advisor = self.__findAdvisor(instructorID)
+                        ls.setInstructor(advisor)
+                        # advisor.getSchedule().getListOfLectureSessions().append(ls)
+
+    def pairStudents(self):
+        for sjs in self.__studentJsonDicts:
+            currentStudent = self.__findStudent(sjs["studentID"])
+
+        pass
+
+    def pairAdvisors(self):
+        pass
 
     def __findLecture(self, id):
         for l in self.__lectureObjectsList:
             if l.getID() == id:
                 return l
+        return None
+
+    def __findAdvisor(self, id):
+        for a in self.__advisorObjectsList:
+            if a.getID() == id:
+                return a
+        return None
+
+    def __findStudent(self, id):
+        for s in self.__studentObjectsList:
+            if s.getID() == id:
+                return s
         return None
 
     def __strToDateTime(self, dtstr):
