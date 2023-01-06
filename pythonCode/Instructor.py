@@ -1,29 +1,10 @@
-from calendar import Calendar
-from Logger import Logger
 from InstructorType import InstructorType
-from InstructorID import InstructorID
-from LectureSession import LectureSession
-#from Schedule import Schedule
 from Person import Person
 
 class Instructor(Person):
-    # generated source for class Instructor 
-
-    #log = Logger.getLogger("logs")
-    #_id = InstructorID()
-    #__schedule = Schedule()
-    #_dateOfEntry = Calendar()
-    #_instructorType = InstructorType()
 
     def __init__(self):
-        # generated source for method __init__ 
-        #super(firstName, lastName)
-        self.__id = InstructorID()
-        self.__schedule = Schedule()
-        self.__dateOfEntry = Calendar()
-        self.__instructorType = InstructorType.Assistant
-        self.__log = Logger.getLogger("logs")
-
+        pass
 
     def getID(self):
         # generated source for method getID 
@@ -45,7 +26,7 @@ class Instructor(Person):
         # generated source for method getInstructorType 
         return self.__instructorType
     
-    def setInstructorType(self, instructorType):
+    def setInstructorType(self, instructorType : InstructorType):
         # generated source for method setInstructorType 
         self.__instructorType = instructorType
 

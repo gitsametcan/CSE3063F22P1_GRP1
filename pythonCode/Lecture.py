@@ -1,81 +1,77 @@
 from LectureType import LectureType
-from Term import Term
-from TermYear import TermYear
-from LectureID import LectureID
 
 class Lecture():
-
-    def __init__(self):
-    #    for ls in self.sessions:
-    #        ls.set_lecture(self)
-
-    #    if self.sessions is None:
-    #        self.sessions = []
+    def __init__(self):    
         pass
 
     # Creating properties for variables
     def getID(self):
-        return self.id.getID()
+        return self.__id.getID()
 
     def getName(self):
-        return self.name
+        return self.__name
 
     def getLectureType(self):
-        return self.lectureType
+        return self.__lectureType
 
     def getCredit(self):
-        return self.credit
+        return self.__credit
 
     def getSessions(self):
-        return self.sessions
+        for ls in self.__sessions:
+           ls.set_lecture(self)
+        if self.__sessions is None:
+            self.__sessions = []
+        return self.__sessions
 
     def getPrerequisite(self):
-        return self.prerequisite
+        return self.__prerequisite
 
     def getId(self):
-        return self.id
+        return self.__id
 
     def setId(self, id):
-        self.id = id
+        self.__id = id
 
-    def setSessions(self, sessions):
-        self.sessions = sessions
+    def setSessions(self, sessions : list):
+        self.__sessions = sessions
 
     def setPrerequisite(self, prerequisite):
-        self.prerequisite = prerequisite
+        self.__prerequisite = prerequisite
 
     def getQuota(self):
-        return self.quota
+        return self.__quota
 
-    def setName(self, name):
-        self.name = name
+    def setName(self, name : str):
+        self.__name = name
 
-    def setLectureType(self, lectureType):
-        self.lectureType = lectureType
+    def setLectureType(self, lectureType : LectureType):
+        self.__lectureType = lectureType
 
-    def setCredit(self, credit):
-        self.credit = credit
+    def setCredit(self, credit : int):
+        self.__credit = credit
 
-    def setQuota(self, quota):
-        self.quota = quota
-
-    def removeLectureSession(self, lectureSession):
-        self.sessions.remove(lectureSession)
-
-    def addPrerequisiteLecture(self, lecture):
-        self.prerequisite = lecture
-
-    def removePrerequisitielLecture(self):
-        self.prerequisite = None
+    def setQuota(self, quota : int):
+        self.__quota = quota
 
     def getTerm(self):
-        return self.term
+        return self.__term
 
     def setTerm(self, term):
-        self.term = term
+        self.__term = term
 
     def getTermYear(self):
-        return self.termYear
+        return self.__termYear
 
     def setTermYear(self, termYear):
-        self.termYear = termYear
+        self.__termYear = termYear
+
+    # Creating another methods
+    def removeLectureSession(self, lectureSession):
+        self.__sessions.remove(lectureSession)
+
+    def addPrerequisiteLecture(self, lecture):
+        self.__prerequisite = lecture
+
+    def removePrerequisitielLecture(self):
+        self.__prerequisite = None

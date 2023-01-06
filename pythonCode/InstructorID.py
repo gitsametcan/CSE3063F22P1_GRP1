@@ -16,16 +16,16 @@ class InstructorID(UniqueID):
     # Creating another properties for variables
 
     def getID(self) -> str:
-        return self.digitFixer(self.departmentCode) + self.digitFixer(self.orderOfEntry)
+        return self.digitFixer(self.__departmentCode) + self.digitFixer(self.__orderOfEntry)
         
     def setID(self, *args):
         index = 0
         for t in args: 
             if (isinstance(t, int)):
                 if index == 0:
-                    self.departmentCode = t
+                    self.__departmentCode = t
                 if index == 1:
-                    self.orderOfPlacement = t
+                    self.__orderOfPlacement = t
 
             if (isinstance(t, str)):
                 try:
@@ -33,8 +33,8 @@ class InstructorID(UniqueID):
                 except ValueError:
                     pass
                 finally:
-                    self.departmentCode = int(t[:3])
-                    self.orderOfEntry = int(t[3:])
+                    self.__departmentCode = int(t[:3])
+                    self.__orderOfEntry = int(t[3:])
 
     ## Creeate another methods
     def digitFixer(self, integer: int) -> str:
