@@ -1,9 +1,4 @@
-from calendar import Calendar
-from Logger import Logger
 from InstructorType import InstructorType
-from InstructorID import InstructorID
-from LectureSession import LectureSession
-from Schedule import Schedule
 from Person import Person
 
 class Instructor(Person):
@@ -15,7 +10,7 @@ class Instructor(Person):
         # generated source for method getID 
         return self.__id.getID()
     
-    def setID(self, id : InstructorID):
+    def setID(self, id):
         # generated source for method setID 
         self.__id = id
 
@@ -23,7 +18,7 @@ class Instructor(Person):
         # generated source for method getDateOfEntry 
         return self.__dateOfEntry
         
-    def setDateOfEntry(self, dateOfEntry : Calendar):
+    def setDateOfEntry(self, dateOfEntry):
         # generated source for method setDateOfEntry 
         self.__dateOfEntry = dateOfEntry
 
@@ -39,6 +34,6 @@ class Instructor(Person):
         # generated source for method getSchedule 
         return self.__schedule
 
-    def setSchedule(self, schedule : Schedule):
+    def setSchedule(self, schedule):
         # generated source for method setSchedule 
         self.__schedule = schedule

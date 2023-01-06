@@ -1,15 +1,5 @@
-
-from calendar import Calendar
-from Logger import Logger
 from Instructor import Instructor
-from Student import Student
-from LectureRegistrationApplication import LectureRegistrationApplication
 from ApprovalState import ApprovalState
-from InstructorType import InstructorType
-from InstructorID import InstructorID
-from Lecture import Lecture
-from LectureSession import LectureSession
-#from Schedule import Schedule;
 
 class Advisor(Instructor):
 
@@ -74,11 +64,11 @@ class Advisor(Instructor):
 
         return listOfApplications
 
-    def approveApplication(self, lectureRegistirationApplication : LectureRegistrationApplication, lectureSession: LectureSession):
+    def approveApplication(self, lectureRegistirationApplication, lectureSession):
         # generated source for method approveApplication 
         lectureRegistirationApplication.getSessionsSentForApproval().put(lectureSession, ApprovalState.Approved)
         lectureRegistirationApplication.getStudent().getSchedule().getListOfLectureSessions().add(lectureSession)
 
-    def rejectApplication(self, lectureRegistirationApplication : LectureRegistrationApplication, lectureSession: LectureSession):
+    def rejectApplication(self, lectureRegistirationApplication, lectureSession):
         # generated source for method rejectApplication 
         lectureRegistirationApplication.getSessionsSentForApproval().put(lectureSession, ApprovalState.Rejected)

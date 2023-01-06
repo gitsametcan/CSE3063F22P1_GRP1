@@ -1,8 +1,4 @@
-from SessionID import SessionID
-from LectureHour import LectureHour
 from SessionType import SessionType
-from Student import Student
-from Instructor import Instructor
 
 class LectureSession(object):
 
@@ -51,5 +47,5 @@ class LectureSession(object):
             self.__listOfStudents = list
         return self.__listOfStudents
 
-    def setListOfStudents(self, listOfStudents):
+    def setListOfStudents(self, listOfStudents : list):
         self.__listOfStudents = listOfStudents

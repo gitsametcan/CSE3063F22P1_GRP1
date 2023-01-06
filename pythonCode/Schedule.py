@@ -1,8 +1,4 @@
 from LectureHour import LectureHour
-from Term import Term
-from TermYear import TermYear
-from Person import Person
-from Logger import Logger
 
 class Schedule():
     

@@ -1,6 +1,6 @@
 from UniqueID import UniqueID
 
-class SessionID:
+class SessionID(UniqueID):
     def __init__(self, id: int):
         self.__id = id
 

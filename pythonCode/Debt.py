@@ -1,4 +1,3 @@
-from Student import Student
 class Debt:
 
     def __init__(self):
@@ -17,6 +16,6 @@ class Debt:
     #def getStudent(self):
     #    return self.__student
 
-    def setStudent(self, student: Student):
+    def setStudent(self, student):
         self.__student = student
 

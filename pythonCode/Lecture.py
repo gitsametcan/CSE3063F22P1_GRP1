@@ -1,10 +1,6 @@
 from LectureType import LectureType
-from Term import Term
-from TermYear import TermYear
-from LectureID import LectureID
-from LectureSession import LectureSession
-class Lecture():
 
+class Lecture():
     def __init__(self):    
         pass
 

@@ -1,17 +1,6 @@
-from calendar import Calendar
-from Logger import Logger
-#from Schedule import Schedule
 from Person import Person
-from StudentID import StudentID
-from Transcript import Transcript
-from Debt import Debt
 from LectureRegistrationApplication import LectureRegistrationApplication
 from ApprovalState import ApprovalState
-from FilterType import FilterType
-from LetterGrade import LetterGrade
-from StudentID import StudentID
-from Lecture import Lecture
-from Semester import Semester
 from DataManager import DataManager
 
 class Student(Person):
@@ -61,7 +50,7 @@ class Student(Person):
     def getDateOfEntry(self):        
         return self.__dateOfEntry
 
-    def sendForApproval(self, chosenLectureSessions):
+    def sendForApproval(self, chosenLectureSessions : list):
 
         # generated source for method sendForApproval 
         approvalList = dict()
@@ -220,7 +209,7 @@ class Student(Person):
                 canTake = self.takenPoint(lecture, transcript.getListOfSemester().get(a).getListOfLecturesTaken())
         return canTake
 
-    def hasPreqLectureTaken(self, preqLecture, listOfLecture):
+    def hasPreqLectureTaken(self, preqLecture, listOfLecture : list):
         # generated source for method hasPreqLectureTaken 
 
 
@@ -231,7 +220,7 @@ class Student(Person):
                 return True
         return False
 
-    def takenPoint(self, lecture, listOfLecturesTaken):
+    def takenPoint(self, lecture, listOfLecturesTaken : list):
 
 
         # generated source for method takenPoint 
