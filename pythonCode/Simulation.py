@@ -12,7 +12,6 @@ from LetterGrade import LetterGrade
 class Simulation():
 
     def __init__(self):
-        
         self.__studentGenerator = StudentGenerator()
         self.__LRA = LRAGenerator()
         self.__listOfStudents = list()
@@ -38,7 +37,6 @@ class Simulation():
             self.fillSemesterFromLRA(listOfStudents)
             self.emptyLRA(listOfStudents)
             self.takeAutoLetterGradeForSemester(listOfStudents)
-            
         return listOfStudents
 
 
@@ -65,7 +63,6 @@ class Simulation():
                 else:
                     s.getAdvisor().rejectApplication(LRA, l.getSessions(0))
 
-    
     def fillSemesterFromLRA(self, listOfStudent):
         for s in listOfStudent:
             listOflecture = list()
@@ -78,7 +75,6 @@ class Simulation():
             s.getTranscript().addSemester(semester)
 
 
-        
     def takeAutoLetterGradeForSemester(self, listOfStudents):
         for s in listOfStudents:
             semester = s.getTranscript().getLastSemester()
@@ -86,16 +82,13 @@ class Simulation():
 
             possible_grades = (LetterGrade.AA, LetterGrade.BA, LetterGrade.BB, LetterGrade.CB, LetterGrade.CC, LetterGrade.DC, LetterGrade.DD, LetterGrade.FD, LetterGrade.FF)
             random_grade = random.choice(possible_grades)
-            
-            
 
             for ls in s.getTranscript().getLastSemester().getListOfLecturesTaken():
                 s.getTranscript().getLastSemester().addToGradeList(ls,random_grade)
 
         s.getTranscript().getLastSemester().setListOfLecturesTaken(lectureList)
-            
 
-    def emptyLRA(self, listOfStudent): 
+    def emptyLRA(self, listOfStudent):
         lra = LectureRegistrationApplication()
         for s in listOfStudent:
             s.setRegistirationApplication(lra)
