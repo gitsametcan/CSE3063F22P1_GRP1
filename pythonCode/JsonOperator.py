@@ -182,11 +182,11 @@ class JsonOperator():
 
 
     def pairObjects(self):
-        self.pairLectures()
-        self.pairStudents()
-        self.pairAdvisors()
+        self.__pairLectures()
+        self.__pairStudents()
+        self.__pairAdvisors()
 
-    def pairLectures(self):
+    def __pairLectures(self):
         for ljs in self.__lectureJsonDicts:
             currentLecture = self.__findLecture(ljs["ID"])
             prerequisiteLecture = self.__findLecture(ljs["prerequisiteID"])
@@ -202,7 +202,7 @@ class JsonOperator():
                         ls.setInstructor(advisor)
                         # advisor.getSchedule().getListOfLectureSessions().append(ls)
 
-    def pairStudents(self):
+    def __pairStudents(self):
         from Schedule import Schedule
         for sjs in self.__studentJsonDicts:
             currentStudent = self.__findStudent(sjs["studentID"])
@@ -227,7 +227,7 @@ class JsonOperator():
 
             self.__pairTranscripts(currentStudent)
     
-    def pairAdvisors(self):
+    def __pairAdvisors(self):
         from Schedule import Schedule
         for ajs in self.__advisorJsonDicts:
             currentAdvisor = self.__findAdvisor(ajs["instructorID"])
@@ -352,7 +352,72 @@ class JsonOperator():
         writeFile.writelines(dumpedJson)
         
     def saveLecture(self, lecture):
-        
+        lectureID = lecture.getID()
+        lectureName = lecture.getName()
+        prerequisite = lecture.getPrerequisite()
+        prerequisiteID = ""
+        if prerequisite is not None:
+            prerequisiteID = prerequisite.getID()
+        lectureType = lecture.getLectureType().name
+        quota = lecture.getQuota()
+        credit = lecture.getCredit()
+        term = lecture.getTerm().name
+        termYear = lecture.getTermYear().name
+        lectureSessionsjs = list()
+        sessions = lecture.getSessions()
+        for ls in sessions:
+            currentSession = dict()
+            currentSession["ID"] = ls.getSessionID()
+            currentSession["lectureID"] = lectureID
+            currentSession["instructorID"] = ls.getInstructor().getID()
+            currentSession["sessionType"] = ls.getSessionType()
+            sessionHours = ls.getSessionHours()
+            sessionHoursJson = list()
+            for i in sessionHours:
+                day = list()
+                for j in i:
+                    if j == LectureHour.YES:
+                        day.append(1)
+                    else:
+                        day.append(0)
+                sessionHoursJson.append(day)
+            currentSession["sessionHours"] = sessionHoursJson
+            lectureSessionsjs.append(currentSession)
+        writeJson = dict()
+        writeJson["ID"] = lectureID
+        writeJson["Name"] = lectureName
+        writeJson["prerequisiteID"] = prerequisiteID
+        writeJson["lectureType"] = lectureType
+        writeJson["quota"] = quota
+        writeJson["credit"] = credit
+        writeJson["term"] = term
+        writeJson["termYear"] = termYear
+        writeJson["lectureSessions"] = lectureSessionsjs
+
+        dumpedJson = json.dump(writeJson, indent=4)
+        writeFile = open(self.__metaData["lecturesList"] + lectureID + ".JSON", "w")
+        writeFile.writelines(dumpedJson)
+
+    def saveTranscript(self, transcript):
+        studentID = transcript.getStudent().getID()
+        semesterList = transcript.getListOfSemester()
+
+        semesterListJson = list()
+        for semester in semesterList:
+            lecturesAndGrades = dict()
+            listOfLecturesTaken = semester.getListOfLecturesTaken()
+            for key in listOfLecturesTaken.keys():
+                lecturesAndGrades[key.getID()] = listOfLecturesTaken[key].name
+            semesterListJson.append(lecturesAndGrades)
+
+        writeJson = dict()
+        writeJson["studentID"] = studentID
+        writeJson["listOfSemesters"] = semesterListJson
+
+        dumpedJson = json.dump(writeJson, indent=4)
+        writeFile = open(self.__metaData["transcriptsList"] + studentID + ".JSON", "w")
+        writeFile.writelines(dumpedJson)
+
         pass
 
     def __findLecture(self, id):

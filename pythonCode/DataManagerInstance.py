@@ -160,3 +160,21 @@ class DataManagerInstance():
         self.__jsonOperator.readAdvisors()
         self.__jsonOperator.readStudents()
         self.__jsonOperator.readTranscripts()
+        self.__jsonOperator.pairObjects()
+
+    def saveFiles(self):
+        from Student import Student
+        from Advisor import Advisor
+        for p in self.__listOfPeople:
+            if isinstance(p, Student):
+                s: Student = p
+                self.__jsonOperator.saveStudent(s)
+                self.__jsonOperator.saveTranscript(s.getTranscript())
+            if isinstance(p, Advisor):
+                a: Advisor = p
+                self.__jsonOperator.saveAdvisor(a)
+        
+        for l in self.__listOfLectures:
+            self.__jsonOperator.saveLecture(l)
+
+
