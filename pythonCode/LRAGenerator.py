@@ -24,14 +24,15 @@ class LRAGenerator():
             for l in mandatoryList:
                 a = 0
                 b = 0
-                for la in student.availableLessons()
+                c = 0
+                for la in student.availableLessons():
                     if l == la:
                         a=1
                 if student.canTakeLecture(l,student.getTranscript()):
                     b = 1
-                
-
-        
+                if student.checkScheduleForLecture(student.getSchedule(),l):
+                    c = 1
+                #Add Lecture
         return listOfStudents
 
     def fillLRA(self, student:Student):

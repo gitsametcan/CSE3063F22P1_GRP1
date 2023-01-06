@@ -14,6 +14,7 @@ from Lecture import Lecture
 from Semester import Semester
 from Schedule import Schedule
 from DataManager import DataManager
+from LectureSession import LectureSession
 
 class Student(Person):
     # generated source for class Student
@@ -270,6 +271,29 @@ class Student(Person):
                 availableLessons.append(l)
         return availableLessons
 
-    def checkScheduleForLecture(self, schedule : Schedule, lecture : Lecture)
+    def checkScheduleForLecture(self, schedule : Schedule, lecture : Lecture):
 
+        chechResult = True
+        listOfSessions = schedule.getListOfLectureSessions()
+        listOfLectureSessions = lecture.getSessions()
+        lectureHours = [7][10]
+        scheduleHours= [7][10]
+
+        for ses in listOfLectureSessions:
+            for i in range(0,7):
+                for j in range(0,10):
+                    if ses.getSessionHours()[i][j] == 1:
+                        lectureHours[i][j]=1
         
+        for ses in listOfSessions:
+            for i in range(0,7):
+                for j in range(0,10):
+                    if ses.getSessionHours()[i][j] == 1:
+                        scheduleHours[i][j]=1
+        
+        for i in range(0,7):
+            for j in range(0,10):
+                if lectureHours[i][j] ==1 & scheduleHours[i][j] ==1:
+                    chechResult = False
+
+        return chechResult
