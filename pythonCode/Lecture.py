@@ -2,15 +2,10 @@ from LectureType import LectureType
 from Term import Term
 from TermYear import TermYear
 from LectureID import LectureID
-
+from LectureSession import LectureSession
 class Lecture():
 
-    def __init__(self):
-    #    for ls in self.sessions:
-    #        ls.set_lecture(self)
-
-    #    if self.sessions is None:
-    #        self.sessions = []
+    def __init__(self):    
         pass
 
     # Creating properties for variables
@@ -27,6 +22,10 @@ class Lecture():
         return self.__credit
 
     def getSessions(self):
+        for ls in self.__sessions:
+           ls.set_lecture(self)
+        if self.__sessions is None:
+            self.__sessions = []
         return self.__sessions
 
     def getPrerequisite(self):
@@ -38,7 +37,7 @@ class Lecture():
     def setId(self, id):
         self.__id = id
 
-    def setSessions(self, sessions):
+    def setSessions(self, sessions : list):
         self.__sessions = sessions
 
     def setPrerequisite(self, prerequisite):
@@ -47,26 +46,17 @@ class Lecture():
     def getQuota(self):
         return self.__quota
 
-    def setName(self, name):
+    def setName(self, name : str):
         self.__name = name
 
-    def setLectureType(self, lectureType):
+    def setLectureType(self, lectureType : LectureType):
         self.__lectureType = lectureType
 
-    def setCredit(self, credit):
+    def setCredit(self, credit : int):
         self.__credit = credit
 
-    def setQuota(self, quota):
+    def setQuota(self, quota : int):
         self.__quota = quota
-
-    def removeLectureSession(self, lectureSession):
-        self.__sessions.remove(lectureSession)
-
-    def addPrerequisiteLecture(self, lecture):
-        self.__prerequisite = lecture
-
-    def removePrerequisitielLecture(self):
-        self.__prerequisite = None
 
     def getTerm(self):
         return self.__term
@@ -79,3 +69,13 @@ class Lecture():
 
     def setTermYear(self, termYear):
         self.__termYear = termYear
+
+    # Creating another methods
+    def removeLectureSession(self, lectureSession):
+        self.__sessions.remove(lectureSession)
+
+    def addPrerequisiteLecture(self, lecture):
+        self.__prerequisite = lecture
+
+    def removePrerequisitielLecture(self):
+        self.__prerequisite = None

@@ -66,7 +66,7 @@ class Schedule():
     def getListOfLectureSessions(self):
         return self.getListOfLectureSessions
 
-    def setListOfLectureSessions(self, ListOfLectureSessions):
+    def setListOfLectureSessions(self, ListOfLectureSessions : list):
         self.__ListOfLectureSessions = ListOfLectureSessions
 
     def getTerm(self):

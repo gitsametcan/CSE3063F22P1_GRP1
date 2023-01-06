@@ -1,3 +1,4 @@
+from Student import Student
 class Debt:
 
     def __init__(self):
@@ -10,12 +11,12 @@ class Debt:
     def getAmount(self):
         return self.__amount
 
-    def setAmount(self, amount):
+    def setAmount(self, amount: float):
         self.__amount = amount
 
     #def getStudent(self):
     #    return self.__student
 
-    def setStudent(self, student):
+    def setStudent(self, student: Student):
         self.__student = student
 

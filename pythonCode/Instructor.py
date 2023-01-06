@@ -7,29 +7,15 @@ from Schedule import Schedule
 from Person import Person
 
 class Instructor(Person):
-    # generated source for class Instructor 
-
-    #log = Logger.getLogger("logs")
-    #_id = InstructorID()
-    #__schedule = Schedule()
-    #_dateOfEntry = Calendar()
-    #_instructorType = InstructorType()
 
     def __init__(self):
-        # generated source for method __init__ 
-        #super(firstName, lastName)
-        self.__id = InstructorID()
-        self.__schedule = Schedule()
-        self.__dateOfEntry = Calendar()
-        self.__instructorType = InstructorType.Assistant
-        self.__log = Logger.getLogger("logs")
-
+        pass
 
     def getID(self):
         # generated source for method getID 
         return self.__id.getID()
     
-    def setID(self, id):
+    def setID(self, id : InstructorID):
         # generated source for method setID 
         self.__id = id
 
@@ -37,7 +23,7 @@ class Instructor(Person):
         # generated source for method getDateOfEntry 
         return self.__dateOfEntry
         
-    def setDateOfEntry(self, dateOfEntry):
+    def setDateOfEntry(self, dateOfEntry : Calendar):
         # generated source for method setDateOfEntry 
         self.__dateOfEntry = dateOfEntry
 
@@ -45,7 +31,7 @@ class Instructor(Person):
         # generated source for method getInstructorType 
         return self.__instructorType
     
-    def setInstructorType(self, instructorType):
+    def setInstructorType(self, instructorType : InstructorType):
         # generated source for method setInstructorType 
         self.__instructorType = instructorType
 
@@ -53,6 +39,6 @@ class Instructor(Person):
         # generated source for method getSchedule 
         return self.__schedule
 
-    def setSchedule(self, schedule):
+    def setSchedule(self, schedule : Schedule):
         # generated source for method setSchedule 
         self.__schedule = schedule

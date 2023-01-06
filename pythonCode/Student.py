@@ -12,30 +12,15 @@ from LetterGrade import LetterGrade
 from StudentID import StudentID
 from Lecture import Lecture
 from Semester import Semester
+from DataManager import DataManager
 
 class Student(Person):
-    # generated source for class Student
-    #__log = Logger()
-    #__advisor = Advisor()
-    #__id = StudentID()
-    #__schedule = Schedule()
-    #__transcript = Transcript()
-    #__dateOfEntry = Calendar()
-    #__debt = Debt()
-    #__registirationApplication = LectureRegistrationApplication()
+    
     def __init__(self):
-        #super(firstName, lastName)
-        self.__log = Logger.getLogger("logs")
-        self.__id = StudentID()
-        self.__schedule = Schedule()
-        self.__debt = Debt()
-        self.__transcript = Transcript()
-        self.__dateOfEntry = Calendar()
-        self.__acceptedRegistrations = list()
-        self.__declinedRegistrations = list()
+        pass
 
     def setID(self, nID):        
-        self.__id.setID(nID)
+        self.__id = nID
 
     def setTranscript(self,transcript):     
         self.__transcript = transcript
@@ -52,8 +37,8 @@ class Student(Person):
     def getDebt(self):        
         return self.__debt
 
-    def setDebt(self,dateOfEntry):       
-        self.__dateOfEntry = dateOfEntry
+    def setDebt(self, debt):       
+        self.__debt = debt
 
     def getRegistirationApplication(self):       
         return self.__registirationApplication

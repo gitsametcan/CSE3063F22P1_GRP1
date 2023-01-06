@@ -7,8 +7,6 @@ from Instructor import Instructor
 class LectureSession(object):
 
     def __init__(self):
-    #    if self.listOfStudents is None:
-    #        self.__listOfStudents = [Student]
         pass
 
     # Creating properties for variables
@@ -18,16 +16,16 @@ class LectureSession(object):
     def setLecture(self, lecture):
         self.__lecture = lecture
 
-    def setSessionHours(self, sessionHours):
+    def setSessionHours(self, sessionHours : list):
         self.__sessionHours = sessionHours
 
-    def setSessionType(self, sessionType):
+    def setSessionType(self, sessionType : SessionType):
         self.__sessionType = sessionType
 
     def setInstructor(self, instructor):
         self.__instructor = instructor
 
-    def setListOfAssistans(self, listOfAssistans):
+    def setListOfAssistans(self, listOfAssistans : list):
         self.__listOfAssistans = listOfAssistans
 
     def getSessionID(self):
@@ -49,6 +47,8 @@ class LectureSession(object):
         return self.__lecture
 
     def getListOfStudents(self):
+        if self.__listOfStudents is None:
+            self.__listOfStudents = list
         return self.__listOfStudents
 
     def setListOfStudents(self, listOfStudents):
