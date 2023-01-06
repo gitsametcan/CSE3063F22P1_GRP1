@@ -264,10 +264,22 @@ class Student(Person):
 
         # generated source for method availableLessons 
         availableLessons = list()
+        lecturesUntilNow = list()
 
-        lecturesUntilNow = DataManager.getInstance().searchLectureUntilTerm(self.getSchedule().getTerm(), self.getSchedule().getTermYear())
+        ml,ul,el,tl,ntl = DataManager.getInstance().searchLecturesUntilTerm("", self.getSchedule().getTerm(), self.getSchedule().getTermYear())
+        for l in ml:
+            lecturesUntilNow.append(l)
+        for l in ul:
+            lecturesUntilNow.append(l)
+        for l in el:
+            lecturesUntilNow.append(l)
+        for l in tl:
+            lecturesUntilNow.append(l)
+        for l in ntl:
+            lecturesUntilNow.append(l)
+
         for l in lecturesUntilNow:
-            if l.getTerm() == self.getSchedule().getTerm() and l.getTermYear() == self.getSchedule().getTermYear() and self.canTakeLecture(l, self.getTranscript()):
+            if l.getTerm() == self.getSchedule().getTerm() and (l.getTermYear() == self.getSchedule().getTermYear()) and self.canTakeLecture(l, self.getTranscript()):
                 availableLessons.append(l)
         return availableLessons
 
@@ -276,8 +288,8 @@ class Student(Person):
         chechResult = True
         listOfSessions = schedule.getListOfLectureSessions()
         listOfLectureSessions = lecture.getSessions()
-        lectureHours = [7][10]
-        scheduleHours= [7][10]
+        lectureHours = list()
+        scheduleHours= list()
 
         for ses in listOfLectureSessions:
             for i in range(0,7):

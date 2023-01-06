@@ -1,16 +1,17 @@
+import random
+import datetime
 from Debt import Debt
 from LectureRegistrationApplication import LectureRegistrationApplication
 from StudentID import StudentID
 from DataManager import DataManager
 from Schedule import Schedule
-from Advisor import Advisor
 from Student import Student
 from FilterType import FilterType
 from Transcript import Transcript
 from Term import Term
 from TermYear import TermYear
-import datetime
-import random
+
+
 
 class StudentGenerator():
 
@@ -21,7 +22,7 @@ class StudentGenerator():
 
         student = Student()
 
-        student.setID = self.studentIdGenerator(150,year,i)
+        student.setID = self.studentIdGenerator(year,i)
         student.setFirstName = self.getRandomFirstName()
         student.setLastName = self.getRandomLastName()
         student.setDebt = self.studentDebtGenerator()
@@ -30,6 +31,7 @@ class StudentGenerator():
         student.getTranscript().setStudent(student)
         student.setDateOfEntry = datetime.date( (year/10) +2000, 10, 22)
         student.setSchedule = Schedule()
+        student.setDebt(self.studentDebtGenerator())
         student.getSchedule().setTerm(Term.Fall)
         student.getSchedule().setTermYear(TermYear.Freshman)
         student.setRegistirationApplication = LectureRegistrationApplication()
@@ -59,15 +61,17 @@ class StudentGenerator():
 
     def studentDebtGenerator(self):
         debt = Debt()
-        a = random()
+        a = random.random()
         if a <= 0.3:
-            debt = Debt(20000, None)
+            debt = Debt()
+            debt.setAmount(20000)
         else:
-            debt = Debt(0, None)
+            debt = Debt()
+            debt.setAmount(0)
         return debt
 
     def getRandomAdvisor(self):
 
-        listOfAdvisor = DataManager.getInstance().searchAdvisor("", FilterType.Name)
+        listOfAdvisor = DataManager.getInstance().searchAdvisors("", FilterType.Name)
 
-        return listOfAdvisor[random.radint(0,13)]
+        return listOfAdvisor[random.randint(0,13)]

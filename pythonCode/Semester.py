@@ -5,9 +5,18 @@ from TermYear import TermYear
 class Semester():
 
     def __init__(self):
+        self.__gradeLectureList = list()
         pass
 
     # Creating properties for variables
+
+    def getGradeLectureList(self):
+        return self.__gradeLectureList
+
+    def addGradeToList(self, lectureSession,letterGrade):
+        self.getGradeLectureList().append((lectureSession, letterGrade))
+
+    
     def getListOfLecturesTaken(self):
         return self.listOfLecturesTaken
 
@@ -20,7 +29,7 @@ class Semester():
         return self.creditsCompleted
 
     def getPoints(self):
-        self.points = self.pointsCalculator(self.listOfLecturesTaken);
+        self.points = self.pointsCalculator(self.listOfLecturesTaken)
         return self.points
 
     def getYano(self):
