@@ -37,10 +37,8 @@ class LRAGenerator():
                 instructor = listOfAdvisor[i]
                 if instructor.checkScheduleForLecture(instructor.getSchedule(),l):
                     instructor.getSchedule().getListOfLectureSessions().append(l.getSessions()[0])
+                    l.getSessions()[0].setInstructor(instructor)
                     break
-
-
-
 
         for s in listOfStudents:
 
