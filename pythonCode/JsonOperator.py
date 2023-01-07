@@ -322,8 +322,8 @@ class JsonOperator():
         writeJson["firstName"] = firstName
         writeJson["lastName"] = lastName
         
-        dumpedJson = json.dump(writeJson, indent=4)
-        writeFile = open(self.__metaData["studentsList"] + studentID + ".JSON", "w")
+        dumpedJson = json.dumps(writeJson, indent=4)
+        writeFile = open(self.__metaData["studentsPath"] + studentID + ".JSON", "w")
         writeFile.writelines(dumpedJson)
 
     def saveAdvisor(self, advisor):
@@ -356,8 +356,8 @@ class JsonOperator():
         writeJson["firstName"] = firstName
         writeJson["lastName"] = lastName
         
-        dumpedJson = json.dump(writeJson, indent=4)
-        writeFile = open(self.__metaData["advisorsList"] + instructorID + ".JSON", "w")
+        dumpedJson = json.dumps(writeJson, indent=4)
+        writeFile = open(self.__metaData["advisorsPath"] + instructorID + ".JSON", "w")
         writeFile.writelines(dumpedJson)
         
     def saveLecture(self, lecture):
@@ -403,8 +403,8 @@ class JsonOperator():
         writeJson["termYear"] = termYear
         writeJson["lectureSessions"] = lectureSessionsjs
 
-        dumpedJson = json.dump(writeJson, indent=4)
-        writeFile = open(self.__metaData["lecturesList"] + lectureID + ".JSON", "w")
+        dumpedJson = json.dumps(writeJson, indent=4)
+        writeFile = open(self.__metaData["lecturesPath"] + lectureID + ".JSON", "w")
         writeFile.writelines(dumpedJson)
 
     def saveTranscript(self, transcript):
@@ -423,8 +423,8 @@ class JsonOperator():
         writeJson["studentID"] = studentID
         writeJson["listOfSemesters"] = semesterListJson
 
-        dumpedJson = json.dump(writeJson, indent=4)
-        writeFile = open(self.__metaData["transcriptsList"] + studentID + ".JSON", "w")
+        dumpedJson = json.dumps(writeJson, indent=4)
+        writeFile = open(self.__metaData["transcriptsPath"] + studentID + ".JSON", "w")
         writeFile.writelines(dumpedJson)
 
         pass
