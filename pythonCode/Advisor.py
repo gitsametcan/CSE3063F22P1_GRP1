@@ -53,16 +53,20 @@ class Advisor(Instructor):
 
 
     def getListOfStudents(self):
-        if listOfStudents == None:
-            listOfStudents = list()
+        try:
+            x = self.__listOfStudents
+        except AttributeError:
+            self.__listOfStudents = list()
         
-        return listOfStudents
+        return self.__listOfStudents
 
     def getListOfApplications(self):
-        if listOfApplications == None:
-            listOfApplications = list()
+        try:
+            x = self.__listOfApplications
+        except AttributeError:
+            self.__listOfApplications = list()
 
-        return listOfApplications
+        return self.__listOfApplications
 
     def approveApplication(self, lectureRegistirationApplication, lectureSession):
         # generated source for method approveApplication 

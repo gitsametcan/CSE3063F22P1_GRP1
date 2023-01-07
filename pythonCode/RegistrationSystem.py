@@ -34,8 +34,12 @@ class RegistrationSystem(object):
                     self.__log.info("2-Exit")
                     loginChoice = input()
                     if loginChoice == str(1):
-                        self.__log.info("Generating students...")
-                        self.__simulation.run() #doğru mu bilmiyorum, burda öğrenci oluşturma methodu çağırılacak
+                        self.__log.info("Generating Students...")
+                        studentsList = self.__simulation.run()
+                        self.__log.info("Done.")
+                        self.__log.info("Saving Files...")
+                        DataManager.getInstance().addStudents(studentsList)
+                        DataManager.getInstance().saveFiles()
                         self.__log.info("Done.")
                     elif loginChoice == str(2):
                         self.__log.info("Exiting...")

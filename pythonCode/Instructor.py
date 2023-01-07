@@ -27,6 +27,10 @@ class Instructor(Person):
         self.__dateOfEntry = dateOfEntry
 
     def getInstructorType(self):
+        try:
+            x = self.__instructorType
+        except AttributeError:
+            self.__instructorType = InstructorType.Instructor
         # generated source for method getInstructorType 
         return self.__instructorType
     
