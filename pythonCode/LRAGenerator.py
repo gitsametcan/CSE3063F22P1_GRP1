@@ -3,6 +3,7 @@ from LectureRegistrationApplication import LectureRegistrationApplication
 from Term import Term
 from TermYear import TermYear
 from DataManager import DataManager
+from Lecture import Lecture
 
 
 class LRAGenerator():
@@ -37,4 +38,58 @@ class LRAGenerator():
                     student.getSchedule().append(l.getSessions(0))
                     l.getLectureSessions(0).getStudentList().append(s)
 
+            if student.getSchedule().getTermYear == TermYear.Senior:
+                for l in ueList:
+                    a = 0
+                    b = 0
+                    c = 0
+                    d = 0
+                    e = 0
+                    for la in student.availableLessons():
+                        if l == la:
+                            a=1
+                    if student.canTakeLecture(l,student.getTranscript()):
+                        b = 1
+                    if student.checkScheduleForLecture(student.getSchedule(),l):
+                        c = 1
+                    if l.getSessions(0).getStudentList().size < l.getQuota():
+                        d = 1
+                    if a==1 & b==1 & c==1 & d==1 & e==1:
+                        e = e + 1 
+                        LRA.getSessionsSentForApproval().append(l.getSessions(0))
+                        student.getSchedule().append(l.getSessions(0))
+                        l.getLectureSessions(0).getStudentList().append(s)
+
+                for l in fteList:
+                    a = 0
+                    b = 0
+                    c = 0
+                    d = 0
+                    e = 0
+                    for la in student.availableLessons():
+                        if l == la:
+                            a=1
+                    if student.canTakeLecture(l,student.getTranscript()):
+                        b = 1
+                    if student.checkScheduleForLecture(student.getSchedule(),l):
+                        c = 1
+                    if l.getSessions(0).getStudentList().size < l.getQuota():
+                        d = 1
+                    if a==1 & b==1 & c==1 & d==1 & e==1:
+                        e = e + 1 
+                        LRA.getSessionsSentForApproval().append(l.getSessions(0))
+                        student.getSchedule().append(l.getSessions(0))
+                        l.getLectureSessions(0).getStudentList().append(s)
+
+
         return listOfStudents
+
+    def lectureTakenCalculaterFromType (self, student:Student, lecture : Lecture):
+        a = 0
+
+
+        student.getTranscript().getListOfSemester()
+
+
+
+        return a
