@@ -7,6 +7,7 @@ from ApprovalState import ApprovalState
 from LectureRegistrationApplication import LectureRegistrationApplication
 from StudentGenerator import StudentGenerator
 from LRAGenerator import LRAGenerator
+from DataManager import DataManager
 from LetterGrade import LetterGrade
 
 class Simulation():
@@ -38,6 +39,8 @@ class Simulation():
             self.fillSemesterFromLRA(listOfStudents)
             self.emptyLRA(listOfStudents)
             self.takeAutoLetterGradeForSemester(listOfStudents)
+
+        DataManager.getInstance().addStudents(listOfStudents)
         return listOfStudents
 
 
