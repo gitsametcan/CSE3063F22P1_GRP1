@@ -22,19 +22,14 @@ class InstructorRegistrationSystem():
         self.__log.info("----\nSuggestion: Enter \"150097\"")
         while True:
             providedID = input()
-            #Optional<Instructor> currentOptionalAdvisor = DataManager.getInstance().findInstructor(providedID,FilterType.ID)
-            #if currentOptionalAdvisor.isPresent():
-             #       currentUser = currentOptionalAdvisor.get()
-              #      self.instructorMenu(currentUser)
-               #     break
-                #else:
-                 #   self.__log.info("Instructor not found, please try again: ")
+            currentUser = DataManager.getInstance().findAdvisor(providedID, FilterType.ID)
+            self.instructorMenu(currentUser)
 
     def instructorMenu(self, currentUser):
         #Showing Instructor's menu choices and making a choice
         validInput = False
-        menuChoice = 0
-        while menuChoice != 3:
+        menuChoice = str(0)
+        while menuChoice != str(3):
             self.__log.info("Choose a menu: ")
             self.__log.info("1-Show Lecture Sessions")
             self.__log.info("2-Show Students Of A Lecture Session")
@@ -43,13 +38,13 @@ class InstructorRegistrationSystem():
             validInput = False
             while not validInput:
                 menuChoice = input()
-                if menuChoice==1:
+                if menuChoice==str(1):
                     validInput = True
                     self.showLectures(currentUser)
-                elif menuChoice==2:
+                elif menuChoice==str(2):
                     validInput = True
                     self.showStudents(currentUser)
-                elif menuChoice==3:
+                elif menuChoice==str(3):
                     validInput = True
                     self.signOut()
                 else:

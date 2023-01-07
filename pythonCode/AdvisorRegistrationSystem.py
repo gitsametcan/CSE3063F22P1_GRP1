@@ -23,19 +23,14 @@ class AdvisorRegistrationSystem():
         self.__log.info("----\nSuggestion: Enter \"150097\"")#
         while True:
             providedID = input()
-            #Optional<Advisor> currentOptionalAdvisor = DataManager.getInstance().findAdvisor(providedID, FilterType.ID);#
-            #if currentOptionalAdvisor.isPresent():
-            #    currentUser = currentOptionalAdvisor.get()
-            #    self.advisorMenu(currentUser)
-            #    break
-            #else:
-            #    self.__log.info("Advisor not found, please try again: ")#
+            currentUser = DataManager.getInstance().findAdvisor(providedID, FilterType.ID)
+            self.advisorMenu(currentUser)
 
     def advisorMenu(self, currentUser):
         #Showing Advisor's menu choices and making a choice#
         validInput = False
-        menuChoice = 0
-        while menuChoice != 3:
+        menuChoice = str(0)
+        while menuChoice != str(2):
             self.__log.info("Choose a menu: ")
             self.__log.info("1-Simulation Results")
             self.__log.info("2-Exit")
@@ -43,10 +38,10 @@ class AdvisorRegistrationSystem():
             validInput = False
             while not validInput:
                 menuChoice = input()
-                if menuChoice==1:
+                if menuChoice==str(1):
                     validInput = True
                     #simulasyon sonuçları
-                elif menuChoice==2:
+                elif menuChoice==str(2):
                     validInput = True
                     self.signOut()
                 else:
