@@ -37,11 +37,11 @@ class RegistrationSystem(object):
                         self.__log.info("Generating students...")
                         self.__simulation.run() #doğru mu bilmiyorum, burda öğrenci oluşturma methodu çağırılacak
                         self.__log.info("Done.")
-                    elif loginChoice == 2:
+                    elif loginChoice == str(2):
                         self.__log.info("Exiting...")
                     else:
                         pass #buraya exception yazılabilir
-                elif loginType==2:
+                elif loginType == str(2):
                     self.__log.info("Exiting...")
                     sys.exit("Exit...")
                 else:
@@ -60,15 +60,15 @@ class RegistrationSystem(object):
                         self.__log.info("Generating students...")
                         self.__simulation.studentGenerator() #doğru mu bilmiyorum, burda öğrenci oluşturma methodu çağırılacak
                         self.__log.info("Done.")
-                    elif loginChoice == 2:
+                    elif loginChoice == str(2):
                         self.__log.info("Initiating simulation...")
                         self.__simulation.run()
                         self.__log.info("Done.")
-                    elif loginChoice == 3:
+                    elif loginChoice == str(3):
                         self.__log.info("Exiting...")
                     else:
                         pass #buraya exception yazılabilir
-                elif loginType==2:
+                elif loginType == str(2):
                     self.__log.info("Exiting...")
                     sys.exit("Exit...")
                 else:
@@ -81,7 +81,7 @@ class RegistrationSystem(object):
                 self.__log.info("5-Exit")
 
                 loginType = input()
-                if loginType==1:
+                if loginType == str(1):
                     self.__log.info("1-Generate Students")
                     self.__log.info("2-Start Simulation")
                     self.__log.info("3-Exit")
@@ -90,21 +90,21 @@ class RegistrationSystem(object):
                         self.__log.info("Generating students...")
                         self.__simulation.studentGenerator() #doğru mu bilmiyorum, burda öğrenci oluşturma methodu çağırılacak
                         self.__log.info("Done.")
-                    elif loginChoice == 2:
+                    elif loginChoice == str(2):
                         self.__log.info("Initiating simulation...")
                         self.__simulation.run()
                         self.__log.info("Done.")
-                    elif loginChoice == 3:
+                    elif loginChoice == str(3):
                         self.__log.info("Exiting...")
                     else:
                         pass #buraya exception yazılabilir
-                elif loginType==2:
+                elif loginType == str(2):
                     StudentRegistrationSystem(self)
-                elif loginType==3:
+                elif loginType == str(3):
                     AdvisorRegistrationSystem(self)
-                elif loginType==4:
+                elif loginType == str(4):
                     InstructorRegistrationSystem(self)
-                elif loginType==5:
+                elif loginType == str(5):
                     self.__log.info("Exiting...")
                     sys.exit("Exit...")
                 else:

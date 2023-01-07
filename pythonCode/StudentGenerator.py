@@ -44,6 +44,7 @@ class StudentGenerator():
 
         namePool = DataManager.getInstance().getNamePool()
         nameList = namePool["names"]
+        print ("firstName: " + str(len(nameList)))
         a = random.randint(0, len(nameList))
         name = nameList[a]
         return name
@@ -52,6 +53,7 @@ class StudentGenerator():
 
         namePool = DataManager.getInstance().getNamePool()
         nameList = namePool["lastNames"]
+        print ("lastName: " + str(len(nameList)))
         a = random.randint(0, len(nameList))
         name = nameList[a]
         return name
