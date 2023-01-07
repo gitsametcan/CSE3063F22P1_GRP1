@@ -49,7 +49,7 @@ class DataManagerInstance():
             if key in l.getID() and filterType is FilterType.ID:
                 result.append(l)
             if key in l.getName() and filterType is FilterType.Name:
-                result.appent(l)
+                result.append(l)
         return result
 
     def searchStudents(self, key: str, filterType: FilterType):

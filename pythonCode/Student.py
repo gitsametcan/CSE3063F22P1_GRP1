@@ -1,6 +1,7 @@
 from Person import Person
 from LectureRegistrationApplication import LectureRegistrationApplication
 from ApprovalState import ApprovalState
+
 from DataManager import DataManager
 
 class Student(Person):
@@ -235,9 +236,48 @@ class Student(Person):
 
         # generated source for method availableLessons 
         availableLessons = list()
+        lecturesUntilNow = list()
 
-        lecturesUntilNow = DataManager.getInstance().searchLectureUntilTerm(self.getSchedule().getTerm(), self.getSchedule().getTermYear())
+        ml,ul,el,tl,ntl = DataManager.getInstance().searchLecturesUntilTerm("", self.getSchedule().getTerm(), self.getSchedule().getTermYear())
+        for l in ml:
+            lecturesUntilNow.append(l)
+        for l in ul:
+            lecturesUntilNow.append(l)
+        for l in el:
+            lecturesUntilNow.append(l)
+        for l in tl:
+            lecturesUntilNow.append(l)
+        for l in ntl:
+            lecturesUntilNow.append(l)
+
         for l in lecturesUntilNow:
-            if l.getTerm() == self.getSchedule().getTerm() and l.getTermYear() == self.getSchedule().getTermYear() and self.canTakeLecture(l, self.getTranscript()):
+            if l.getTerm() == self.getSchedule().getTerm() and (l.getTermYear() == self.getSchedule().getTermYear()) and self.canTakeLecture(l, self.getTranscript()):
                 availableLessons.append(l)
         return availableLessons
+
+    def checkScheduleForLecture(self, schedule : Schedule, lecture : Lecture):
+
+        chechResult = True
+        listOfSessions = schedule.getListOfLectureSessions()
+        listOfLectureSessions = lecture.getSessions()
+        lectureHours = list()
+        scheduleHours= list()
+
+        for ses in listOfLectureSessions:
+            for i in range(0,7):
+                for j in range(0,10):
+                    if ses.getSessionHours()[i][j] == 1:
+                        lectureHours[i][j]=1
+        
+        for ses in listOfSessions:
+            for i in range(0,7):
+                for j in range(0,10):
+                    if ses.getSessionHours()[i][j] == 1:
+                        scheduleHours[i][j]=1
+        
+        for i in range(0,7):
+            for j in range(0,10):
+                if lectureHours[i][j] ==1 & scheduleHours[i][j] ==1:
+                    chechResult = False
+
+        return chechResult

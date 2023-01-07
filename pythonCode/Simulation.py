@@ -1,28 +1,20 @@
 
-from Logger import Logger
-from Student import Student
+import random
 from Term import Term
 from TermYear import TermYear
+from Semester import Semester
+from ApprovalState import ApprovalState
 from LectureRegistrationApplication import LectureRegistrationApplication
-
 from StudentGenerator import StudentGenerator
 from LRAGenerator import LRAGenerator
+from LetterGrade import LetterGrade
 
 class Simulation():
 
     def __init__(self):
-        
         self.__studentGenerator = StudentGenerator()
+        self.__LRA = LRAGenerator()
         self.__listOfStudents = list()
-
-    def __newSemester(self, semesterCount):
-        
-        for studentCount in range(1,51):
-            try:
-                student = self.__studentGenerator.generate(studentCount, semesterCount)
-                self.__listOfStudents.append(student)
-            except Exception as e:
-                e.printStackTrace() #Instance of 'Exception' has no 'printStackTrace' memberPylint(E1101:no-member)
 
     def run(self):
 
@@ -38,18 +30,17 @@ class Simulation():
             if i % 2 != 0:
                 year = year + 1
                 for i in range(1, 101):
-                    student = StudentGenerator.generate(year,i)
+                    student = self.__studentGenerator.generate(year,i)
                     listOfStudents.append(student)
-            LRAGenerator.generate(listOfStudents)
+            listOfStudents = self.__LRA.generate(listOfStudents,term)
             self.takeAutoAnswerForLRA(listOfStudents)
             self.fillSemesterFromLRA(listOfStudents)
             self.emptyLRA(listOfStudents)
             self.takeAutoLetterGradeForSemester(listOfStudents)
-            
-            
+        return listOfStudents
 
 
-    #loglar gelecek
+    #logs will come here
 
     def skipTerm(self, listOfStudents:list(), term:Term):
 
@@ -62,15 +53,45 @@ class Simulation():
                 elif s.getSchedule.getTermYear() == TermYear.Junior:
                     s.getSchedule.setTermYear(TermYear.Senior)
             s.getSchedule.setTerm(term)
-        
-    def takeAutoAnswerForLRA(self, listOfStudents):
-        #Give states for every students LRA lectures 
-        pass
 
-    def emptyLRA(self, listOfStudent):       
+    def takeAutoAnswerForLRA(self, listOfStudent):
         for s in listOfStudent:
-            LRA = LectureRegistrationApplication()
-            s.setRegistirationApplication(LRA)
+            LRA = s.getRegistirationApplication()
+            for l in LRA:
+                if l in s.availableLessons() and s.canTakeLecture(l,s.getTranscript()) and l.getSessions(0).getStudentList().size < l.getQuota():
+                    s.getAdvisor().approveApplication(LRA, l.getSessions(0))
+                else:
+                    s.getAdvisor().rejectApplication(LRA, l.getSessions(0))
+
+    def fillSemesterFromLRA(self, listOfStudent):
+        for s in listOfStudent:
+            listOflecture = list()
+            LRA = s.getRegistirationApplication()
+            for l in LRA:
+                if l.ApprovalState == ApprovalState.Approved:
+                    listOflecture.append(l)
+            semester  = Semester()
+            semester.setListOfLecturesTaken(listOflecture)
+            s.getTranscript().addSemester(semester)
+
+
+    def takeAutoLetterGradeForSemester(self, listOfStudents):
+        for s in listOfStudents:
+            semester = s.getTranscript().getLastSemester()
+            lectureList = semester.getListOfLecturesTaken()
+
+            possible_grades = (LetterGrade.AA, LetterGrade.BA, LetterGrade.BB, LetterGrade.CB, LetterGrade.CC, LetterGrade.DC, LetterGrade.DD, LetterGrade.FD, LetterGrade.FF)
+            random_grade = random.choice(possible_grades)
+
+            for ls in s.getTranscript().getLastSemester().getListOfLecturesTaken():
+                s.getTranscript().getLastSemester().addToGradeList(ls,random_grade)
+
+        s.getTranscript().getLastSemester().setListOfLecturesTaken(lectureList)
+
+    def emptyLRA(self, listOfStudent):
+        lra = LectureRegistrationApplication()
+        for s in listOfStudent:
+            s.setRegistirationApplication(lra)
 
     def getListOfStudents(self):
         return self.__listOfStudents

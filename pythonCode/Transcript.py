@@ -2,7 +2,7 @@ class Transcript:
 
     def __init__(self):
         pass
-
+        
      # Creating properties for variables 
     
     def getStudent(self):
@@ -12,6 +12,7 @@ class Transcript:
         self.__student = student
     
     def getListOfSemester(self):
+
         if self.__listOfSemester == None:
             self.__listOfSemester = list
         return self.__listOfSemester
@@ -47,6 +48,12 @@ class Transcript:
     def setTotalCreditsCompleted(self, totalCreditsCompleted : int):
         self.__totalCreditsCompleted = totalCreditsCompleted
 
+    def getLastSemester(self):
+        lastSemester = Semester()
+        for s in range(0, len(self.__listOfSemester)):
+            if s == (len(self.__listOfSemester)-1):
+                lastSemester = s
+        return lastSemester
 
     # Creating other methods
 
