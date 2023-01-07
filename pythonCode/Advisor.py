@@ -1,37 +1,10 @@
-
-from calendar import Calendar
-from Logger import Logger
 from Instructor import Instructor
-from Student import Student
-from LectureRegistrationApplication import LectureRegistrationApplication
 from ApprovalState import ApprovalState
-from InstructorType import InstructorType
-from InstructorID import InstructorID
-from Lecture import Lecture
-from LectureSession import LectureSession
-#from Schedule import Schedule;
 
 class Advisor(Instructor):
-    # generated source for class Advisor 
-    #log = Logger.getLogger("logs")
-    #__listOfStudents = List()
-    #__listOfApplications = List()
-    #__scanner = input()
 
     def __init__(self):
-        # generated source for method __init__ 
-        #super(firstName, lastName, id, dateOfEntry, instructorType, schedule)
-        self.__listOfStudents = list()
-        self.__listOfApplications = list()
-        self.__log = Logger.getLogger("logs")
-        self.__acceptedRegistrations = list()
-        self.__declinedRegistrations = list()
-
-        if self.__listOfStudents == None:
-            self.__listOfStudents = list(Student)
-        if self.__listOfApplications == None:
-            self.__listOfApplications = list(LectureRegistrationApplication)
-
+        pass
 
     """def showApplications(self):
         # generated source for method showApplications 
@@ -80,12 +53,16 @@ class Advisor(Instructor):
 
 
     def getListOfStudents(self):
-        # generated source for method getListOfStudents 
-        return self.__listOfStudents
+        if listOfStudents == None:
+            listOfStudents = list()
+        
+        return listOfStudents
 
     def getListOfApplications(self):
-        # generated source for method getListOfApplications 
-        return self.__listOfApplications
+        if listOfApplications == None:
+            listOfApplications = list()
+
+        return listOfApplications
 
     def approveApplication(self, lectureRegistirationApplication, lectureSession):
         # generated source for method approveApplication 

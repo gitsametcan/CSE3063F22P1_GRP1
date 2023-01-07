@@ -1,21 +1,9 @@
-from Semester import Semester
-
 class Transcript:
 
     def __init__(self):
         pass
-        #self.__student = __student
-        #self.__listOfSemester = __listOfSemester
-
-        #if self.__listOfSemester == None:
-        #    self.__listOfSemester = [Semester]
-
-        #self.__totalCreditsTaken = self.totalCreditsTakenCalculator(self.__listOfSemester)
-        #self.__totalCreditsCompleted = self.totalCreditsCompletedCalculator(self.__listOfSemester)
-        #self.__points = self.pointsCalculator(self.__listOfSemester)
-        #self.__gano = self.__points / self.__totalCreditsTaken
- 
-     # Creating properties for variables
+        
+     # Creating properties for variables 
     
     def getStudent(self):
         return self.__student
@@ -24,33 +12,40 @@ class Transcript:
         self.__student = student
     
     def getListOfSemester(self):
+
+        if self.__listOfSemester == None:
+            self.__listOfSemester = list
         return self.__listOfSemester
 
-    def setListOfSemester(self, listOfSemester):
+    def setListOfSemester(self, listOfSemester : list):
         self.__listOfSemester = listOfSemester
 
     def getGano(self):
+        gano = self.__points / self.__totalCreditsTaken
         return self.__gano
 
-    def setGano(self, gano):
-        self.__gano = gano
+    def setGano(self, gano : float):
+        self.__gano = gano   
 
     def getTotalCreditsTaken(self):
+        totalCreditsTaken = self.totalCreditsTakenCalculator(self.__listOfSemester)
         return self.__totalCreditsTaken
 
-    def setTotalCreditsTaken(self, totalCreditsTaken):
+    def setTotalCreditsTaken(self, totalCreditsTaken : int):
         self.__totalCreditsTaken = totalCreditsTaken
 
     def getPoints(self):
+        points = self.pointsCalculator()
         return self.__points
 
-    def setPoints(self, points):
+    def setPoints(self, points : float):
         self.__points = points
 
     def getTotalCreditsCompleted(self):
+        totalCreditsCompleted = self.totalCreditsCompletedCalculator(self.__listOfSemester)
         return self.__totalCreditsCompleted
 
-    def setTotalCreditsCompleted(self, totalCreditsCompleted):
+    def setTotalCreditsCompleted(self, totalCreditsCompleted : int):
         self.__totalCreditsCompleted = totalCreditsCompleted
 
     def getLastSemester(self):
@@ -65,13 +60,13 @@ class Transcript:
     def addSemester(self, semester):
         self.__listOfSemester.append(semester)
 
-    def totalCreditsTakenCalculator(self, listOfSemester):
+    def totalCreditsTakenCalculator(self, listOfSemester : list):
         totalCreditsTaken = 0
         for semester in listOfSemester:
             totalCreditsTaken += semester.creditsTaken()
         return totalCreditsTaken
 
-    def totalCreditsCompletedCalculator(self, listOfSemester):
+    def totalCreditsCompletedCalculator(self, listOfSemester : list):
         totalCreditsCompleted = 0
         for semester in self.__listOfSemester:
             totalCreditsCompleted += semester.creditsCompleted

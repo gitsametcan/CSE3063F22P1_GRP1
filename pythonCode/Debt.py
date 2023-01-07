@@ -10,7 +10,7 @@ class Debt:
     def getAmount(self):
         return self.__amount
 
-    def setAmount(self, amount):
+    def setAmount(self, amount: float):
         self.__amount = amount
 
     #def getStudent(self):

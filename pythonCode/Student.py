@@ -1,44 +1,16 @@
-from calendar import Calendar
-from Logger import Logger
-#from Schedule import Schedule
 from Person import Person
-from StudentID import StudentID
-from Transcript import Transcript
-from Debt import Debt
 from LectureRegistrationApplication import LectureRegistrationApplication
 from ApprovalState import ApprovalState
-from FilterType import FilterType
-from LetterGrade import LetterGrade
-from StudentID import StudentID
-from Lecture import Lecture
-from Semester import Semester
-from Schedule import Schedule
+
 from DataManager import DataManager
-from LectureSession import LectureSession
 
 class Student(Person):
-    # generated source for class Student
-    #__log = Logger()
-    #__advisor = Advisor()
-    #__id = StudentID()
-    #__schedule = Schedule()
-    #__transcript = Transcript()
-    #__dateOfEntry = Calendar()
-    #__debt = Debt()
-    #__registirationApplication = LectureRegistrationApplication()
+    
     def __init__(self):
-        #super(firstName, lastName)
-        self.__log = Logger.getLogger("logs")
-        self.__id = StudentID()
-        self.__schedule = Schedule()
-        self.__debt = Debt()
-        self.__transcript = Transcript()
-        self.__dateOfEntry = Calendar()
-        self.__acceptedRegistrations = list()
-        self.__declinedRegistrations = list()
+        pass
 
     def setID(self, nID):        
-        self.__id.setID(nID)
+        self.__id = nID
 
     def setTranscript(self,transcript):     
         self.__transcript = transcript
@@ -55,8 +27,8 @@ class Student(Person):
     def getDebt(self):        
         return self.__debt
 
-    def setDebt(self,dateOfEntry):       
-        self.__dateOfEntry = dateOfEntry
+    def setDebt(self, debt):       
+        self.__debt = debt
 
     def getRegistirationApplication(self):       
         return self.__registirationApplication
@@ -79,7 +51,7 @@ class Student(Person):
     def getDateOfEntry(self):        
         return self.__dateOfEntry
 
-    def sendForApproval(self, chosenLectureSessions):
+    def sendForApproval(self, chosenLectureSessions : list):
 
         # generated source for method sendForApproval 
         approvalList = dict()
@@ -238,7 +210,7 @@ class Student(Person):
                 canTake = self.takenPoint(lecture, transcript.getListOfSemester().get(a).getListOfLecturesTaken())
         return canTake
 
-    def hasPreqLectureTaken(self, preqLecture, listOfLecture):
+    def hasPreqLectureTaken(self, preqLecture, listOfLecture : list):
         # generated source for method hasPreqLectureTaken 
 
 
@@ -249,7 +221,7 @@ class Student(Person):
                 return True
         return False
 
-    def takenPoint(self, lecture, listOfLecturesTaken):
+    def takenPoint(self, lecture, listOfLecturesTaken : list):
 
 
         # generated source for method takenPoint 

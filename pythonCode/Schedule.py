@@ -1,8 +1,4 @@
 from LectureHour import LectureHour
-from Term import Term
-from TermYear import TermYear
-from Person import Person
-from Logger import Logger
 
 class Schedule():
     
@@ -58,26 +54,25 @@ class Schedule():
     # Creating properties for variables
 
     def getPerson(self):
-        return self.person
+        return self.__person
 
     def setPerson(self, person):
-        self.person = person
+        self.__person = person
 
     def getListOfLectureSessions(self):
         return self.getListOfLectureSessions
 
-    def setListOfLectureSessions(self, ListOfLectureSessions):
-        self.ListOfLectureSessions = ListOfLectureSessions
+    def setListOfLectureSessions(self, ListOfLectureSessions : list):
+        self.__ListOfLectureSessions = ListOfLectureSessions
 
     def getTerm(self):
-        return self.term
+        return self.__term
 
     def setTerm(self, term):
-        self.term = term
+        self.__term = term
 
     def getTermYear(self):
-        return self.termYear
+        return self.__termYear
 
     def setTermYear(self, termYear):
-        self.termYear = termYear
-    
+        self.__termYear = termYear

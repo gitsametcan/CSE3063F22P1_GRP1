@@ -7,7 +7,7 @@ class LectureID(UniqueID):
      # Creating properties for variables
 
     def setID(self, string: str):
-        self.lectureCode = string
+        self.__lectureCode = string
 
     def getID(self) -> str:
-        return self.lectureCode
+        return self.__lectureCode
