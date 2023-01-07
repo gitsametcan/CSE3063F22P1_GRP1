@@ -23,21 +23,16 @@ class StudentRegistrationSystem(object):
         self.__log.info("----\nSuggestion: Enter \"150119063\"")#
         while True:
             providedID = input()
-            #Optional<Student> currentOptionalStudent = DataManager.getInstance().findStudent(providedID, FilterType.ID);#
-            #if currentOptionalStudent.isPresent():
-            #    currentUser = currentOptionalStudent.get()
-            #    studentMenu(currentUser)
-            #    break
-            #else:
-            #    self.__log.info("Student not found, please try again: ")#
+            currentUser = DataManager.getInstance().findStudent(providedID, FilterType.ID)
+            self.studentMenu(currentUser)
 
     def studentMenu(self, currentUser):
         #Showing Student's menu choices and making a choice#
 
 
         validInput = False
-        menuChoice = 0
-        while menuChoice != 6:
+        menuChoice = str(0)
+        while menuChoice != str(4):
             self.__log.info("Choose a menu: ")
             self.__log.info("1-Transcript")
             self.__log.info("2-Schedule")
@@ -47,16 +42,16 @@ class StudentRegistrationSystem(object):
             validInput = False
             while not validInput:
                 menuChoice = input()
-                if menuChoice==1:
+                if menuChoice==str(1):
                     validInput = True
                     self.showTranscript(currentUser)
-                elif menuChoice==2:
+                elif menuChoice==str(2):
                     validInput = True
                     self.showSchedule(currentUser)
-                elif menuChoice==3:
+                elif menuChoice==str(3):
                     validInput = True
                     #showing student logs
-                elif menuChoice==4:
+                elif menuChoice==str(4):
                     validInput = True
                     self.signOut()
                 else:
