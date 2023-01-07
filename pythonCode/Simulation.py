@@ -59,10 +59,11 @@ class Simulation():
         for s in listOfStudent:
             sessions = s.getRegistirationApplication().getSessionsSentForApproval()
             for l in sessions.keys():
-                if l in s.availableLessons() and s.canTakeLecture(l.getLecture() ,s.getTranscript()) and len(l.getStudentList()) < l.getQuota():
-                    s.getAdvisor().approveApplication(s.getRegistirationApplication(), l)
+                a = random.random()
+                if a <= 0.95:
+                    sessions[l] = ApprovalState.Approved
                 else:
-                    s.getAdvisor().rejectApplication(s.getRegistirationApplication(), l)
+                    sessions[l] = ApprovalState.Rejected
 
     def fillSemesterFromLRA(self, listOfStudent):
         from Semester import Semester
