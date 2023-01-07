@@ -1,5 +1,0 @@
-[2023-01-07-20-19-44][INFO] 1-Simulation
-[2023-01-07-20-19-44][INFO] 2-Exit
-[2023-01-07-20-19-46][INFO] 1-Generate Students
-[2023-01-07-20-19-46][INFO] 2-Exit
-[2023-01-07-20-19-46][INFO] Generating students...

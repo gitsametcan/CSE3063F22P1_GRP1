@@ -11,6 +11,6 @@ class StudentIDTest(unittest.TestCase):
         # generated source for method test_StudentID_ID
         testStudentID = StudentID(111, 222, 333)
         testStudentID.SetID(44, 5, 666)
-        self.assertEqual(044005666, testStudentID.getID())
+        self.assertEqual("044005666", testStudentID.getID())
 if __name__ == '__main__':
     unittest.main()

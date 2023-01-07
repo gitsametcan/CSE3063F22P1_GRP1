@@ -3,6 +3,9 @@ from UniqueID import UniqueID
 class StudentID(UniqueID):
 
     def __init__(self, *args):
+        self.__departmentCode = 0
+        self.__yearCode = 0
+        self.__orderOfPlacement = 0
         index = 0
         for t in args: 
             if (isinstance(t, int)):
@@ -12,7 +15,7 @@ class StudentID(UniqueID):
                     self.__yearCode = t
                 if index == 2:
                     self.__orderOfPlacement = t
-
+            index += 1
             if (isinstance(t, str)):
                 self.setID(t)
 

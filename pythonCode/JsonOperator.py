@@ -161,18 +161,18 @@ class JsonOperator():
             fullPath = studentsPath + fileName
             f = open(fullPath, "r")
             jsonDict = json.load(f)
-            print(jsonDict)
             self.__studentJsonDicts.append(jsonDict)
         self.__generateStudentObjects()
 
     def __generateStudentObjects(self):
+        from StudentID import StudentID
         for s in self.__studentJsonDicts:
             dateOfEntryObject = self.__strToDateTime(s["dateOfEntry"])
             firstName = s["firstName"]
             lastName = s["lastName"]
 
             studentObject = Student()
-            studentObject.setID(s["studentID"])
+            studentObject.setID(StudentID(s["studentID"]))
             studentObject.setDateOfEntry(dateOfEntryObject)
             studentObject.setFirstName(firstName)
             studentObject.setLastName(lastName)
@@ -186,7 +186,6 @@ class JsonOperator():
             fullPath = transcriptsPath + fileName
             f = open(fullPath, "r")
             jsonDict = json.load(f)
-            print(jsonDict)
             self.__transcriptJsonDicts.append(jsonDict)
 
 
@@ -223,7 +222,7 @@ class JsonOperator():
             schedule.setTerm(Term[schedulejs["term"]])
             schedule.setTermYear(TermYear[schedulejs["termYear"]])
 
-            sessions = sjs["sessions"]
+            sessions = schedulejs["sessions"]
 
             for key in sessions.keys():
                 tempLecture = self.__findLecture(key)
@@ -308,7 +307,7 @@ class JsonOperator():
         sessionsjs = dict()
         sessions = schedule.getListOfLectureSessions()
         for session in sessions:
-            sessionsjs[session.getLecture().getID()] = session.getID()
+            sessionsjs[session.getLecture().getID()] = session.getSessionID()
         schedulejs["sessions"] = sessionsjs
         dateOfEntry = student.getDateOfEntry().strftime("%Y-%m-%d")
         firstName = student.getFirstName()
@@ -415,7 +414,7 @@ class JsonOperator():
         for semester in semesterList:
             lecturesAndGrades = dict()
             listOfLecturesTaken = semester.getListOfLecturesTaken()
-            for key in listOfLecturesTaken.keys():
+            for key in listOfLecturesTaken:
                 lecturesAndGrades[key.getID()] = listOfLecturesTaken[key].name
             semesterListJson.append(lecturesAndGrades)
 

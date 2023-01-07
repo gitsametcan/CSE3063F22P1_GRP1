@@ -30,7 +30,7 @@ class StudentGenerator():
         transcript = Transcript()
         student.setTranscript(transcript)
         student.getTranscript().setStudent(student)
-        student.setDateOfEntry = datetime.date( int(year/10) +2000, 10, 22)
+        student.setDateOfEntry(datetime.date( int(year/10) +2000, 10, 22))
         schedule = Schedule()
         student.setSchedule(schedule)
         student.setDebt(self.studentDebtGenerator())
