@@ -378,7 +378,7 @@ class JsonOperator():
             currentSession["ID"] = ls.getSessionID()
             currentSession["lectureID"] = lectureID
             currentSession["instructorID"] = ls.getInstructor().getID()
-            currentSession["sessionType"] = ls.getSessionType()
+            currentSession["sessionType"] = ls.getSessionType().name
             sessionHours = ls.getSessionHours()
             sessionHoursJson = list()
             for i in sessionHours:
