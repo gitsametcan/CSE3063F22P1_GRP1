@@ -1,4 +1,8 @@
 from InstructorType import InstructorType
+from InstructorID import InstructorID
+#from LectureSession import LectureSession
+#from Schedule import Schedule
+
 from Person import Person
 
 class Instructor(Person):
