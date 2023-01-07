@@ -67,11 +67,16 @@ class DataManagerInstance():
     def searchAdvisors(self, key: str, filterType: FilterType):
         from Advisor import Advisor
         result = list()
+        print(len(self.__listOfPeople))
         for a in self.__listOfPeople:
-            if key in a.getID() and filterType is FilterType.ID and isinstance(a, Advisor):
+
+            if isinstance(a, Advisor) == False:
+                continue
+
+            if key in a.getID() and filterType == FilterType.ID:
                 advisor : Advisor = a
                 result.append(advisor)
-            if key in a.getFullName() and filterType is FilterType.ID and isinstance(a, Advisor):
+            if key in a.getFullName() and filterType == FilterType.Name:
                 advisor : Advisor = a
                 result.append(advisor)
         return result
@@ -139,17 +144,9 @@ class DataManagerInstance():
         
         return (nteList, ueList, teList, fteList, mandatoryList)
 
-
-    def hello(self):
-       print("hello")
-
     def getMetaData(self):
         return self.__jsonOperator.getMetaData()
     
-    def logCircleDeneme(self):
-        from Logger import Logger
-        Logger.getLogger("logs").info("circle!!")
-
     def getNamePool(self):
         return self.__jsonOperator.getNamePool()
 
@@ -161,6 +158,10 @@ class DataManagerInstance():
         self.__jsonOperator.readStudents()
         self.__jsonOperator.readTranscripts()
         self.__jsonOperator.pairObjects()
+
+        self.__listOfLectures = self.__listOfLectures + self.__jsonOperator.getLectureList()
+        self.__listOfPeople = self.__listOfPeople + self.__jsonOperator.getStudentList()
+        self.__listOfPeople = self.__listOfPeople + self.__jsonOperator.getAdvisorList()
 
     def saveFiles(self):
         from Student import Student
@@ -177,4 +178,6 @@ class DataManagerInstance():
         for l in self.__listOfLectures:
             self.__jsonOperator.saveLecture(l)
 
+    def addStudents(self, studentsList : list):
+        self.__listOfPeople = self.__listOfPeople + studentsList
 

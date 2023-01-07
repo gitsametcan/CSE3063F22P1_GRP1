@@ -35,6 +35,15 @@ class JsonOperator():
 
         self.__metaData = dict() 
         pass
+    
+    def getAdvisorList(self):
+        return self.__advisorObjectsList
+    
+    def getStudentList(self):
+        return self.__studentObjectsList
+    
+    def getLectureList(self):
+        return self.__lectureObjectsList
 
     def readMetaData(self):
         metaDataFile = open("JSON Files/MetaData.JSON")
@@ -139,9 +148,9 @@ class JsonOperator():
             advisorObject = Advisor()
             advisorObject.setFirstName(firstName)
             advisorObject.setLastName(lastName)
-            # advisorObject.setDateOfEntry(dateOfEntryObject)
-            # advisorObject.setID(instructorIDObject)
-            # advisorObject.setInstructorType = instructorTypeObject
+            advisorObject.setDateOfEntry(dateOfEntryObject)
+            advisorObject.setID(instructorIDObject)
+            advisorObject.setInstructorType = instructorTypeObject
 
             self.__advisorObjectsList.append(advisorObject)
 
@@ -239,7 +248,7 @@ class JsonOperator():
             schedule.setTerm(Term[schedulejs["term"]])
             schedule.setTermYear(TermYear[schedulejs["termYear"]])
 
-            sessions = ajs["sessions"]
+            sessions = schedulejs["sessions"]
 
             for key in sessions.keys():
                 tempLecture = self.__findLecture(key)

@@ -80,11 +80,11 @@ class Logger :
         if ( "ERROR" in tag ):
             # prints the message to the stderr
             # if the tag contains "ERROR"
-            print(message, file=sys.stderr)
+            print(text, file=sys.stderr)
         if ( "INFO" in tag ):
             # prints the message to the stdout
             # if the tag contains "INFO"
-            print(message)
+            print(text)
         
         # prints the message as a new line to the file
         self.outputFile.write(message + str('\n'))

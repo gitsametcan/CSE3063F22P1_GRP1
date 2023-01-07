@@ -2,7 +2,7 @@ from Person import Person
 from LectureRegistrationApplication import LectureRegistrationApplication
 from ApprovalState import ApprovalState
 
-from DataManager import DataManager
+#from DataManager import DataManager
 
 class Student(Person):
     
@@ -255,7 +255,7 @@ class Student(Person):
                 availableLessons.append(l)
         return availableLessons
 
-    def checkScheduleForLecture(self, schedule : Schedule, lecture : Lecture):
+    def checkScheduleForLecture(self, schedule, lecture):
 
         chechResult = True
         listOfSessions = schedule.getListOfLectureSessions()

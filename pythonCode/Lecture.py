@@ -19,7 +19,7 @@ class Lecture():
 
     def getSessions(self):
         for ls in self.__sessions:
-           ls.set_lecture(self)
+           ls.setLecture(self)
         if self.__sessions is None:
             self.__sessions = []
         return self.__sessions

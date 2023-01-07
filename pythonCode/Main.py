@@ -1,3 +1,10 @@
+from DataManager import DataManager
+from RegistrationSystem import RegistrationSystem
+
+DataManager.getInstance().loadFiles()
+system = RegistrationSystem()
+system.menu()
+
 print("welcome iteration 3")
 
 # -menüde simülasyon için spring/fall seçimi olmalı
