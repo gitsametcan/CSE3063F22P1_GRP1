@@ -26,7 +26,8 @@ class Simulation():
             term = Term.Fall
             if i % 2 ==0:
                 term = Term.Spring
-            self.skipTerm(listOfStudents, term)
+            if i !=0:
+                self.skipTerm(listOfStudents, term)
             if i % 2 != 0:
                 year = year + 1
                 for i in range(1, 101):

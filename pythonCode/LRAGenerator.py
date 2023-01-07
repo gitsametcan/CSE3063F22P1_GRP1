@@ -24,40 +24,40 @@ class LRAGenerator():
                 b = 0
                 c = 0
                 d = 0
-                for la in student.availableLessons():
+                for la in s.availableLessons():
                     if l == la:
                         a=1
-                if student.canTakeLecture(l,student.getTranscript()):
+                if s.canTakeLecture(l,s.getTranscript()):
                     b = 1
-                if student.checkScheduleForLecture(student.getSchedule(),l):
+                if s.checkScheduleForLecture(s.getSchedule(),l):
                     c = 1
                 if l.getSessions(0).getStudentList().size < l.getQuota():
                     d = 1
                 if a==1 & b==1 & c==1 & d==1:
                     LRA.getSessionsSentForApproval().append(l.getSessions(0))
-                    student.getSchedule().append(l.getSessions(0))
+                    s.getSchedule().append(l.getSessions(0))
                     l.getLectureSessions(0).getStudentList().append(s)
 
-            if student.getSchedule().getTermYear == TermYear.Senior:
+            if s.getSchedule().getTermYear == TermYear.Senior:
                 for l in ueList:
                     a = 0
                     b = 0
                     c = 0
                     d = 0
                     e = 0
-                    for la in student.availableLessons():
+                    for la in s.availableLessons():
                         if l == la:
                             a=1
-                    if student.canTakeLecture(l,student.getTranscript()):
+                    if s.canTakeLecture(l,s.getTranscript()):
                         b = 1
-                    if student.checkScheduleForLecture(student.getSchedule(),l):
+                    if s.checkScheduleForLecture(s.getSchedule(),l):
                         c = 1
                     if l.getSessions(0).getStudentList().size < l.getQuota():
                         d = 1
                     if a==1 & b==1 & c==1 & d==1 & e==1:
                         e = e + 1 
                         LRA.getSessionsSentForApproval().append(l.getSessions(0))
-                        student.getSchedule().append(l.getSessions(0))
+                        s.getSchedule().append(l.getSessions(0))
                         l.getLectureSessions(0).getStudentList().append(s)
 
                 for l in fteList:
@@ -66,19 +66,19 @@ class LRAGenerator():
                     c = 0
                     d = 0
                     e = 0
-                    for la in student.availableLessons():
+                    for la in s.availableLessons():
                         if l == la:
                             a=1
-                    if student.canTakeLecture(l,student.getTranscript()):
+                    if s.canTakeLecture(l,s.getTranscript()):
                         b = 1
-                    if student.checkScheduleForLecture(student.getSchedule(),l):
+                    if s.checkScheduleForLecture(s.getSchedule(),l):
                         c = 1
                     if l.getSessions(0).getStudentList().size < l.getQuota():
                         d = 1
                     if a==1 & b==1 & c==1 & d==1 & e==1:
                         e = e + 1 
                         LRA.getSessionsSentForApproval().append(l.getSessions(0))
-                        student.getSchedule().append(l.getSessions(0))
+                        s.getSchedule().append(l.getSessions(0))
                         l.getLectureSessions(0).getStudentList().append(s)
 
 
