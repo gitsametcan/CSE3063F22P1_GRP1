@@ -71,12 +71,22 @@ class Schedule():
         self.__ListOfLectureSessions = ListOfLectureSessions
 
     def getTerm(self):
+        from Term import Term
+        try:
+            x = self.__term
+        except AttributeError:
+            self.__term = Term.Fall
         return self.__term
 
     def setTerm(self, term):
         self.__term = term
 
     def getTermYear(self):
+        from TermYear import TermYear
+        try:
+            x = self.__termYear
+        except AttributeError:
+            self.__termYear = TermYear.Freshman
         return self.__termYear
 
     def setTermYear(self, termYear):

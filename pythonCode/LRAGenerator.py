@@ -33,10 +33,10 @@ class LRAGenerator():
             a.setSchedule(schedule)
 
         for l in lecturesToAdvisor:
-            for i in range(0,13):
-                instructor = listOfAdvisor(i)
-                if Instructor.checkScheduleForLecture(instructor.getSchedule(),l):
-                    i.getSchedule().getListOfLectureSessions().append(l.getSessions()[0])
+            for i in range(0,len(listOfAdvisor)):
+                instructor = listOfAdvisor[i]
+                if instructor.checkScheduleForLecture(instructor.getSchedule(),l):
+                    instructor.getSchedule().getListOfLectureSessions().append(l.getSessions()[0])
                     break
 
 

@@ -340,7 +340,7 @@ class JsonOperator():
         sessionsjs = dict()
         sessions = schedule.getListOfLectureSessions()
         for session in sessions:
-            sessionsjs[session.getLecture().getID()] = session.getID()
+            sessionsjs[session.getLecture().getID()] = session.getSessionID()
         schedulejs["sessions"] = sessionsjs
         instructorType = advisor.getInstructorType().name
         dateOfEntry = advisor.getDateOfEntry().strftime("%Y-%m-%d")

@@ -28,16 +28,16 @@ class StudentID(UniqueID):
                     self.__yearCode = t
                 if index == 2:
                     self.__orderOfPlacement = t
+            index += 1
 
             if (isinstance(t, str)):
                 try:
                     int(t)
                 except ValueError:
                     pass
-                finally:
-                    self.__departmentCode = int(t[:3])
-                    self.__yearCode = int(t[3:6])
-                    self.__orderOfPlacement = int(t[6:])
+                self.__departmentCode = int(t[:3])
+                self.__yearCode = int(t[3:6])
+                self.__orderOfPlacement = int(t[6:])
 
     def getID(self) -> str:
         return self.digitFixer(self.__departmentCode) + self.digitFixer(self.__yearCode) + self.digitFixer(self.__orderOfPlacement)
