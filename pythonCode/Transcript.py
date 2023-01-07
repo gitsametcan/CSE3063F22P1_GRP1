@@ -1,79 +1,72 @@
-from Semester import Semester
-
 class Transcript:
 
     def __init__(self):
         pass
-        #self.__student = __student
-        #self.__listOfSemester = __listOfSemester
 
-        #if self.__listOfSemester == None:
-        #    self.__listOfSemester = [Semester]
-
-        #self.__totalCreditsTaken = self.totalCreditsTakenCalculator(self.__listOfSemester)
-        #self.__totalCreditsCompleted = self.totalCreditsCompletedCalculator(self.__listOfSemester)
-        #self.__points = self.pointsCalculator(self.__listOfSemester)
-        #self.__gano = self.__points / self.__totalCreditsTaken
- 
      # Creating properties for variables 
     
     def getStudent(self):
-        return self.student
+        return self.__student
 
     def setStudent(self,  student):
-        self.student = student
+        self.__student = student
     
     def getListOfSemester(self):
-        return self.listOfSemester
+        if self.__listOfSemester == None:
+            self.__listOfSemester = list
+        return self.__listOfSemester
 
-    def setListOfSemester(self, listOfSemester):
-        self.listOfSemester = listOfSemester
+    def setListOfSemester(self, listOfSemester : list):
+        self.__listOfSemester = listOfSemester
 
     def getGano(self):
-        return self.gano
+        gano = self.__points / self.__totalCreditsTaken
+        return self.__gano
 
-    def setGano(self, gano):
-        self.gano = gano   
+    def setGano(self, gano : float):
+        self.__gano = gano   
 
     def getTotalCreditsTaken(self):
-        return self.totalCreditsTaken
+        totalCreditsTaken = self.totalCreditsTakenCalculator(self.__listOfSemester)
+        return self.__totalCreditsTaken
 
-    def setTotalCreditsTaken(self, totalCreditsTaken):
-        self.totalCreditsTaken = totalCreditsTaken
+    def setTotalCreditsTaken(self, totalCreditsTaken : int):
+        self.__totalCreditsTaken = totalCreditsTaken
 
     def getPoints(self):
-        return self.points
+        points = self.pointsCalculator()
+        return self.__points
 
-    def setPoints(self, points):
-        self.points = points
+    def setPoints(self, points : float):
+        self.__points = points
 
     def getTotalCreditsCompleted(self):
-        return self.totalCreditsCompleted
+        totalCreditsCompleted = self.totalCreditsCompletedCalculator(self.__listOfSemester)
+        return self.__totalCreditsCompleted
 
-    def setTotalCreditsCompleted(self, totalCreditsCompleted):
-        self.totalCreditsCompleted = totalCreditsCompleted
+    def setTotalCreditsCompleted(self, totalCreditsCompleted : int):
+        self.__totalCreditsCompleted = totalCreditsCompleted
 
 
     # Creating other methods
 
     def addSemester(self, semester):
-
         self.__listOfSemester.append(semester)
 
-    def totalCreditsTakenCalculator(self, listOfSemester):
+    def totalCreditsTakenCalculator(self, listOfSemester : list):
         totalCreditsTaken = 0
         for semester in listOfSemester:
             totalCreditsTaken += semester.creditsTaken()
         return totalCreditsTaken
 
-    def totalCreditsCompletedCalculator(self, listOfSemester):
+    def totalCreditsCompletedCalculator(self, listOfSemester : list):
         totalCreditsCompleted = 0
-        for semester in self.listOfSemester:
+        for semester in self.__listOfSemester:
             totalCreditsCompleted += semester.creditsCompleted
         return totalCreditsCompleted
 
     def pointsCalculator(self):
         points = 0
-        for semester in self.listOfSemester:
+        for semester in self.__listOfSemester:
             points += semester.points
         return points

@@ -40,7 +40,7 @@ class StudentID(UniqueID):
                     self.__orderOfPlacement = int(t[6:])
 
     def getID(self) -> str:
-        return self.digitFixer(self.departmentCode) + self.digitFixer(self.yearCode) + self.digitFixer(self.orderOfPlacement)
+        return self.digitFixer(self.__departmentCode) + self.digitFixer(self.__yearCode) + self.digitFixer(self.__orderOfPlacement)
 
     ## Creating another methods
     def digitFixer(self, integer: int) -> str:
