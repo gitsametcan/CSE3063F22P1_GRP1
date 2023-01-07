@@ -4,7 +4,9 @@ from Term import Term
 from TermYear import TermYear
 from DataManager import DataManager
 from Lecture import Lecture
-
+from FilterType import FilterType
+from Schedule import Schedule
+from Instructor import Instructor
 
 class LRAGenerator():
 
@@ -14,7 +16,34 @@ class LRAGenerator():
     def generate(self, listOfStudents:list, term:Term):
         from ApprovalState import ApprovalState
         nteList, ueList, teList, fteList, mandatoryList = DataManager.getInstance().searchLecturesUntilTerm("",Term.Spring, TermYear.Senior)
-        student = Student()
+        
+        lecturesToAdvisor = list()
+        for l in teList:
+            if l.getTerm() == term:
+                lecturesToAdvisor.append(l)
+        for l in mandatoryList:
+            if l.getTerm() == term:
+                lecturesToAdvisor.append(l)
+
+        listOfAdvisor = DataManager.getInstance().searchAdvisors("", FilterType.Name)
+
+
+        for a in listOfAdvisor:
+            schedule = Schedule()
+            a.setSchedule(schedule)
+
+        for l in lecturesToAdvisor:
+            for i in range(0,13):
+                instructor = listOfAdvisor(i)
+                if Instructor.checkScheduleForLecture(instructor.getSchedule(),l):
+                    listOfSessions = i.getSchedule().getListOfLectureSessions()
+                    listOfSessions.append(l.getSessions()[0])
+                    i.getSchedule().setListOfLectureSessions(listOfSessions)
+                    break
+
+
+
+
         for s in listOfStudents:
 
             LRA = LectureRegistrationApplication()

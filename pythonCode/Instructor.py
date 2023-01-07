@@ -45,3 +45,38 @@ class Instructor(Person):
     def setSchedule(self, schedule):
         # generated source for method setSchedule 
         self.__schedule = schedule
+    
+    def checkScheduleForLecture(self, schedule, lecture):
+
+        chechResult = True
+        listOfSessions = schedule.getListOfLectureSessions()
+        listOfLectureSessions = lecture.getSessions()
+        lectureHours = list()
+        scheduleHours = list()
+
+        for ses in listOfLectureSessions:
+            for i in ses.getSessionHours():
+                day = list()
+                for j in i:
+                    if j == 1:
+                        day.append(1)
+                    else:
+                        day.append(0)
+                lectureHours.append(day)
+        if listOfSessions is not None:
+            for ses in listOfSessions:
+                for i in ses.getSessionHours():
+                    day = list()
+                    for j in i:
+                        if j == 1:
+                            day.append(1)
+                        else:
+                            day.append(0)
+                    scheduleHours.append(day)
+        
+        for i in range(0,7):
+            for j in range(0,10):
+                if lectureHours[i][j] == 1 and scheduleHours[i][j] == 1:
+                    chechResult = False
+
+        return chechResult

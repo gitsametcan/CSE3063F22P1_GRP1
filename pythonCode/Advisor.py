@@ -76,3 +76,4 @@ class Advisor(Instructor):
     def rejectApplication(self, lectureRegistirationApplication, lectureSession):
         # generated source for method rejectApplication 
         lectureRegistirationApplication.getSessionsSentForApproval().put(lectureSession, ApprovalState.Rejected)
+
