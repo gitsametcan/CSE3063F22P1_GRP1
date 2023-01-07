@@ -36,7 +36,9 @@ class LRAGenerator():
             for i in range(0,13):
                 instructor = listOfAdvisor(i)
                 if Instructor.checkScheduleForLecture(instructor.getSchedule(),l):
-                    i.getSchedule().getListOfLectureSessions().append(l.getSessions()[0])
+                    listOfSessions = i.getSchedule().getListOfLectureSessions()
+                    listOfSessions.append(l.getSessions()[0])
+                    i.getSchedule().setListOfLectureSessions(listOfSessions)
                     break
 
 
