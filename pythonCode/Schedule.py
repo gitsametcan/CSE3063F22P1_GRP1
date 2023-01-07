@@ -3,6 +3,7 @@ from LectureHour import LectureHour
 class Schedule():
     
     def __init__(self):
+        self.__ListOfLectureSessions = list()
         pass
 
     # Creating show method
@@ -60,7 +61,11 @@ class Schedule():
         self.__person = person
 
     def getListOfLectureSessions(self):
-        return self.getListOfLectureSessions
+        try:
+            x = self.__ListOfLectureSessions
+        except AttributeError:
+            return None 
+        return self.__ListOfLectureSessions
 
     def setListOfLectureSessions(self, ListOfLectureSessions : list):
         self.__ListOfLectureSessions = ListOfLectureSessions

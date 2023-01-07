@@ -12,7 +12,7 @@ class LRAGenerator():
         pass
 
     def generate(self, listOfStudents:list, term:Term):
-
+        from ApprovalState import ApprovalState
         nteList, ueList, teList, fteList, mandatoryList = DataManager.getInstance().searchLecturesUntilTerm("",Term.Spring, TermYear.Senior)
         student = Student()
         for s in listOfStudents:
@@ -31,12 +31,12 @@ class LRAGenerator():
                     b = 1
                 if s.checkScheduleForLecture(s.getSchedule(),l):
                     c = 1
-                if l.getSessions(0).getStudentList().size < l.getQuota():
+                if len(l.getSessions()[0].getListOfStudents()) < l.getQuota():
                     d = 1
-                if a==1 & b==1 & c==1 & d==1:
-                    LRA.getSessionsSentForApproval().append(l.getSessions(0))
-                    s.getSchedule().append(l.getSessions(0))
-                    l.getLectureSessions(0).getStudentList().append(s)
+                if a == 1 and b == 1 and c == 1 and d == 1:
+                    LRA.getSessionsSentForApproval()[l.getSessions()[0]] = ApprovalState.Pending
+                    s.getSchedule().getListOfLectureSessions().append(l.getSessions()[0])
+                    l.getSessions()[0].getListOfStudents().append(s)
 
             if s.getSchedule().getTermYear == TermYear.Senior:
                 for l in ueList:

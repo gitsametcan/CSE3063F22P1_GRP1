@@ -67,9 +67,7 @@ class DataManagerInstance():
     def searchAdvisors(self, key: str, filterType: FilterType):
         from Advisor import Advisor
         result = list()
-        print(len(self.__listOfPeople))
         for a in self.__listOfPeople:
-
             if isinstance(a, Advisor) == False:
                 continue
 

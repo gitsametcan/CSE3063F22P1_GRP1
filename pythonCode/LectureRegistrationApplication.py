@@ -5,8 +5,10 @@ class LectureRegistrationApplication():
 
      # Creating properties for variables
     def getSessionsSentForApproval(self):
-        if self.__sessionsSentForApproval is None:
-            self.__sessionsSentForApproval = dict
+        try:
+            x = self.__sessionsSentForApproval
+        except AttributeError:
+            return dict()
         return self.__sessionsSentForApproval
 
     def getAdvisor(self):

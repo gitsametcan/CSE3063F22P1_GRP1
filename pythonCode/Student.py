@@ -188,16 +188,16 @@ class Student(Person):
 
         # generated source for method canTakeLecture 
 
-        if self.__transcript == None:
+        if self.__transcript is None:
             return True
         canTake = bool()
         listOfTaken = list()
         a = 0
         in_ = False
         i = 0
-        while i < self.__transcript.getListOfSemester().size():
-            semester = transcript.getListOfSemester().get(i)
-            for lectureTaken in semester.keySet():
+        while i < len(transcript.getListOfSemester()):
+            semester = transcript.getListOfSemester()[i]
+            for lectureTaken in semester.getListOfLecturesTaken():
                 listOfTaken.append(lectureTaken)
 
                 if lectureTaken.getID() == lecture.getID():
@@ -233,7 +233,7 @@ class Student(Person):
         return point
 
     def availableLessons(self):
-
+        from DataManager import DataManager
         # generated source for method availableLessons 
         availableLessons = list()
         lecturesUntilNow = list()
@@ -261,23 +261,31 @@ class Student(Person):
         listOfSessions = schedule.getListOfLectureSessions()
         listOfLectureSessions = lecture.getSessions()
         lectureHours = list()
-        scheduleHours= list()
+        scheduleHours = list()
 
         for ses in listOfLectureSessions:
-            for i in range(0,7):
-                for j in range(0,10):
-                    if ses.getSessionHours()[i][j] == 1:
-                        lectureHours[i][j]=1
-        
-        for ses in listOfSessions:
-            for i in range(0,7):
-                for j in range(0,10):
-                    if ses.getSessionHours()[i][j] == 1:
-                        scheduleHours[i][j]=1
+            for i in ses.getSessionHours():
+                day = list()
+                for j in i:
+                    if j == 1:
+                        day.append(1)
+                    else:
+                        day.append(0)
+                lectureHours.append(day)
+        if listOfSessions is not None:
+            for ses in listOfSessions:
+                for i in ses.getSessionHours():
+                    day = list()
+                    for j in i:
+                        if j == 1:
+                            day.append(1)
+                        else:
+                            day.append(0)
+                    scheduleHours.append(day)
         
         for i in range(0,7):
             for j in range(0,10):
-                if lectureHours[i][j] ==1 & scheduleHours[i][j] ==1:
+                if lectureHours[i][j] == 1 and scheduleHours[i][j] == 1:
                     chechResult = False
 
         return chechResult

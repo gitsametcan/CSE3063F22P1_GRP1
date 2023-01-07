@@ -47,31 +47,32 @@ class Simulation():
 
         for s in listOfStudents:
             if term == term.Spring:
-                if s.getSchedule.getTermYear() == TermYear.Freshman:
-                    s.getSchedule.setTermYear(TermYear.Sophomore)
-                elif s.getSchedule.getTermYear() == TermYear.Sophomore:
-                    s.getSchedule.setTermYear(TermYear.Junior)
-                elif s.getSchedule.getTermYear() == TermYear.Junior:
-                    s.getSchedule.setTermYear(TermYear.Senior)
-            s.getSchedule.setTerm(term)
+                if s.getSchedule().getTermYear() == TermYear.Freshman:
+                    s.getSchedule().setTermYear(TermYear.Sophomore)
+                elif s.getSchedule().getTermYear() == TermYear.Sophomore:
+                    s.getSchedule().setTermYear(TermYear.Junior)
+                elif s.getSchedule().getTermYear() == TermYear.Junior:
+                    s.getSchedule().setTermYear(TermYear.Senior)
+            s.getSchedule().setTerm(term)
 
     def takeAutoAnswerForLRA(self, listOfStudent):
         for s in listOfStudent:
-            LRA = s.getRegistirationApplication()
-            for l in LRA:
-                if l in s.availableLessons() and s.canTakeLecture(l,s.getTranscript()) and l.getSessions(0).getStudentList().size < l.getQuota():
-                    s.getAdvisor().approveApplication(LRA, l.getSessions(0))
+            sessions = s.getRegistirationApplication().getSessionsSentForApproval()
+            for l in sessions.keys():
+                if l in s.availableLessons() and s.canTakeLecture(l.getLecture() ,s.getTranscript()) and len(l.getStudentList()) < l.getQuota():
+                    s.getAdvisor().approveApplication(s.getRegistirationApplication(), l)
                 else:
-                    s.getAdvisor().rejectApplication(LRA, l.getSessions(0))
+                    s.getAdvisor().rejectApplication(s.getRegistirationApplication(), l)
 
     def fillSemesterFromLRA(self, listOfStudent):
+        from Semester import Semester
         for s in listOfStudent:
             listOflecture = list()
-            LRA = s.getRegistirationApplication()
-            for l in LRA:
-                if l.ApprovalState == ApprovalState.Approved:
+            sessions = s.getRegistirationApplication().getSessionsSentForApproval()
+            for l in sessions.keys():
+                if sessions[l] == ApprovalState.Approved:
                     listOflecture.append(l)
-            semester  = Semester()
+            semester = Semester()
             semester.setListOfLecturesTaken(listOflecture)
             s.getTranscript().addSemester(semester)
 

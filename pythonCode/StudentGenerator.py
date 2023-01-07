@@ -22,21 +22,21 @@ class StudentGenerator():
 
         student = Student()
 
-        student.setID = self.studentIdGenerator(year,i)
-        student.setFirstName = self.getRandomFirstName()
-        student.setLastName = self.getRandomLastName()
-        student.setDebt = self.studentDebtGenerator()
-        student.setAdvisor = self.getRandomAdvisor()
+        student.setID(self.studentIdGenerator(year,i))
+        student.setFirstName(self.getRandomFirstName())
+        student.setLastName(self.getRandomLastName())
+        student.setDebt(self.studentDebtGenerator())
+        student.setAdvisor(self.getRandomAdvisor())
         transcript = Transcript()
         student.setTranscript(transcript)
         student.getTranscript().setStudent(student)
-        student.setDateOfEntry = datetime.date( (year/10) +2000, 10, 22)
+        student.setDateOfEntry = datetime.date( int(year/10) +2000, 10, 22)
         schedule = Schedule()
         student.setSchedule(schedule)
         student.setDebt(self.studentDebtGenerator())
         student.getSchedule().setTerm(Term.Fall)
         student.getSchedule().setTermYear(TermYear.Freshman)
-        student.setRegistirationApplication = LectureRegistrationApplication()
+        student.setRegistirationApplication(LectureRegistrationApplication())
 
         return student
 
@@ -46,8 +46,7 @@ class StudentGenerator():
 
         namePool = DataManager.getInstance().getNamePool()
         nameList = namePool["names"]
-        print ("firstName: " + str(len(nameList)))
-        a = random.randint(0, len(nameList))
+        a = random.randint(0, len(nameList) - 1)
         name = nameList[a]
         return name
 
@@ -55,8 +54,7 @@ class StudentGenerator():
 
         namePool = DataManager.getInstance().getNamePool()
         nameList = namePool["lastNames"]
-        print ("lastName: " + str(len(nameList)))
-        a = random.randint(0, len(nameList))
+        a = random.randint(0, len(nameList) - 1)
         name = nameList[a]
         return name
 
@@ -77,5 +75,4 @@ class StudentGenerator():
     def getRandomAdvisor(self):
 
         listOfAdvisor = DataManager.getInstance().searchAdvisors("", FilterType.Name)
-        print(len(listOfAdvisor))
-        return listOfAdvisor[random.randint(0,len(listOfAdvisor))]
+        return listOfAdvisor[random.randint(0,len(listOfAdvisor) - 1)]

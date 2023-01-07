@@ -25,6 +25,10 @@ class Lecture():
         return self.__sessions
 
     def getPrerequisite(self):
+        try:
+            x = self.__prerequisite
+        except AttributeError:
+            return None
         return self.__prerequisite
 
     def getId(self):

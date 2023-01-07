@@ -12,9 +12,10 @@ class Transcript:
         self.__student = student
     
     def getListOfSemester(self):
-
-        if self.__listOfSemester == None:
-            self.__listOfSemester = list
+        try:
+            x = self.__listOfSemester
+        except AttributeError:
+            self.__listOfSemester = list()           
         return self.__listOfSemester
 
     def setListOfSemester(self, listOfSemester : list):
@@ -49,11 +50,12 @@ class Transcript:
         self.__totalCreditsCompleted = totalCreditsCompleted
 
     def getLastSemester(self):
+        from Semester import Semester
         lastSemester = Semester()
         for s in range(0, len(self.__listOfSemester)):
             if s == (len(self.__listOfSemester)-1):
                 lastSemester = s
-        return lastSemester
+        return self.getListOfSemester()[lastSemester - 1]
 
     # Creating other methods
 

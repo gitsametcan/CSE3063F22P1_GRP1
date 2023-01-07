@@ -43,8 +43,10 @@ class LectureSession(object):
         return self.__lecture
 
     def getListOfStudents(self):
-        if self.__listOfStudents is None:
-            self.__listOfStudents = list
+        try:
+            x = self.__listOfStudents
+        except AttributeError:
+            return list()
         return self.__listOfStudents
 
     def setListOfStudents(self, listOfStudents : list):
