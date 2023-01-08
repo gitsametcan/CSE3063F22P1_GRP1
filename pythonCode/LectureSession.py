@@ -5,6 +5,16 @@ class LectureSession(object):
     def __init__(self):
         pass
 
+    def __hash__(self):
+        return (hash(self.getSessionID(), self.getLecture(), self.getSessionHours(), self.getSessionType(),
+        self.getListOfStudents() , self.getInstructor(), self.getListOfAssistans()))
+
+    def __eq__(self, other):
+        return (self.getSessionID(), self.getLecture(), self.getSessionHours(), self.getSessionType(),
+        self.getListOfStudents() , self.getInstructor(), self.getListOfAssistans()) == (other.getSessionID(), other.getLecture(),
+        other.getSessionHours(), other.getSessionType(), other.getListOfStudents(),
+        other.getInstructor(), other.getListOfAssistans())
+
     # Creating properties for variables
     def setSessionID(self, sessionID):
         self.__sessionID = sessionID
