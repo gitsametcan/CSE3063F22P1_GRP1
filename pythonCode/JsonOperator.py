@@ -376,7 +376,10 @@ class JsonOperator():
             currentSession = dict()
             currentSession["ID"] = ls.getSessionID()
             currentSession["lectureID"] = lectureID
-            currentSession["instructorID"] = ls.getInstructor().getID()
+            if ls.getInstructor() is not None:
+                currentSession["instructorID"] = ls.getInstructor().getID()
+            else:
+                currentSession["instructorID"] = ""
             currentSession["sessionType"] = ls.getSessionType().name
             sessionHours = ls.getSessionHours()
             sessionHoursJson = list()
