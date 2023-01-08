@@ -13,7 +13,6 @@ class RegistrationSystem(object):
     def __init__(self):
         self.__simulation = Simulation()
         #Constructor of RegistrationSystem
-
         self.__log = Logger.getLogger("logs")
 
     def menu(self):
@@ -50,7 +49,7 @@ class RegistrationSystem(object):
                 self.__log.info("Done.")
             elif(intLoginChoice == 2):
                 self.__log.info("Initiating simulation...")
-                self.__simulation.run()
+                self.__simulation.startSimulation(studentsList)
                 self.__log.info("Done.")
             elif(intLoginChoice == 3):
                 StudentRegistrationSystem(self)

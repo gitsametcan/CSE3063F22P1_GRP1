@@ -16,12 +16,15 @@ class Simulation():
         self.__LRA = LRAGenerator()
         self.__listOfStudents = list()
 
-    def run(self):
+    def run(self): #öğrenci üretme
 
         year = 118
 
         listOfStudents = list()
 
+        self.setYear(121)
+        self.setTerm(Term.Spring)
+        
         for i in range(1, 7):
             term = Term.Fall
             if i % 2 ==0:
@@ -40,6 +43,18 @@ class Simulation():
             self.takeAutoLetterGradeForSemester(listOfStudents)
         return listOfStudents
 
+    def startSimulation(self, studentsList):
+        if(self.getTerm() == Term.Spring):
+            self.setYear(self.getYear()+1)
+            self.skipTerm(studentsList, self.getTerm())
+            for i in range(1, 101):
+                student = self.__studentGenerator.generate(self.getYear(),i)
+                studentsList.append(student)
+        listOfStudents = self.__LRA.generate(studentsList,self.getTerm())
+        self.takeAutoAnswerForLRA(listOfStudents)
+        self.fillSemesterFromLRA(listOfStudents)
+        self.emptyLRA(listOfStudents)
+        self.takeAutoLetterGradeForSemester(listOfStudents)
 
     #logs will come here
 
@@ -105,3 +120,12 @@ class Simulation():
 
     def setListOfStudents(self, listOfStudents:list()):
         self.__listOfStudents = listOfStudents
+
+    def setYear(self, year):
+        self.__year = year
+    def getYear(self):
+        return self.__year
+    def setTerm(self, term):
+        self.__term = term
+    def getTerm(self):
+        return self.__term
