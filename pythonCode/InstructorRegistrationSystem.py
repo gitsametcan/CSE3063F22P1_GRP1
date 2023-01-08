@@ -1,6 +1,5 @@
 from FilterType import FilterType
 from DataManager import DataManager
-from Instructor import Instructor
 from Logger import Logger
 
 class InstructorRegistrationSystem():

@@ -39,7 +39,7 @@ class RegistrationSystem(object):
             if len(dirlist) < 1 and intLoginChoice == 2:
                 intLoginChoice = intLoginChoice + 4
 
-            if(intLoginChoice == 1):
+            if intLoginChoice == 1:
                 self.__log.info("Generating Students...")
                 studentsList = self.__simulation.run()
                 self.__log.info("Done.")
@@ -47,17 +47,17 @@ class RegistrationSystem(object):
                 DataManager.getInstance().addStudents(studentsList)
                 DataManager.getInstance().saveFiles()
                 self.__log.info("Done.")
-            elif(intLoginChoice == 2):
+            elif intLoginChoice == 2:
                 self.__log.info("Initiating simulation...")
                 self.__simulation.startSimulation(studentsList)
                 self.__log.info("Done.")
-            elif(intLoginChoice == 3):
+            elif intLoginChoice == 3:
                 StudentRegistrationSystem(self)
-            elif(intLoginChoice == 4):
+            elif intLoginChoice == 4:
                 AdvisorRegistrationSystem(self)
-            elif(intLoginChoice == 5):
+            elif intLoginChoice == 5:
                 InstructorRegistrationSystem(self)
-            elif(intLoginChoice == 6):
+            elif intLoginChoice == 6:
                 self.__log.info("Exiting...")
                 sys.exit("Exit...")
             else:

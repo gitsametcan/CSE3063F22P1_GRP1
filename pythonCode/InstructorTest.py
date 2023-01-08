@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-from InstructorID import InstructorID;
+from InstructorID import InstructorID
 from InstructorType import InstructorType
 from Schedule import Schedule
 from Instructor import Instructor

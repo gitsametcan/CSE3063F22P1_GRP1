@@ -2,7 +2,6 @@
 import random
 from Term import Term
 from TermYear import TermYear
-from Semester import Semester
 from ApprovalState import ApprovalState
 from LectureRegistrationApplication import LectureRegistrationApplication
 from StudentGenerator import StudentGenerator

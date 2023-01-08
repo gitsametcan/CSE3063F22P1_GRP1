@@ -4,7 +4,6 @@ class Schedule():
     
     def __init__(self):
         self.__ListOfLectureSessions = list()
-        pass
 
     # Creating show method
     def showSchedule(self, log):
