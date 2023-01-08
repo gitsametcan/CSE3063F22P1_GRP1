@@ -5,7 +5,7 @@ class Logger :
     __loggers = dict()
 
     @classmethod
-    def getLogger(cls,fileNameWithoutExtension):
+    def getLogger(cls,fileNameWithoutExtension : str):
         # this function retrieves the logger 
         # object corresponding to the given name
         
@@ -19,7 +19,7 @@ class Logger :
         cls.__loggers[fileNameWithoutExtension] = tLog
         return tLog
 
-    def __init__(self, fileNameWithoutExtension):
+    def __init__(self, fileNameWithoutExtension: str):
         # current date is retrieved 
         # to be used as file name
         now = datetime.now()

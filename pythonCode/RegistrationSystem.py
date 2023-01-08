@@ -21,7 +21,7 @@ class RegistrationSystem(object):
         metaData = DataManager.getInstance().getMetaData()
 
         dirlist = os.listdir(metaData["studentsPath"])
-
+        studentsList = list()
         while True:
             self.__log.info("1-Generate Students")
             if len(dirlist) >= 1:

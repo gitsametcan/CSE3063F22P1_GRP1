@@ -429,25 +429,25 @@ class JsonOperator():
 
         pass
 
-    def __findLecture(self, id):
+    def __findLecture(self, id: str):
         for l in self.__lectureObjectsList:
             if l.getID() == id:
                 return l
         return None
 
-    def __findAdvisor(self, id):
+    def __findAdvisor(self, id: str):
         for a in self.__advisorObjectsList:
             if a.getID() == id:
                 return a
         return None
 
-    def __findStudent(self, id):
+    def __findStudent(self, id: str):
         for s in self.__studentObjectsList:
             if s.getID() == id:
                 return s
         return None
 
-    def __strToDateTime(self, dtstr):
+    def __strToDateTime(self, dtstr: str):
         dtformat = "%Y-%m-%d"
         dtobject = datetime.strptime(dtstr, dtformat)
         return dtobject

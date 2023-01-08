@@ -12,7 +12,7 @@ class Semester():
         return self.__gradeLectureList
 
     def addGradeToList(self, lectureSession, letterGrade):
-        self.getGradeLectureList()[lectureSession.getLecture()] = letterGrade
+        self.__gradeLectureList[lectureSession.getLecture()] = letterGrade
 
     def getListOfLecturesTaken(self):
         return self.__gradeLectureList

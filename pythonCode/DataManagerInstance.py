@@ -11,7 +11,6 @@ class DataManagerInstance():
         self.__listOfPeople = list()
         self.__jsonOperator = JsonOperator()
         
-        print("FIRST TIME CREATING DATAMANAGERINSTANCE")
 
     def findLecture(self, key: str, filterType: FilterType):
         for l in self.__listOfLectures:
