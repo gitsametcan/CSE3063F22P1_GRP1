@@ -93,6 +93,10 @@ class Simulation():
             semester = Semester()
             semester.setListOfLecturesTaken(listOflecture)
             listOfSemester = s.getTranscript().getListOfSemester()
+
+            for ls in s.getTranscript().getLastSemester().getListOfLecturesTaken():
+                s.getTranscript().getLastSemester().addToGradeList(ls,LetterGrade.Non)
+
             listOfSemester.append(semester)
             s.getTranscript().setListOfSemester(listOfSemester)
 
