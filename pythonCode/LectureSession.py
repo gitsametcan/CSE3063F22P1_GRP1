@@ -46,7 +46,7 @@ class LectureSession(object):
         try:
             x = self.__listOfStudents
         except AttributeError:
-            return list()
+            self.__listOfStudents = list()
         return self.__listOfStudents
 
     def setListOfStudents(self, listOfStudents : list):

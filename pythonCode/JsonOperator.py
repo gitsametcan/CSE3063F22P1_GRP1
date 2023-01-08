@@ -208,7 +208,6 @@ class JsonOperator():
                         instructorID = lsjs["instructorID"]
                         advisor = self.__findAdvisor(instructorID)
                         ls.setInstructor(advisor)
-                        # advisor.getSchedule().getListOfLectureSessions().append(ls)
 
     def __pairStudents(self):
         from Schedule import Schedule

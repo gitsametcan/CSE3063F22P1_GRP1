@@ -50,7 +50,7 @@ class TranscriptGenerator():
         semester = Semester()
         listOfLecture = {hash(Lecture): LetterGrade for Lecture, LetterGrade in listOfLecture.items()}
         for l in DataManager.getInstance().searchLecture(i):
-            if student.getTranscript() == None:
+            if student.getTranscript() is None:
                 listOfLecture.put(l, self.randomLetterGrade())
                 continue 
             if student.canTakeLecture(l, student.getTranscript()):

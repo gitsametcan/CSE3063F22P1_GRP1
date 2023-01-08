@@ -16,8 +16,6 @@ class InstructorRegistrationSystem():
     def instructorLogin(self):
 
         #Searching for a Instructor with a given id. If there is an id equal with providedId currentUser is that Instructor.
-
-        currentUser = None
         self.__log.info("Please provide an Instructor ID:")
         self.__log.info("----\nSuggestion: Enter \"150097\"")
         while True:

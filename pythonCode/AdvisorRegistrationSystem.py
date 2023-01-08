@@ -18,7 +18,6 @@ class AdvisorRegistrationSystem():
     def advisorLogin(self):
 
         #Searching for a Advisor with a given id. If there is an id equal with providedId currentUser is that Advisor.#
-        currentUser = None
         self.__log.info("Please provide an Advisor ID:")
         self.__log.info("----\nSuggestion: Enter \"150097\"")#
         while True:

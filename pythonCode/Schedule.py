@@ -64,7 +64,7 @@ class Schedule():
         try:
             x = self.__ListOfLectureSessions
         except AttributeError:
-            return None 
+            self.__ListOfLectureSessions = list()
         return self.__ListOfLectureSessions
 
     def setListOfLectureSessions(self, ListOfLectureSessions : list):

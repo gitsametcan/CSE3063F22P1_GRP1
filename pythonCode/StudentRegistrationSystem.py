@@ -18,7 +18,6 @@ class StudentRegistrationSystem(object):
     def studentLogin(self):
         #Searching for a Student with a given id. If there is an id equal with providedId currentUser is that Student.
 
-        currentUser = None
         self.__log.info("Please provide a Student ID:")
         self.__log.info("----\nSuggestion: Enter \"150119063\"")#
         while True:

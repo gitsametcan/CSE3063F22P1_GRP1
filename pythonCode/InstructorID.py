@@ -10,6 +10,7 @@ class InstructorID(UniqueID):
                     self.__departmentCode = t
                 if index == 1:
                     self.__orderOfEntry = t
+            index += 1
             if (isinstance(t, str)):
                 self.setID(t)
 
@@ -26,7 +27,7 @@ class InstructorID(UniqueID):
                     self.__departmentCode = t
                 if index == 1:
                     self.__orderOfPlacement = t
-
+            index += 1
             if (isinstance(t, str)):
                 try:
                     int(t)
