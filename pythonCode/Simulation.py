@@ -64,6 +64,8 @@ class Simulation():
                     sessions[l.getSessions()[0]] = ApprovalState.Approved
                 else:
                     sessions[l.getSessions()[0]] = ApprovalState.Rejected
+        
+        s.getRegistirationApplication().setSessionsSentForApproval(sessions)
 
     def fillSemesterFromLRA(self, listOfStudent):
         from Semester import Semester
