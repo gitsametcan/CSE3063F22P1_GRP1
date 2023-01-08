@@ -414,9 +414,9 @@ class JsonOperator():
         semesterListJson = list()
         for semester in semesterList:
             lecturesAndGrades = dict()
-            listOfLecturesTaken = semester.getListOfLecturesTaken()
-            for key in listOfLecturesTaken.keys():
-                lecturesAndGrades[key.getID()] = listOfLecturesTaken[key].name
+            lectures = semester.getGradeLectureList()
+            for key in lectures.keys():
+                lecturesAndGrades[key.getID()] = lectures[key].name
             semesterListJson.append(lecturesAndGrades)
 
         writeJson = dict()

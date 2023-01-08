@@ -4,17 +4,16 @@ class Semester():
 
     def __init__(self):
         self.__gradeLectureList = dict()
-        pass
 
     # Creating properties for variables
 
-    def getGradeLectureList(self):
+    def getGradeLectureList(self) -> dict:
         return self.__gradeLectureList
 
     def addGradeToList(self, lectureSession, letterGrade):
         self.__gradeLectureList[lectureSession.getLecture()] = letterGrade
 
-    def getListOfLecturesTaken(self):
+    def getListOfLecturesTaken(self) -> dict:
         return self.__gradeLectureList
 
     def getCreditsTaken(self):
