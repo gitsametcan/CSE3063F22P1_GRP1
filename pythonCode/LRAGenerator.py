@@ -45,20 +45,20 @@ class LRAGenerator():
             LRA = LectureRegistrationApplication()
 
             for l in mandatoryList:
-                a = 0
-                b = 0
-                c = 0
-                d = 0
+                lectureAvaileble = False
+                canTakeLecture = False
+                isScheduleAvaliable = False
+                quotaSituation = False
                 for la in s.availableLessons():
                     if l == la:
-                        a=1
+                        lectureAvaileble = True
                 if s.canTakeLecture(l,s.getTranscript()):
-                    b = 1
+                    canTakeLecture = True
                 if s.checkScheduleForLecture(s.getSchedule(),l):
-                    c = 1
+                    isScheduleAvaliable = True
                 if len(l.getSessions()[0].getListOfStudents()) < l.getQuota():
-                    d = 1
-                if a == 1 and b == 1 and c == 1 and d == 1:
+                    quotaSituation = True
+                if lectureAvaileble & canTakeLecture & isScheduleAvaliable & quotaSituation :
 
                     session = LRA.getSessionsSentForApproval()
                     session.update({l.getSessions()[0]:ApprovalState.Pending})
@@ -68,21 +68,21 @@ class LRAGenerator():
 
             if s.getSchedule().getTermYear == TermYear.Senior:
                 for l in ueList:
-                    a = 0
-                    b = 0
-                    c = 0
-                    d = 0
+                    lectureAvaileble = False
+                    canTakeLecture = False
+                    isScheduleAvaliable = False
+                    quotaSituation = False
                     e = 0
                     for la in s.availableLessons():
                         if l == la:
-                            a=1
+                            lectureAvaileble = True
                     if s.canTakeLecture(l,s.getTranscript()):
-                        b = 1
+                        canTakeLecture = True
                     if s.checkScheduleForLecture(s.getSchedule(),l):
-                        c = 1
+                        isScheduleAvaliable = True
                     if l.getSessions(0).getStudentList().size < l.getQuota():
-                        d = 1
-                    if a==1 & b==1 & c==1 & d==1 & e==1:
+                        quotaSituation = True
+                    if lectureAvaileble & canTakeLecture & isScheduleAvaliable & quotaSituation & e!=1:
                         e = e + 1 
                         LRA.getSessionsSentForApproval().append(l.getSessions(0))
                         s.getSchedule().append(l.getSessions(0))
