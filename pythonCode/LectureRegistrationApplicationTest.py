@@ -26,7 +26,7 @@ class LectureRegistrationApplicationTest(unittest.TestCase):
         testSessionsSentForApproval = list()
         testSessionsSentForApproval.append(testSession)
         testLectureRegistrationApplicationTest = LectureRegistrationApplication()
-        testLectureRegistrationApplicationTest.setSsessionsSentForApproval(testSessionsSentForApproval)
+        testLectureRegistrationApplicationTest.setSessionsSentForApproval(testSessionsSentForApproval)
         self.assertEqual(testSessionsSentForApproval, testLectureRegistrationApplicationTest.getSessionsSentForApproval())
 if __name__ == '__main__':
     unittest.main()
