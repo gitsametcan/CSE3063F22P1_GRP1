@@ -5,6 +5,17 @@ class LectureSession(object):
     def __init__(self):
         pass
 
+    def __hash__(self):
+        return (hash(self.__sessionID, self.__lecture, self.__sessionHours, self.__sessionType,
+        self.__listOfStudents , self.__instructor, self.__listOfAssistans))
+
+    def __eq__(self, other):
+        return (self.__sessionID, self.__lecture, self.__sessionHours,
+        self.__sessionType, self.__listOfStudents , self.__instructor,
+        self.__listOfAssistans) == (other.__sessionID, other.__lecture,
+        other.__sessionHours, other.__sessionType, other.__listOfStudents ,
+        other.__instructor, other.__listOfAssistans)
+
     # Creating properties for variables
     def setSessionID(self, sessionID):
         self.__sessionID = sessionID

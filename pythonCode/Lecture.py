@@ -1,8 +1,20 @@
 from LectureType import LectureType
 
 class Lecture():
-    def __init__(self):    
+    def __init__(self):
         pass
+
+    def __hash__(self):
+        return (hash(self.__id, self.__name, self.__lectureType, self.__credit,
+        self.__sessions , self.__prerequisite, self.__quota, self.__term, self.__termYear))
+
+    def __eq__(self, other):
+        return (self.__id, self.__name, self.__lectureType,
+        self.__credit, self.__sessions , self.__prerequisite,
+        self.__quota, self.__term, self.__termYear) ==  (other.__id, other.__name,
+        other.__lectureType, other.__credit, other.__sessions,
+        other.__prerequisite, other.__quota, other.__term, other.__termYear)
+
 
     # Creating properties for variables
     def getID(self):
