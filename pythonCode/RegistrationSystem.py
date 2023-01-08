@@ -24,92 +24,42 @@ class RegistrationSystem(object):
         dirlist = os.listdir(metaData["studentsPath"])
 
         while True:
-            if len(dirlist) < 1:
-                self.__log.info("1-Simulation")
-                self.__log.info("2-Exit")
-
-                loginType = input()
-                if loginType == str(1):
-                    self.__log.info("1-Generate Students")
-                    self.__log.info("2-Exit")
-                    loginChoice = input()
-                    if loginChoice == str(1):
-                        self.__log.info("Generating Students...")
-                        studentsList = self.__simulation.run()
-                        self.__log.info("Done.")
-                        self.__log.info("Saving Files...")
-                        DataManager.getInstance().addStudents(studentsList)
-                        DataManager.getInstance().saveFiles()
-                        self.__log.info("Done.")
-                    elif loginChoice == str(2):
-                        self.__log.info("Exiting...")
-                    else:
-                        pass #buraya exception yazılabilir
-                elif loginType == str(2):
-                    self.__log.info("Exiting...")
-                    sys.exit("Exit...")
-                else:
-                    self.__log.info("The input is not valid, please provide a valid input.")
-            elif len(dirlist) < 1:
-                self.__log.info("1-Simulation")
-                self.__log.info("2-Exit")
-
-                loginType = input()
-                if loginType == str(1):
-                    self.__log.info("1-Generate Students")
-                    self.__log.info("2-Start Simulation")
-                    self.__log.info("3-Exit")
-                    loginChoice = input()
-                    if loginChoice == str(1):
-                        self.__log.info("Generating students...")
-                        self.__simulation.studentGenerator() #doğru mu bilmiyorum, burda öğrenci oluşturma methodu çağırılacak
-                        self.__log.info("Done.")
-                    elif loginChoice == str(2):
-                        self.__log.info("Initiating simulation...")
-                        self.__simulation.run()
-                        self.__log.info("Done.")
-                    elif loginChoice == str(3):
-                        self.__log.info("Exiting...")
-                    else:
-                        pass #buraya exception yazılabilir
-                elif loginType == str(2):
-                    self.__log.info("Exiting...")
-                    sys.exit("Exit...")
-                else:
-                    self.__log.info("The input is not valid, please provide a valid input.")
+            self.__log.info("1-Generate Students")
+            if len(dirlist) >= 1:
+                self.__log.info("2-Start Simulation")
+                self.__log.info("3-Student Simulation Logs")
+                self.__log.info("4-Advisor Simulation Logs")
+                self.__log.info("5-Instructor Simulation Logs")
+                self.__log.info("6-Exit")
             else:
-                self.__log.info("1-Simulation")
-                self.__log.info("2-Student Simulation Logs")
-                self.__log.info("3-Advisor Simulation Logs")
-                self.__log.info("4-Instructor Simulation Logs")
-                self.__log.info("5-Exit")
+                self.__log.info("2-Exit")
 
-                loginType = input()
-                if loginType == str(1):
-                    self.__log.info("1-Generate Students")
-                    self.__log.info("2-Start Simulation")
-                    self.__log.info("3-Exit")
-                    loginChoice = input()
-                    if loginChoice == str(1):
-                        self.__log.info("Generating students...")
-                        self.__simulation.studentGenerator() #doğru mu bilmiyorum, burda öğrenci oluşturma methodu çağırılacak
-                        self.__log.info("Done.")
-                    elif loginChoice == str(2):
-                        self.__log.info("Initiating simulation...")
-                        self.__simulation.run()
-                        self.__log.info("Done.")
-                    elif loginChoice == str(3):
-                        self.__log.info("Exiting...")
-                    else:
-                        pass #buraya exception yazılabilir
-                elif loginType == str(2):
-                    StudentRegistrationSystem(self)
-                elif loginType == str(3):
-                    AdvisorRegistrationSystem(self)
-                elif loginType == str(4):
-                    InstructorRegistrationSystem(self)
-                elif loginType == str(5):
-                    self.__log.info("Exiting...")
-                    sys.exit("Exit...")
-                else:
-                    self.__log.info("The input is not valid, please provide a valid input.")
+            loginChoice = input()
+            intLoginChoice = int(loginChoice)
+
+            if len(dirlist) < 1 and intLoginChoice == 2:
+                intLoginChoice = intLoginChoice + 4
+
+            if(intLoginChoice == 1):
+                self.__log.info("Generating Students...")
+                studentsList = self.__simulation.run()
+                self.__log.info("Done.")
+                self.__log.info("Saving Files...")
+                DataManager.getInstance().addStudents(studentsList)
+                DataManager.getInstance().saveFiles()
+                self.__log.info("Done.")
+            elif(intLoginChoice == 2):
+                self.__log.info("Initiating simulation...")
+                self.__simulation.run()
+                self.__log.info("Done.")
+            elif(intLoginChoice == 3):
+                StudentRegistrationSystem(self)
+            elif(intLoginChoice == 4):
+                AdvisorRegistrationSystem(self)
+            elif(intLoginChoice == 5):
+                InstructorRegistrationSystem(self)
+            elif(intLoginChoice == 6):
+                self.__log.info("Exiting...")
+                sys.exit("Exit...")
+            else:
+                self.__log.info("The input is not valid, please provide a valid input.")
