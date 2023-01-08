@@ -65,7 +65,7 @@ class Simulation():
                 else:
                     sessions[l.getSessions()[0]] = ApprovalState.Rejected
         
-        s.getRegistirationApplication().setSessionsSentForApproval(sessions)
+            s.getRegistirationApplication().setSessionsSentForApproval(sessions)
 
     def fillSemesterFromLRA(self, listOfStudent):
         from Semester import Semester
@@ -93,7 +93,7 @@ class Simulation():
             for ls in s.getTranscript().getLastSemester().getListOfLecturesTaken():
                 s.getTranscript().getLastSemester().addToGradeList(ls,random_grade)
 
-        s.getTranscript().getLastSemester().setListOfLecturesTaken(lectureList)
+            s.getTranscript().getLastSemester().setListOfLecturesTaken(lectureList)
 
     def emptyLRA(self, listOfStudent):
         lra = LectureRegistrationApplication()

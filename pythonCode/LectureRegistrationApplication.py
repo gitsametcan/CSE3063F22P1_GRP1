@@ -17,7 +17,7 @@ class LectureRegistrationApplication():
     def getStudent(self):
         return self.__student
 
-    def setSsessionsSentForApproval(self, sessionsSentForApproval):
+    def setSessionsSentForApproval(self, sessionsSentForApproval):
         self.__sessionsSentForApproval = sessionsSentForApproval
 
     def setStudent(self, student):
