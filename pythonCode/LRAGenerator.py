@@ -59,7 +59,10 @@ class LRAGenerator():
                 if len(l.getSessions()[0].getListOfStudents()) < l.getQuota():
                     d = 1
                 if a == 1 and b == 1 and c == 1 and d == 1:
-                    LRA.getSessionsSentForApproval()[l.getSessions()[0]] = ApprovalState.Pending
+
+                    session = LRA.getSessionsSentForApproval()
+                    session.update({l.getSessions()[0]:ApprovalState.Pending})
+                    LRA.setSsessionsSentForApproval(session)
                     s.getSchedule().getListOfLectureSessions().append(l.getSessions()[0])
                     l.getSessions()[0].getListOfStudents().append(s)
 
@@ -106,6 +109,7 @@ class LRAGenerator():
                         s.getSchedule().append(l.getSessions(0))
                         l.getLectureSessions(0).getStudentList().append(s)
 
+        s.setRegistirationApplication(LRA)
 
         return listOfStudents
 
