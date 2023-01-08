@@ -62,7 +62,7 @@ class LRAGenerator():
 
                     session = LRA.getSessionsSentForApproval()
                     session.update({l.getSessions()[0]:ApprovalState.Pending})
-                    LRA.setSsessionsSentForApproval(session)
+                    LRA.setSessionsSentForApproval(session)
                     s.getSchedule().getListOfLectureSessions().append(l.getSessions()[0])
                     l.getSessions()[0].getListOfStudents().append(s)
 
