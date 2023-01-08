@@ -3,7 +3,7 @@ from LetterGrade import LetterGrade
 class Semester():
 
     def __init__(self):
-        self.__gradeLectureList = list()
+        self.__gradeLectureList = dict()
         pass
 
     # Creating properties for variables
@@ -11,51 +11,49 @@ class Semester():
     def getGradeLectureList(self):
         return self.__gradeLectureList
 
-    def addGradeToList(self, lectureSession,letterGrade):
-        self.getGradeLectureList().append((lectureSession, letterGrade))
+    def addGradeToList(self, lectureSession, letterGrade):
+        self.getGradeLectureList()[lectureSession.getLecture()] = letterGrade
 
-    
     def getListOfLecturesTaken(self):
-        return self.__listOfLecturesTaken
+        return self.__gradeLectureList
 
     def getCreditsTaken(self):
-        self.__creditsTaken = self.creditsTakenCalculator(self.__listOfLecturesTaken)
+        self.__creditsTaken = self.__creditsTakenCalculator(self.__gradeLectureList)
         return self.__creditsTaken
 
     def getCreditsCompleted(self):
-        self.__creditsCompleted = self.creditsCompletedCalculator(self.__listOfLecturesTaken)
+        self.__creditsCompleted = self.__creditsCompletedCalculator(self.__gradeLectureList)
         return self.__creditsCompleted
 
     def getPoints(self):
-
-        self.__points = self.pointsCalculator(self.__listOfLecturesTaken)
+        self.__points = self.__pointsCalculator(self.__gradeLectureList)
         return self.__points
 
     def getYano(self):
         self.__yano = self.__points/self.__creditsTaken
         return self.__yano
 
-    def setListOfLecturesTaken(self, listOfLecturesTaken : list):
-        self.__listOfLecturesTaken = listOfLecturesTaken
+    def setListOfLecturesTaken(self, listOfLecturesTaken : dict):
+        self.__gradeLectureList = listOfLecturesTaken
 
     def addLecture(self, lecture, grade : LetterGrade):
-        self.__listOfLecturesTaken.put(lecture, grade)
+        self.__gradeLectureList[lecture] = grade
 
-    def creditsTakenCalculator(self, listOfLecturesTaken : list):
+    def __creditsTakenCalculator(self, listOfLecturesTaken : dict):
         totalCredit = 0
-        for lecture in listOfLecturesTaken.keySet():
+        for lecture in listOfLecturesTaken.keys():
             totalCredit = totalCredit + lecture.getCredit()
         return totalCredit
 
-    def creditsCompletedCalculator(self, listOfLecturesTaken : list):
+    def __creditsCompletedCalculator(self, listOfLecturesTaken : dict):
         totalCredit = 0
-        for lecture in listOfLecturesTaken.keySet():
-            if listOfLecturesTaken.get(lecture) != LetterGrade.FD and listOfLecturesTaken.get(lecture) != LetterGrade.FF:
+        for lecture in listOfLecturesTaken.keys():
+            if listOfLecturesTaken[lecture] != LetterGrade.FD and listOfLecturesTaken[lecture] != LetterGrade.FF:
                 totalCredit = totalCredit + lecture.getCredit()
         return totalCredit
 
-    def pointsCalculator(self, listOfLecturesTaken : list):
+    def __pointsCalculator(self, listOfLecturesTaken : dict):
         points = 0
-        for lecture in listOfLecturesTaken.keySet():
-            points = points + (lecture.getCredit() * listOfLecturesTaken.get(lecture).getLetterGradeValue())
+        for lecture in listOfLecturesTaken.keys():
+            points = points + (lecture.getCredit() * listOfLecturesTaken[lecture].value)
         return points
