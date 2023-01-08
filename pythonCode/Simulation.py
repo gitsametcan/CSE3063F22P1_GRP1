@@ -75,7 +75,9 @@ class Simulation():
                     listOflecture.append(l)
             semester = Semester()
             semester.setListOfLecturesTaken(listOflecture)
-            s.getTranscript().addSemester(semester)
+            listOfSemester = s.getTranscript().getListOfSemester()
+            listOfSemester.append(semester)
+            s.getTranscript().setListOfSemester(listOfSemester)
 
 
     def takeAutoLetterGradeForSemester(self, listOfStudents):

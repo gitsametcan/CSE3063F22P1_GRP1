@@ -1,0 +1,10 @@
+[2023-01-08-12-48-06][INFO] 1-Simulation
+[2023-01-08-12-48-06][INFO] 2-Exit
+[2023-01-08-12-48-08][INFO] 1-Generate Students
+[2023-01-08-12-48-08][INFO] 2-Exit
+[2023-01-08-12-48-12][INFO] Generating Students...
+[2023-01-08-12-48-21][INFO] Done.
+[2023-01-08-12-48-21][INFO] Saving Files...
+[2023-01-08-12-48-22][INFO] Done.
+[2023-01-08-12-48-22][INFO] 1-Simulation
+[2023-01-08-12-48-22][INFO] 2-Exit
