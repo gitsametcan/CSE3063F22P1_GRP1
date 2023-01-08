@@ -188,7 +188,6 @@ class JsonOperator():
             jsonDict = json.load(f)
             self.__transcriptJsonDicts.append(jsonDict)
 
-
     def pairObjects(self):
         self.__pairLectures()
         self.__pairStudents()
@@ -416,7 +415,7 @@ class JsonOperator():
         for semester in semesterList:
             lecturesAndGrades = dict()
             listOfLecturesTaken = semester.getListOfLecturesTaken()
-            for key in listOfLecturesTaken:
+            for key in listOfLecturesTaken.keys():
                 lecturesAndGrades[key.getID()] = listOfLecturesTaken[key].name
             semesterListJson.append(lecturesAndGrades)
 
