@@ -5,15 +5,15 @@ class Lecture():
         pass
 
     def __hash__(self):
-        return (hash(self.__id, self.__name, self.__lectureType, self.__credit,
-        self.__sessions , self.__prerequisite, self.__quota, self.__term, self.__termYear))
+        return (hash(self.getID(), self.getName(), self.getLectureType(), self.getCredit(),
+        self.getSessions(), self.getPrerequisite(), self.getQuota(), self.getTerm(), self.getTermYear()))
 
     def __eq__(self, other):
-        return (self.__id, self.__name, self.__lectureType,
-        self.__credit, self.__sessions , self.__prerequisite,
-        self.__quota, self.__term, self.__termYear) ==  (other.__id, other.__name,
-        other.__lectureType, other.__credit, other.__sessions,
-        other.__prerequisite, other.__quota, other.__term, other.__termYear)
+        return (self.getID(), self.getName(), self.getLectureType(),
+        self.getCredit(), self.getSessions() , self.getPrerequisite(),
+        self.getQuota(), self.getTerm(), self.getTermYear()) ==  (other.getID(), other.getName(),
+        other.getLectureType(), other.getCredit(), other.getSessions(),
+        other.getPrerequisite(), other.getQuota(), other.getTerm(), other.getTermYear())
 
 
     # Creating properties for variables
