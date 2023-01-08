@@ -61,9 +61,9 @@ class Simulation():
             for l in sessions.keys():
                 a = random.random()
                 if a <= 0.95:
-                    sessions[l] = ApprovalState.Approved
+                    sessions[l.getSessions()[0]] = ApprovalState.Approved
                 else:
-                    sessions[l] = ApprovalState.Rejected
+                    sessions[l.getSessions()[0]] = ApprovalState.Rejected
 
     def fillSemesterFromLRA(self, listOfStudent):
         from Semester import Semester
