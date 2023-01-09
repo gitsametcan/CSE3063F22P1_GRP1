@@ -32,6 +32,12 @@ class Logger :
 
         # to create file with given name
         # because otherwise open for append fails
+        try:
+            fp = open(logsFolder + date + "_" + fileNameWithoutExtension + ".txt", "x")
+        except FileNotFoundError:
+            print("Logs folder is not present in current working directory.")
+            sys.exit("Quitting.")
+        
         fp = open(logsFolder + date + "_" + fileNameWithoutExtension + ".txt", "x")
         fp.close()
 
