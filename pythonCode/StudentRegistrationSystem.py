@@ -59,7 +59,7 @@ class StudentRegistrationSystem(object):
 
         # generated source for method showTranscript 
 
-        semesterSize = currentUser.getTranscript().getListOfSemester().size()
+        semesterSize = len(currentUser.getTranscript().getListOfSemester())
         i = 0
         while i < semesterSize:
             if i == 0:
@@ -70,15 +70,15 @@ class StudentRegistrationSystem(object):
                 self.__log.info((i + 1) + "th Semester")
             self.__log.info("%-12s%-40s%-10s%-15s", "Lecture Code", "Lecture Name", "Credit", "Letter Grade")
 
-            tempTakenLectures = currentUser.getTranscript().getListOfSemester().get(i).getListOfLecturesTaken()
+            tempTakenLectures = currentUser.getTranscript().getListOfSemester()[i].getListOfLecturesTaken()
 
 
-            for l in tempTakenLectures.keySet():
+            for l in tempTakenLectures.keys():
                 self.__log.info("%-12s%-40s%-10s%-15s%n", l.getID(), l.__name__, l.getCredit(), tempTakenLectures.get(l).__str__())
             self.__log.info("%-31s", "Credits taken in Semester:")
-            self.__log.info("" + currentUser.getTranscript().getListOfSemester().get(i).getCreditsTaken())
+            self.__log.info(currentUser.getTranscript().getListOfSemester()[i].getCreditsTaken())
             self.__log.info("%-31s", "Credits completed in Semester:")
-            self.__log.info("" + currentUser.getTranscript().getListOfSemester().get(i).getCreditsCompleted())
+            self.__log.info(currentUser.getTranscript().getListOfSemester()[i].getCreditsCompleted())
             i += 1
 
     def showSchedule(self, currentUser):
