@@ -16,6 +16,8 @@ from TermYear import TermYear
 class StudentGenerator():
 
     def __init__(self):
+        from Logger import Logger
+        self.__log = Logger.getLogger("logs")
         pass
 
     def generate(self, year, i):
