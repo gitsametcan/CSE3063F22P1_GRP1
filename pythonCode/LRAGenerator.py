@@ -45,6 +45,7 @@ class LRAGenerator():
         for s in listOfStudents:
 
             LRA = LectureRegistrationApplication()
+            
 
             for l in mandatoryList:
                 print(l.getID())
@@ -82,24 +83,33 @@ class LRAGenerator():
                     
                 if not canTakeLecture:
                     self.__log.info(" Student number {id} could not take lecture {lecture} because of prequisite lecture is not succes or the lecture already given with CC Letter grade or more".format(id=s.getID(),lecture = l.getName()))
-                input()
+                #input()
                 if not isScheduleAvaliable:
                     self.__log.info(" Student number {id} could not take lecture {lecture} because of Schedule is not availeble".format(id=s.getID(),lecture = l.getName()))
 
                 if lectureAvaileble and canTakeLecture and isScheduleAvaliable and quotaSituation:
-                    print("aldi")
+                    #print("aldi")
 
                     e = e + 1 
 
                     print(e)
-                    LRA.getSessionsSentForApproval()[l.getSessions()[0]] = ApprovalState.Pending
+                    ssaprovar = LRA.getSessionsSentForApproval()
+                    ssaprovar[l.getSessions()[0]] = ApprovalState.Pending
+                    LRA.setSessionsSentForApproval(ssaprovar)
+                    #print(len(LRA.getSessionsSentForApproval()))
+                    
+                    
                     
                     slist = s.getSchedule().getListOfLectureSessions()
                     slist.append(l.getSessions()[0])
                     s.getSchedule().setListOfLectureSessions(slist)
+                    print(s.getSchedule().getListOfLectureSessions()[0])
+
+
                     llist = l.getSessions()[0].getListOfStudents()
                     llist.append(s)
                     l.getSessions()[0].setListOfStudents(llist)
+                
 
             if s.getSchedule().getTermYear == TermYear.Senior:
                 for l in ueList:
@@ -128,10 +138,10 @@ class LRAGenerator():
 
                     if not isScheduleAvaliable:
                         self.__log.info(" Student number {id} could not take lecture {lecture} because of Schedule is not availeble".format(id=s.getID(),lecture = l.getName()))
-                    input()
+                    #input()
                     if lectureAvaileble and canTakeLecture and isScheduleAvaliable and quotaSituation and e!=1:
                         print("ders aliyor")
-                        input()
+                        #input()
                         e = e + 1 
                         LRA.getSessionsSentForApproval()[l.getSessions()[0]] = ApprovalState.Pending
                         slist = s.getSchedule().getListOfLectureSessions()
@@ -178,8 +188,12 @@ class LRAGenerator():
                         llist.append(s)
                         l.getSessions()[0].setListOfStudents(llist)
 
-        s.setRegistirationApplication(LRA)
+            print(len(LRA.getSessionsSentForApproval()))
 
+            s.setRegistirationApplication(LRA)
+            print(len(s.getRegistirationApplication().getSessionsSentForApproval()))
+            for ls in s.getRegistirationApplication().getSessionsSentForApproval().keys():            
+                print(ls.getLecture().getID())
         return listOfStudents
 
     def lectureTakenCalculaterFromType (self, student:Student, lecture : Lecture):

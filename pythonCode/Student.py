@@ -90,7 +90,7 @@ class Student(Person):
         canTake = self.hasPreqLectureTaken(lecture.getPrerequisite(), listOfTaken)
         if canTake:
             if in_:
-                canTake = self.takenPoint(lecture, transcript.getListOfSemester().get(a).getListOfLecturesTaken())
+                canTake = self.takenPoint(lecture, transcript.getListOfSemester()[a].getListOfLecturesTaken())
         return canTake
 
     def hasPreqLectureTaken(self, preqLecture, listOfLecture : list):
@@ -111,7 +111,7 @@ class Student(Person):
 
 
         point = True
-        if listOfLecturesTaken.get(lecture).getLetterGradeValue() > 1.99:
+        if listOfLecturesTaken.get(lecture).value > 1.99:
             point = False
         return point
 
