@@ -34,12 +34,10 @@ class Logger :
         # because otherwise open for append fails
         try:
             fp = open(logsFolder + date + "_" + fileNameWithoutExtension + ".txt", "x")
+            fp.close()
         except FileNotFoundError:
-            print("Logs folder is not present in current working directory.")
+            print("{logs} folder is not present in current working directory. Consider creating this path and try again.".format(logs=logsFolder), file=sys.stderr)
             sys.exit("Quitting.")
-        
-        fp = open(logsFolder + date + "_" + fileNameWithoutExtension + ".txt", "x")
-        fp.close()
 
         # opens the file to append
         self.outputFile = open(logsFolder + date + "_" + fileNameWithoutExtension + ".txt", "a", encoding="utf-8")
