@@ -6,7 +6,7 @@
     "quota": 50,
     "credit": 2,
     "term": "Spring",
-    "termYear": "Freshman",
+    "termYear": "Freshman" ,
     "lectureSessions": [
       {
         "ID": "1",
