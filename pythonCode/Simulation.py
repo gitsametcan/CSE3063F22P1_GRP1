@@ -15,7 +15,7 @@ class Simulation():
         self.__LRA = LRAGenerator()
         self.__listOfStudents = list()
 
-    def run(self): #öğrenci üretme
+    def run(self):
 
         year = 118
 
@@ -110,7 +110,8 @@ class Simulation():
 
             ata = s.getSchedule().getListOfLectureSessions()
             for ls in ata:
-                s.getTranscript().getLastSemester().addGradeToList(ls,LetterGrade.AA)
+                random_grade = random.choice(possible_grades)
+                s.getTranscript().getLastSemester().addGradeToList(ls,random_grade)
 
             s.getTranscript().getLastSemester().setListOfLecturesTaken(lectureList)
 
