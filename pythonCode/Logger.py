@@ -80,15 +80,15 @@ class Logger :
         currentTime = "[" + date + "]"
         
         # concatanates current time, tag and message
-        message = currentTime + tag + " " +text
+        message = currentTime + tag + " " + str(text)
         if ( "ERROR" in tag ):
             # prints the message to the stderr
             # if the tag contains "ERROR"
-            print(text, file=sys.stderr)
+            print(str(text), file=sys.stderr)
         if ( "INFO" in tag ):
             # prints the message to the stdout
             # if the tag contains "INFO"
-            print(text)
+            print(str(text))
         
         # prints the message as a new line to the file
         self.outputFile.write(message + str('\n'))
