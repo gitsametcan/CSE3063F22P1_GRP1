@@ -29,10 +29,10 @@ class Lecture():
         return self.__credit
 
     def getSessions(self):
-        for ls in self.__sessions:
-           ls.setLecture(self)
-        if self.__sessions is None:
-            self.__sessions = []
+        try:
+            x = self.__sessions
+        except AttributeError:
+            self.__sessions = list()
         return self.__sessions
 
     def getPrerequisite(self):
