@@ -299,7 +299,7 @@ class JsonOperator():
         from Semester import Semester
         from Transcript import Transcript
         for tjs in self.__transcriptJsonDicts:
-            if tjs["studentID"] != student.getId():
+            if tjs["studentID"] != student.getID():
                 continue
             
             listOfSemesters = tjs["listOfSemesters"]
