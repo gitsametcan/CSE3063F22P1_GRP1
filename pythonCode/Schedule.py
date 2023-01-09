@@ -8,7 +8,7 @@ class Schedule():
         self.__ListOfLectureSessions = list()
 
     # Creating show method
-    def showSchedule(self, log):
+    def showSchedule(self):
         lectureSessions = self.getListOfLectureSessions()
         if len(lectureSessions) == 0:
             self.__log.info("You dont have any lecture to be shown.")
