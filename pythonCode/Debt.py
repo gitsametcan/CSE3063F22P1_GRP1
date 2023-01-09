@@ -2,8 +2,6 @@ class Debt:
 
     def __init__(self):
         pass
-    #    self.amount = __amount
-    #    self.student = __student
 
     # Creating properties for variables
     

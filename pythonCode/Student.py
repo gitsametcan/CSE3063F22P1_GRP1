@@ -2,8 +2,6 @@ from Person import Person
 from LectureRegistrationApplication import LectureRegistrationApplication
 from ApprovalState import ApprovalState
 
-#from DataManager import DataManager
-
 class Student(Person):
     
     def __init__(self):
@@ -64,125 +62,6 @@ class Student(Person):
         self.__registirationApplication.setSsessionsSentForApproval(approvalList)
         self.__registirationApplication.setStudent(self)
         self.__advisor.getListOfApplications().add(self.__registirationApplication)
-
-    """def debtMenu(self):
-        # generated source for method debtMenu 
-
-        if self.getDebt().getAmount() == 0:
-            self.__log.info("You have no debt.")
-        else:
-            self.__log.info("Your debt is " + self.getDebt().getAmount() + "TL.")
-            self.__log.info("1- Pay your debt")
-            self.__log.info("2- Go back")
-            while not validInput:
-                payDebtChoice = scanner.nextInt()
-                if payDebtChoice==1:
-                    self.getDebt().setAmount(0)
-                    validInput = True
-                elif payDebtChoice==2:
-                    validInput = True
-                else:
-                    self.__log.info("Please enter a valid input(1,2)")"""
-
-    """def registrationStatusMenu(self):
-
-        # generated source for method registrationStatusMenu 
-
-        if self.getRegistirationApplication() == None:
-            self.__log.info("You did not apply for registration.\n")
-            return
-        sessions = self.getRegistirationApplication().getSessionsSentForApproval()
-        self.__log.info("")
-        for s in sessions.keySet():
-            self.__log.info("%s.%s%-15s%n", s.getLecture().getID(), s.getSessionID(), sessions.get(s).__str__())
-        self.__log.info("")"""
-
-
-    """def makeRegistrationMenu(self):
-
-        # generated source for method makeRegistrationMenu 
-        currentStudentAvailableLectures = self.availableLessons()
-
-        self.__log.info("Lectures: ")
-        i = 0
-        while i < len(currentStudentAvailableLectures):
-            for s in currentStudentAvailableLectures.get(i).getSessions():
-                self.__log.info("Lecture Code: %-15sLecture Name: %-40sLecture Type: %-10sLecture Credit: %-4s%n", currentStudentAvailableLectures.get(i).getID() 
-                + "." + s.getSessionID(), currentStudentAvailableLectures.get(i).__name__,
-                 currentStudentAvailableLectures.get(i).getLectureType().__str__(), currentStudentAvailableLectures.get(i).getCredit())
-            i += 1
-        self.__log.info("Enter a lecture session code that you will send for approval.\n" 
-        + "\"add lecture_id\" to add session for approval list.\n" + "\"remove lecture_id\" to remove session from approval list.\n" 
-        + "Enter \"send\" to send\n" + "Enter \"exit\" to exit")
-
-        chosenLectures = list()
-        while True:
-            self.parseSelectionCommand(input, chosenLectures)
-
-            if input.lower() == "send".lower():
-                self.sendForApproval(chosenLectures)
-                #  currentUser.getAdvisor().approveApplication(currentUser.getRegistirationApplication());
-                #  currentUser.setListOfLectureSessions(chosenLectures);
-                break
-            if input.lower() == "exit".lower():
-                break"""
-
-    """def parseSelectionCommand(self, input, chosenLectures):
-
-        # generated source for method parseSelectionCommand 
-
-
-        partedInput = []
-        partedLectureID = []
-        lectures = DataManager.getInstance().searchLecture("", FilterType.Name)
-        if input.contains(" "):
-            partedInput = input.split(" ")
-        else:
-            return
-        if partedInput[1].contains("."):
-            partedLectureID = partedInput[1].split("[.]")
-        else:
-            self.__log.info("Please enter a valid input.")
-            return
-        if partedInput[0].lower() == "add".lower():
-            for l in lectures:
-                if l.getID().lower() == partedLectureID[0].lower():
-                    for ls in l.getSessions():
-                        if ls.getSessionID().lower() == partedLectureID[1].lower():
-                            chosenLectures.add(ls)
-
-                            self.showChosenLectureSessions(chosenLectures)
-
-
-                            return
-            self.__log.info("Couldn't find %s", partedInput[1])
-        if partedInput[0].lower() == "remove".lower():
-            for l in lectures:
-                if l.getID().lower() == partedLectureID[0].lower():
-                    for ls in l.getSessions():
-                        if ls.getSessionID().lower() == partedLectureID[1].lower():
-                            chosenLectures.remove(ls)
-
-                            self.showChosenLectureSessions(chosenLectures)
-
-
-                            return
-            self.__log.info("Couldn't find %s", partedInput[1])"""
-
-    """def showChosenLectureSessions(self, chosenLectureSessions):
-
-        # generated source for method showChosenLectureSessions 
-        
-
-        self.__log.info("Chosen Lectures:\n")
-        for ls in chosenLectureSessions:
-            self.__log.info("Lecture Code: %-15sLecture Name: %-40sLecture Type: %-10sLecture Credit: %-4s%n",
-             ls.getLecture().getID() + "." + ls.getSessionID(), ls.getLecture().__name__,
-              ls.getLecture().getLectureType().__str__(), ls.getLecture().getCredit())
-        self.__log.info("\n\n\nEnter a lecture session code that you will send for approval.\n"
-         + "\"add lecture_id\" to add session for approval list.\n" 
-         + "\"remove lecture_id\" to remove session from approval list.\n" 
-         + "Enter \"send\" to send\n" + "Enter \"exit\" to exit")"""
 
     def canTakeLecture(self, lecture, transcript):
 
