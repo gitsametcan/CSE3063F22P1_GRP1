@@ -70,45 +70,50 @@ class Student(Person):
 
         if self.__transcript is None:
             return True
-        canTake = bool()
-        listOfTaken = list()
+        canTake = False
+        listOfTaken = dict()
         a = 0
-        in_ = False
+        in_ = True
         i = 0
+
         while i < len(transcript.getListOfSemester()):
             semester = transcript.getListOfSemester()[i]
-            for lectureTaken in semester.getListOfLecturesTaken():
-                listOfTaken.append(lectureTaken)
-
-                if lectureTaken.getID() == lecture.getID():
-                    a = i
-                    in_ = True
+            for l in semester.getListOfLecturesTaken():
+                listOfTaken[l] = semester.getListOfLecturesTaken()[l]
             i += 1
+        
         canTake = self.hasPreqLectureTaken(lecture.getPrerequisite(), listOfTaken)
+
         if canTake:
             if in_:
-                canTake = self.takenPoint(lecture, transcript.getListOfSemester()[a].getListOfLecturesTaken())
+                listLecture = dict()
+                for b in range(0,len(transcript.getListOfSemester())):
+                    semester = transcript.getListOfSemester()[b]
+                    for l in semester.getListOfLecturesTaken():
+                        listLecture[l] = semester.getListOfLecturesTaken()[l]
+
+                canTake = self.takenPoint(lecture, listLecture)
         return canTake
 
-    def hasPreqLectureTaken(self, preqLecture, listOfLecture : list):
-        # generated source for method hasPreqLectureTaken 
+    def hasPreqLectureTaken(self, preqLecture, listOfLecture : dict):
 
-
-        if preqLecture == None:
+        if preqLecture is None:
             return True
-        for lecture in listOfLecture:
-            if lecture.getID() == preqLecture.getID:
-                return True
+        for lecture in listOfLecture.keys():
+            if lecture.getID() == preqLecture.getID():
+                if listOfLecture[lecture].value > 0.4:
+                    return True
         return False
 
-    def takenPoint(self, lecture, listOfLecturesTaken : list):
-
-
-        # generated source for method takenPoint 
-
+    def takenPoint(self, lecture, listOfLecturesTaken : dict):
 
         point = True
-        if listOfLecturesTaken.get(lecture).value > 1.99:
+        try:
+            x = listOfLecturesTaken[lecture].value
+        except KeyError:
+            return True
+
+        if listOfLecturesTaken[lecture].value > 1.99:
             point = False
         return point
 
@@ -131,6 +136,8 @@ class Student(Person):
             lecturesUntilNow.append(l)
 
         for l in lecturesUntilNow:
+            if l is None:
+                continue
             if l.getTerm() == self.getSchedule().getTerm() and (l.getTermYear() == self.getSchedule().getTermYear()) and self.canTakeLecture(l, self.getTranscript()):
                 availableLessons.append(l)
 
