@@ -75,9 +75,9 @@ class Simulation():
             for l in sessions.keys():
                 a = random.random()
                 if a <= 0.95:
-                    sessions[l.getSessions()[0]] = ApprovalState.Approved
+                    sessions[l] = ApprovalState.Approved
                 else:
-                    sessions[l.getSessions()[0]] = ApprovalState.Rejected
+                    sessions[l] = ApprovalState.Rejected
         
             s.getRegistirationApplication().setSessionsSentForApproval(sessions)
 
@@ -88,7 +88,7 @@ class Simulation():
             sessions = s.getRegistirationApplication().getSessionsSentForApproval()
             for l in sessions.keys():
                 if sessions[l] == ApprovalState.Approved:
-                    listOflecture[l] = LetterGrade.Non
+                    listOflecture[l.getLecture()] = LetterGrade.Non
             semester = Semester()
             semester.setListOfLecturesTaken(listOflecture)
             listOfSemester = s.getTranscript().getListOfSemester()
@@ -108,8 +108,9 @@ class Simulation():
             possible_grades = (LetterGrade.AA, LetterGrade.BA, LetterGrade.BB, LetterGrade.CB, LetterGrade.CC, LetterGrade.DC, LetterGrade.DD, LetterGrade.FD, LetterGrade.FF)
             random_grade = random.choice(possible_grades)
 
-            for ls in s.getTranscript().getLastSemester().getListOfLecturesTaken():
-                s.getTranscript().getLastSemester().addToGradeList(ls,random_grade)
+            ata = s.getSchedule().getListOfLectureSessions()
+            for ls in ata:
+                s.getTranscript().getLastSemester().addGradeToList(ls,LetterGrade.AA)
 
             s.getTranscript().getLastSemester().setListOfLecturesTaken(lectureList)
 

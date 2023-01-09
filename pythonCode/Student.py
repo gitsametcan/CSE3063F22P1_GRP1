@@ -1,6 +1,7 @@
 from Person import Person
 from LectureRegistrationApplication import LectureRegistrationApplication
 from ApprovalState import ApprovalState
+from Lecture import Lecture
 
 class Student(Person):
     
@@ -86,7 +87,7 @@ class Student(Person):
         canTake = self.hasPreqLectureTaken(lecture.getPrerequisite(), listOfTaken)
         if canTake:
             if in_:
-                canTake = self.takenPoint(lecture, transcript.getListOfSemester().get(a).getListOfLecturesTaken())
+                canTake = self.takenPoint(lecture, transcript.getListOfSemester()[a].getListOfLecturesTaken())
         return canTake
 
     def hasPreqLectureTaken(self, preqLecture, listOfLecture : list):
@@ -107,11 +108,11 @@ class Student(Person):
 
 
         point = True
-        if listOfLecturesTaken.get(lecture).getLetterGradeValue() > 1.99:
+        if listOfLecturesTaken.get(lecture).value > 1.99:
             point = False
         return point
 
-    def availableLessons(self):
+    def availableLessons(self, lecture:Lecture):
         from DataManager import DataManager
         # generated source for method availableLessons 
         availableLessons = list()
@@ -132,7 +133,11 @@ class Student(Person):
         for l in lecturesUntilNow:
             if l.getTerm() == self.getSchedule().getTerm() and (l.getTermYear() == self.getSchedule().getTermYear()) and self.canTakeLecture(l, self.getTranscript()):
                 availableLessons.append(l)
-        return availableLessons
+
+        for lectureIn in availableLessons:
+            if lecture.getID() == lectureIn.getID():
+                return True
+        return False
 
     def checkScheduleForLecture(self, schedule, lecture):
 

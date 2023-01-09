@@ -8,7 +8,7 @@ class LectureRegistrationApplication():
         try:
             x = self.__sessionsSentForApproval
         except AttributeError:
-            return dict()
+            self.__sessionsSentForApproval = dict()
         return self.__sessionsSentForApproval
 
     def getAdvisor(self):

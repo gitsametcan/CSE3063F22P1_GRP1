@@ -20,19 +20,19 @@ class RegistrationSystem(object):
 
         metaData = DataManager.getInstance().getMetaData()
 
-        dirlist = os.listdir(metaData["studentsPath"])
         studentsList = list()
         while True:
+            dirlist = os.listdir(metaData["studentsPath"])
             self.__log.info("1-Generate Students")
             if len(dirlist) >= 1:
                 self.__log.info("2-Start Simulation")
-                self.__log.info("3-Student Simulation Logs")
-                self.__log.info("4-Advisor Simulation Logs")
-                self.__log.info("5-Instructor Simulation Logs")
+                self.__log.info("3-Student Simulation Details")
+                self.__log.info("4-Advisor Simulation Details")
+                self.__log.info("5-Instructor Simulation Details")
                 self.__log.info("6-Exit")
             else:
                 self.__log.info("2-Exit")
-
+        
             loginChoice = input()
             intLoginChoice = int(loginChoice)
 

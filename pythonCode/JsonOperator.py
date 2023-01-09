@@ -46,14 +46,24 @@ class JsonOperator():
         return self.__lectureObjectsList
 
     def readMetaData(self):
-        metaDataFile = open("JSON Files/MetaData.JSON")
-        self.__metaData = json.load(metaDataFile)
-        metaDataFile.close()
+        from Logger import Logger
+        try:
+            metaDataFile = open("JSON Files/MetaData.JSON")
+            self.__metaData = json.load(metaDataFile)
+            metaDataFile.close()
+        except FileNotFoundError:
+            Logger.getLogger("logs").error("{path} is not present in the current working directory. Consider creating this path and file and then try again.".format(path="JSON Files/MetaData.JSON"))
     
     def readNamePool(self):
-        namePoolFile = open(self.__metaData["namePoolPath"])
-        self.__namePool = json.load(namePoolFile)
-        namePoolFile.close()
+        from Logger import Logger
+        try:
+            namePoolFile = open(self.__metaData["namePoolPath"])
+            self.__namePool = json.load(namePoolFile)
+            namePoolFile.close()
+        except FileNotFoundError:
+            Logger.getLogger("logs").error("{path} is not present in the current working directory. Consider creating this path and file and then try again.".format(path=self.__metaData["namePoolPath"]))
+        except AttributeError:
+            Logger.getLogger("logs").error("MetaData is not present, so the NamePool couldn't be read.")
 
     def getMetaData(self): 
         return self.__metaData
@@ -62,14 +72,18 @@ class JsonOperator():
         return self.__namePool
     
     def readLectures(self):
-        lecturesPath = self.__metaData["lecturesPath"]
-        fileList = os.listdir(lecturesPath)
-        for fileName in fileList:
-            fullPath = lecturesPath + fileName
-            f = open(fullPath, "r")
-            jsonDict = json.load(f)
-            self.__lectureJsonDicts.append(jsonDict)
-        self.__generateLectureObjects()
+        from Logger import Logger
+        try:
+            lecturesPath = self.__metaData["lecturesPath"]
+            fileList = os.listdir(lecturesPath)
+            for fileName in fileList:
+                fullPath = lecturesPath + fileName
+                f = open(fullPath, "r")
+                jsonDict = json.load(f)
+                self.__lectureJsonDicts.append(jsonDict)
+            self.__generateLectureObjects()
+        except FileNotFoundError:
+            Logger.getLogger("logs").error("{path} is not present in the current working directory. Consider creating this path and try again.".format(path=self.__metaData["lecturesPath"]))
     
     def __generateLectureObjects(self):
         for i in self.__lectureJsonDicts:
@@ -128,15 +142,19 @@ class JsonOperator():
         return sessionsList
 
     def readAdvisors(self):
-        lecturesPath = self.__metaData["advisorsPath"]
-        fileList = os.listdir(lecturesPath)
-        for fileName in fileList:
-            fullPath = lecturesPath + fileName
-            f = open(fullPath, "r")
-            jsonDict = json.load(f)
-            self.__advisorJsonDicts.append(jsonDict)
-        self.__generateAdvisors()
-
+        from Logger import Logger
+        try:
+            lecturesPath = self.__metaData["advisorsPath"]
+            fileList = os.listdir(lecturesPath)
+            for fileName in fileList:
+                fullPath = lecturesPath + fileName
+                f = open(fullPath, "r")
+                jsonDict = json.load(f)
+                self.__advisorJsonDicts.append(jsonDict)
+            self.__generateAdvisors()
+        except FileNotFoundError:
+            Logger.getLogger("logs").error("{path} is not present in the current working directory. Consider creating this path and try again.".format(path=self.__metaData["advisorsPath"]))
+    
     def __generateAdvisors(self):
         for a in self.__advisorJsonDicts:
             instructorTypeObject = InstructorType[a["instructorType"]]
@@ -155,15 +173,19 @@ class JsonOperator():
             self.__advisorObjectsList.append(advisorObject)
 
     def readStudents(self):
-        studentsPath = self.__metaData["studentsPath"]
-        fileList = os.listdir(studentsPath)
-        for fileName in fileList:
-            fullPath = studentsPath + fileName
-            f = open(fullPath, "r")
-            jsonDict = json.load(f)
-            self.__studentJsonDicts.append(jsonDict)
-        self.__generateStudentObjects()
-
+        from Logger import Logger
+        try:
+            studentsPath = self.__metaData["studentsPath"]
+            fileList = os.listdir(studentsPath)
+            for fileName in fileList:
+                fullPath = studentsPath + fileName
+                f = open(fullPath, "r")
+                jsonDict = json.load(f)
+                self.__studentJsonDicts.append(jsonDict)
+            self.__generateStudentObjects()
+        except FileNotFoundError:
+            Logger.getLogger("logs").error("{path} is not present in the current working directory. Consider creating this path and try again.".format(path=self.__metaData["studentsPath"]))
+    
     def __generateStudentObjects(self):
         from StudentID import StudentID
         for s in self.__studentJsonDicts:
@@ -180,14 +202,18 @@ class JsonOperator():
             self.__studentObjectsList.append(studentObject)
 
     def readTranscripts(self):
-        transcriptsPath = self.__metaData["transcriptsPath"]
-        fileList = os.listdir(transcriptsPath)
-        for fileName in fileList:
-            fullPath = transcriptsPath + fileName
-            f = open(fullPath, "r")
-            jsonDict = json.load(f)
-            self.__transcriptJsonDicts.append(jsonDict)
-
+        from Logger import Logger
+        try:
+            transcriptsPath = self.__metaData["transcriptsPath"]
+            fileList = os.listdir(transcriptsPath)
+            for fileName in fileList:
+                fullPath = transcriptsPath + fileName
+                f = open(fullPath, "r")
+                jsonDict = json.load(f)
+                self.__transcriptJsonDicts.append(jsonDict)
+        except FileNotFoundError:
+            Logger.getLogger("logs").error("{path} is not present in the current working directory. Consider creating this path and try again.".format(path=self.__metaData["transcriptsPath"]))
+    
     def pairObjects(self):
         self.__pairLectures()
         self.__pairStudents()
@@ -320,8 +346,12 @@ class JsonOperator():
         writeJson["lastName"] = lastName
         
         dumpedJson = json.dumps(writeJson, indent=4)
-        writeFile = open(self.__metaData["studentsPath"] + studentID + ".JSON", "w")
-        writeFile.writelines(dumpedJson)
+        from Logger import Logger
+        try:
+            writeFile = open(self.__metaData["studentsPath"] + studentID + ".JSON", "w")
+            writeFile.writelines(dumpedJson)
+        except FileNotFoundError:
+            Logger.getLogger("logs").error("{path} is not present in the current working directory. Consider creating this path and try again.".format(path=self.__metaData["studentsPath"]))
 
     def saveAdvisor(self, advisor):
         instructorID = advisor.getID()
@@ -354,10 +384,15 @@ class JsonOperator():
         writeJson["lastName"] = lastName
         
         dumpedJson = json.dumps(writeJson, indent=4)
-        writeFile = open(self.__metaData["advisorsPath"] + instructorID + ".JSON", "w")
-        writeFile.writelines(dumpedJson)
-        
+        from Logger import Logger
+        try:
+            writeFile = open(self.__metaData["advisorsPath"] + instructorID + ".JSON", "w")
+            writeFile.writelines(dumpedJson)
+        except FileNotFoundError:
+            Logger.getLogger("logs").error("{path} is not present in the current working directory. Consider creating this path and try again.".format(path=self.__metaData["advisorsPath"]))
+
     def saveLecture(self, lecture):
+        from Logger import Logger
         lectureID = lecture.getID()
         lectureName = lecture.getName()
         prerequisite = lecture.getPrerequisite()
@@ -404,10 +439,14 @@ class JsonOperator():
         writeJson["lectureSessions"] = lectureSessionsjs
 
         dumpedJson = json.dumps(writeJson, indent=4)
-        writeFile = open(self.__metaData["lecturesPath"] + lectureID + ".JSON", "w")
-        writeFile.writelines(dumpedJson)
+        try:
+            writeFile = open(self.__metaData["lecturesPath"] + lectureID + ".JSON", "w")
+            writeFile.writelines(dumpedJson)
+        except FileNotFoundError:
+            Logger.getLogger("logs").error("{path} is not present in the current working directory. Consider creating this path and try again.".format(path=self.__metaData["lecturesPath"]))
 
     def saveTranscript(self, transcript):
+        from Logger import Logger
         studentID = transcript.getStudent().getID()
         semesterList = transcript.getListOfSemester()
 
@@ -424,10 +463,11 @@ class JsonOperator():
         writeJson["listOfSemesters"] = semesterListJson
 
         dumpedJson = json.dumps(writeJson, indent=4)
-        writeFile = open(self.__metaData["transcriptsPath"] + studentID + ".JSON", "w")
-        writeFile.writelines(dumpedJson)
-
-        pass
+        try:
+            writeFile = open(self.__metaData["transcriptsPath"] + studentID + ".JSON", "w")
+            writeFile.writelines(dumpedJson)
+        except FileNotFoundError:
+            Logger.getLogger("logs").error("{path} is not present in the current working directory. Consider creating this path and try again.".format(path=self.__metaData["transcriptsPath"]))
 
     def __findLecture(self, id: str):
         for l in self.__lectureObjectsList:
