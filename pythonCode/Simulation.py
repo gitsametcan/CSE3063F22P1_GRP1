@@ -11,12 +11,14 @@ from LetterGrade import LetterGrade
 class Simulation():
 
     def __init__(self):
+        from Logger import Logger
+        self.__log = Logger.getLogger("logs")
         self.__studentGenerator = StudentGenerator()
         self.__LRA = LRAGenerator()
         self.__listOfStudents = list()
 
     def run(self): #öğrenci üretme
-
+        self.__log.info("Initiating Student Generation...")
         year = 118
 
         listOfStudents = list()
@@ -43,6 +45,7 @@ class Simulation():
         return listOfStudents
 
     def startSimulation(self, studentsList):
+        self.__log.info("Initiating Simulation...")
         if(self.getTerm() == Term.Spring):
             self.setYear(self.getYear()+1)
             self.skipTerm(studentsList, self.getTerm())

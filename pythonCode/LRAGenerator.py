@@ -16,6 +16,7 @@ class LRAGenerator():
         self.__log = Logger.getLogger("logs")
 
     def generate(self, listOfStudents:list, term:Term):
+        self.__log.info("Initiating LectureRegistrationApplication Generation...")
         from ApprovalState import ApprovalState
         nteList, ueList, teList, fteList, mandatoryList = DataManager.getInstance().searchLecturesUntilTerm("",Term.Spring, TermYear.Senior)
         
