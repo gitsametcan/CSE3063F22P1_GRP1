@@ -1,7 +1,0 @@
-[2023-01-08-17-43-07][INFO] 1-Generate Students
-[2023-01-08-17-43-07][INFO] 2-Start Simulation
-[2023-01-08-17-43-07][INFO] 3-Student Simulation Logs
-[2023-01-08-17-43-07][INFO] 4-Advisor Simulation Logs
-[2023-01-08-17-43-07][INFO] 5-Instructor Simulation Logs
-[2023-01-08-17-43-07][INFO] 6-Exit
-[2023-01-08-17-43-18][INFO] Exiting...
