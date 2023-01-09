@@ -51,11 +51,7 @@ class Transcript:
 
     def getLastSemester(self):
         from Semester import Semester
-        lastSemester = Semester()
-        for s in range(0, len(self.__listOfSemester)):
-            if s == (len(self.__listOfSemester)-1):
-                lastSemester = s
-        return self.getListOfSemester()[lastSemester - 1]
+        return self.__listOfSemester[len(self.__listOfSemester)-1]
 
     # Creating other methods
 

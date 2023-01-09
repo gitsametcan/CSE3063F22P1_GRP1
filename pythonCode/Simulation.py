@@ -84,17 +84,17 @@ class Simulation():
     def fillSemesterFromLRA(self, listOfStudent):
         from Semester import Semester
         for s in listOfStudent:
-            listOflecture = list()
+            listOflecture = dict()
             sessions = s.getRegistirationApplication().getSessionsSentForApproval()
             for l in sessions.keys():
                 if sessions[l] == ApprovalState.Approved:
-                    listOflecture.append(l)
+                    listOflecture[l] = LetterGrade.Non
             semester = Semester()
             semester.setListOfLecturesTaken(listOflecture)
             listOfSemester = s.getTranscript().getListOfSemester()
 
-            for ls in s.getTranscript().getLastSemester().getListOfLecturesTaken():
-                s.getTranscript().getLastSemester().addToGradeList(ls,LetterGrade.Non)
+            """for ls in s.getTranscript().getLastSemester().getListOfLecturesTaken():
+                s.getTranscript().getLastSemester().addToGradeList(ls,LetterGrade.Non)"""
 
             listOfSemester.append(semester)
             s.getTranscript().setListOfSemester(listOfSemester)

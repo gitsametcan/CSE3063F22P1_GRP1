@@ -1,0 +1,8 @@
+[2023-01-09-08-27-58][INFO] 1-Generate Students
+[2023-01-09-08-27-58][INFO] 2-Exit
+[2023-01-09-08-28-00][INFO] Generating Students...
+[2023-01-09-08-28-14][INFO] Done.
+[2023-01-09-08-28-14][INFO] Saving Files...
+[2023-01-09-08-28-15][INFO] Done.
+[2023-01-09-08-28-15][INFO] 1-Generate Students
+[2023-01-09-08-28-15][INFO] 2-Exit

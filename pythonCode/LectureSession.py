@@ -8,11 +8,11 @@ class LectureSession(object):
     def __hash__(self):
         return (hash((self.getSessionID(), self.getLecture().getID(), self.getSessionType().value, self.getInstructor().getID())))
 
-    def __eq__(self, other):
+    """def __eq__(self, other):
         return (self.getSessionID(), self.getLecture(), self.getSessionHours(), self.getSessionType(),
         self.getListOfStudents() , self.getInstructor()) == (other.getSessionID(), other.getLecture(),
         other.getSessionHours(), other.getSessionType(), other.getListOfStudents(),
-        other.getInstructor())
+        other.getInstructor())"""
 
     # Creating properties for variables
     def setSessionID(self, sessionID):
