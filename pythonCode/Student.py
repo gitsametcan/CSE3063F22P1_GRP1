@@ -3,8 +3,6 @@ from LectureRegistrationApplication import LectureRegistrationApplication
 from ApprovalState import ApprovalState
 from Lecture import Lecture
 
-#from DataManager import DataManager
-
 class Student(Person):
     
     def __init__(self):
@@ -65,7 +63,6 @@ class Student(Person):
         self.__registirationApplication.setSsessionsSentForApproval(approvalList)
         self.__registirationApplication.setStudent(self)
         self.__advisor.getListOfApplications().add(self.__registirationApplication)
-
 
     def canTakeLecture(self, lecture, transcript):
 

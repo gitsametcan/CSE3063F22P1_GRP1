@@ -38,6 +38,7 @@ class StudentGenerator():
         student.getSchedule().setTermYear(TermYear.Freshman)
         student.setRegistirationApplication(LectureRegistrationApplication())
 
+        self.__log.info("Student {x}, {name} is generated.".format(x=student.getID(), name=student.getFullName()))
         return student
 
 

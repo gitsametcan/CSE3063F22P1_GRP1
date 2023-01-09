@@ -3,13 +3,15 @@ from LectureHour import LectureHour
 class Schedule():
     
     def __init__(self):
+        from Logger import Logger
+        self.__log = Logger.getLogger("logs")
         self.__ListOfLectureSessions = list()
 
     # Creating show method
     def showSchedule(self, log):
         lectureSessions = self.getListOfLectureSessions()
         if len(lectureSessions) == 0:
-            log.info("You dont have any lecture to be shown.")
+            self.__log.info("You dont have any lecture to be shown.")
             return
         lecturePlaceX = 0
         lecturePlaceY = 1
@@ -19,7 +21,7 @@ class Schedule():
                 if y == 1 or y == 41:
                     temp += "_"
                     if x == 78 and y == 1:
-                        log.info(temp)
+                        self.__log.info(temp)
                         temp = ""
                 elif (x - 2) % 11 == 0 and (y - 3) % 4 == 0:
                     if lecturePlaceX == 7:
@@ -40,7 +42,7 @@ class Schedule():
                 elif x == 1 or x == 78:
                     temp += "|"
                     if x == 78:
-                        log.info(temp)
+                        self.__log.info(temp)
                         temp = ""
                 elif (y - 1) % 4 == 0:
                     temp += "_"
@@ -48,7 +50,7 @@ class Schedule():
                     temp += "|"
                 else:
                     temp += " "
-        log.info(temp)
+        self.__log.info(temp)
         temp = ""
 
     # Creating properties for variables
