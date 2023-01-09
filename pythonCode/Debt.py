@@ -13,8 +13,12 @@ class Debt:
     def setAmount(self, amount: float):
         self.__amount = amount
 
-    #def getStudent(self):
-    #    return self.__student
+    def getStudent(self):
+        try: 
+            x = self.__student
+        except AttributeError:
+            return None
+        return self.__student
 
     def setStudent(self, student):
         self.__student = student
