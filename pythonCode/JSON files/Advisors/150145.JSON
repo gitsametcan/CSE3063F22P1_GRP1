@@ -1,17 +1,14 @@
 {
-    "listOfStudentIDs": [
-    ],
-    "schedule": {
-      "sessions": {},
-      "ID": "150145",
-      "term": "Fall",
-      "termYear": "Senior"
-    },
-  
-    "instructorType": "Instructor",
     "instructorID": "150145",
+    "listOfStudentIDs": [],
+    "schedule": {
+        "ID": "150145",
+        "term": "Fall",
+        "termYear": "Freshman",
+        "sessions": {}
+    },
+    "instructorType": "Instructor",
     "dateOfEntry": "2016-05-12",
     "firstName": "Fatma",
     "lastName": "CORUT ERGIN"
-  
-  }
+}

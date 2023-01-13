@@ -1,17 +1,14 @@
 {
-    "listOfStudentIDs": [
-    ],
-    "schedule": {
-      "sessions": {},
-      "ID": "150158",
-      "term": "Fall",
-      "termYear": "Senior"
-    },
-  
-    "instructorType": "Instructor",
     "instructorID": "150158",
+    "listOfStudentIDs": [],
+    "schedule": {
+        "ID": "150158",
+        "term": "Fall",
+        "termYear": "Freshman",
+        "sessions": {}
+    },
+    "instructorType": "Instructor",
     "dateOfEntry": "2020-01-08",
     "firstName": "Mehmet",
     "lastName": "BARAN"
-  
-  }
+}

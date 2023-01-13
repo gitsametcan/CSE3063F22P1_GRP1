@@ -1,17 +1,14 @@
 {
-    "listOfStudentIDs": [
-    ],
-    "schedule": {
-      "sessions": {},
-      "ID": "150317",
-      "term": "Fall",
-      "termYear": "Senior"
-    },
-  
-    "instructorType": "Instructor",
     "instructorID": "150317",
+    "listOfStudentIDs": [],
+    "schedule": {
+        "ID": "150317",
+        "term": "Fall",
+        "termYear": "Freshman",
+        "sessions": {}
+    },
+    "instructorType": "Instructor",
     "dateOfEntry": "2020-09-23",
     "firstName": "Borahan",
     "lastName": "TUMER"
-  
-  }
+}

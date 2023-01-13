@@ -1,17 +1,14 @@
 {
-    "listOfStudentIDs": [
-    ],
-    "schedule": {
-      "sessions": {},
-      "ID": "150669",
-      "term": "Fall",
-      "termYear": "Senior"
-    },
-  
-    "instructorType": "Instructor",
     "instructorID": "150669",
+    "listOfStudentIDs": [],
+    "schedule": {
+        "ID": "150669",
+        "term": "Fall",
+        "termYear": "Freshman",
+        "sessions": {}
+    },
+    "instructorType": "Instructor",
     "dateOfEntry": "2021-08-16",
     "firstName": "Mujdat",
     "lastName": "SOYTURK"
-  
-  }
+}

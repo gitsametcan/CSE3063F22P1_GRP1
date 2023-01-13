@@ -1,17 +1,35 @@
 {
-    "listOfStudentIDs": [
-    ],
-    "schedule": {
-      "sessions": {},
-      "ID": "150097",
-      "term": "Fall",
-      "termYear": "Senior"
-    },
-  
-    "instructorType": "Instructor",
     "instructorID": "150097",
+    "listOfStudentIDs": [],
+    "schedule": {
+        "ID": "150097",
+        "term": "Fall",
+        "termYear": "Freshman",
+        "sessions": {
+            "CSE4040": "1",
+            "CSE4057": "1",
+            "CSE4084": "1",
+            "ATA122": "1",
+            "COM2202": "1",
+            "CSE1242": "1",
+            "CSE2138": "1",
+            "CSE2246": "1",
+            "CSE2260": "1",
+            "CSE3033": "1",
+            "CSE3038": "1",
+            "CSE3264": "1",
+            "EE2032": "1",
+            "IE3235": "1",
+            "ISG122": "1",
+            "MATH1002": "1",
+            "MATH2256": "1",
+            "PHYS1104": "1",
+            "STAT2253": "1",
+            "TRD122": "1"
+        }
+    },
+    "instructorType": "Instructor",
     "dateOfEntry": "2015-11-03",
     "firstName": "Betul",
     "lastName": "BOZ"
-  
-  }
+}

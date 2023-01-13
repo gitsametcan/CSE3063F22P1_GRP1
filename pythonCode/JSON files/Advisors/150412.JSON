@@ -1,17 +1,14 @@
 {
-    "listOfStudentIDs": [
-    ],
-    "schedule": {
-      "sessions": {},
-      "ID": "150412",
-      "term": "Fall",
-      "termYear": "Senior"
-    },
-  
-    "instructorType": "Instructor",
     "instructorID": "150412",
+    "listOfStudentIDs": [],
+    "schedule": {
+        "ID": "150412",
+        "term": "Fall",
+        "termYear": "Freshman",
+        "sessions": {}
+    },
+    "instructorType": "Instructor",
     "dateOfEntry": "2019-01-30",
     "firstName": "Ali Fuat",
     "lastName": "ALKAYA"
-  
-  }
+}

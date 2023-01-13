@@ -34,7 +34,7 @@ class Simulation():
                 self.skipTerm(listOfStudents, term)
             if i % 2 != 0:
                 year = year + 1
-                for i in range(1, 101):
+                for i in range(1, 5):
                     student = self.__studentGenerator.generate(year,i)
                     listOfStudents.append(student)
             listOfStudents = self.__LRA.generate(listOfStudents,term)
